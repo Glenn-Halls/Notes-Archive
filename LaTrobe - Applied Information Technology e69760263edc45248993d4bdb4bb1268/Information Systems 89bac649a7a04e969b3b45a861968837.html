@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Information Systems</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="89bac649-a7a0-4e96-9b3b-45a861968837" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/Information_Systems.jpg"/></div><h1 class="page-title">Information Systems</h1></header><div class="page-body"><ul id="38b3c517-f91e-4876-bf91-056512925f97" class="bulleted-list"><li style="list-style-type:disc">SDLC = System Development Lifecycle</li></ul><ul id="81e244c0-7e63-4fad-aeee-2a13436ab58a" class="bulleted-list"><li style="list-style-type:disc">System: A set of related components that produces specific results.</li></ul><ul id="1cbf8eaf-aeaf-42be-99be-5bb385c06ecd" class="bulleted-list"><li style="list-style-type:disc">Information is data that has been transformed into output that is valuable to users.</li></ul><ul id="b7a13b6a-1339-41b3-955a-103ff843899d" class="bulleted-list"><li style="list-style-type:disc">Information systems contain:<ul id="18631d83-fbc2-4a92-b5da-7df1c3a31a48" class="bulleted-list"><li style="list-style-type:circle">1) Hardware</li></ul><ul id="184ff893-c07a-4a6e-b2fe-0361d55d5e1c" class="bulleted-list"><li style="list-style-type:circle">2) Software</li></ul><ul id="353e7739-2536-4709-b87b-5ac7e012b9aa" class="bulleted-list"><li style="list-style-type:circle">3) Data</li></ul><ul id="3780707d-072c-4e3b-a95a-aba8ee3cd4f7" class="bulleted-list"><li style="list-style-type:circle">4) Processes</li></ul><ul id="1f5688a2-4707-4d2d-811e-642e089c380c" class="bulleted-list"><li style="list-style-type:circle">5) People</li></ul></li></ul><ul id="b0e0395e-8cd5-4836-9590-584f211082d9" class="bulleted-list"><li style="list-style-type:disc">Classification of IS (historical)<ul id="d4baaab5-b8fb-4b69-bbe9-d56797b0842c" class="bulleted-list"><li style="list-style-type:circle">Exectutives (strategic) —&gt; Senior Managers (management) —&gt; Middle Managers (knowledge) —&gt; Workers (operational)</li></ul></li></ul><ul id="bb98d352-3fa9-44eb-9093-fd65d555f6bf" class="bulleted-list"><li style="list-style-type:disc">Classification of IS (current - functional)<ul id="f433438b-6cd2-4bd5-849d-6d8b714bacdd" class="bulleted-list"><li style="list-style-type:circle">Operations support systems<ul id="9c6e1cf3-1868-4cfd-a6d0-f8fd935016af" class="bulleted-list"><li style="list-style-type:square">Transaction Processing / Process Control / Enterprise Collaboration systems</li></ul></li></ul><ul id="4a759e9a-1d6a-4279-bcd2-36d0fc172f94" class="bulleted-list"><li style="list-style-type:circle">Management support systems<ul id="94c2f0c0-71e0-4be1-afc0-0259a5baff75" class="bulleted-list"><li style="list-style-type:square">Management Information / Decision Support / Executive Information systems</li></ul></li></ul></li></ul><ul id="32039548-73ce-4396-979d-6f9069fd214a" class="bulleted-list"><li style="list-style-type:disc">Stakeholders:<ul id="7758ab51-50a5-4217-b1e2-b68d16c11b0d" class="bulleted-list"><li style="list-style-type:circle">Project Sponsors / Organisational Management / System Users</li></ul></li></ul><ul id="a780ac5b-b4ba-4b66-b29c-072a4e54f1b7" class="bulleted-list"><li style="list-style-type:disc">SLDC lays down a clear plan of action to undertake in software development projects to ensure success and to manage the project’s progress</li></ul><ul id="536e33ce-320c-4f74-84b8-22c8385a9180" class="bulleted-list"><li style="list-style-type:disc">The 5 SDLC Stages:<ol type="1" id="33ae3bcf-12d9-412a-a21c-f5fe7b1b5cab" class="numbered-list" start="1"><li>Plan<ol type="a" id="dc70a06f-d775-4dc3-b972-6d45dc4ef1b2" class="numbered-list" start="1"><li>Why / How / Stakeholders / Cost / Value</li></ol><ol type="a" id="3b06074e-c331-4d2a-9d72-65eeea4681d7" class="numbered-list" start="2"><li>Engage with Stakehoders and conduct a SWOT (strengths, weaknesses, opportunities, threats) analysis</li></ol></li></ol><ol type="1" id="71e8197b-74ec-4efc-9ebc-4d3429ced2ba" class="numbered-list" start="2"><li>Analyse<ol type="a" id="d5a85956-add1-4d6c-826e-432790ca7d3e" class="numbered-list" start="1"><li>Study Existing System</li></ol><ol type="a" id="f80c466a-ea1a-473a-8a0c-bba7f7e06e3d" class="numbered-list" start="2"><li>Understand Requirements</li></ol><ol type="a" id="3051a673-706e-42d4-8fc6-794c66a2dedc" class="numbered-list" start="3"><li>Create a system proposal</li></ol></li></ol><ol type="1" id="4dab640e-76a5-4f34-8eac-285975f71341" class="numbered-list" start="3"><li>Design<ol type="a" id="44a3c124-cfb1-4b31-8250-62faec06e35a" class="numbered-list" start="1"><li>Strategy - insource or outsource?  Ability to deliver?</li></ol><ol type="a" id="c1c7a581-c170-40de-9839-761394c52300" class="numbered-list" start="2"><li>Local design - representation of a system through data flow charts, etc</li></ol><ol type="a" id="bfde9b45-3561-41f9-a3f7-b22a6e02f6b9" class="numbered-list" start="3"><li>Physical design including hardware, software, required programming, support etc.</li></ol></li></ol><ol type="1" id="f704f056-0e1f-4731-9c0f-cbf254e22421" class="numbered-list" start="4"><li>Implementation<ol type="a" id="46aed96b-647e-40b3-b949-220ef665f8c1" class="numbered-list" start="1"><li>Build and Test to ensure the system meets the system goals</li></ol><ol type="a" id="16b6923a-5c18-4339-83a8-bd6a81d2d904" class="numbered-list" start="2"><li>Installation and Rollout - clear focus on the stakeholders at this point</li></ol></li></ol><ol type="1" id="f2a2098a-6a14-49ea-876c-54841e7be4d3" class="numbered-list" start="5"><li>Support<ol type="a" id="7732311c-cfe3-4e5d-a17e-8f0d6f547d37" class="numbered-list" start="1"><li>Hardware and Software maintenance</li></ol><ol type="a" id="26896542-5228-425a-a9b9-2f3b925310b8" class="numbered-list" start="2"><li>Security</li></ol><ol type="a" id="c454730f-9068-44bc-898d-606275eb68dd" class="numbered-list" start="3"><li>User support</li></ol></li></ol></li></ul><ul id="62d97ec6-ef04-4275-8b81-bcf29e6cbb57" class="bulleted-list"><li style="list-style-type:disc">System Development Methodologies:<ul id="2daaff52-8d8c-4ba2-a0f9-b4dbff8e0c6b" class="bulleted-list"><li style="list-style-type:circle">Traditional Approach<ul id="6dbea2d1-97a2-43b2-96d8-5d5478e482c0" class="bulleted-list"><li style="list-style-type:square">Linear, similar to structured programming of the 1960s, structured design of the ‘70s and structured data flow diagrams of the current era</li></ul><ul id="43ec05e7-5b76-4a99-b169-16f38c7f1c89" class="bulleted-list"><li style="list-style-type:square">Waterfall Development Methodology<ul id="e20ba9ae-192a-4b4d-a395-7de58a640cb6" class="bulleted-list"><li style="list-style-type:disc">Pros: strict, great for known factors where iteration is not needed or where users have less experience</li></ul><ul id="c918d45d-7eca-4ff3-8eb3-05a90272beac" class="bulleted-list"><li style="list-style-type:disc">Cons: strict, inflexible, problematic where desired outcomes change or are unclear</li></ul></li></ul></li></ul><ul id="cdefd70b-292c-463f-8d35-3d7015ccc1f5" class="bulleted-list"><li style="list-style-type:circle">Agile Approach<ul id="5c2e5f74-5053-4121-9c1c-51ab85a0a4e2" class="bulleted-list"><li style="list-style-type:square">More philosophical than methodological</li></ul><ul id="355dfd2d-6078-4883-a275-0a32b4097dae" class="bulleted-list"><li style="list-style-type:square">An iterative, flexible approach accentuating speed and adaptation</li></ul><ul id="cc352e33-3bfd-428b-b21a-085c8a74e421" class="bulleted-list"><li style="list-style-type:square">Focus on individuals and interactions over process, software over documentation, change over plans, customer collaboration</li></ul></li></ul><ul id="a3c5ebfa-86e1-40ac-8253-bf09c12b509d" class="bulleted-list"><li style="list-style-type:circle">Object Oriented Approach<ul id="aa4b7651-ba16-4a5f-ae8c-2e0a659762ed" class="bulleted-list"><li style="list-style-type:square">Works symbiotically with OOP</li></ul><ul id="da7c2e7f-ee53-48ab-9d24-57951470b978" class="bulleted-list"><li style="list-style-type:square">Focus on modularity and reusability of each object to form a cohesive whole</li></ul><ul id="6ee18c3d-fd24-4398-8862-d77b06c982c7" class="bulleted-list"><li style="list-style-type:square">Can fit in with both traditional and agile approaches</li></ul></li></ul></li></ul><p id="0d3bb1a6-eb0a-466a-ba95-dc758dfb8786" class="">
+</p><h2 id="38df5746-69c8-4829-a21d-9e49f675cd7f" class="">Week 2 - System Planning</h2><ul id="af3af58b-3ab7-4468-860a-ee3663437a63" class="bulleted-list"><li style="list-style-type:disc">Failing to plan is planning to fail</li></ul><ul id="0512f1de-1892-441e-b72e-d663002cb961" class="bulleted-list"><li style="list-style-type:disc">Strategic Planning in terms of 3, 5 &amp; 10 Year plans.<ul id="9c7abd31-c39c-42b5-89db-a7992d79dc41" class="bulleted-list"><li style="list-style-type:circle">Mission Vs Vision Vs Plan</li></ul></li></ul><ul id="33b36a02-2b39-420e-9215-ee24c7716ae5" class="bulleted-list"><li style="list-style-type:disc">Internal Vs External Factors</li></ul><ul id="70d898c8-f7aa-4b7f-bef8-5fbe973ccbe7" class="bulleted-list"><li style="list-style-type:disc">SWOT Analysis<ul id="ee3789b2-a674-4120-a1c1-ae8e602c4391" class="bulleted-list"><li style="list-style-type:circle">Strengths</li></ul><ul id="493eb6a4-74db-482b-9024-574433e64afa" class="bulleted-list"><li style="list-style-type:circle">Weaknesses</li></ul><ul id="330abc66-314b-44e8-9cb8-7a4d33adf94a" class="bulleted-list"><li style="list-style-type:circle">Opportunities</li></ul><ul id="bc3ce0e1-6fad-42a7-84bd-818ddd10cd7a" class="bulleted-list"><li style="list-style-type:circle">Threats</li></ul></li></ul><ul id="6ba55aeb-bea1-405c-913a-bb6539cd0f11" class="bulleted-list"><li style="list-style-type:disc">System Request<ul id="5d380776-f85e-4c1b-a90f-2bb4d6789132" class="bulleted-list"><li style="list-style-type:circle">Business case describing the project clearly<ul id="20fedab8-eb6b-4deb-a4c4-c94a48a40948" class="bulleted-list"><li style="list-style-type:square">Project Sponsor</li></ul><ul id="ee4291e6-6c2b-4c4f-af77-6003c2c448b5" class="bulleted-list"><li style="list-style-type:square">Business Needs</li></ul><ul id="73814b90-a912-43f9-988f-7a9f7e9438c9" class="bulleted-list"><li style="list-style-type:square">Business Requirements</li></ul><ul id="34245633-bde7-45f3-a293-3dc450db4104" class="bulleted-list"><li style="list-style-type:square">Business Value</li></ul><ul id="6620121c-11d5-44ce-8083-7b871df5c80c" class="bulleted-list"><li style="list-style-type:square">Special Issues</li></ul></li></ul></li></ul><ul id="7e4f0e97-1731-4f2f-b3db-e7494c8369ab" class="bulleted-list"><li style="list-style-type:disc">Preliminary Investigation<ol type="1" id="3299dd08-e505-41f6-a5bd-77670c3c0092" class="numbered-list" start="1"><li>Identify problem<ol type="a" id="e54040c2-cce3-4413-aa4a-cc4f7e517341" class="numbered-list" start="1"><li>Define Underlying Cause<ol type="i" id="74027ae9-6bce-4b6e-85f9-e3b97c4b8a44" class="numbered-list" start="1"><li>Fishbone Analysis</li></ol></li></ol></li></ol><ol type="1" id="0445cdf6-5b2d-4364-b9ff-82dce55942f4" class="numbered-list" start="2"><li>Define scope<ol type="a" id="d69a0527-7a2c-40b6-a63e-bd67d18d3faf" class="numbered-list" start="1"><li>Outcomes / Deliverables / Constraints</li></ol></li></ol><ol type="1" id="7cc3d1a4-cdda-4dbd-8b5a-b6e901e63925" class="numbered-list" start="3"><li>Fact finding<ol type="a" id="30e28610-419d-485b-9473-caea89542b05" class="numbered-list" start="1"><li>Organisational Charts / Interviews / Documentation / Observe Operations / User Surveys / Organise Collected Data</li></ol></li></ol><ol type="1" id="98641274-8a89-4726-86dc-38c40ddb440e" class="numbered-list" start="4"><li>Feasibility<ol type="a" id="b9541602-6102-4ac5-901e-c20b01b967b8" class="numbered-list" start="1"><li>Technical / Operational / Schedule / Economic</li></ol><ol type="a" id="7868a8fe-d654-4c65-ba56-41eae69fd234" class="numbered-list" start="2"><li>Cost / Benefit Analysis<ol type="i" id="6f3dd1ac-cd5e-4530-8d22-752768c7cdf2" class="numbered-list" start="1"><li>Consider over multiple years</li></ol><ol type="i" id="5a03a898-9a4d-4840-8672-3bd534ceb5fb" class="numbered-list" start="2"><li>Formula = ( (benefit / cost) / cost ) x 100%</li></ol></li></ol></li></ol><ol type="1" id="f536ae5f-98e4-4de8-a7e0-055cc52746a4" class="numbered-list" start="5"><li>Findings / Recommendations<ol type="a" id="dc3b71ea-d6f4-494c-9c69-de3d5817c286" class="numbered-list" start="1"><li>Report / Presentation</li></ol></li></ol></li></ul><ul id="e0af66aa-41f3-4f59-9d7a-1793cd7123d8" class="bulleted-list"><li style="list-style-type:disc">3 Development Methods<ul id="edea58a8-58d3-4ca2-854c-2666d297e6c8" class="bulleted-list"><li style="list-style-type:circle">Structured Analysis<ul id="3f481946-f9fa-4c05-8cf6-7f857ad06faa" class="bulleted-list"><li style="list-style-type:square">Process Models</li></ul></li></ul><ul id="c3fede62-0a69-459b-aeb6-c0379d17aefd" class="bulleted-list"><li style="list-style-type:circle">Oblect Orientated Model:<ul id="d61272c7-6bc5-4d24-8b4e-182f34de0b47" class="bulleted-list"><li style="list-style-type:square">Objects</li></ul><ul id="4b446f52-5dc7-4ad4-a65c-4267e3d1f83f" class="bulleted-list"><li style="list-style-type:square">Attributes</li></ul><ul id="c0198f1a-ef5c-46ae-8b74-c011e277d3e5" class="bulleted-list"><li style="list-style-type:square">Methods</li></ul><ul id="f48767af-917e-482c-8d19-e9bf9adcd70b" class="bulleted-list"><li style="list-style-type:square">Messages</li></ul><ul id="1a2c90ca-8e25-4302-bd08-15738e612116" class="bulleted-list"><li style="list-style-type:square">Classes</li></ul><ul id="1719867a-ef9f-4f74-b4ac-df9c6a62f66c" class="bulleted-list"><li style="list-style-type:square">Instances</li></ul></li></ul><ul id="584915dd-3fb3-4b57-9ada-18bf01e4ecf6" class="bulleted-list"><li style="list-style-type:circle">Agile Method<ul id="02d10fbd-81ce-4b4b-9a9b-cf1ccb4715eb" class="bulleted-list"><li style="list-style-type:square">Spiral iteration</li></ul><ul id="e7ef4d93-955c-4b68-b55c-b23bf35c3c5f" class="bulleted-list"><li style="list-style-type:square">developing incrementally</li></ul><ul id="447e3913-dc5c-4ef8-923b-45d0648619d1" class="bulleted-list"><li style="list-style-type:square">Prototypes and Feedback</li></ul><ul id="d46e4d47-e6e2-473c-8b54-6c05738ce64a" class="bulleted-list"><li style="list-style-type:square">Scrum Vs Whiteboard displays / approach</li></ul></li></ul></li></ul><ul id="b98c32b6-0d0c-4e39-b76d-8fe5a635c9aa" class="bulleted-list"><li style="list-style-type:disc">Strategic Planning<ul id="457a2931-5dc1-453d-b46b-0de8531193dc" class="bulleted-list"><li style="list-style-type:circle">The Process of identifying long-term organisational goals, strategies and resources</li></ul><ul id="bd28887d-999d-4b08-9b40-53f780ccd4b8" class="bulleted-list"><li style="list-style-type:circle">Mission Statement<ul id="4c8b829a-bad8-4969-819c-077b90e200ac" class="bulleted-list"><li style="list-style-type:square">Critical Success Factor</li></ul></li></ul><ul id="571d2963-2f11-408b-aae5-f959dd7af08a" class="bulleted-list"><li style="list-style-type:circle">SWOT analysis</li></ul></li></ul><ul id="6f78ab58-3e7e-40f1-9ee8-5ae0d9d46dd4" class="bulleted-list"><li style="list-style-type:disc">Cost Benefit Analysis<ol type="1" id="ffa62dbc-e007-4c83-b4d8-3c1cf3d3efad" class="numbered-list" start="1"><li>List ALL options</li></ol><ol type="1" id="095cc47a-010e-4cb9-a06c-2e615d4f87c4" class="numbered-list" start="2"><li>Identify ALL costs and benefits</li></ol><ol type="1" id="fb7fc067-8d65-4976-a723-a29b7dea54dd" class="numbered-list" start="3"><li>Consider future growth</li></ol><ol type="1" id="2f6b0287-b5f2-4b99-8726-0710cf757968" class="numbered-list" start="4"><li>Include support costs for all hardware and software</li></ol><ol type="1" id="327282ec-c477-48a5-8ab1-9adaae800448" class="numbered-list" start="5"><li>Analyse all software licensing options</li></ol><ol type="1" id="778a8555-5aa4-47c8-9215-7428eb451540" class="numbered-list" start="6"><li>Apply financial analysis tools</li></ol><ol type="1" id="a61e6316-e1fc-4a4e-af64-2d1281ba8227" class="numbered-list" start="7"><li>Study the results</li></ol></li></ul><p id="6d7bd229-c9d3-45a2-b8c0-7d5e4e2255d7" class="">
+</p><h2 id="f62240c4-ab82-45fa-8868-397f51ab5def" class="">Week 3: Gathering Requirements</h2><ul id="eef03ffc-266d-4c65-b926-b910311fa022" class="bulleted-list"><li style="list-style-type:disc">Failing to plan is planning to fail</li></ul><ul id="ef4873e0-fcc3-4c1a-890e-b1a80eb40a0d" class="bulleted-list"><li style="list-style-type:disc">Stakeholder Requirements</li></ul><ul id="e02cd5c8-14c0-4bc7-8ab1-7bcde0595dc1" class="bulleted-list"><li style="list-style-type:disc">Differentiate Various fact finding techniques</li></ul><ul id="9942aff3-7e23-4617-b887-6dacb317abf7" class="bulleted-list"><li style="list-style-type:disc">Identify Requirements of a system to be built</li></ul><ul id="ab2257ca-cc21-438c-ab84-9fa661dc2ca6" class="bulleted-list"><li style="list-style-type:disc">Systems Analysis:<ul id="34618a67-57a3-4ba9-8405-0ac5fc7fcc05" class="bulleted-list"><li style="list-style-type:circle">Phase 2: Analyse<ul id="a2aff052-a435-4b1b-ba44-ac8abcb94e97" class="bulleted-list"><li style="list-style-type:square">The systems analyst works closely with potential users of a system to understand their needs that the system should fulfil.<ul id="d23a3181-49fe-4be6-b76c-9a179731d7f3" class="bulleted-list"><li style="list-style-type:disc">Requirement Gathering<ul id="e39d1771-95f7-4360-a953-c03ad5b663d7" class="bulleted-list"><li style="list-style-type:circle">Deliverables include<ul id="3816b749-5fe4-41d5-9396-2554d58cc9d3" class="bulleted-list"><li style="list-style-type:square">Organisational objectives, what information people require, what data is handled &amp; transformed, sequences and dependencies, rules around data, events, policies and guidelines</li></ul><ul id="0ae31fe1-23f8-480d-a4f4-a27aa9a37c63" class="bulleted-list"><li style="list-style-type:square">Concept: analysis paralysis</li></ul></li></ul><ul id="2fcc8b5a-6395-45a4-aac6-06ae4c967adc" class="bulleted-list"><li style="list-style-type:circle">Understand the current situation/system</li></ul><ul id="6206c1f3-01a7-4967-bc70-6a65985b3099" class="bulleted-list"><li style="list-style-type:circle">Identify Improvements</li></ul><ul id="072599b3-5a74-47c3-8ef7-c00e108d10b6" class="bulleted-list"><li style="list-style-type:circle">Define Requirements<ul id="d6bd2237-8fc2-44ff-804f-90a65a695d9b" class="bulleted-list"><li style="list-style-type:square">Anything the user / business / software / system needs</li></ul><ul id="17b52326-6002-4df5-9197-d2df980380d9" class="bulleted-list"><li style="list-style-type:square">Functional<ul id="3e3e94ac-c936-4e59-bfea-3329fb5aa810" class="bulleted-list"><li style="list-style-type:disc">Activities the system must perform<ul id="da0d054d-3e44-466e-b0ae-05e7500f793c" class="bulleted-list"><li style="list-style-type:circle">Process Oriented</li></ul><ul id="fe4bfca4-9f06-4e20-80e4-4a9b5d48cf28" class="bulleted-list"><li style="list-style-type:circle">Information oriented</li></ul></li></ul></li></ul><ul id="fc27f93e-639c-4356-832b-6784b1fd2e8c" class="bulleted-list"><li style="list-style-type:square">Non functional requirements<ul id="4c1f10b0-4df0-4c3c-aa8d-23f665acd97c" class="bulleted-list"><li style="list-style-type:disc">Operational</li></ul><ul id="359bef00-3ba1-4c8e-ae93-db86cf9fc076" class="bulleted-list"><li style="list-style-type:disc">Performance, Inc. reliability</li></ul><ul id="f06071d1-335a-4958-8e9f-f616b06741f9" class="bulleted-list"><li style="list-style-type:disc">Usability</li></ul><ul id="2bb58206-7e5e-4222-ae7e-2af39d097cae" class="bulleted-list"><li style="list-style-type:disc">Security</li></ul><ul id="2fb79242-ff90-4189-9115-1cf0b9c20bf5" class="bulleted-list"><li style="list-style-type:disc">Cultural</li></ul><ul id="0fb723bb-c07e-4d1a-a9d3-437b969ca194" class="bulleted-list"><li style="list-style-type:disc">Political</li></ul></li></ul></li></ul><ul id="7adef90f-04cb-4020-8749-4f47cfca8d8d" class="bulleted-list"><li style="list-style-type:circle">Process modelling</li></ul><ul id="95e1c7cf-c2ba-482d-99c6-511a4af0d77a" class="bulleted-list"><li style="list-style-type:circle">Interviews<ul id="57c5afe3-1380-4841-95f7-c2f03a7c3a40" class="bulleted-list"><li style="list-style-type:square">Pro: high user involvement and clarification</li></ul><ul id="52dba860-796b-45d4-b6f9-03e2195e6c5f" class="bulleted-list"><li style="list-style-type:square">Con: costly, time consuming, may be impracticle</li></ul><ul id="b1c6148f-cf86-4fc7-8364-66686217896e" class="bulleted-list"><li style="list-style-type:square">Select interviewees - expect this list to grow</li></ul><ul id="c0fe0a98-3b95-43f4-a0de-d6ab2a3d3cd1" class="bulleted-list"><li style="list-style-type:square">Open Vs closed questions</li></ul></li></ul></li></ul><ul id="65d0fc08-8715-4da4-9d32-7e43c012fded" class="bulleted-list"><li style="list-style-type:disc">Data Modelling</li></ul><ul id="2e4de99b-c12d-4dfc-9f12-0a4c02b7ebe7" class="bulleted-list"><li style="list-style-type:disc">Document review: forms, reports, manuals, documents, customer feedback<ul id="0776f1aa-e2cf-4630-a327-6b89982f93a8" class="bulleted-list"><li style="list-style-type:circle">Pro: unbiased, inexpensive</li></ul><ul id="7fd7c304-042e-47ad-a17e-fa8c3cf147f9" class="bulleted-list"><li style="list-style-type:circle">Con: Information may be incomplete or out of date, cannot be used in isolation</li></ul></li></ul><ul id="f5370504-f76e-4a1e-afc2-91a113bd93de" class="bulleted-list"><li style="list-style-type:disc">Observation, including discretion, observe more than once<ul id="2c6cec83-4c77-4d5d-b150-2246e10539df" class="bulleted-list"><li style="list-style-type:circle">Pro: validation, inexpensive</li></ul><ul id="49aca52e-76f2-456f-8567-caed9b24f46a" class="bulleted-list"><li style="list-style-type:circle">Con: Disruptive, bias, repetition</li></ul></li></ul><ul id="5dec0ddd-f892-4d98-8e81-65bcd5744361" class="bulleted-list"><li style="list-style-type:disc">Surveys<ul id="a79ea495-3d71-473b-a9ca-0a8c152a1965" class="bulleted-list"><li style="list-style-type:circle">Select participants —&gt; Design questions (and test) —&gt; Collect responses</li></ul><ul id="add492f9-82ab-417b-90cf-93e0c2d33423" class="bulleted-list"><li style="list-style-type:circle">Pro: quantifiable, inexpensive, fast</li></ul><ul id="2ea34772-570b-4661-9b16-c33dd991cf93" class="bulleted-list"><li style="list-style-type:circle">Con: low response rate, cannot clarify responses</li></ul></li></ul><ul id="5d79c193-143c-4225-9b73-ff5d87fd3e81" class="bulleted-list"><li style="list-style-type:disc">Team-based requirement gathering techniques<ul id="dfd35b1c-1240-446b-a51e-86e9aad540da" class="bulleted-list"><li style="list-style-type:circle">Joint Application Development<ul id="2be72b6a-6580-4f93-bca7-ae5f4e6782f3" class="bulleted-list"><li style="list-style-type:square">Pro: user ownership, instant validation, team morale, interactive</li></ul><ul id="312b5282-6727-42d1-92dc-872b33262a06" class="bulleted-list"><li style="list-style-type:square">Con: requires significant planning and multiple staff with a skilled facilitator</li></ul><ul id="7b9a4a49-d25c-45ad-9b04-d77262639277" class="bulleted-list"><li style="list-style-type:square">Brings together stakeholders, business representatives and technology experts to determine requirements of the new information system</li></ul><ul id="4fe9476f-8e41-4aa2-b03e-4b8ebfd5adb5" class="bulleted-list"><li style="list-style-type:square">Developed by IBM in the 70s, JAD sessions follow a focussed agenda managed by a facilitator</li></ul><ul id="dd8c438a-59ec-4119-b54a-559ecf5fc130" class="bulleted-list"><li style="list-style-type:square">Results in a set of documents detailing the current system and what is required of the new system</li></ul><ul id="dd7cd858-92d2-4437-8f29-f9cc3eb17b07" class="bulleted-list"><li style="list-style-type:square">Requires structured setup with appropriate people present</li></ul></li></ul><ul id="8a36e52a-600f-44b1-b03b-e51c4af21404" class="bulleted-list"><li style="list-style-type:circle">Agile</li></ul><ul id="5cb4bdaa-da15-425f-aca2-e8bac9128854" class="bulleted-list"><li style="list-style-type:circle">Modelling tools and techniques<ul id="f900008b-a870-4323-b594-007e82bae71f" class="bulleted-list"><li style="list-style-type:square">CASE - Computer Aided Software and Design</li></ul><ul id="4872a535-09c6-43aa-87bf-5bf7f918df90" class="bulleted-list"><li style="list-style-type:square">FDD - Functional Decomposition Diagram<ul id="4720e13e-c7bb-49cb-8f03-8bf8e9de9928" class="bulleted-list"><li style="list-style-type:disc">Main business functions broken down into smaller and lower level functions</li></ul></li></ul><ul id="cdb3584f-192a-4ded-80a7-850170337364" class="bulleted-list"><li style="list-style-type:square">BPM - Business Process Modelling<ul id="f2f894bb-3129-4953-9ec2-937cbb4a3140" class="bulleted-list"><li style="list-style-type:disc">Uses notation with specific symbols to demonstrate flow ie. from customer purchase to delivery</li></ul></li></ul><ul id="3310e205-e9a3-48be-9d25-d3141aee85eb" class="bulleted-list"><li style="list-style-type:square">UML - Unified Modelling Language<ul id="ceeda31a-090d-4b27-84d2-1114e0418048" class="bulleted-list"><li style="list-style-type:disc"> 14 UML diagrams represent software systems from different perspectives</li></ul></li></ul></li></ul><ul id="9174f47f-19ac-48e2-bce5-34107543576d" class="bulleted-list"><li style="list-style-type:circle"><figure id="ce4841f5-834b-433f-9cf2-e43342895c65" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/Screenshot_2022-06-24_135523.jpg"><img style="width:1175px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/Screenshot_2022-06-24_135523.jpg"/></a><figcaption>Different Techniques for different situations</figcaption></figure></li></ul><ul id="15c96650-7220-4e1f-9fc1-e22e53cbdcc3" class="bulleted-list"><li style="list-style-type:circle">DFD - Data Flow Diagrams<ul id="3c14ee02-6733-44c1-bfd8-d53ac218785c" class="bulleted-list"><li style="list-style-type:square">“If I can’t picture it, I can’t understand it” - Albert Einstein</li></ul></li></ul><ul id="27805517-e5d2-494b-a087-9eee01560bf2" class="bulleted-list"><li style="list-style-type:circle">Actors can be users, database systems, clients and servers, platforms, devices</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="a6a73fa8-e944-47f2-8685-08d709cf99ae" class="bulleted-list"><li style="list-style-type:disc">System Requirements<ul id="e9f04330-4d8d-49bf-8714-b84a6856b166" class="bulleted-list"><li style="list-style-type:circle">Inputs<ul id="bec1413d-3118-4d0c-bcf7-fb24b23263e6" class="bulleted-list"><li style="list-style-type:square">Any data in to the system</li></ul></li></ul><ul id="99deb7c6-7d13-4b82-adaf-83e3b078b17d" class="bulleted-list"><li style="list-style-type:circle">Outputs<ul id="ba7218ed-a98b-48bf-bfea-c39372f5f497" class="bulleted-list"><li style="list-style-type:square">Any data that flows out of the system</li></ul></li></ul><ul id="273b91af-8dca-4248-b059-d60464600713" class="bulleted-list"><li style="list-style-type:circle">Process Requirements<ul id="9dd62459-09c2-4152-ac65-107e695e5bb1" class="bulleted-list"><li style="list-style-type:square">How the data should be processed WITHIN the system</li></ul></li></ul><ul id="28ecb8be-8cb9-44e3-8344-87fe797d88cd" class="bulleted-list"><li style="list-style-type:circle">Controls<ul id="36e77ca3-3f22-4399-9e56-73c44423545e" class="bulleted-list"><li style="list-style-type:square">Security and access level requirements</li></ul></li></ul><ul id="b9e8e9b3-4dbf-4495-ab50-4da3454dc7b6" class="bulleted-list"><li style="list-style-type:circle">Performance <ul id="d4efb4a0-69cf-4695-b38a-4c79f19303e0" class="bulleted-list"><li style="list-style-type:square">Including speed, capacity and uptime</li></ul><p id="c48fd5da-8239-4338-adbb-3ab4caa6c7ea" class="">
+</p></li></ul></li></ul><ul id="d063de40-257c-45d3-9f38-fdc80f09b826" class="bulleted-list"><li style="list-style-type:disc">Project Management Standards:<ul id="22a92289-3ab1-413e-97a1-46d7f6367091" class="bulleted-list"><li style="list-style-type:circle">ISO 21500</li></ul><ul id="158004a0-9ae8-46fc-b4b0-15db583d8c5b" class="bulleted-list"><li style="list-style-type:circle">ISO, ICE &amp; ICEE combined approach for software engineers</li></ul><p id="637aa5e7-3148-4769-900e-caf79267937e" class="">
+</p></li></ul><p id="2ffc6eb9-c1ca-4305-bb9e-2d5d20cddec7" class="">
+</p><h2 id="59f64c26-7a9c-484b-9895-535c97d82423" class="">Week 4: Modelling Requirements</h2><ul id="753012ac-752c-4350-acdd-fd3ba16805ec" class="bulleted-list"><li style="list-style-type:disc">All systems that interact with the world have three elements in common: input, process and output.</li></ul><ul id="9fdd951f-1abe-4937-ae82-0382f7b8c11a" class="bulleted-list"><li style="list-style-type:disc">Data Flow Diagrams:<ul id="228a1170-fa59-4efe-a342-8879c1e2de0c" class="bulleted-list"><li style="list-style-type:circle">Symbolism (Gane and Sarson notation):<ul id="e7e7ca33-b1cb-4161-b0a7-4a5016a414e0" class="bulleted-list"><li style="list-style-type:square">Process - Verb &amp; Noun<figure id="1444550f-6d45-42a9-b6a5-06b8bc754c40" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/Process.jpg"><img style="width:219px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/Process.jpg"/></a></figure><ul id="18dd9723-a937-4ebb-bd38-d09a7a8ba60c" class="bulleted-list"><li style="list-style-type:disc">This represents a single function within a system, containing a unique number in the upper section and a description in the lower section</li></ul></li></ul><ul id="d079ec72-0899-4bbb-b3db-1fff858dd9c7" class="bulleted-list"><li style="list-style-type:square">External Entity<figure id="46cf49c5-fd61-49e1-ab49-bcb4e6779b96" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/Source.jpg"><img style="width:242px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/Source.jpg"/></a></figure><ul id="95be6d17-9f7b-432d-adde-467b12771ecf" class="bulleted-list"><li style="list-style-type:disc">These either feed data to the system or receive data from the system.</li></ul></li></ul><ul id="ef99ef73-d39f-4768-b3b7-43885da8d9e9" class="bulleted-list"><li style="list-style-type:square">Data Store<figure id="7aa55c37-c589-472f-b283-40b14f5bb94b" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/Data_Store.jpg"><img style="width:231px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/Data_Store.jpg"/></a></figure><ul id="0bccfe78-8d87-4611-b3bd-0dbaa3ba8713" class="bulleted-list"><li style="list-style-type:disc">The left section contains the letter D followed by a unique identifier with the right side containing a noun of the data store</li></ul></li></ul></li></ul><ul id="f320ff34-a7f5-47f7-9940-c435b5737f5a" class="bulleted-list"><li style="list-style-type:circle">As a general rule, DFDs should have three to seven processes at each level of depth</li></ul><ul id="5224170a-259a-4ee2-8fdf-eeb008e25ad9" class="bulleted-list"><li style="list-style-type:circle">Context Diagrams<ul id="9289d4bc-6465-4205-b2dc-6a6c079357de" class="bulleted-list"><li style="list-style-type:square">The highest level DFD is a context diagram, representing all external entities and the system as a single process bearing the number 0 and a descriptor ending in the word “system”</li></ul><ul id="5f3abc71-e191-4a5e-b9e0-0e3dbe0750ef" class="bulleted-list"><li style="list-style-type:square">Breaking down further to more minute detail is known as Decomposition or levelling.  Consider both numbering (1.2.2.3) and balancing (inflow and outflow remains consistent throughout levels) when doing so.  This process may be considered complete when:<ul id="bf5617a8-2f8f-4e98-9d53-23871d295c7f" class="bulleted-list"><li style="list-style-type:disc">Each process has been narrowed to a single task</li></ul><ul id="d60d449f-4868-4cb9-8789-3fefcb117d62" class="bulleted-list"><li style="list-style-type:disc">Each data store stores data on a single entity</li></ul><ul id="63ddee2a-9265-4599-a48a-d3e3bb024c63" class="bulleted-list"><li style="list-style-type:disc">Data flows no longer need to be split to show different data handling</li></ul></li></ul></li></ul><ul id="caca0156-a012-4f81-8267-8da11abf23d4" class="bulleted-list"><li style="list-style-type:circle">Functional Decomposition Diagram<ul id="17841905-e407-46d0-af3e-fd2c1b2835d1" class="bulleted-list"><li style="list-style-type:square">Top-Down tool to show the structure of an organisation or system</li></ul></li></ul><ul id="548cd12e-dc65-4188-866a-74643f6e9ea8" class="bulleted-list"><li style="list-style-type:circle">Business Process Modelling<ul id="1381bd3e-d999-45e8-bd1b-9624dbe2682c" class="bulleted-list"><li style="list-style-type:square">Graphically displays one or more business processes</li></ul></li></ul><ul id="b9c36f21-1580-4357-ae10-9f1bb0b5a88b" class="bulleted-list"><li style="list-style-type:circle">Unified Modelling Language<ul id="9942b81f-9654-4c7c-befd-7da16fe08336" class="bulleted-list"><li style="list-style-type:square">Widely used to visualise and document software systems design</li></ul></li></ul><ul id="dc31b7b3-6aee-426a-ae5c-d441f9d3fd60" class="bulleted-list"><li style="list-style-type:circle">Level 0 DFD<ul id="fb0c01fc-2992-4aaf-ab0c-9c0aa627e00e" class="bulleted-list"><li style="list-style-type:square">Shows the core internal processes of a system including data stores and data flows</li></ul></li></ul></li></ul><p id="21a06c38-404e-47c6-8470-6e39968a58af" class="">
+</p><h2 id="0dd975fb-cf92-45bf-bda0-6388ccf849db" class="">Week 5 - Modelling Requirements</h2><ul id="0afbefde-8d84-45b2-b8c4-783a112a8396" class="bulleted-list"><li style="list-style-type:disc">Validating DFDs<ul id="bbefd5d1-35e7-46b5-a486-e5f81a038d1c" class="bulleted-list"><li style="list-style-type:circle">Syntax Errors: data stores placed in context diagrams, data flow between external entities and / or data stores, external entities included in DFDs (other than context)</li></ul><ul id="b8a7c845-ecd9-453f-ac6e-d1efb2e20b6b" class="bulleted-list"><li style="list-style-type:circle">Data Dictionary for DFDs<ul id="a14c3f5a-1e05-4c61-bcf1-d43818ca37e5" class="bulleted-list"><li style="list-style-type:square">Documenting Processes<ul id="c8e42c7e-f2c9-496e-b577-089b375c8582" class="bulleted-list"><li style="list-style-type:disc">Name, description, process number, process description (input, output, description)</li></ul></li></ul><ul id="293e8de2-5012-43b0-b54d-699000530d07" class="bulleted-list"><li style="list-style-type:square">Documenting  data flow<ul id="9b98404c-8506-41ec-89b9-1ec2d0920060" class="bulleted-list"><li style="list-style-type:disc">Name, description, aliases, origin, destination, record, volume and frequency</li></ul></li></ul><ul id="8a765511-f31e-4173-b7c3-fea10512159c" class="bulleted-list"><li style="list-style-type:square">Documenting data stores<ul id="b8da095e-f1b9-49ab-86e6-846005391423" class="bulleted-list"><li style="list-style-type:disc">Name, description, aliases, attributes, volume and frequency</li></ul></li></ul><ul id="01c89c62-5aef-4f44-8e3c-fae1f6afbba4" class="bulleted-list"><li style="list-style-type:square">Documenting external entities<ul id="e7c4eddb-0034-4240-8d3c-ef4208290181" class="bulleted-list"><li style="list-style-type:disc">Name, description, aliases, input data flows, output data flows</li></ul></li></ul></li></ul></li></ul><p id="e6460b9a-bc15-422d-aaa0-2e7ee2c1cc37" class="">
+</p><h2 id="a1f64f24-b298-4b7d-991c-2789b19c45eb" class="">Week 6: Process Modelling</h2><ul id="3b0c62d6-4458-4e6c-99a9-b72e6f85913d" class="bulleted-list"><li style="list-style-type:disc">Process description techniques<ul id="bf9f5435-1fe3-4f13-a8ef-9a3722f86a60" class="bulleted-list"><li style="list-style-type:circle">Structured English<ul id="918a2014-d58c-4bd5-af41-4dfc01796799" class="bulleted-list"><li style="list-style-type:square">if / elseif / endif</li></ul><ul id="c6a71cf8-2bfd-4c58-9284-3027886391ee" class="bulleted-list"><li style="list-style-type:square">Plain English —&gt; Structured English —&gt; Pseudocode —&gt; Programs</li></ul><ul id="480c6631-a70c-43af-9a8f-7333a4e752e5" class="bulleted-list"><li style="list-style-type:square">All logic is stated in terms of sequential statements, iteration statements, decision structures (if/else) and case structures (if/elseif/else)</li></ul><ul id="aa3cdf42-87b1-4c76-b2de-97fcb6f2c707" class="bulleted-list"><li style="list-style-type:square">Indented as per coding</li></ul><ul id="59e32caf-c630-4861-b239-b38b78336962" class="bulleted-list"><li style="list-style-type:square">capatilise keywords IF, ELSE, THEN ENDIF</li></ul><ul id="4c4bd821-9aa0-4002-9464-d77b7ec5f6ea" class="bulleted-list"><li style="list-style-type:square">comment using *</li></ul><ul id="c461f2c8-8512-43f9-8360-9cde01443bd1" class="bulleted-list"><li style="list-style-type:square">be cautious and consider using ( ) when using and / or</li></ul></li></ul><ul id="374058a4-e481-4b0f-b3d9-b73c21a8a583" class="bulleted-list"><li style="list-style-type:circle">Decision Table<ul id="296d63f2-8eb1-4953-bd5a-eb1a8316db7d" class="bulleted-list"><li style="list-style-type:square">Matrix format ensures all possible combinations have been considered</li></ul><ul id="3100cde7-f30a-442e-bbb7-c033024de9bf" class="bulleted-list"><li style="list-style-type:square">Decision Rules / Conditions / Actions / Condition Entries (Y/N) / Action Entries (Y/N)</li></ul><ul id="890f953f-ab31-47b5-99a6-6cd97b8c19d4" class="bulleted-list"><li style="list-style-type:square">Condition Stub —&gt; Actions Stub —&gt; Calculate Columns / Rules —&gt; Populate —&gt; Simplify by combining irrelevant information with a “-” for N</li></ul></li></ul><ul id="e64b00ab-56ab-42d0-a327-cfbc914a70f1" class="bulleted-list"><li style="list-style-type:circle">Decision Tree<ul id="4daa7787-1775-4c6f-a803-7b0b148eb451" class="bulleted-list"><li style="list-style-type:square">A graphical representation of a business process and its programming logic.</li></ul><ul id="a225d79f-696c-4bf4-8659-c1f728c5ceb7" class="bulleted-list"><li style="list-style-type:square">Nodes = conditions or actions<ul id="71237760-3142-426e-b7ff-b59da450f74d" class="bulleted-list"><li style="list-style-type:disc">Condition Node = circle. Branches from this are the possible outcomes of the condition</li></ul><ul id="6937f8fe-ad9d-411d-bfb1-c0da89ccd481" class="bulleted-list"><li style="list-style-type:disc">Action Node = Square.  This is the action to be performed resulting from the conditions being met.</li></ul></li></ul><ul id="a2ada8f0-0445-4ac8-89b3-b11f48410cec" class="bulleted-list"><li style="list-style-type:square">Branches = outcomes</li></ul><ul id="cc589113-691f-456c-8557-00204443ec22" class="bulleted-list"><li style="list-style-type:square">Identify all conditions —&gt; Identify all actions —&gt; Build tree from left to right or top to bottom —&gt; At each node, make sure all conditions are listed</li></ul></li></ul></li></ul><p id="a8a993a2-4d8d-449e-8f4c-901451d926d2" class="">
+</p><h2 id="3af97a2f-3df0-40f8-a69f-de78dbc21fc0" class="">Week 7: Data Modelling</h2><ul id="697e3512-74ea-435a-891b-aea35d231866" class="bulleted-list"><li style="list-style-type:disc">Entity Relationship Diagrams<ul id="c9cfdccc-51cb-4d27-b745-48f4067dc8e9" class="bulleted-list"><li style="list-style-type:circle">Yield a conceptual schema of the database for an information system.  Contains entities, their attributes and the relationships between them</li></ul></li></ul><ul id="f7d4b29b-0c3a-4afd-9400-2c99e3df9c02" class="bulleted-list"><li style="list-style-type:disc">Entities: person / place / object / event / concept.  Must be a noun in singular form with an adjective only when needed</li></ul><ul id="52bb1ee1-ffe5-420a-82a1-faac38ceefb1" class="bulleted-list"><li style="list-style-type:disc">Consider that often, Data Stores from a DFD may be the entities for an ERD<ul id="917a0d7b-e1db-4a8c-8b53-258607826a1f" class="bulleted-list"><li style="list-style-type:circle">Crow’s foot notation</li></ul><figure id="ed70e5b8-a2b2-41c0-ae1a-4123a57cec7c" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/entity.jpg"><img style="width:311px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/entity.jpg"/></a></figure><ul id="36421bf8-d15e-477b-9cd1-fd60c27bf3be" class="bulleted-list"><li style="list-style-type:circle">Types - entities that share characteristics</li></ul><ul id="77a94fb0-4840-47cf-b29f-bdfe6df5c3de" class="bulleted-list"><li style="list-style-type:circle">Instances - individual entities</li></ul><ul id="604c1a70-44cb-47ed-996a-0be16d229342" class="bulleted-list"><li style="list-style-type:circle">Entity Sets - share a condition / value</li></ul><ul id="b6e21f07-3686-4ed2-b6cb-3fae6cd1a9e7" class="bulleted-list"><li style="list-style-type:circle">Independent Vs Dependent</li></ul><ul id="89e77e59-a738-4413-b838-a7ba601ecd9a" class="bulleted-list"><li style="list-style-type:circle">Attributes</li></ul><ul id="f595cc60-6758-43c6-a1cc-816aac39d4c5" class="bulleted-list"><li style="list-style-type:circle">Tables (relations), fields (columns) and records (rows)</li></ul></li></ul><ul id="faef4379-5e4e-4d7a-95f6-3e544f315da9" class="bulleted-list"><li style="list-style-type:disc">Attributes<ul id="3d0fe23d-fe85-44e0-a8b6-ba5f6eb5d3fc" class="bulleted-list"><li style="list-style-type:circle">Single-valued attributes</li></ul><ul id="4146d379-7c0e-41e5-83d9-d8540c63912a" class="bulleted-list"><li style="list-style-type:circle">Multi-valued attributes {contain in curly braces}</li></ul><ul id="bd89ba2c-d6b6-431c-8eda-c3c18b8c230c" class="bulleted-list"><li style="list-style-type:circle">Composite attributes (..) is used as a suffix</li></ul><ul id="36519268-a750-40d1-88b4-7f327690b043" class="bulleted-list"><li style="list-style-type:circle">Derived attributer [contain in square brackets]</li></ul><ul id="8748d339-6a26-4d46-b292-ab5c94d632b8" class="bulleted-list"><li style="list-style-type:circle">Complex attributes are both multi-valued and composite - in this case use both annotations ie. {Address}(..)</li></ul></li></ul><ul id="dd3515db-6110-483f-9dc7-d91b5e6bc8b4" class="bulleted-list"><li style="list-style-type:disc">Primary Keys<figure id="fb1a1003-3553-4be8-adf0-af53296d9e0f" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/primary_key.jpg"><img style="width:394px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/primary_key.jpg"/></a></figure><ul id="2784b0e7-7d1c-46b3-ba2d-1ff52cff7e02" class="bulleted-list"><li style="list-style-type:circle">Used to uniquely identify an individual entity</li></ul><ul id="06c30ded-cc11-4521-9fae-a24ccc23b82c" class="bulleted-list"><li style="list-style-type:circle">Selected from candidate keys OR composite keys</li></ul><ul id="a4217e01-a16e-4d11-9e2b-c43a192e3ae7" class="bulleted-list"><li style="list-style-type:circle">Must always exist (cannot be NULL), must never change and should be efficient</li></ul></li></ul><ul id="868ebb35-c233-454b-85ab-8c43a5f0a322" class="bulleted-list"><li style="list-style-type:disc">Relationships between entities<ul id="c88c365d-1f78-4253-85de-bf8c93cc9644" class="bulleted-list"><li style="list-style-type:circle">always related with a line and labelled with an active verb</li></ul></li></ul><ul id="9335eff2-00d3-49ce-b84b-2216b1f98891" class="bulleted-list"><li style="list-style-type:disc">Foreign Keys<ul id="e74cfd9c-c291-4748-bfcd-f8bf1a2331e1" class="bulleted-list"><li style="list-style-type:circle">Establish relationships between entities within tables</li></ul><ul id="a06e7efd-5c1e-4624-bd84-c29fa05168e6" class="bulleted-list"><li style="list-style-type:circle">Referential Integrity - for every foreign key in use there must be a valid primary key in the parent table</li></ul></li></ul><ul id="d3bc6863-0f01-4611-b136-981eafe6befe" class="bulleted-list"><li style="list-style-type:disc">Entity Relationships<ul id="be27ec7f-422a-4ae1-9449-a98ad4a563ad" class="bulleted-list"><li style="list-style-type:circle">Binary<ul id="e1edb552-be89-406a-8057-6fc8f1767c4c" class="bulleted-list"><li style="list-style-type:square">Entity instance in one entity type relates to entity instance/s in another entity type</li></ul></li></ul><ul id="48140cee-99d2-4999-b9d8-e60e16002f2d" class="bulleted-list"><li style="list-style-type:circle">Unary<ul id="44781d44-614e-4a4c-97e6-5d80b2aa0a4f" class="bulleted-list"><li style="list-style-type:square"> Entity instance in one entity type relates to another entity instance of the same entity type</li></ul></li></ul><ul id="8be7f9c1-f111-4be6-a773-fce26972f347" class="bulleted-list"><li style="list-style-type:circle">Ternary<ul id="455ea032-95e0-4181-81a7-45b036abd735" class="bulleted-list"><li style="list-style-type:square">This relationship contains three participating entities<ul id="28fdba30-04d6-4b89-a5e0-e83dfb836f30" class="bulleted-list"><li style="list-style-type:disc">Doctor treats patient</li></ul><ul id="54de2341-cbc1-487f-8ef4-c1f7654f22ff" class="bulleted-list"><li style="list-style-type:disc">Doctor prescribes medicine</li></ul><ul id="cc9b5737-5c53-444c-a294-5ed275b6d13c" class="bulleted-list"><li style="list-style-type:disc">Patient takes medicine</li></ul></li></ul></li></ul><ul id="90b907c0-3b4d-472f-b8a6-3d3ed410f808" class="bulleted-list"><li style="list-style-type:circle">Cardinality<ul id="51de3a62-3416-4ab5-9105-7dffe722f5ee" class="bulleted-list"><li style="list-style-type:square">Specifies how many instances of an entity relate to how many instances of another entity<figure id="05d7df91-ff90-4f74-b2f2-155ce8f101af" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/one-to-one.jpg"><img style="width:255px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/one-to-one.jpg"/></a></figure></li></ul><ul id="45f9054a-3b20-479d-be73-c4398fea11b0" class="bulleted-list"><li style="list-style-type:square"><figure id="c783bf1d-5f38-4259-8eba-4562a5e2c507" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/one-to-many.jpg"><img style="width:247px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/one-to-many.jpg"/></a></figure></li></ul><ul id="69bd76af-414a-4483-8482-416c391ea735" class="bulleted-list"><li style="list-style-type:square"><figure id="5d6dd935-4788-46fa-a9a0-5273330aa11a" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/many-to-many.jpg"><img style="width:249px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/many-to-many.jpg"/></a></figure></li></ul><ul id="e12cb1d4-0fbc-4375-894c-885b8b492aab" class="bulleted-list"><li style="list-style-type:square"></li></ul></li></ul><ul id="031e61ea-6269-4a31-a5bd-be683c1a3b3a" class="bulleted-list"><li style="list-style-type:circle">Modality<ul id="0ee3d87e-0782-4c17-83ed-f109e1fd8751" class="bulleted-list"><li style="list-style-type:square">Defines weather or not participation in a relationship within an entity is optional or mandatory</li></ul><ul id="b8f63d30-bf30-4bfd-91b4-bf03842422a4" class="bulleted-list"><li style="list-style-type:square">Mandatory = |</li></ul><ul id="b6884db1-a89a-4026-b57c-59ffe9153729" class="bulleted-list"><li style="list-style-type:square">Optional = O</li></ul></li></ul><ul id="bc7ad460-adfe-49db-ac8a-2cec8e61f07a" class="bulleted-list"><li style="list-style-type:circle">Associative Entities<ul id="c4735472-d016-4b67-b60d-2ed78ba48e66" class="bulleted-list"><li style="list-style-type:square">Can be used to break up many - many relationships as these otherwise cannot be represented in a relational database.  This is achieved by inserting two separate one-many relationships in between the many-many relationship.</li></ul><ul id="82fc0779-b93a-4b4a-a4b9-7980ac6c4c2c" class="bulleted-list"><li style="list-style-type:square">Achieved by the use of composite keys</li></ul><ul id="0b8f5a89-a876-478b-90eb-ee393b4e5631" class="bulleted-list"><li style="list-style-type:square">In an ERD, every many-many relationship must be broken down into 2x one-many relationships</li></ul></li></ul></li></ul><h2 id="f8f7c83f-3345-4321-aed1-d0b44c8c0862" class="">Week 8: Data Modelling 2</h2><ul id="3aeaff30-6a8a-4ce6-a2c9-3bb7b2fb3def" class="bulleted-list"><li style="list-style-type:disc">Data normalisation is a bottom-up approach as opposed to a top-down approach such as with an ERD or a DFD</li></ul><ul id="d945b95c-29fb-493c-a8da-3444507d8ee6" class="bulleted-list"><li style="list-style-type:disc">Data normalisation and ERDs can both be used to create a database table and as such, one can be used to validate the other</li></ul><ul id="74c437ae-d91c-4fc0-b987-ada67057cad5" class="bulleted-list"><li style="list-style-type:disc">Normalisation is the systematic process of grouping data into separate tables to minimise data redundancy and prevent anomalies</li></ul><ul id="3be8e80b-78d9-4313-beb8-9cb00727dc2b" class="bulleted-list"><li style="list-style-type:disc">Levels of database normalisation:<ul id="e7ef86d4-5dd6-452e-b52a-06f4abcfc13a" class="bulleted-list"><li style="list-style-type:circle">1NF - enforce the rules<ul id="c92b20a6-7421-4601-8496-e10bbcee9c50" class="bulleted-list"><li style="list-style-type:square">Rule 1: each cell should contain a single atomic value (assuming a primary key)</li></ul><ul id="35388550-d062-457a-bc29-f3fc7f06dc52" class="bulleted-list"><li style="list-style-type:square">Rule 2: values in each column should be of the same type (domain)</li></ul><ul id="654de093-93d8-4207-a7d6-7cd93d89c4db" class="bulleted-list"><li style="list-style-type:square">Rule 3: all columns should have a unique name</li></ul><ul id="bd5bfee8-3fe9-4b11-be58-b00e8b6656f3" class="bulleted-list"><li style="list-style-type:square">Rule 4: records should be able to be reordered without consequence</li></ul></li></ul><ul id="24156e21-a09d-46fc-be08-13dd0f75e493" class="bulleted-list"><li style="list-style-type:circle">2NF - remove partial dependencies - dependence only on primary keys<ul id="d34f5b88-62b6-427e-af4b-5b228ea70b51" class="bulleted-list"><li style="list-style-type:square">Dependency diagrams<figure id="da705f83-f476-468c-aa9f-599011b8ca2d" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/dependecy_diagram.jpg"><img style="width:372px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/dependecy_diagram.jpg"/></a></figure></li></ul><ul id="0edba324-de59-410b-a6de-8fbd3188e283" class="bulleted-list"><li style="list-style-type:square">To resolve this, attributes with partial dependencies must be separated into different tables</li></ul></li></ul><ul id="87f435da-6b9d-4b5a-8757-b1f0b0c118cb" class="bulleted-list"><li style="list-style-type:circle">3NF - remove transitive dependencies - dependence only on primary keys<ul id="2481c912-4521-49a2-bdc6-73255f390bfa" class="bulleted-list"><li style="list-style-type:square">a non-primary-key attribute cannot identify another non-primary key attribute<figure id="db988626-efba-4e01-9f4c-5744f0407aeb" class="image"><a href="Information%20Systems%2089bac649a7a04e969b3b45a861968837/3NF.jpg"><img style="width:331px" src="Information%20Systems%2089bac649a7a04e969b3b45a861968837/3NF.jpg"/></a></figure></li></ul><ul id="61ebe5bc-462b-4021-b78b-8d06cb2bed7a" class="bulleted-list"><li style="list-style-type:square">C4-C5 must be separated, with C4 becoming a primary key</li></ul></li></ul><ul id="2578c480-c984-40b9-b08f-b5ead168efae" class="bulleted-list"><li style="list-style-type:circle">4-6NF<ul id="28b3d0ad-0b7a-4c94-adcd-6a9650c25508" class="bulleted-list"><li style="list-style-type:square">Not always required but should, if all completed, solve all potential data modification anomalies</li></ul></li></ul></li></ul><ul id="941da5f5-3aa0-49ae-befb-92be88e1f134" class="bulleted-list"><li style="list-style-type:disc">Data Dictionaries<ul id="2cee75d5-150c-4d11-8436-589f5e84697a" class="bulleted-list"><li style="list-style-type:circle">Data Elements (attributes)<ul id="f5f58588-9dfa-4c14-a3d9-e72d3e6a42de" class="bulleted-list"><li style="list-style-type:square">Data Element Name</li></ul><ul id="ba79de6b-0b0f-4cfe-878b-9eb3b77e2431" class="bulleted-list"><li style="list-style-type:square">Alias (optional)</li></ul><ul id="088fb48d-a117-4b7a-8b5d-8ad34108edf1" class="bulleted-list"><li style="list-style-type:square">Type (alphabetical, numeric, alpha-numeric, text)</li></ul><ul id="0c21b121-d0b0-4bd4-a971-55ca4b5b9e43" class="bulleted-list"><li style="list-style-type:square">Length</li></ul><ul id="a4b4cc27-307f-459a-a9a9-41a04da5a776" class="bulleted-list"><li style="list-style-type:square">Default Value (can be empty / null)</li></ul><ul id="ba301437-c4be-4ba3-8595-50e82dac5580" class="bulleted-list"><li style="list-style-type:square">Acceptable Values (may be an example)</li></ul><ul id="75cef581-a01d-463a-b40b-0bddf4f444cf" class="bulleted-list"><li style="list-style-type:square">Source</li></ul><ul id="40d557db-0e3e-4712-a74e-75c7a256323d" class="bulleted-list"><li style="list-style-type:square">Description and comments</li></ul></li></ul><ul id="7fa1700c-6673-4818-9aa0-7577fe61193c" class="bulleted-list"><li style="list-style-type:circle">Data Records<ul id="1c1f70fe-d39d-4840-9050-01d0fa7bbc28" class="bulleted-list"><li style="list-style-type:square">Name</li></ul><ul id="3768f661-1918-4d4c-876a-5edefa4d1a5f" class="bulleted-list"><li style="list-style-type:square">Description</li></ul><ul id="855b98c4-6696-45aa-8d1f-08b7f26dc8cd" class="bulleted-list"><li style="list-style-type:square">Aliases</li></ul><ul id="4a236cf1-17d0-4dc9-9216-5108200817a8" class="bulleted-list"><li style="list-style-type:square">Attributes - list of all data elements that make up the data record</li></ul><p id="ad732f63-cf1a-428a-8caa-65fe0cbda18e" class="">
+</p></li></ul></li></ul><h2 id="6842992c-6146-4ed7-b81a-82eb6930769c" class="">Week 9 - User Interface Design</h2><ul id="a75ae06e-fd3f-4bd0-99ce-3d9c87e132c3" class="bulleted-list"><li style="list-style-type:disc">Human-Computer-Interaction (HCI) is a discipline that focusses on design of information systems and computing devices for human use, considering the psychology behind the user and the mechanisms behind the code.</li></ul><ul id="abdada8d-2932-4267-a288-e320e469e2d4" class="bulleted-list"><li style="list-style-type:disc">UI design falls directly in to the Design phase of the SDLC. This is one of the key factors in user acceptance of the system.</li></ul><ul id="97bbfd8d-5e5a-47f4-9b7e-1a25dd302463" class="bulleted-list"><li style="list-style-type:disc">Documentation of the UI are codified in design documents called the interface design.</li></ul><ul id="f008468f-140d-4a5c-afda-c7bf5e787ec4" class="bulleted-list"><li style="list-style-type:disc">Consider the difference between UI and system interface</li></ul><ul id="c2a7512d-2c8a-4b47-a3b0-23c7ba0f38e3" class="bulleted-list"><li style="list-style-type:disc">5 Design Principles of a good UI:<ul id="32699062-2e76-46ab-be8c-4ec56e2caaa9" class="bulleted-list"><li style="list-style-type:circle">Appearance:<ul id="35611c33-e8ce-4781-9280-60267c8429c4" class="bulleted-list"><li style="list-style-type:square">Layout and Design - color, screen density, fonts, easy to use and learn, intuitive design, clarity, hide irrelevant aspects (ie only show submit button when required inputs have been provided), effective use of graphical elements</li></ul></li></ul><ul id="d4151ad4-6c74-43d3-ad76-1770b247cbdb" class="bulleted-list"><li style="list-style-type:circle">Consistency:<ul id="713d5dfe-5f1d-4a7e-98a8-6369136c8b9e" class="bulleted-list"><li style="list-style-type:square">Predictability, help (easily accessable, context-sensitive, non-distractive, help desk?) and feedback (confirmations, corrections, progress, tooltips</li></ul></li></ul><ul id="b3e2f622-b7c9-494f-ac31-5789d6e46d16" class="bulleted-list"><li style="list-style-type:circle">Efficiency:<ul id="027c5c4a-e132-4e1d-a5df-1128a9b8a3f3" class="bulleted-list"><li style="list-style-type:square">Enhanced user productivity - ease of use and speed of use (shortcuts, prefilling data inputs, autocomplete), reduced input volume.</li></ul></li></ul><ul id="688f3771-fff3-4ac9-8914-d409bb323b81" class="bulleted-list"><li style="list-style-type:circle">Security &amp; Error Mitigation:<ul id="a3185d30-e925-41c3-b248-e157c12eb18c" class="bulleted-list"><li style="list-style-type:square">User validation (data format awareness - consider field population, input masking, input validation prior to processing</li></ul><ul id="adedca92-d688-4186-8d7f-6886ff9f5ed7" class="bulleted-list"><li style="list-style-type:square">Error handling including error messages</li></ul><ul id="3c1b18d6-0ae0-497b-933e-716cbb2882f4" class="bulleted-list"><li style="list-style-type:square">Reversal of action, action confirmations, breaking up tasks into sections, reviews and summaries of actions / inputs</li></ul></li></ul><ul id="bcfaf073-74c5-4f1c-a827-168e1e027d8b" class="bulleted-list"><li style="list-style-type:circle">Input / Output Security and Control:<ul id="6595358a-9eb1-4d75-911c-ae5ab951df91" class="bulleted-list"><li style="list-style-type:square">This is the fundamental aspect of data security</li></ul><ul id="6b8a3946-d4e7-4ba7-87bc-b195b16f5564" class="bulleted-list"><li style="list-style-type:square">Limit the number of physical outputs like printouts</li></ul><ul id="16baabff-8af9-4b7d-8fc1-38baa89b185c" class="bulleted-list"><li style="list-style-type:square">Ensure sensitive data is only received by the intended recipients</li></ul><ul id="b98d14c2-deae-4934-b842-4da99cb7266c" class="bulleted-list"><li style="list-style-type:square">Securely store physical records</li></ul><ul id="07fc993c-841b-4614-a3b7-a5ca4b8841bf" class="bulleted-list"><li style="list-style-type:square">Destroy unused output</li></ul><ul id="9789033a-022a-4802-82b7-65419fd6e79c" class="bulleted-list"><li style="list-style-type:square">Output restrictions such as restricting access to the organisational intranet and disallowing removable media</li></ul><ul id="9950d6d3-9b65-4bce-bf81-82bfad66cfae" class="bulleted-list"><li style="list-style-type:square">Input control at every stage of input design</li></ul><ul id="273a7b56-a145-4f2b-a65a-6c0e9063772c" class="bulleted-list"><li style="list-style-type:square">Traceability</li></ul><ul id="030d438c-8e8c-4cab-940c-c41cd554a1e0" class="bulleted-list"><li style="list-style-type:square">Data security policies including backup, theft protection, access and restriction</li></ul></li></ul></li></ul><ul id="12f09d5a-fc46-48c0-88d9-851e9a7e812b" class="bulleted-list"><li style="list-style-type:disc">Output design:<ul id="455173ba-a953-4202-932a-511076197172" class="bulleted-list"><li style="list-style-type:circle">Printed outputs</li></ul><ul id="750b0540-75bd-4de2-b329-00f41bc547c7" class="bulleted-list"><li style="list-style-type:circle">Turnaround Documents</li></ul><ul id="7c33cde6-2ab2-4e0c-8e9d-e6f3dd813b82" class="bulleted-list"><li style="list-style-type:circle">Detailed reports - minimally filtered</li></ul><ul id="e0ceb1bc-81b4-4163-b8e6-b6b3d6d7e01e" class="bulleted-list"><li style="list-style-type:circle">Exception report - only records that satisfy a given condition</li></ul><ul id="d15a902c-4482-48ec-886f-39a6ef1bb018" class="bulleted-list"><li style="list-style-type:circle">Summary Report - broad overview to identify trends</li></ul><ul id="b4135719-1a62-4963-a963-feb107dc09aa" class="bulleted-list"><li style="list-style-type:circle">Design Principles:<ul id="08fb3b4f-ed64-4ed3-8630-a481acfcaf78" class="bulleted-list"><li style="list-style-type:square">Must have<ul id="40ea1728-6a61-436e-9dfb-a18923562cc0" class="bulleted-list"><li style="list-style-type:disc">Report headers and footers</li></ul><ul id="0e5f0fdd-5bff-47a1-8cc8-3b90b8c3f507" class="bulleted-list"><li style="list-style-type:disc">Page headers and footers</li></ul></li></ul><ul id="27c8930f-3e4b-4133-b614-c171b8f6f582" class="bulleted-list"><li style="list-style-type:square">Repeating fields</li></ul><ul id="5cd5ee39-1246-42e1-a000-b64a9c7ae94f" class="bulleted-list"><li style="list-style-type:square">Consistent design</li></ul><ul id="bdfb41da-3d30-4838-9fbb-994193c0b8cb" class="bulleted-list"><li style="list-style-type:square">Consider charts to represent information visually</li></ul></li></ul></li></ul><p id="dba4c64d-2518-45ac-bf56-8c50a9344d08" class="">
+</p><h2 id="ead29f9c-3d10-452c-999b-b2fd526117fb" class="">Week 10: System Implementation</h2><ul id="6271f3b8-69d7-4b85-9c6a-c0a103a3f629" class="bulleted-list"><li style="list-style-type:disc">One of the most expensive phases of the SLDC in terms of both money and time</li></ul><ul id="a4dad4a2-076f-4db3-9353-a19fa8448c6b" class="bulleted-list"><li style="list-style-type:disc">System Development:<ul id="7d316e53-5f15-4761-b4c1-61987c060035" class="bulleted-list"><li style="list-style-type:circle">Review the system design</li></ul><ul id="9f5e345e-8d3d-4857-84df-46e41a56dcaa" class="bulleted-list"><li style="list-style-type:circle">Application development tasks</li></ul><ul id="5c6efe6d-7b3d-4fe0-b19c-82eb69092ebc" class="bulleted-list"><li style="list-style-type:circle">System development tools<ul id="41f6231c-320f-43e6-991c-29c507bd7491" class="bulleted-list"><li style="list-style-type:square">Structured approach relies on DFDs and structure charts</li></ul><ul id="25d44edc-fb06-46bf-b709-f32272e99eaa" class="bulleted-list"><li style="list-style-type:square">OO approach relies on the different UML diagrams with agile iterative models</li></ul><ul id="a3032508-5184-43f6-b340-4853fb1ff022" class="bulleted-list"><li style="list-style-type:square">Project Management</li></ul></li></ul><ul id="c7863abf-5c9a-46cf-870e-8f2fd36aa68e" class="bulleted-list"><li style="list-style-type:circle">Development Approaches:<ul id="9efc3cd1-806c-4073-968f-3584c2250766" class="bulleted-list"><li style="list-style-type:square">Input, Process, Output (IPO):<ul id="56de227e-d396-4a86-a233-656dc879bbaa" class="bulleted-list"><li style="list-style-type:disc">Develop programming modules that deal with data entry into the system, then modules that process the data, then modules that present system output.</li></ul><ul id="09e02d4e-f815-4f8d-8261-a657385095d8" class="bulleted-list"><li style="list-style-type:disc">User interface is developed 1st, giving longer to tweak this element and the opportunity for input testing the rest of the system.</li></ul><ul id="35b760b0-0972-4d52-8382-942250f9e2e5" class="bulleted-list"><li style="list-style-type:disc">Outputs are developed last, making it harder to verify that the system is working as intended</li></ul></li></ul><ul id="a0ffaa77-a488-4667-a590-740f41303cce" class="bulleted-list"><li style="list-style-type:square">Top Down and Bottom-Up:<ul id="3819ab7f-4360-45a9-a4d7-8f755af61c47" class="bulleted-list"><li style="list-style-type:disc">Start with a structured model of the program and then build either top-down or bottom up:<ul id="d93f3022-1751-4180-ab4a-c62c40ed4578" class="bulleted-list"><li style="list-style-type:circle">Top down starts with a scaffold of the system with dummy versions and then builds out from there</li></ul><ul id="31407977-7195-4803-a95c-64e476cce7e9" class="bulleted-list"><li style="list-style-type:circle">Bottom-Up starts by building bottom-level modules, then combining them to create the process above until the whole structure is built.</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="e887876d-e343-444f-9d55-1d145052e21b" class="bulleted-list"><li style="list-style-type:disc">System Testing:<ul id="b297426b-c102-40a3-93a1-8c5d6610f909" class="bulleted-list"><li style="list-style-type:circle">Development is not complete until this process, along with documentation, has been completed</li></ul><ul id="99d1935a-060e-42b1-997c-6ed8bae44823" class="bulleted-list"><li style="list-style-type:circle">Test Planning defines a series of tests to be performed and specifies each person’s role during testing.</li></ul><ul id="b606444f-9681-4100-81a6-0fdfed70408b" class="bulleted-list"><li style="list-style-type:circle">Types of software testing:<ul id="84bf4afc-7bb3-486a-b5bd-5a1f387e3031" class="bulleted-list"><li style="list-style-type:square">Unit Testing:<ul id="a63b91cb-20dc-4adf-a66b-6c9e5787d5b3" class="bulleted-list"><li style="list-style-type:disc">Performed on a single unit, module, or functionality in the program</li></ul><ul id="a81face0-130c-4e59-a404-ddfed52c9f95" class="bulleted-list"><li style="list-style-type:disc">Black-Box vs White-Box testing</li></ul></li></ul><ul id="acbc24af-64b5-45c8-8e56-c1bacac64524" class="bulleted-list"><li style="list-style-type:square">Integration Tests:<ul id="af86ac3b-6114-46a6-8cf7-182ae6d6f697" class="bulleted-list"><li style="list-style-type:disc">Ensures that modules or programs that are designed to work together do so without errors</li></ul><ul id="c0013c08-e75c-4a6d-9a7a-7156191afc8e" class="bulleted-list"><li style="list-style-type:disc">Can only occur after each module has passed its own unit tests. There are four approaches to this:<ul id="0f140866-3229-4c1a-aa98-59839b64391e" class="bulleted-list"><li style="list-style-type:circle">User interface testing</li></ul><ul id="ed89139b-b23c-4f70-a084-0158e1a9e4ef" class="bulleted-list"><li style="list-style-type:circle">User scenario testing</li></ul><ul id="0674d995-14b7-4ebf-bc51-1aaadb182ef9" class="bulleted-list"><li style="list-style-type:circle">Data flow testing</li></ul><ul id="8460f45b-fb1a-4d05-91bc-d3a013f9bd5d" class="bulleted-list"><li style="list-style-type:circle">System interface testing</li></ul></li></ul></li></ul><ul id="09809a3d-f513-4631-bc33-041fe91f6bb9" class="bulleted-list"><li style="list-style-type:square">System Tests are similar to integration tests but are broadened out to the entire system</li></ul><ul id="2524f2ca-9104-408e-8d09-711fefb9e8ff" class="bulleted-list"><li style="list-style-type:square">Acceptance Tests by users under guidance of the development team: alpha and beta testing</li></ul></li></ul></li></ul><ul id="31b20492-36c9-48ed-ba50-8df45d8c7b01" class="bulleted-list"><li style="list-style-type:disc">Documentation:<ul id="7d449404-003f-44aa-9ded-f1c817d0b2a3" class="bulleted-list"><li style="list-style-type:circle">Program Documentation for development and maintenance of a system’s software</li></ul><ul id="5090746d-be57-43cb-8ddd-1bf7afd7c703" class="bulleted-list"><li style="list-style-type:circle">System Documentation for processes and functions that the system performs and how they are implemented including system modelling, DFDs, data dictionaries</li></ul><ul id="47b21184-fd26-407c-9f1d-6750ea4889da" class="bulleted-list"><li style="list-style-type:circle">Operations Documentation aimed at the IT group where the system involves centralised servers or mainframes</li></ul><ul id="08a8ff02-19c1-4e72-986e-47308e3be3c5" class="bulleted-list"><li style="list-style-type:circle">User Documentation for the end user, including:<ul id="eb606496-ec00-413c-a288-9d768190b46c" class="bulleted-list"><li style="list-style-type:square">System overview</li></ul><ul id="1c5dc69d-f193-40de-96fe-b4739b54009d" class="bulleted-list"><li style="list-style-type:square">Menu / UI overview</li></ul><ul id="f9f80b46-307a-40fb-b464-7aabcdb28323" class="bulleted-list"><li style="list-style-type:square">Example reports, etc</li></ul><ul id="b1de6f02-9020-4a38-a78e-5c384463c7ff" class="bulleted-list"><li style="list-style-type:square">Security / audit trail</li></ul><ul id="7a6a0680-6124-433a-94a6-4bd05a495011" class="bulleted-list"><li style="list-style-type:square">Input / output / processing requirements</li></ul><ul id="cacb1647-86e1-459e-9699-6bd7c9309cdd" class="bulleted-list"><li style="list-style-type:square">Procedures for reporting problems</li></ul><ul id="dd96a0fe-306d-49d4-9d23-3f4d85fa936f" class="bulleted-list"><li style="list-style-type:square">Examples of problems or errors</li></ul><ul id="8110e8aa-1436-40d4-8d74-288d6cc29eea" class="bulleted-list"><li style="list-style-type:square">FAQs</li></ul><ul id="2365d3a0-278a-4cff-a147-df5abe7e768a" class="bulleted-list"><li style="list-style-type:square">Instructions on updating / how to get help</li></ul></li></ul></li></ul><ul id="754210ed-66c0-4793-9b56-bb07679b9315" class="bulleted-list"><li style="list-style-type:disc">Training and support:<ul id="3a2d97b1-513d-44bd-b2cf-d7fba7becb50" class="bulleted-list"><li style="list-style-type:circle">Who:<ul id="9f10b4fa-feb8-4692-a996-796d6e9b5408" class="bulleted-list"><li style="list-style-type:square">Primary users (directly interface) and Secondary users (interface with the outputs of the system), with focus proportional to how much this will change their work</li></ul><ul id="74596ef1-7ae9-45db-8b3c-6348a9de1c83" class="bulleted-list"><li style="list-style-type:square">Who should deliver this training? Vendors, system analysts, external trainers, in-house trainers and even other system users</li></ul></li></ul><ul id="56622072-fc3f-42c2-a66d-06ab447f418e" class="bulleted-list"><li style="list-style-type:circle">What:<ul id="5686908e-094e-4d45-a71a-d4e89886dfaf" class="bulleted-list"><li style="list-style-type:square">The tasks that they will regularly perform</li></ul></li></ul><ul id="913129bd-3846-44a7-8173-e6a875460d0d" class="bulleted-list"><li style="list-style-type:circle">How:<ul id="ea0d12b2-879b-4d01-b158-97296e75200e" class="bulleted-list"><li style="list-style-type:square">Classroom, one-on-one, computer-based</li></ul></li></ul></li></ul><ul id="94423c4f-630b-4a22-960d-d90bf7d00ddd" class="bulleted-list"><li style="list-style-type:disc">System Installation: often a combination of:<ul id="c41f5d39-429b-4b7a-bd55-51ea9690e0e9" class="bulleted-list"><li style="list-style-type:circle">Direct Installation:<ul id="6a251a53-3751-475e-9ae3-59ff28b3cd50" class="bulleted-list"><li style="list-style-type:square">The old system is switched off and the new system is switched on</li></ul><ul id="ff4156b1-8f09-44e5-9439-de109537854b" class="bulleted-list"><li style="list-style-type:square">Risky but cheap</li></ul></li></ul><ul id="b15dba5d-5a56-4f8b-831f-7e755db19fb8" class="bulleted-list"><li style="list-style-type:circle">Parallel Installation:<ul id="ab6a9dfc-ddee-4b9a-b38c-a93ff5dde96e" class="bulleted-list"><li style="list-style-type:square">The new system is run alongside the old system until technicians and users are ready to switch off the old system</li></ul><ul id="b9250f1d-97c2-4e6a-98f5-293c9800f061" class="bulleted-list"><li style="list-style-type:square">safe but expensive and redundant</li></ul></li></ul><ul id="298e46db-51c0-4475-8cd9-7eab340cb3bc" class="bulleted-list"><li style="list-style-type:circle">Single-location Installation:<ul id="a39a7831-05cd-4cad-a1f2-b26354164e4b" class="bulleted-list"><li style="list-style-type:square">Installation of the new system in one or more locations prior to switching over.</li></ul><ul id="282f85b3-7cc2-465e-956d-e9cffed4fd4b" class="bulleted-list"><li style="list-style-type:square">In these locations either a direct or parallel installation may be used</li></ul><ul id="f68c36d6-07ea-4be5-b3fd-4eb33a3bfe7d" class="bulleted-list"><li style="list-style-type:square">This has similar downsides to parallel installation</li></ul></li></ul><ul id="7cacdd45-079b-40be-ad46-d262f4a61d8b" class="bulleted-list"><li style="list-style-type:circle">Phased (Staged) Installation:<ul id="ddc0002c-3ff5-4884-9b98-7f87e1091356" class="bulleted-list"><li style="list-style-type:square">Progressive installation of components of a system over time, to the whole organisation</li></ul><ul id="019beafb-402a-4ff5-8d7d-a9cb08df13dd" class="bulleted-list"><li style="list-style-type:square">Often requires bridging software to ensure coexistence of the old and new systems</li></ul></li></ul></li></ul><ul id="cf333d90-a732-4af9-88aa-59ae02bc3069" class="bulleted-list"><li style="list-style-type:disc">Data Conversion:<ul id="1f4d0dfb-5216-4328-9808-5937316b91b0" class="bulleted-list"><li style="list-style-type:circle">Migration of data from the old system to the new</li></ul><ul id="e95508ed-d6d4-45ba-a493-45a7bb34a0d2" class="bulleted-list"><li style="list-style-type:circle">Existing data must be error free and may even need reformatting</li></ul><ul id="d623f723-f54f-4080-b17c-fae58af045a0" class="bulleted-list"><li style="list-style-type:circle">Electronic Records:<ul id="7b42545d-f33f-402e-9cdc-2b0ddac0b7de" class="bulleted-list"><li style="list-style-type:square">Reusing existing data</li></ul><ul id="4a5face3-3e8c-4984-9d28-fb3cf936ddf5" class="bulleted-list"><li style="list-style-type:square">Modifying existing data</li></ul><ul id="a141a48c-ec4e-44a3-8bfe-4ef68ff66764" class="bulleted-list"><li style="list-style-type:square">Migrating data</li></ul></li></ul><ul id="032779f6-786c-44c5-b086-78a9c69ee950" class="bulleted-list"><li style="list-style-type:circle">Security and control<ul id="39f2407a-99ec-4fe6-81d0-13fba864fd48" class="bulleted-list"><li style="list-style-type:square">Identify and fix data issues early</li></ul><ul id="f778120e-9a42-4116-aa8a-e5cc9606b41d" class="bulleted-list"><li style="list-style-type:square">Auditing is essential</li></ul></li></ul></li></ul><ul id="b34c7516-b8e1-46a7-a4fe-9fff5328f760" class="bulleted-list"><li style="list-style-type:disc">System Implementation short list)<ul id="d173d20d-c152-4fc8-ab5b-1b58db7a30d5" class="bulleted-list"><li style="list-style-type:circle">Application Development<ul id="9d0472bf-0c3b-4d81-8fa3-acabfda7301d" class="bulleted-list"><li style="list-style-type:square">OO Development<ul id="cd0504e4-dde0-419b-a08f-9af4969f5b09" class="bulleted-list"><li style="list-style-type:disc">Objects grouped into classes</li></ul></li></ul><ul id="b25ba234-b4a4-49ae-a713-9d83caa96e40" class="bulleted-list"><li style="list-style-type:square">Structured<ul id="f4ecd388-7caf-4190-a30a-eb93b218e091" class="bulleted-list"><li style="list-style-type:disc">Top-down / modular, assigning modules to individuals / teams</li></ul></li></ul><ul id="0f8b5145-3e59-48f5-a9ea-44aafca3a39f" class="bulleted-list"><li style="list-style-type:square">Agile methods<ul id="42763c04-5e5f-4fa9-b667-87a71cb0ab18" class="bulleted-list"><li style="list-style-type:disc">Constant communication with end users</li></ul><ul id="1a6db741-f9f4-43ed-b408-ffc074ad219b" class="bulleted-list"><li style="list-style-type:disc">Small teams, intense communication</li></ul></li></ul></li></ul><ul id="6921cb9e-e34a-4a93-a818-36320bb1a845" class="bulleted-list"><li style="list-style-type:circle">Testing</li></ul><ul id="f1fba05e-50a5-4da5-ad2d-ae3f0860d58a" class="bulleted-list"><li style="list-style-type:circle">Documentation</li></ul><ul id="d300c16a-c742-496d-9476-9a274d6fac8e" class="bulleted-list"><li style="list-style-type:circle">Training</li></ul><ul id="0bcb35fb-fed6-478c-a483-7d94aa805451" class="bulleted-list"><li style="list-style-type:circle">Data Conversion</li></ul><ul id="269d07ea-9a1b-42cf-82a1-5f7da3c45b53" class="bulleted-list"><li style="list-style-type:circle">System Changeover</li></ul><ul id="988c702c-30da-40e7-a657-c638863fc55d" class="bulleted-list"><li style="list-style-type:circle">Post-implementation evaluation</li></ul></li></ul><p id="0d7683ae-b51e-4f5c-af4c-214d3e7adfaf" class="">
+</p><h2 id="bf07f4d1-e0d1-47e6-9e39-07182d9e0de2" class="">Week 11: System Maintenance and Security</h2><ul id="8340ea7d-bd94-45d9-8487-fadd315e0e1b" class="bulleted-list"><li style="list-style-type:disc">U shaped line representing the expense in maintaining a system over its lifecycle</li></ul><ul id="a40a9e3c-c970-41b5-b09b-ddf6bff5950d" class="bulleted-list"><li style="list-style-type:disc">System Manager / Project Manager Vs Systems Analyst Vs Programmers / Coders</li></ul><ul id="7b6e9a27-e4c6-4102-8c25-476170abc875" class="bulleted-list"><li style="list-style-type:disc">Maintenance Management:<ul id="eac5cd5c-ebe2-47fe-9f97-d07155b85713" class="bulleted-list"><li style="list-style-type:circle">Obtain Maintenance Request</li></ul><ul id="6a80800c-2166-432f-a37c-c1b8c9a39737" class="bulleted-list"><li style="list-style-type:circle">Review Maintenance Request<ul id="b1bc131d-94da-4746-89e3-7f6cec848dff" class="bulleted-list"><li style="list-style-type:square">If justifiable but outside budget, may need approval of the system review commitee</li></ul></li></ul><ul id="1d2e82b7-6c6e-4910-bdb2-1aacba1f1919" class="bulleted-list"><li style="list-style-type:circle">Assign Tasks</li></ul><ul id="6d450c1b-8836-48d0-b242-ff0d74367c2c" class="bulleted-list"><li style="list-style-type:circle">Implement Changes<ul id="5170521b-de4a-484d-bc96-923631cb981f" class="bulleted-list"><li style="list-style-type:square">Large changes may well undergo their own SDLC</li></ul><ul id="57173438-745a-45e0-9cd3-abf5d43ffb44" class="bulleted-list"><li style="list-style-type:square">Configuration Management / Change Control</li></ul><ul id="3a4b21de-d31e-4752-ab58-f956fdc4312b" class="bulleted-list"><li style="list-style-type:square">Maintenance Release Methodology</li></ul><ul id="bef8cd32-f6ab-413d-98d5-37bfe3bddcd8" class="bulleted-list"><li style="list-style-type:square">Version Control</li></ul></li></ul></li></ul><ul id="7ae11f41-a8c6-42f9-ac45-fbf1bc96f257" class="bulleted-list"><li style="list-style-type:disc">Baselines:<ul id="c2373cab-4c53-4cd3-b516-2fe4f02652d9" class="bulleted-list"><li style="list-style-type:circle">Functional Baseline</li></ul><ul id="0cda6575-02ce-4e34-ba78-885508e8ae41" class="bulleted-list"><li style="list-style-type:circle">Allocated Baseline</li></ul><ul id="d8d24eb9-1197-4b07-bd0b-d4c56f1f2390" class="bulleted-list"><li style="list-style-type:circle">Product Baseline</li></ul></li></ul><ul id="01af6092-2553-439d-a595-1d1aff7b88cb" class="bulleted-list"><li style="list-style-type:disc">Maintenance Types:<ul id="662ad365-9e6a-45c9-a612-60ef95c672e9" class="bulleted-list"><li style="list-style-type:circle">Corrective - adds no value but is the most commonly undertaken<ul id="a5293b83-e59c-4fcd-a4a2-c2e3e85586a5" class="bulleted-list"><li style="list-style-type:square">Often requires a mini-SDLC</li></ul></li></ul><ul id="b9a740ae-934f-40b5-943d-562081d00ad6" class="bulleted-list"><li style="list-style-type:circle">Adaptive <ul id="9b644db4-34de-4fdc-8f58-e2ba028d9399" class="bulleted-list"><li style="list-style-type:square">new features and capabilities - always requires a small-scale SDLC</li></ul><ul id="ae25a32c-6d65-4975-8bc7-0f58de4f4597" class="bulleted-list"><li style="list-style-type:square">Adaptive maintenance tasks</li></ul></li></ul><ul id="7f44b255-95f2-4dfe-a67b-f471e49a52a9" class="bulleted-list"><li style="list-style-type:circle">Perfective<ul id="6b6a69f6-70e5-4d67-9740-8db2f70e310f" class="bulleted-list"><li style="list-style-type:square">Improves the efficiency, reliability or maintainability of the operational system</li></ul><ul id="6844e25b-5e18-428d-a320-1fb056bcb2ab" class="bulleted-list"><li style="list-style-type:square">Managed by the IT department, not the result of a request</li></ul><ul id="f1c81185-8256-4233-b85c-fb3824beb83e" class="bulleted-list"><li style="list-style-type:square">Software Reengineering</li></ul></li></ul><ul id="ed0c702f-694c-4ddf-aa4e-eeddaf37c7ab" class="bulleted-list"><li style="list-style-type:circle">Preventive<ul id="01db6a03-ca2a-4f51-a390-8da42806076b" class="bulleted-list"><li style="list-style-type:square">Fix it before it happens</li></ul></li></ul></li></ul><ul id="2448d373-7bb3-4ebb-87e2-830ae6e9d914" class="bulleted-list"><li style="list-style-type:disc">System Performance Management<ul id="5d42134b-fb36-4b37-b858-944083630871" class="bulleted-list"><li style="list-style-type:circle">Ensures a system’s operations and outputs meet the organisational goals in an efficient way<ul id="c222b698-eb6a-42f9-8f54-3d7de0aa47b1" class="bulleted-list"><li style="list-style-type:square">Fault Management</li></ul><ul id="149b200d-3b76-4828-adef-c043a44e2cff" class="bulleted-list"><li style="list-style-type:square">Performance and Workload Measurement<ul id="a3dc90c0-341d-486d-bf98-d96e1b4df88b" class="bulleted-list"><li style="list-style-type:disc">Benchmark testing</li></ul><ul id="ee38077d-e798-4576-a33d-67129c9893c9" class="bulleted-list"><li style="list-style-type:disc">Performance metrics</li></ul></li></ul><ul id="ba3f272d-0d95-4219-8c5b-bca3cb08cffb" class="bulleted-list"><li style="list-style-type:square">Response Time</li></ul><ul id="3191de35-98db-46ab-b03d-1728b1aa70ce" class="bulleted-list"><li style="list-style-type:square">Bandwidth and Throughput</li></ul><ul id="fc7fd7fb-7499-4d64-8cb9-bd2aabe67ddb" class="bulleted-list"><li style="list-style-type:square">System Security<ul id="12460b09-6d87-4c1a-a4ae-a641eb7f99da" class="bulleted-list"><li style="list-style-type:disc">Including close attention to Information security<ul id="52f50937-c507-4997-b2cc-6ca9f3400575" class="bulleted-list"><li style="list-style-type:circle">Consider the CIA trident of information security - Confidentiality, Integrity and Availability</li></ul><ul id="ae9fc5d5-b64a-44c3-92cd-3981bd5089c8" class="bulleted-list"><li style="list-style-type:circle">Risk management including risk identification, risk management and risk control</li></ul><ul id="3420a431-222e-4934-be46-e2a53af432f8" class="bulleted-list"><li style="list-style-type:circle">Risk Control: Avoidance Vs Mitigation Vs Transference Vs Acceptance</li></ul></li></ul><ul id="5bf41193-6921-4e54-8cc8-f7e40537ec1c" class="bulleted-list"><li style="list-style-type:disc">Security Attacks<ul id="e546e82e-7125-4827-b6ef-208ad95fb177" class="bulleted-list"><li style="list-style-type:circle">Back Door</li></ul><ul id="6a1ad490-30ad-4c9d-aeed-8f97705dbfa4" class="bulleted-list"><li style="list-style-type:circle">DDOS</li></ul><ul id="f4aed173-8c23-43e1-9352-e728914e9f1f" class="bulleted-list"><li style="list-style-type:circle">DNS Poisioning</li></ul><ul id="0b155ec8-5f6a-4820-ac18-8aed0a1e4a77" class="bulleted-list"><li style="list-style-type:circle">Dumpster Diving</li></ul><ul id="78cfc297-0d51-4842-83eb-e7af03ad8de6" class="bulleted-list"><li style="list-style-type:circle">Mail Bombing</li></ul><ul id="2bb99f44-38b0-40c1-8b3d-f4dc48e6472b" class="bulleted-list"><li style="list-style-type:circle">Malicious Code</li></ul><ul id="7e93d38d-1e16-4614-8b17-3b5e9e142833" class="bulleted-list"><li style="list-style-type:circle">Man in the middle</li></ul><ul id="3e792486-742b-4e57-b5a4-7817fae6b286" class="bulleted-list"><li style="list-style-type:circle">Password Cracking</li></ul><ul id="e48f61b5-1aef-489e-8870-f65b6bbd0b91" class="bulleted-list"><li style="list-style-type:circle">Privilege Escalation</li></ul><ul id="e55055f7-45b6-41e0-908d-f8f07316006a" class="bulleted-list"><li style="list-style-type:circle">Sniffing</li></ul><ul id="4d1a2cde-b1a8-4090-93fe-841a6c11979e" class="bulleted-list"><li style="list-style-type:circle">Social Engineering</li></ul><ul id="d969bb07-8958-4c13-8d2c-2e419687f025" class="bulleted-list"><li style="list-style-type:circle">Spam</li></ul><ul id="fae31b66-a0ea-4c78-9e06-feee8c21e9c3" class="bulleted-list"><li style="list-style-type:circle">Spoofing</li></ul></li></ul><ul id="ba1a2664-8034-44e7-9c0b-cde93393ee95" class="bulleted-list"><li style="list-style-type:disc">Categories of attackers<ul id="acd717a3-f4c0-4a9e-8c21-467ed716deaa" class="bulleted-list"><li style="list-style-type:circle">Cyberterrorist</li></ul><ul id="66ee00ec-2651-4a3d-899b-fd26c2c29223" class="bulleted-list"><li style="list-style-type:circle">Employee</li></ul><ul id="b6a505d6-874a-4537-9f96-b265169101a4" class="bulleted-list"><li style="list-style-type:circle">Hacker</li></ul><ul id="7a03fea1-14b5-4b99-9de7-286a29497705" class="bulleted-list"><li style="list-style-type:circle">Hactivist</li></ul><ul id="a2aaef85-b3d7-4495-bb70-f921e5498d15" class="bulleted-list"><li style="list-style-type:circle">Script Kiddie</li></ul><ul id="1f27952f-1ecc-44a5-8b3a-fd0d186172f5" class="bulleted-list"><li style="list-style-type:circle">Spy</li></ul></li></ul><ul id="d9ab19ec-a5a0-4c15-853c-e75c2821f1fd" class="bulleted-list"><li style="list-style-type:disc">Security Level:<ul id="fd042ee4-617c-4717-95bf-12d2c296e14a" class="bulleted-list"><li style="list-style-type:circle">A system is only as secure as its weakest link. The following areas should be considered:<ul id="638cda0c-8460-4722-8d4a-46a4ab78630a" class="bulleted-list"><li style="list-style-type:square">Physical Security<ul id="811a5442-c236-478a-893f-546b7039f8ba" class="bulleted-list"><li style="list-style-type:disc">Secure facilities</li></ul><ul id="60e5cf75-b0fc-4141-8872-f0576ca6bfb8" class="bulleted-list"><li style="list-style-type:disc">Secure devices - tamper-evidence cases<ul id="f15df295-015e-4d5e-8a40-f74bdc79f9bc" class="bulleted-list"><li style="list-style-type:circle">Keystroke loggers</li></ul></li></ul></li></ul><ul id="1a655b1d-d3cc-4cd8-a3e9-46a773ce69dd" class="bulleted-list"><li style="list-style-type:square">Network Security<ul id="9f79b2d2-0478-41c2-8f98-6529e9f8360b" class="bulleted-list"><li style="list-style-type:disc">Encrypting network traffic</li></ul><ul id="d9baf886-632a-41f6-83d3-6ea5447c2e6d" class="bulleted-list"><li style="list-style-type:disc">Wi-Fi Protected Access 2 - WPA2</li></ul><ul id="b09b50c3-7e54-495b-a5e4-bed06999dd2d" class="bulleted-list"><li style="list-style-type:disc">Private Networks</li></ul><ul id="e0e96c53-381d-4a5e-9b76-767ff10ff72a" class="bulleted-list"><li style="list-style-type:disc">Firewalls</li></ul><ul id="c764c8f7-a1f9-42db-9595-2ed0215eb99e" class="bulleted-list"><li style="list-style-type:disc">Network intrusion detection</li></ul></li></ul><ul id="b45be3ad-0087-4b1a-9aaf-82774b51d72c" class="bulleted-list"><li style="list-style-type:square">Application Security<ul id="13db185f-99e4-476b-9be9-1c29aac103c0" class="bulleted-list"><li style="list-style-type:disc">Services</li></ul><ul id="1e33d116-a20f-4699-b6dd-691a28518520" class="bulleted-list"><li style="list-style-type:disc">Hardening</li></ul><ul id="a0e9fd17-2784-423c-aa7d-0ecfe3bf8287" class="bulleted-list"><li style="list-style-type:disc">Input Validation</li></ul><ul id="654441b0-6f9f-4a0b-8222-ce682a4fb40c" class="bulleted-list"><li style="list-style-type:disc">Software Patches and Updates</li></ul></li></ul><ul id="a95250ac-6d6c-4927-a641-bb0b07479969" class="bulleted-list"><li style="list-style-type:square">File Security<ul id="c290081a-5f8a-45c1-a48d-a0e3c0fd48ac" class="bulleted-list"><li style="list-style-type:disc">Encryption</li></ul><ul id="8c0d4f14-369a-491b-92c9-e2512971c594" class="bulleted-list"><li style="list-style-type:disc">Permission</li></ul></li></ul><ul id="0b93a9ae-edef-41d2-80e3-8703dc1858aa" class="bulleted-list"><li style="list-style-type:square">User Security<ul id="180e3afd-eb54-4b3e-ab73-d40e92bfb497" class="bulleted-list"><li style="list-style-type:disc">Identity Management</li></ul><ul id="899487e1-05c4-4191-9c1f-7d0daa6bb2c4" class="bulleted-list"><li style="list-style-type:disc">Passport Protection</li></ul><ul id="3ac9099f-acdd-4bbc-9ec0-e351b9ff9953" class="bulleted-list"><li style="list-style-type:disc">Social Engineering</li></ul><ul id="f956ea3c-74a9-4527-864b-0ed23210efca" class="bulleted-list"><li style="list-style-type:disc">User Resistance</li></ul><ul id="19220c5a-0f45-48a7-9c6e-812a92c6c002" class="bulleted-list"><li style="list-style-type:disc">New Technologies</li></ul></li></ul><ul id="4a7e4492-dd0b-489a-991f-4f2aa4f74694" class="bulleted-list"><li style="list-style-type:square">Operational Security<ul id="d29b1ae0-475f-49e5-a43c-2f267b6143cd" class="bulleted-list"><li style="list-style-type:disc">Locking / Turning Off Computers</li></ul><ul id="7260b5b3-0257-4e3c-a086-bb6f3ba8eef9" class="bulleted-list"><li style="list-style-type:disc">Data Backup &amp; Frequency<ul id="42323d85-2ec8-452c-ae07-ca192a2a3f92" class="bulleted-list"><li style="list-style-type:circle">Full / Differential / Incremental / Continuous</li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul><p id="35233ddd-9502-4e63-b3fb-3d9eaa01e7a8" class="">
+</p><h2 id="769e5b0e-893f-49f6-8141-036e03f6d606" class="">Week 12: Other Development Methodologies</h2><ul id="e3e29362-8e91-443d-8053-8091f789a79c" class="bulleted-list"><li style="list-style-type:disc">Waterfall Software Development Methodology</li></ul><ul id="e5aa28f7-2f86-4b36-8ed2-e1b3f6b7b1fd" class="bulleted-list"><li style="list-style-type:disc">Agile Software Development<ul id="a76f5131-bb69-41a6-b057-6d15ea7ddc7d" class="bulleted-list"><li style="list-style-type:circle">Based on the values and principles of the “Agile Manifesto”<ul id="7da1b4a2-bbe5-4912-b063-393b8416f579" class="bulleted-list"><li style="list-style-type:square"><strong>Individuals and interactions </strong>over processes and tools</li></ul><ul id="e1fbcbf2-58d6-4196-b3fa-59349a87efa9" class="bulleted-list"><li style="list-style-type:square"><strong>Working software</strong> over comprehensive documentation</li></ul><ul id="b9c30bf4-815d-4750-a2f0-dc1e7d33458b" class="bulleted-list"><li style="list-style-type:square"><strong>Customer collaboration</strong> over contract negotiation</li></ul><ul id="f565d85d-32a4-46b0-86b6-8c297a23b059" class="bulleted-list"><li style="list-style-type:square"><strong>Responding to change</strong> over following a plan</li></ul></li></ul><ul id="e75c47b0-ab08-457d-be13-691237e6f7c5" class="bulleted-list"><li style="list-style-type:circle">Known for its flexibility - tasks are completed concurrently with adapting and adjusting on the fly</li></ul><ul id="6e486942-d517-4847-bf28-8e19524b48ba" class="bulleted-list"><li style="list-style-type:circle">Requires stakeholder and developer cooperation</li></ul><ul id="059fa04e-4d59-428a-ab85-69cf0f2bd2c0" class="bulleted-list"><li style="list-style-type:circle">Broken down into phases known as “sprints” of: Plan —&gt; design —&gt; develop —&gt; test —&gt; deploy —&gt;review —&gt; Plan (and communicate) into next sprint with final stage finishing with “Launch”</li></ul><ul id="b33721cf-a7fe-4fa9-abd3-8db21ebbe932" class="bulleted-list"><li style="list-style-type:circle">Agile Frameworks:<ul id="e191f5c3-4548-4720-ab3a-d9e89207a260" class="bulleted-list"><li style="list-style-type:square">Scrum<ul id="00753a3f-6c77-41a6-bcfb-42af85ebe2df" class="bulleted-list"><li style="list-style-type:disc"> One of the most commonly used agile frameworks</li></ul><ul id="377bbfec-a218-468b-b315-8b98963c3a3b" class="bulleted-list"><li style="list-style-type:disc">An iterative model using fixed-length sprints lasting 1-2 weeks</li></ul><ul id="bc69ec6e-43aa-4b6f-98d8-e4fc8904121a" class="bulleted-list"><li style="list-style-type:disc">At the end of each sprint stakeholders and team members plan the next steps</li></ul><ul id="19706252-02bc-4934-9b78-6878743b19d6" class="bulleted-list"><li style="list-style-type:disc">Divided into:<ul id="edc934f5-73d7-4a6e-8f2c-d9f707fd8b66" class="bulleted-list"><li style="list-style-type:circle">Sprint Planning</li></ul><ul id="9b34d7a8-4e49-4895-a2f0-331b1bf0c9d8" class="bulleted-list"><li style="list-style-type:circle">Daily Stand-Up</li></ul><ul id="a5971da8-a9c1-4d4a-8a4c-cf0e9635842d" class="bulleted-list"><li style="list-style-type:circle">Sprint Demo</li></ul><ul id="a5f5a799-d064-4dd3-9cd1-20540af22e07" class="bulleted-list"><li style="list-style-type:circle">Sprint Retrospective</li></ul></li></ul></li></ul><ul id="c413f750-67ef-4b28-a88b-ed50f6289893" class="bulleted-list"><li style="list-style-type:square">Extreme Project Management / Megaproject (XPM)<ul id="a8ce1b98-138b-4d6d-b90e-c3e6711580e3" class="bulleted-list"><li style="list-style-type:disc">Value Experience</li></ul><ul id="021748f0-3866-4026-b215-0c7c71362bcb" class="bulleted-list"><li style="list-style-type:disc">Embrace Change</li></ul><ul id="e69817a4-2821-414f-9555-59961bf713e6" class="bulleted-list"><li style="list-style-type:disc">Sprint</li></ul><ul id="5cbd855c-9623-42fb-a9da-a67541d860c8" class="bulleted-list"><li style="list-style-type:disc">Extreme Programming</li></ul></li></ul></li></ul><ul id="0829bd2d-7759-4ce2-8e3a-dac13828d8f0" class="bulleted-list"><li style="list-style-type:circle">Waterfall Model:<ul id="7510d0ab-966e-4873-a7c2-c52dd0e4f26d" class="bulleted-list"><li style="list-style-type:square">Requirementr</li></ul><ul id="c6eccef7-cdef-4472-a9e2-383e6fe4d317" class="bulleted-list"><li style="list-style-type:square">Design</li></ul><ul id="d0decc43-4dfc-497f-85dc-84cd4e57a135" class="bulleted-list"><li style="list-style-type:square">Implementation</li></ul><ul id="45d9e632-61ef-4c70-971a-c0eb1b08ab14" class="bulleted-list"><li style="list-style-type:square">Verification</li></ul><ul id="a7dc92e5-e11a-487a-ba71-e2b9cd565562" class="bulleted-list"><li style="list-style-type:square">Maintenance</li></ul></li></ul><ul id="20de3c9c-48e5-4b49-b541-bfcd9148d1b5" class="bulleted-list"><li style="list-style-type:circle"></li></ul></li></ul><p id="1835bac9-58fd-4d08-8a35-b6776a2d4d18" class="">
+</p><p id="155a0737-5dac-4866-a377-17abf422c5d0" class="">
+</p><p id="7c988bdd-2247-4b9e-9647-f6900912ffc0" class="">
+</p><p id="521078e8-e478-45da-b3f3-125d63bebb40" class="">
+</p><h2 id="eb940b37-2111-42db-a31d-dbc9c30e6765" class="">Assessment 3 Workshop</h2><ul id="554d694f-cb63-409f-a4dd-8fda7ffda202" class="bulleted-list"><li style="list-style-type:disc">Due Sun 21/08/2022</li></ul></div></article></body></html>

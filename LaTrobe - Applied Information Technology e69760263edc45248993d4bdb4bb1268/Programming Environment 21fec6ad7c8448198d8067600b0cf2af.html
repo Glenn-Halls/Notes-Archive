@@ -1,0 +1,679 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Programming Environment</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="21fec6ad-7c84-4819-8d80-67600b0cf2af" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/PE.jpg"/></div><h1 class="page-title">Programming Environment</h1></header><div class="page-body"><p id="e981baa2-c30e-44e9-8f10-6aecc332ba06" class="">
+</p><p id="c7618abb-3cd5-4b22-afb1-6b5b6131f8b0" class="">
+</p><h2 id="8bdbf34c-db53-4b96-92d0-4cda0e5221e4" class="">Useful Resources:</h2><ul id="6413f7d5-95a0-48b8-b49f-c243001423d7" class="bulleted-list"><li style="list-style-type:disc"><a href="https://introcs.cs.princeton.edu/java/11cheatsheet/">Java Cheat Sheet</a></li></ul><ul id="038d8289-2037-4c7d-95be-a0a3f0079b76" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.jdoodle.com/online-java-compiler/">JDoodle online Java compiler</a></li></ul><p id="8418a4cb-c9d8-4d75-b2ab-6b8f4dccb46e" class="">
+</p><p id="6e423bf6-4425-4a07-8d70-f51c71247ec0" class="">
+</p><p id="7d7ecc62-3559-4b64-8be9-6e259ec0d828" class="">
+</p><p id="7479b8f2-5334-4748-a3ab-4f24f4311e57" class="">
+</p><h2 id="bdb8cb8e-10fb-4cd6-9043-1bb258910e60" class="">Week 1: Introduction to Computer Programming</h2><ul id="84497dc3-95b7-4aff-bd84-b9e301f5a1cc" class="bulleted-list"><li style="list-style-type:disc">Machine Languages (binary digits) Vs Assembly / Low-Level Languages (tied to a computer’s architecture - use an assembler to translate to machine language) Vs High Level Languages (to make code more readable, less error prone and faster to develop, utilises a compiler).</li></ul><ul id="4cedf288-30e6-4e68-a76f-fa1c3a3b5991" class="bulleted-list"><li style="list-style-type:disc">Programming Development Life Cycle:<ul id="66cc91eb-f492-4a14-b978-2b9ff8f25970" class="bulleted-list"><li style="list-style-type:circle">Problem Definition<ul id="3faa39e9-cd9b-4aa2-96b5-51a388597abe" class="bulleted-list"><li style="list-style-type:square">Understand the problem and the inputs, outputs, constraints and requirements</li></ul></li></ul><ul id="b2dbb9bb-3b98-420e-b9bc-75c23ba8f4db" class="bulleted-list"><li style="list-style-type:circle">Problem Analysis<ul id="c4b0ce41-88a3-480c-9a1f-6a38083f8bf9" class="bulleted-list"><li style="list-style-type:square">Including breaking down into sub-problems</li></ul></li></ul><ul id="2cf742fb-3169-40aa-98c5-6700ed6797a7" class="bulleted-list"><li style="list-style-type:circle">Algorithm Design<ul id="0564b66d-86f5-40be-b4c8-6aaedfb866d6" class="bulleted-list"><li style="list-style-type:square">Outlining all the steps and actions needed to solve the problem, this is where flowcharts and pseudocode may be used, should also include error handling</li></ul></li></ul><ul id="633796dc-9f93-4c81-bd11-69dd9aafdce7" class="bulleted-list"><li style="list-style-type:circle">Code Development<ul id="b6f75235-b7bd-4da9-a5ab-2e8b221aaaf9" class="bulleted-list"><li style="list-style-type:square">Conversion of algorithm to code including comments and documentation</li></ul></li></ul><ul id="d4439e98-4a4c-4223-b635-64cca39a569c" class="bulleted-list"><li style="list-style-type:circle">Testing and Debugging<ul id="42f5bc15-d1a6-4c6f-bffb-359a8adfcbd2" class="bulleted-list"><li style="list-style-type:square">Logical Vs Syntax errors Vs debugging, all of which should be documented</li></ul></li></ul><ul id="ad81f435-d4a3-4f66-9736-f6134df5ef46" class="bulleted-list"><li style="list-style-type:circle">Maintenance —&gt; Problem Definition<ul id="9420c481-aa9e-429f-9753-749e08175112" class="bulleted-list"><li style="list-style-type:square">Including fixing errors, updating, upgrading. Often accounts for 50% of time spent on a program</li></ul></li></ul></li></ul><ul id="17f4930c-c9e0-4c11-b2a3-d086a94365bc" class="bulleted-list"><li style="list-style-type:disc">Number Systems:<ul id="a775c068-4ef1-4fdc-89a8-5c080ed02a93" class="bulleted-list"><li style="list-style-type:circle">Binary (0 &amp; 1)<ul id="5a5bc89e-08f8-4fcd-9e82-e900bf5e2fbe" class="bulleted-list"><li style="list-style-type:square">right-most = least significant bit - LSB</li></ul><ul id="c38307f4-6093-430d-97c5-5fb7fc3946ae" class="bulleted-list"><li style="list-style-type:square">left-most = most significant bit - MSB</li></ul><ul id="a9247876-7ecb-4fee-9cbe-2fbd69fef968" class="bulleted-list"><li style="list-style-type:square">10110 = 1*2^4 + 0*2^3 + 1*2^2 + 1*2^1 + 0*2^0</li></ul><ul id="edab0e58-1810-4654-81c9-65169b9a8112" class="bulleted-list"><li style="list-style-type:square">10110 = 1*16 + 0 *8 + 1*4 + 1*2 + 0*1</li></ul><ul id="e9f4be52-1705-4c67-8487-03696c3cea89" class="bulleted-list"><li style="list-style-type:square">10110 = 16 + 0 + 4 + 2 + 0</li></ul><ul id="812da268-5804-4bea-b28b-0606c3414591" class="bulleted-list"><li style="list-style-type:square">10110 = 22<ul id="b74661c4-e842-4b02-b3e3-b835076231cf" class="bulleted-list"><li style="list-style-type:disc">To Convert Back:<ul id="b2f2f683-7c18-4eb9-b1b9-631e46c65a80" class="bulleted-list"><li style="list-style-type:circle">22 / 2 / 2 / 2 / 2 / 2 with remainders:<ul id="3b788ddb-22d7-498a-ad28-fa2a95721371" class="bulleted-list"><li style="list-style-type:square">0 / 1 / 1 / 0 / 1 </li></ul><ul id="eab97445-99ea-49f8-a6cf-d51dd23d397b" class="bulleted-list"><li style="list-style-type:square">reverse this to 10110</li></ul></li></ul><ul id="8f25d499-c9d7-4913-bc99-b0c78e20b8d8" class="bulleted-list"><li style="list-style-type:circle"></li></ul></li></ul></li></ul></li></ul><ul id="da706c23-3abd-4aa3-8019-39b3d76d7cfb" class="bulleted-list"><li style="list-style-type:circle">Decimal (0-9)</li></ul><ul id="1f98daec-827b-4915-b34d-325440804671" class="bulleted-list"><li style="list-style-type:circle">Octal (0-7)</li></ul><ul id="9b45fe31-58cf-4023-bff1-bc6a05655e57" class="bulleted-list"><li style="list-style-type:circle">Hexadecimal (0-9, A-F)<ul id="232ce2e1-cd77-4d32-816e-ce5547bd74d7" class="bulleted-list"><li style="list-style-type:square">Conversion tables - decimal to binary, etc<figure id="0dcf70e2-c1c8-4a41-8794-914a5f06f807" class="image"><a href="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/conversion.png"><img style="width:257px" src="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/conversion.png"/></a></figure></li></ul><ul id="ed30ac82-07f4-489a-8c8f-2c885ad5c558" class="bulleted-list"><li style="list-style-type:square">Conversion tables, hex to binary, etc<figure id="d1ed1437-c865-45ff-b326-ace48b91856c" class="image"><a href="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/hex_table.png"><img style="width:569px" src="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/hex_table.png"/></a></figure></li></ul></li></ul></li></ul><ul id="a010fd4d-849d-455b-ac42-7f2462e3e71b" class="bulleted-list"><li style="list-style-type:disc">Flowcharts:<figure id="717dc87b-50a8-476f-9367-5e2a7e300e38" class="image"><a href="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/flow.png"><img style="width:199px" src="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/flow.png"/></a></figure><ul id="6d679ecd-5461-4520-8dfd-4dd67aea9e84" class="bulleted-list"><li style="list-style-type:circle">Title —&gt; start and end —&gt; list all steps —&gt; arrange sequentially —&gt; connect —&gt; review and refine</li></ul></li></ul><ul id="c2885523-24eb-42c1-994b-b74a0f6e5715" class="bulleted-list"><li style="list-style-type:disc">Pseudocode - representing algorithms in English-like statements:<ul id="b10e69c1-adfa-4102-b936-a245affe6a58" class="bulleted-list"><li style="list-style-type:circle">Statements in English and programming language neutral</li></ul><ul id="fc77c398-3860-4c1d-80b9-fc42162ed6ba" class="bulleted-list"><li style="list-style-type:circle">Each instruction on a separate line</li></ul><ul id="76522cbc-bef2-4ddd-a4fd-85e121eaf51f" class="bulleted-list"><li style="list-style-type:circle">Keywords, verbs, control statements with leading capital</li></ul><ul id="6185b894-4cc5-4d27-ae05-3d7544849d3e" class="bulleted-list"><li style="list-style-type:circle">Indentation of loops &amp; sections with 2-4 spaces</li></ul><ul id="720fa592-5b25-4a07-bdeb-d52dd8ceb99d" class="bulleted-list"><li style="list-style-type:circle">Written top-bottom, one entry, one exit</li></ul><ul id="10c1afeb-3c19-4ce8-8292-aa518e1166b2" class="bulleted-list"><li style="list-style-type:circle">Groups of statements may be modules with group names</li></ul><ul id="57ba5003-4597-4a45-9729-59f1acaaec6d" class="bulleted-list"><li style="list-style-type:circle">Verbage:<ul id="60046099-986f-404a-9da3-8bd78aeccff4" class="bulleted-list"><li style="list-style-type:square">Read / Accept / Get<ul id="f4608c6a-35d9-4021-824a-4e5805a72d35" class="bulleted-list"><li style="list-style-type:disc">Read for media, accept / get for device (keyboard) input</li></ul></li></ul><ul id="b3a62ea7-2c6b-49a1-b81d-f01b8ce32244" class="bulleted-list"><li style="list-style-type:square">Print / Write / Display / Prompt</li></ul><ul id="ad2c4f8a-4488-4899-9fce-b250a1743024" class="bulleted-list"><li style="list-style-type:square">Compute: + / - / * / / / ( ) / =<ul id="de26cdf1-0997-471e-95a8-5d60cb9f80ac" class="bulleted-list"><li style="list-style-type:disc">Accumulate / Increment / Decrement</li></ul></li></ul><ul id="37b17e5e-624a-4208-b2d9-c1547707cb53" class="bulleted-list"><li style="list-style-type:square">Initialise to initiate a variable, let to assign a value (<code>Let var = 1</code>)</li></ul><ul id="8d55d2df-4780-499f-85c0-b5115155955d" class="bulleted-list"><li style="list-style-type:square">If —&gt; Then —&gt; Else —&gt; EndIf</li></ul><ul id="5fc27803-8dd4-4147-bb64-47f4fa9d11d8" class="bulleted-list"><li style="list-style-type:square">While —&gt; EndWhile</li></ul></li></ul><ul id="22f7c21f-1e44-43a2-818a-cc79685ba8d5" class="bulleted-list"><li style="list-style-type:circle">For this course:<ul id="f33aa826-430b-4de0-a750-e28f2a535591" class="bulleted-list"><li style="list-style-type:square">line numbers</li></ul><ul id="3d3b33c8-4c09-4a62-8824-bda650eb0959" class="bulleted-list"><li style="list-style-type:square">start with Start, end with End, use described keywords<figure id="b51b1d61-b991-4d39-9654-908339d31412" class="image"><a href="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/Pseudocode.png"><img style="width:533px" src="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/Pseudocode.png"/></a></figure></li></ul></li></ul></li></ul><ul id="b1d41ee9-aa17-4ce7-95ca-1525d42b16e3" class="bulleted-list"><li style="list-style-type:disc">The importance of “Desk-Checking” Pseudocode:<ul id="ee43d3e2-aabc-45d9-b330-cda9b9b0456a" class="bulleted-list"><li style="list-style-type:circle">Test Data: comprehensive, tests all paths, tests error situations, tests boundary conditions</li></ul></li></ul><ul id="3899396e-f921-4f1f-92e5-e37594114e16" class="bulleted-list"><li style="list-style-type:disc">The “New to Java Programming Centre”<ul id="31d49b86-1fe2-456b-a052-65114bac6845" class="bulleted-list"><li style="list-style-type:circle"><a href="https://www.oracle.com/topics/technologies/newtojava/programming-center.html#Java_Basics">https://www.oracle.com/topics/technologies/newtojava/programming-center.html#Java_Basics</a></li></ul></li></ul><ul id="f403a51b-37a6-428c-bd4a-9cbb3cea742c" class="bulleted-list"><li style="list-style-type:disc"> </li></ul><p id="66bdceab-e14e-42b0-8ba6-a32c22a4468c" class="">
+</p><h2 id="9d40b6b9-3a61-4b7e-8c66-b5fd89fbc433" class="">Week 2: Introduction to Java and NetBeans</h2><ul id="2fb9884e-778c-4a4f-a6d5-23f19c0bd460" class="bulleted-list"><li style="list-style-type:disc">Java 1.0 released in 1995 - designed by James Gosling, made open-source in 2006</li></ul><ul id="881bc06f-df9f-4549-922e-73dd309339bb" class="bulleted-list"><li style="list-style-type:disc">Benefits Include:<ul id="6a931b63-8b06-43c9-8034-f7a2f5e52814" class="bulleted-list"><li style="list-style-type:circle">Open Source</li></ul><ul id="209e6ac1-396a-44aa-a930-7d0c8ce74826" class="bulleted-list"><li style="list-style-type:circle">Portable</li></ul><ul id="1b021259-1d46-4f80-9cb0-d13b85366f70" class="bulleted-list"><li style="list-style-type:circle">Object-Orientated</li></ul><ul id="ad3f61e7-6d12-4210-97a2-9cccde050e86" class="bulleted-list"><li style="list-style-type:circle">Multi-Threaded</li></ul><ul id="2997bad7-2cbd-45c0-be50-6cb52b108d94" class="bulleted-list"><li style="list-style-type:circle">Secure</li></ul><ul id="8ea9d17e-8e15-4cc7-be8b-9d0c792e6538" class="bulleted-list"><li style="list-style-type:circle">Simple</li></ul></li></ul><ul id="f4493aa7-e5bd-4334-918a-ca555ab94287" class="bulleted-list"><li style="list-style-type:disc">Java Platforms:<ul id="5265ea55-9817-4575-9504-3d7f451043aa" class="bulleted-list"><li style="list-style-type:circle">Standard Edition</li></ul><ul id="0db15822-2042-47ba-87a5-5a82234553a9" class="bulleted-list"><li style="list-style-type:circle">Enterprise Edition</li></ul><ul id="fe73b6b9-1b77-4078-b644-9a64e4a5a993" class="bulleted-list"><li style="list-style-type:circle">Micro Edition</li></ul><ul id="8d64931b-1a11-4d9a-a523-6016a883b674" class="bulleted-list"><li style="list-style-type:circle">All consist of a Java Virtual Machine (JVM) and an Application Programming Interface (API)</li></ul><ul id="87865ce4-a847-446e-98ff-45d550b0ca42" class="bulleted-list"><li style="list-style-type:circle">Java Development Kit (JDK) is a Superset of JRE also including tools required by programmers such as compilers etc.</li></ul></li></ul><ul id="f724548d-ced7-4e5c-829c-36ae49c905b6" class="bulleted-list"><li style="list-style-type:disc">Java code has the extension .java, compiled with javac into .class file which is now bytecode and can be run on the JVM</li></ul><ul id="4dc6d96e-c8bc-4ffb-8d45-eec4d54e612d" class="bulleted-list"><li style="list-style-type:disc">One of the main benefits of coding in Java today are the extensive Java object libraries that are available</li></ul><ul id="f12f7f21-debf-4f4a-be01-d0f8b24446e8" class="bulleted-list"><li style="list-style-type:disc">NetBeans Vs IntelliJ IDEA</li></ul><p id="0bbe1192-e467-461a-a163-9befe9899576" class="">
+</p><h2 id="4210906d-4fa3-4263-ba98-9e7a4d312afb" class="">Week 3: Java Language Fundamentals</h2><ul id="dfe1511a-9fbb-4e37-aa96-db3455914333" class="bulleted-list"><li style="list-style-type:disc">Variables abstract the use of memory in a programming language in order to take care of the complications of performing actual memory management.</li></ul><ul id="4fd8ab95-de80-457f-9732-2fbeb28bb2be" class="bulleted-list"><li style="list-style-type:disc">Variables:<ul id="d3f26aa5-1abf-42f1-84a2-9c650efa9e6c" class="bulleted-list"><li style="list-style-type:circle">Are unique and have three attributes: name, type and value</li></ul><ul id="44109ebf-66af-4379-bb69-c7447436463b" class="bulleted-list"><li style="list-style-type:circle">Can start with a letter (upper or lower), or an underscore<ul id="b564468e-8608-4efc-a927-6808e2da6442" class="bulleted-list"><li style="list-style-type:square">Subsequent characters can be letters, numbers, or underscores. By convention, $ is not used, however it can be used in some situations</li></ul></li></ul><ul id="05828807-c591-4511-af5d-a58f21b086a4" class="bulleted-list"><li style="list-style-type:circle">Name is case sensitive, and can be any length but whitespace is not allowed</li></ul><ul id="fcf43da8-50fd-497b-9aea-744c48246324" class="bulleted-list"><li style="list-style-type:circle">Some names are keywords and thus reserved by Java:<figure id="a19264fe-ba95-445e-91d9-18c4b9acc10a" class="image"><a href="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/java_keywords.png"><img style="width:876px" src="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/java_keywords.png"/></a></figure></li></ul><ul id="58845848-f97a-4b70-b1ed-a6783b9400f4" class="bulleted-list"><li style="list-style-type:circle">Compound names should use camelCase</li></ul><ul id="8b7ce275-02a6-41c9-bdf1-cd4edae3724e" class="bulleted-list"><li style="list-style-type:circle">If a variable stores a constant value (final), it should be written in only capitals, such as PI</li></ul><ul id="dc17f616-5f07-4775-a747-19f20771fcc3" class="bulleted-list"><li style="list-style-type:circle">Names SHOULD always start with a lowercase letter OR an underscore</li></ul></li></ul><ul id="c941e60c-3683-42ec-9f89-909e2a41e320" class="bulleted-list"><li style="list-style-type:disc">There are 8 primitive data types in Java:<ul id="71b17e90-d8fa-4c78-8200-e7b84cb0640e" class="bulleted-list"><li style="list-style-type:circle">byte (8 bits: -128 to 127)</li></ul><ul id="a97f111c-ff4f-4864-b5c6-d4aaba0f712d" class="bulleted-list"><li style="list-style-type:circle">short (16 bits: -32,768 to 32,767)</li></ul><ul id="1088cffd-75c2-4f6d-8b74-367195dadae5" class="bulleted-list"><li style="list-style-type:circle">int (32 bits: <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>2.147</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">\pm2.147\times10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">±</span><span class="mord">2.147</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>)<ul id="f6e98aa7-7036-4537-b90a-2d0a8dfd2808" class="bulleted-list"><li style="list-style-type:square">can be represented in:<ul id="aa5e4349-f26e-498d-91f4-0bb4556c19f1" class="bulleted-list"><li style="list-style-type:disc">octal = 0 prefix</li></ul><ul id="f342b64b-a2eb-4876-aeee-eeec106dda35" class="bulleted-list"><li style="list-style-type:disc">hexadecimal = 0x</li></ul><ul id="8217efa9-7e1f-4464-b82a-1bc831a4cb3f" class="bulleted-list"><li style="list-style-type:disc">binary = 0b</li></ul></li></ul></li></ul><ul id="2cc265eb-3078-4d3c-890b-ecdb9ffb3ebb" class="bulleted-list"><li style="list-style-type:circle">long (64 bits: <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>9.223</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mo stretchy="false">(</mo></msup><mn>18</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pm9.223\times10^(18)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">±</span><span class="mord">9.223</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mopen mtight">(</span></span></span></span></span></span></span></span><span class="mord">18</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></li></ul><ul id="10da48f4-e35e-41a3-a271-b076b621fd85" class="bulleted-list"><li style="list-style-type:circle">float (with 7 decimal places)<ul id="2ab8a4a1-b146-46ef-83fb-decef0191909" class="bulleted-list"><li style="list-style-type:square">must be suffixed with an “f” to NOT be a double</li></ul><ul id="3e271268-b92a-4ffb-959d-02f287467d44" class="bulleted-list"><li style="list-style-type:square">can use scientific notation: 1.23e123f</li></ul></li></ul><ul id="ea5b92aa-425c-4004-aa8d-0e7ed49b3744" class="bulleted-list"><li style="list-style-type:circle">double (with 16 decimal places)<ul id="8eba384d-eb30-4fdf-ad59-7ff97b19968c" class="bulleted-list"><li style="list-style-type:square">is the default decimal variable in Java</li></ul><ul id="8620f95b-cf14-4412-a0f3-0cc4394952d9" class="bulleted-list"><li style="list-style-type:square">can use scientific notation: 1.23e123</li></ul></li></ul><ul id="23116a23-5fd0-46f8-a4d4-0977924e5d69" class="bulleted-list"><li style="list-style-type:circle">boolean (single bit)</li></ul><ul id="ac8de47c-645b-4376-8cb5-ec882349d437" class="bulleted-list"><li style="list-style-type:circle">char (stored as a 16 bit integer)<ul id="d6f17d64-086f-45d0-9d4f-2e6cdce3e7d4" class="bulleted-list"><li style="list-style-type:square"><a href="https://www.ascii-code.com/">https://www.ascii-code.com/</a></li></ul></li></ul><ul id="75ace5ba-60d2-4088-b636-b4e30c7047cb" class="bulleted-list"><li style="list-style-type:circle">While not technically a primative data type, Strings are often thought of as so due to their integral nature and comprehensive support within Java</li></ul></li></ul><ul id="7c799276-1bc0-4f3e-ac03-d3cea9ba5b3f" class="bulleted-list"><li style="list-style-type:disc">Before using a variable in Java, it must first be declared</li></ul><ul id="9f722a37-a0e7-4164-bec5-a8bb878a73c7" class="bulleted-list"><li style="list-style-type:disc">Escape characters:<ul id="cb86cd5b-cead-492f-9a22-05ffe230ea78" class="bulleted-list"><li style="list-style-type:circle">\b - backspace</li></ul><ul id="62ac3693-230e-47af-b8ff-85ab6ccfc222" class="bulleted-list"><li style="list-style-type:circle">\n - newline</li></ul><ul id="e53bad1a-4667-4a65-8112-0a831f255a1e" class="bulleted-list"><li style="list-style-type:circle">\r - carriage return</li></ul><ul id="db0d5040-492e-4e4a-8450-04ef6fb80ecd" class="bulleted-list"><li style="list-style-type:circle">\f - form feed</li></ul><ul id="dee4f049-d367-44d3-aa8c-d09b0a29ed37" class="bulleted-list"><li style="list-style-type:circle">\t - horizontal tab</li></ul><ul id="f87a3045-5d1d-4076-8124-d582de11518a" class="bulleted-list"><li style="list-style-type:circle">\” - double quote</li></ul><ul id="1bfe7046-5945-4612-91ee-04472e2a753e" class="bulleted-list"><li style="list-style-type:circle">\’ - single quote</li></ul><ul id="310ea694-b522-46b1-8953-21c44e906ab7" class="bulleted-list"><li style="list-style-type:circle">\\ - backslash - very important in windows when a file name is part of a string</li></ul><ul id="52196fd6-f2ee-4e65-82ba-f29f719b1031" class="bulleted-list"><li style="list-style-type:circle">\0 - null</li></ul></li></ul><ul id="df66a9f6-2bc1-41e8-bcaa-689a5d2f3912" class="bulleted-list"><li style="list-style-type:disc">Type casting:<ul id="7d68f660-89d2-4bad-b9c5-b45ae60bfea0" class="bulleted-list"><li style="list-style-type:circle">Conversion of one object or variable to another:</li></ul><ul id="0f18710a-0600-4a95-8fb1-ef509b7ff501" class="bulleted-list"><li style="list-style-type:circle">Classified as either:<ul id="230fc1b8-8362-47cb-bd7f-a7a0d653d5c8" class="bulleted-list"><li style="list-style-type:square">Widening casting (implicit):<ul id="9714fec9-c559-44ff-8d83-c9e72e0d3443" class="bulleted-list"><li style="list-style-type:disc">two types must be compatible with the target type larger than the source:</li></ul><ul id="3ab41f7c-1679-45d2-bfe6-b7f0277fe47e" class="bulleted-list"><li style="list-style-type:disc">byte —&gt; short —&gt; int —&gt; long —&gt; float —&gt; double</li></ul></li></ul><ul id="aac7863e-c16c-486e-9f31-fa61a3ff5ec8" class="bulleted-list"><li style="list-style-type:square">Narrowing casting (explicit):<ul id="185dd4e5-41b9-4ad2-8ea6-d135930b2d3b" class="bulleted-list"><li style="list-style-type:disc">must be states or an error will be thrown by the compiler</li></ul><ul id="5d9a3ba3-7162-4e8f-a511-305e05d10c33" class="bulleted-list"><li style="list-style-type:disc">may lose value</li></ul><ul id="b44c646a-9840-46f6-9cfc-e171409e3ef0" class="bulleted-list"><li style="list-style-type:disc"><code>double D1 = 123.456; long L1 = (long)D1; int I1 = (int)L1</code></li></ul></li></ul></li></ul></li></ul><ul id="7223ca60-36ab-4684-a143-051a1159ad6d" class="bulleted-list"><li style="list-style-type:disc">Output formatting:<ul id="f606d0c7-59f8-4e8c-a4e8-dd66d5e49c28" class="bulleted-list"><li style="list-style-type:circle"><code>System.out.printf(&quot;format-string&quot; [, $arg1, $arg2, ...]);</code></li></ul><ul id="d8f770bf-b272-40a3-9eb4-00cfba23e3bd" class="bulleted-list"><li style="list-style-type:circle">preceded with a $</li></ul><ul id="c00e4162-5177-4524-8348-0b856609b867" class="bulleted-list"><li style="list-style-type:circle">[flags]<ul id="c8669d25-b738-49e2-a6c7-7fc830bbc96d" class="bulleted-list"><li style="list-style-type:square">- = left justify</li></ul><ul id="26a5e8f9-4d59-42c8-a2c0-cd942ed20a16" class="bulleted-list"><li style="list-style-type:square">+ = output a + or - numerical sign</li></ul><ul id="a98213c7-10d1-4a61-9f66-17ad76f9d4a9" class="bulleted-list"><li style="list-style-type:square">[x]0 = forces numerical values to be [x] zero padded</li></ul><ul id="67eaab5d-ed7a-458f-b0ce-e4038a0d35ed" class="bulleted-list"><li style="list-style-type:square">, = comma grouping separator</li></ul><ul id="f1b33d90-ee8b-4f45-9b0d-b9c608303335" class="bulleted-list"><li style="list-style-type:square">  = space displays - if negative or a space if positive</li></ul></li></ul><ul id="e40ffe64-903d-434f-a2dd-0f23453c5287" class="bulleted-list"><li style="list-style-type:circle">[width]<ul id="a6ff1f6f-cae4-4e0a-a2c2-d67f1f200adf" class="bulleted-list"><li style="list-style-type:square">minimum number of characters to be written to the output</li></ul></li></ul><ul id="b0fe1ef4-fbb0-4358-8b6a-3f9332ed54d6" class="bulleted-list"><li style="list-style-type:circle">[precision]<ul id="332e8629-050f-4d0e-a655-ce4af18e9955" class="bulleted-list"><li style="list-style-type:square">number of digits of precision in floating-point values</li></ul></li></ul><ul id="6a04aae7-9b9f-4cbb-a8b5-4da8984533f6" class="bulleted-list"><li style="list-style-type:circle">conversion characters<ul id="6266b9af-f57f-4a00-a2ab-cfbe8fe7e5a6" class="bulleted-list"><li style="list-style-type:square">determine which numeric format is to be displayed</li></ul><ul id="958bbe9a-917c-42bb-bb0b-58fbfb9270e2" class="bulleted-list"><li style="list-style-type:square">d = decimal integer</li></ul><ul id="5fa993d3-787a-462c-b0f9-5c351987b6cd" class="bulleted-list"><li style="list-style-type:square">[.8]f = floating point number - [8 decimal places]</li></ul><ul id="698cb49e-6646-48d5-bb73-82b0c245bd7b" class="bulleted-list"><li style="list-style-type:square">c = character (capital C will capitalise)</li></ul><ul id="17cb0c3f-6fdb-47d8-8086-9493bf1277d1" class="bulleted-list"><li style="list-style-type:square">s = string (capital S will capitalise)</li></ul><ul id="1d8c41bb-362c-4658-8dc2-7ce0b455e2d5" class="bulleted-list"><li style="list-style-type:square">h = hashcode</li></ul><ul id="074ae694-0963-446d-9d7a-0dad290c2749" class="bulleted-list"><li style="list-style-type:square">n = newline</li></ul></li></ul></li></ul><ul id="60c518af-ac8c-4b8e-8e69-49c9502a209c" class="bulleted-list"><li style="list-style-type:disc">Data dictionary:<ul id="0aaf80e8-b07c-4ec2-82cd-6a30d4257b5d" class="bulleted-list"><li style="list-style-type:circle">Made up of 3 columns: Name, Type, Description</li></ul></li></ul><ul id="67080872-b918-4be7-9857-cab32b70cd92" class="bulleted-list"><li style="list-style-type:disc">Operators:<ul id="13ba5fee-bfb7-4e4b-b479-76740980d800" class="bulleted-list"><li style="list-style-type:circle">Consider using parentheses to clarify long statements</li></ul><ul id="1f27f103-68fc-4d2b-8b32-9df0e1dd9df0" class="bulleted-list"><li style="list-style-type:circle">Order of Precedence:<figure id="9cf7d18b-4f37-4987-90ff-a0ebb077bf05" class="image"><a href="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/order_of_precedence.png"><img style="width:358px" src="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/order_of_precedence.png"/></a></figure></li></ul><ul id="8e20785c-68a2-4136-ad80-582f3b8f7c04" class="bulleted-list"><li style="list-style-type:circle">Arithmetic:<ul id="2258f22f-9c1d-457d-b2e9-b923e8f855e8" class="bulleted-list"><li style="list-style-type:square">+, -, *, /, %</li></ul></li></ul><ul id="3b068b6c-39c1-457a-a7f1-9b023001b7b5" class="bulleted-list"><li style="list-style-type:circle">Assignment (=)</li></ul><ul id="6681224a-e4bf-4191-b96f-dd450e5ed260" class="bulleted-list"><li style="list-style-type:circle">Unary (require only one operand)<ul id="bde9390a-7d49-485f-b292-f9a97099c61b" class="bulleted-list"><li style="list-style-type:square">+, -, !, ++, - -</li></ul><ul id="889bc47d-3336-4e51-a036-5e52eb0f3222" class="bulleted-list"><li style="list-style-type:square">++ and -   can be prefixed or postfixed, changing their declaration timing during expressions</li></ul></li></ul><ul id="6b00b2fd-cfca-4389-817a-27c2b6fa1855" class="bulleted-list"><li style="list-style-type:circle">Relational:<ul id="93d2aa6a-62c6-4672-9372-0d1dc17fd71f" class="bulleted-list"><li style="list-style-type:square">==, !=, &gt;, &gt;=, &lt;, &lt;=</li></ul></li></ul><ul id="3d66a618-47b9-4cf5-a6e3-dac0bb98e2cf" class="bulleted-list"><li style="list-style-type:circle">Bitwise:<ul id="af714d9f-7691-4c92-9e29-10677fcc967c" class="bulleted-list"><li style="list-style-type:square">Logical:<ul id="77a65db5-b3af-4764-b7ef-01e6fba5ca17" class="bulleted-list"><li style="list-style-type:disc">&amp; - AND</li></ul><ul id="ea7f1bad-a095-4884-ac51-bface4e5fd0a" class="bulleted-list"><li style="list-style-type:disc">| - OR</li></ul><ul id="29932691-8540-4344-b347-dd223d734d56" class="bulleted-list"><li style="list-style-type:disc">~ - NOT</li></ul><ul id="2ef93a6d-bce0-451e-a310-3188696eea19" class="bulleted-list"><li style="list-style-type:disc">^ - XOR</li></ul></li></ul><ul id="38530f66-514d-4daa-9c8d-5a79442d713a" class="bulleted-list"><li style="list-style-type:square">Shift:<ul id="e1a078ff-1592-4085-a81d-d753a847e194" class="bulleted-list"><li style="list-style-type:disc">when shifting to the left or right, the extra bits are determined by the sign of the value (+ / -)</li></ul><ul id="78f9e543-e195-468d-931b-f657f46b352b" class="bulleted-list"><li style="list-style-type:disc">&gt;&gt; = right shift</li></ul><ul id="bc666b61-f762-440b-9cf7-d67f57066f9f" class="bulleted-list"><li style="list-style-type:disc">&lt;&lt; = left shift</li></ul><ul id="7dff69e7-d742-419a-8faa-8cc43c0c1999" class="bulleted-list"><li style="list-style-type:disc">&gt;&gt;&gt; = unsigned right shift<ul id="bb1bdc35-05db-4744-ae7c-59c3ce315e1d" class="bulleted-list"><li style="list-style-type:circle">values added are 0s</li></ul></li></ul><ul id="4be92d83-0834-4334-864d-f80f44276378" class="bulleted-list"><li style="list-style-type:disc">can use <code>Integer.toBinaryString()</code></li></ul></li></ul></li></ul><ul id="459fba64-1022-47b6-90ca-ff8cfcf7a1e0" class="bulleted-list"><li style="list-style-type:circle">Boolean Logical:<ul id="32919b72-e41d-4325-8add-e0505a4ff4b9" class="bulleted-list"><li style="list-style-type:square">&amp;&amp; - true &amp;&amp; true = true, all other false</li></ul><ul id="9577523d-59c4-4e3d-a713-ef0808129f89" class="bulleted-list"><li style="list-style-type:square">|| - false || false = false, all other true</li></ul></li></ul><ul id="eef24f43-ad6e-43d9-b09b-df6877588912" class="bulleted-list"><li style="list-style-type:circle">Ternary:<ul id="0b2c2751-5b4d-412d-b585-ee955ea823e7" class="bulleted-list"><li style="list-style-type:square">? - takes 3 operands</li></ul><ul id="80001fe1-1564-4fe7-9bde-f8a21eae5ac4" class="bulleted-list"><li style="list-style-type:square"><code>boolean expression ? value1 : value2</code></li></ul></li></ul></li></ul><ul id="d1578fc5-15f5-49fd-afaf-e0b95e99923d" class="bulleted-list"><li style="list-style-type:disc">Expressions yield results (x + y)</li></ul><ul id="aa2c50a6-a500-4eb9-87e6-386d7df229e6" class="bulleted-list"><li style="list-style-type:disc">Statements end with a “;”<ul id="34e88c1b-6f16-46d9-be21-82a4fae90cd8" class="bulleted-list"><li style="list-style-type:circle">Expression statements<ul id="94338ffa-bd5f-4934-8a7e-fadcda46d0d1" class="bulleted-list"><li style="list-style-type:square">x = 3;</li></ul><ul id="918abb78-3b51-45ac-8ba3-33f0151e556f" class="bulleted-list"><li style="list-style-type:square">System.out.println(”Hello, World”);</li></ul></li></ul><ul id="add111ab-a84b-4cd5-9cd0-389e400a0120" class="bulleted-list"><li style="list-style-type:circle">Declaration statements<ul id="851c8dc4-85e2-427b-9d0d-182c6e331fbf" class="bulleted-list"><li style="list-style-type:square">int i;</li></ul><ul id="8c5ace2b-92c5-4e07-808f-0921bfe035ff" class="bulleted-list"><li style="list-style-type:square">string name = “John Smith”</li></ul><ul id="da178517-9d72-4c53-815d-0c6980fc782a" class="bulleted-list"><li style="list-style-type:square">place declarations at the top of a code block for better readability<figure id="6165271c-1875-445c-8716-775f73dad73f" class="image"><a href="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/declaration_defaults.png"><img style="width:300px" src="Programming%20Environment%2021fec6ad7c8448198d8067600b0cf2af/declaration_defaults.png"/></a></figure></li></ul></li></ul><ul id="b9b5ea5d-9464-426f-8b8f-569772f1c1d6" class="bulleted-list"><li style="list-style-type:circle">Statement blocks<ul id="bc1456f1-d945-44d8-bb20-a310604998ac" class="bulleted-list"><li style="list-style-type:square">code blocks, preceded with a class, method or control declaration</li></ul></li></ul></li></ul><ul id="00772983-8a1f-467c-99cd-cb935dbcdcea" class="bulleted-list"><li style="list-style-type:disc"><a href="https://introcs.cs.princeton.edu/java/11cheatsheet/">JAVA CHEAT SHEET</a></li></ul><p id="8dc2f8a2-07fb-4b2a-8e79-781a0eb4a3b2" class="">
+</p><p id="a2f4412f-dfc0-486c-9f5f-fa68c93d3c85" class=""><div class="indented"><p id="2bf3bdfd-d6cb-4266-a87d-3af4da5a9236" class="">
+</p></div></p><h3 id="9dd7deef-1fd2-4956-97e4-398d9406ef7b" class="">done</h3></div></article></body></html>
