@@ -1,0 +1,672 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Database Fundamentals on the Cloud</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="559aebf3-25b1-47aa-9119-28652a838d17" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/DFotC.jpg"/></div><h1 class="page-title">Database Fundamentals on the Cloud</h1></header><div class="page-body"><p id="1d4b6347-ceae-47ae-a6b2-b36795e19f13" class="">
+</p><p id="0e6f2a45-4620-485a-a848-469390017804" class="">
+</p><h2 id="0727b905-d466-4e15-a361-4d1f21dcb741" class="">Week 1: Database Concepts</h2><ul id="30e08089-ad89-4bcf-bafa-a4f6fa008ec5" class="bulleted-list"><li style="list-style-type:disc">Data (raw facts) Vs Information (processed data)</li></ul><ul id="8236c5a0-cf42-43bb-b5c9-5b65ec5307cf" class="bulleted-list"><li style="list-style-type:disc">90% of the data in the world has been created in the last 2 years</li></ul><ul id="fa7d235a-07a8-42a4-8a37-b6ae82cb9830" class="bulleted-list"><li style="list-style-type:disc">Database (structured collection of raw facts Vs Database Management System (DBMS) - Software for managing a database including structure and access</li></ul><ul id="4d618780-5a0c-4b57-9ec1-5061cc703490" class="bulleted-list"><li style="list-style-type:disc">Database Vs file system<ul id="3d740e36-7e9d-4d9c-9529-1f02be983b7b" class="bulleted-list"><li style="list-style-type:circle">File systems may be redundant, not accessible, duplicated (maybe incorrectly), consider concepts of “Islands of information”</li></ul><ul id="a438c2b6-6d60-4181-9b8f-d648dec22757" class="bulleted-list"><li style="list-style-type:circle">Database advantages: security, sharing, consistency, productivity, decision making, metadata (data about data)</li></ul><ul id="880dbc17-c035-4e3d-bedf-227725026c60" class="bulleted-list"><li style="list-style-type:circle">Database disadvantages: complexity, costs, vendor dependence, upgrade/replacement cycles, maintaining currency</li></ul></li></ul><ul id="a04de45e-f9fe-411f-9dcc-686c1ae66476" class="bulleted-list"><li style="list-style-type:disc">Consider DBMS as the intermediary between the end user and the database</li></ul><ul id="51fb9e97-a638-4487-b0a3-db76eb982b99" class="bulleted-list"><li style="list-style-type:disc">Queries and ad hoc queries</li></ul><ul id="ce011e99-bedc-49d4-a5f4-e5c8bca78c5f" class="bulleted-list"><li style="list-style-type:disc">Single-user, desktop, multiuser, workgroup (&lt;50), enterprise, centralised, distributed, general-purpose and cloud databases</li></ul><ul id="f5492961-c117-437f-afcc-f1be13e61a2e" class="bulleted-list"><li style="list-style-type:disc">Operational / transactional / production / online transaction processing (OLTP) vs analytical databases (data warehouses and Online analytical processing - OLAP)</li></ul><ul id="6016a45d-94b2-45f5-9e71-36b0d3600c00" class="bulleted-list"><li style="list-style-type:disc">Concept of Business intelligence, supported in decision making by data warehousing and analytics</li></ul><ul id="30cd4a74-d80e-4095-81f4-bcb0ce7a31ae" class="bulleted-list"><li style="list-style-type:disc">Unstructured Vs Structured data and Semistructured data</li></ul><ul id="98a9129f-420f-4ef6-a6f9-826752cbd274" class="bulleted-list"><li style="list-style-type:disc">Extensible Markup Language (XML) databases to represent and manipulate data elements in a textural format</li></ul><ul id="3132f04d-802f-4569-822c-556e09a94bbb" class="bulleted-list"><li style="list-style-type:disc">NoSQL = Not only Structured Query Language</li></ul><ul id="d55aa078-7da1-4e29-aac3-8b5e512c3882" class="bulleted-list"><li style="list-style-type:disc">Database Design - the process that describes the database structure and determines database components</li></ul><ul id="13c890a6-8cbb-49ae-a69e-5f49bf8b2c3d" class="bulleted-list"><li style="list-style-type:disc">Data Processing specialists in the age of file formatting</li></ul><ul id="405687f6-c6a9-4870-b720-a7a3dea008f0" class="bulleted-list"><li style="list-style-type:disc">File System Data Processing Problems:<ul id="e33b663b-812e-453b-9633-e3bbc29da25d" class="bulleted-list"><li style="list-style-type:circle">Lengthy development times</li></ul><ul id="41a46b71-b8d7-4c4b-a671-3be478cb2a2d" class="bulleted-list"><li style="list-style-type:circle">Difficulty getting quick answers</li></ul><ul id="9179d850-fa8b-495b-b3f7-0c4ed894925e" class="bulleted-list"><li style="list-style-type:circle">Complex system administration</li></ul><ul id="eb3c13e4-eb51-4e3a-a5c7-a16e97ccfe26" class="bulleted-list"><li style="list-style-type:circle">Lack of security and limited data sharing</li></ul><ul id="5ba06ce5-fad0-4ef5-84ac-045eea62e8ab" class="bulleted-list"><li style="list-style-type:circle">Extensive programming required</li></ul><ul id="388b3a24-a420-4053-b7fe-fdbd63b14144" class="bulleted-list"><li style="list-style-type:circle">Structural and data dependence</li></ul><ul id="5ea6aaed-8563-4adc-bec7-f620a8018d60" class="bulleted-list"><li style="list-style-type:circle">Islands of information and data redundancy</li></ul></li></ul><ul id="6faa2c75-eb34-4f56-a1a0-f476be014277" class="bulleted-list"><li style="list-style-type:disc">Logical Vs physical data formats</li></ul><ul id="965d8c0a-f45c-4732-9a6d-4100b084e8b0" class="bulleted-list"><li style="list-style-type:disc">Uncontrolled data redundancy sets the stage for:<ul id="2bef1d34-2191-49b0-8107-c024eff0c03c" class="bulleted-list"><li style="list-style-type:circle">poor data security</li></ul><ul id="2750f1db-6d05-464c-8505-fc11ab2d1bad" class="bulleted-list"><li style="list-style-type:circle">data inconsistency</li></ul><ul id="19efb666-df35-4060-8223-1b7ec0a5c52b" class="bulleted-list"><li style="list-style-type:circle">data entry errors</li></ul><ul id="b0eebce0-dc66-4104-bbc8-df4f3c7e919d" class="bulleted-list"><li style="list-style-type:circle">data integrity problems</li></ul><ul id="08429ecb-92aa-4a79-8661-c444321a4c2c" class="bulleted-list"><li style="list-style-type:circle">data anomalies - when not all of the changes required to be made are flowed through to all redundant data repositories<ul id="862723ec-458b-4701-8553-b11106d622f4" class="bulleted-list"><li style="list-style-type:square">update anomalies</li></ul><ul id="ccae2c28-1a59-4c6a-9da0-15adf53249e4" class="bulleted-list"><li style="list-style-type:square">insertion anomalies</li></ul><ul id="824f6979-328d-48b4-bebd-183b970a5873" class="bulleted-list"><li style="list-style-type:square">deletion anomalies</li></ul></li></ul></li></ul><ul id="58da0f28-70f6-4831-9c6e-d0ff4b32ad76" class="bulleted-list"><li style="list-style-type:disc">The Database System Environment<ul id="1462373c-d2e4-47c6-8d9b-1f7001051234" class="bulleted-list"><li style="list-style-type:circle">comprising of hardware, software, people, procedures and data</li></ul><ul id="b69b0372-c6ae-4269-8282-c2b757eb8772" class="bulleted-list"><li style="list-style-type:circle">System administrators, database administrators, systems analysts and programmers and end users</li></ul></li></ul><ul id="dd7f50d8-e619-4382-8216-7cd38d1435b4" class="bulleted-list"><li style="list-style-type:disc">DBMS functions:<ul id="c0a523c2-58d5-405c-bf3e-92b166f9f692" class="bulleted-list"><li style="list-style-type:circle">data dictionary management<ul id="ba6931c9-d154-44c0-92d8-2a50b2a2ebd3" class="bulleted-list"><li style="list-style-type:square">abstraction to take care of data component rules and relationships, removing data dependence from the system</li></ul></li></ul><ul id="bd23984c-6922-4e2b-b583-8ee28b8c8adf" class="bulleted-list"><li style="list-style-type:circle">data storage management<ul id="49b822c4-bc9f-4054-b294-205b33855578" class="bulleted-list"><li style="list-style-type:square">including performance tuning</li></ul></li></ul><ul id="0ab7e245-c930-41eb-b25d-e88fa8299f22" class="bulleted-list"><li style="list-style-type:circle">data transformation &amp; presentation<ul id="955a78e9-42a8-4994-bb46-29b05926c0d5" class="bulleted-list"><li style="list-style-type:square">such as localised date transformations</li></ul></li></ul><ul id="a9abe36c-a58b-414b-ac65-cba908346608" class="bulleted-list"><li style="list-style-type:circle">security management<ul id="f7b4b3fe-af68-4c09-a6df-62aabad0ff47" class="bulleted-list"><li style="list-style-type:square">including access control</li></ul></li></ul><ul id="b1aa95c3-e800-4719-bb7b-ea230d309d71" class="bulleted-list"><li style="list-style-type:circle">multiuser access control</li></ul><ul id="d627a9eb-2edd-42b2-9335-5f488771b89e" class="bulleted-list"><li style="list-style-type:circle">backup and recovery management</li></ul><ul id="27ed689b-fe94-4659-b3f7-64396e437e53" class="bulleted-list"><li style="list-style-type:circle">data integrity management</li></ul><ul id="ef25d8e8-8c76-4dd6-b8ef-18cbdfd70d7b" class="bulleted-list"><li style="list-style-type:circle">database access languages<ul id="bc22ccdd-dcd2-4a4a-bb74-1501520edd7d" class="bulleted-list"><li style="list-style-type:square">A query language is non-procedural and allows a user to specify what is to be done without having to specify how it is to be done</li></ul></li></ul><ul id="3fd927b4-c869-47ab-b03f-140520931c6d" class="bulleted-list"><li style="list-style-type:circle">application programming interfaces</li></ul><ul id="c7001564-325d-4c75-ac8c-2ea8dfe7b725" class="bulleted-list"><li style="list-style-type:circle">database communication interfaces</li></ul></li></ul><ul id="8151e0a6-3256-489d-8019-129909003952" class="bulleted-list"><li style="list-style-type:disc">Managing the Database System:<ul id="a295f85e-fe7d-4439-be74-7c4e5c713854" class="bulleted-list"><li style="list-style-type:circle">Disadvantages of a database system:<ul id="ef53f23a-05d7-4cd7-b2f8-54fbdb329a5e" class="bulleted-list"><li style="list-style-type:square">Cost</li></ul><ul id="d0414011-ce2c-4035-89f1-0ef16e2ffec2" class="bulleted-list"><li style="list-style-type:square">Management complexity</li></ul><ul id="a0e24fbb-b633-4b7e-97db-814c9b405cf8" class="bulleted-list"><li style="list-style-type:square">Maintaining currency</li></ul><ul id="8a017d3e-ffe0-48de-a67d-26c31fd829bd" class="bulleted-list"><li style="list-style-type:square">Vendor dependency</li></ul><ul id="f78bc59f-4d37-4657-8e86-8bd509d9803f" class="bulleted-list"><li style="list-style-type:square">Frequent upgrade / replacement cycles</li></ul></li></ul></li></ul><ul id="fd9589f9-ecb7-4d35-ac19-1970cd1d6a83" class="bulleted-list"><li style="list-style-type:disc">Data Models:<ul id="38a3e210-7470-41ef-a74b-ce5cb1b60d9b" class="bulleted-list"><li style="list-style-type:circle">Entities<ul id="750c6dfb-a241-452b-b8f1-eeebfc6b7329" class="bulleted-list"><li style="list-style-type:square">Objects for storing data</li></ul><ul id="b651789c-37c2-4516-b5d4-31dd7cce5bec" class="bulleted-list"><li style="list-style-type:square">Data is stored in attributes</li></ul></li></ul><ul id="77ebd207-7f90-44e4-8174-587b0e7caa2f" class="bulleted-list"><li style="list-style-type:circle">Relationships<ul id="9ee72c7b-2af0-4910-b8a0-cd303731ff3f" class="bulleted-list"><li style="list-style-type:square">Associations between entities</li></ul><ul id="cecdb406-fb0b-4bdc-bcea-e04e9138f089" class="bulleted-list"><li style="list-style-type:square">Can be 1:1, 1:M, M:M</li></ul></li></ul><ul id="5623c5e9-9b74-40a0-9afb-f5d19ddb85ab" class="bulleted-list"><li style="list-style-type:circle">Constraints<ul id="bb9523c3-5056-4c60-a9d8-43b705d27d1f" class="bulleted-list"><li style="list-style-type:square">Rules to ensure data integrity</li></ul></li></ul><ul id="9f9d7535-83aa-4205-93e1-b29770a60682" class="bulleted-list"><li style="list-style-type:circle">Business Rules:<ul id="5045cede-84d2-4f41-b453-8b841f03da38" class="bulleted-list"><li style="list-style-type:square">Organisational policies, procedures or principles</li></ul><ul id="a5725706-719d-461e-b75f-44de8d1348b6" class="bulleted-list"><li style="list-style-type:square">Can help establish entities, relationships and constraints</li></ul></li></ul><ul id="b99cfdc8-f13d-46b6-8449-8efbbdaec4a5" class="bulleted-list"><li style="list-style-type:circle">Historical Structures:<ul id="cfcdf5d4-8c69-497b-88b3-90107a7da378" class="bulleted-list"><li style="list-style-type:square">File System</li></ul><ul id="74fa6391-1746-4721-8fff-acd3fde0014a" class="bulleted-list"><li style="list-style-type:square">Hierarchical Model</li></ul><ul id="8421ec92-2ea0-4d50-8809-45ca2c181383" class="bulleted-list"><li style="list-style-type:square">Network Model (multiple parents allowed)</li></ul><ul id="ddf3981b-11eb-4add-b261-ea1a45d30cb0" class="bulleted-list"><li style="list-style-type:square">Relational Model<ul id="e8d0df70-3d39-4a2f-a19c-d47060205833" class="bulleted-list"><li style="list-style-type:disc">can solve more advanced informational needs and can now be supported by current generation IT infrastructure</li></ul><ul id="cadd3c08-0ca2-4ac7-ac8d-31ee556e15ad" class="bulleted-list"><li style="list-style-type:disc">A relation is a two dimensional structure with intersecting rows and columns i.e. a table or file</li></ul><ul id="98d0a98a-bada-4869-9626-99267e655d11" class="bulleted-list"><li style="list-style-type:disc">An attribute is one column of a relation i.e. field or column</li></ul><ul id="5e7c7110-ccd8-494e-a801-d147defe3156" class="bulleted-list"><li style="list-style-type:disc">A tuple is one line of a relation i.e. a record or row</li></ul><ul id="203cd38d-5fc9-4cff-82a2-5890d1096038" class="bulleted-list"><li style="list-style-type:disc">A value is one piece of data in a field i.e. a cell</li></ul></li></ul><ul id="96a004c9-7009-409d-b39a-10e74ecd4248" class="bulleted-list"><li style="list-style-type:square">Entity relational model - a graphical representation of a relational model</li></ul><ul id="e43cb37d-a249-49e8-8ca0-0e33a919e39a" class="bulleted-list"><li style="list-style-type:square">Object-Orientated Model - often used together with OOP where classes replace entities and also includes the features of behaviour and inheritance</li></ul><ul id="5520af4c-9653-47c6-9586-9fc122739bdf" class="bulleted-list"><li style="list-style-type:square">Big Data Models<ul id="e2bf68ed-0554-47a2-8b60-ebcd35ea3c0e" class="bulleted-list"><li style="list-style-type:disc">data sets too large for other models</li></ul><ul id="3da9dfc2-be89-41ec-b10b-f583c09f845d" class="bulleted-list"><li style="list-style-type:disc">NoSQL</li></ul><ul id="8251d204-4b47-41d0-bb9a-14baa7ea5acb" class="bulleted-list"><li style="list-style-type:disc">Hadoop</li></ul><ul id="3d7e1a2a-6afa-4ee9-8d11-2645db46215f" class="bulleted-list"><li style="list-style-type:disc">MapReduce</li></ul></li></ul><ul id="99b847c6-279a-4d07-8e93-69ed74f23549" class="bulleted-list"><li style="list-style-type:square">At bare minimum, a data model should contain a description of the data structure that will store the end-user data, a set of enforceable rules to guarantee the integrity of the data and a data manipulation methodology to support real-world data transformations</li></ul></li></ul></li></ul><ul id="a652528d-6444-4d8b-b0ba-549cdb328900" class="bulleted-list"><li style="list-style-type:disc">Data Model Basic Building Blocks:<ul id="02679cae-bb37-4f82-a31a-955f04de2d07" class="bulleted-list"><li style="list-style-type:circle">Entities:<ul id="5d9fc7a4-c14e-4450-a1c9-bb2735acf027" class="bulleted-list"><li style="list-style-type:square">A real-world object - person, place or thing - about which data will be stored</li></ul><ul id="78aa6f00-6865-4884-93dc-cde2ff8c0c6d" class="bulleted-list"><li style="list-style-type:square">Rectangle in an ERD, also known as an entity box</li></ul><ul id="db6b7401-ba83-4449-a442-949cf6006d20" class="bulleted-list"><li style="list-style-type:square">Name will be singular and in all-caps</li></ul></li></ul><ul id="0ffd18e1-54d8-464d-a0be-b174a49562b7" class="bulleted-list"><li style="list-style-type:circle">Attributes:<ul id="fbc526b0-8c25-43dc-aeb7-382a8a4f65c0" class="bulleted-list"><li style="list-style-type:square">Characteristics about an entity</li></ul></li></ul><ul id="6a031003-ef54-4155-9843-159f7ef65f51" class="bulleted-list"><li style="list-style-type:circle">Relationships:<ul id="7b7ecca9-60ca-4781-adf7-13d874906927" class="bulleted-list"><li style="list-style-type:square">Associations between entities: 1:M, M:N, 1:1</li></ul><ul id="74302272-31e0-46b0-b592-5cedccc75e8f" class="bulleted-list"><li style="list-style-type:square">Relation is referred to as connectivity, in the form of an active or passive verb</li></ul></li></ul><ul id="5b380f45-abd9-4dd8-a250-1925159f41d4" class="bulleted-list"><li style="list-style-type:circle">Constraints:<ul id="0728467e-b90a-4b80-b0ac-a52f5c6ff5d3" class="bulleted-list"><li style="list-style-type:square">Restrictions placed on data to ensure data integrity in the form of rules</li></ul></li></ul><ul id="433473f7-0eae-4325-8c6a-1cf94b45fb4e" class="bulleted-list"><li style="list-style-type:circle">Business Rules:<ul id="57d46184-f2d2-40e1-b46c-666e3e2c4975" class="bulleted-list"><li style="list-style-type:square">Policies, procedures or principles that define the above building blocks</li></ul><ul id="71a12b7a-2f16-4e58-b7c7-e9664b04a8d7" class="bulleted-list"><li style="list-style-type:square">As a general rule, a noun in a business rule will translate to an entity in the model and a verb in a business rule will translate to a relationship among entities</li></ul></li></ul></li></ul><ul id="88bda41f-a4d0-49ac-83fe-6b9e760df6fa" class="bulleted-list"><li style="list-style-type:disc">Naming conventions:<ul id="ade301f7-cd8f-4d4b-b9c0-2e13b7efe798" class="bulleted-list"><li style="list-style-type:circle">Attributes are often in all-caps</li></ul><ul id="9c8954c6-d06e-4816-9979-3cf5aa6c6973" class="bulleted-list"><li style="list-style-type:circle">It is good practice to prefix the name of an attribute with the name or an abbreviation of the name of the entity in which is occurs for example a customer credit limit = CUS_CREDIT_LIMIT</li></ul></li></ul><ul id="db9fcfca-1a45-4323-b822-b04417b5b50e" class="bulleted-list"><li style="list-style-type:disc">Schema refers to the conceptual organisation of the entire database as viewed by the database administrator</li></ul><ul id="88ae07ef-a289-422e-911a-cf9d2d567dc7" class="bulleted-list"><li style="list-style-type:disc">Subschema refers to the portion of the database ‘seen’ by the application programs</li></ul><ul id="2fda0950-dea0-4637-8b35-f6df9b7213f8" class="bulleted-list"><li style="list-style-type:disc">Data manipulation languages (DMLs) and Data Definition Languages (DDLs)</li></ul><ul id="37e25046-bd5e-4d86-907a-c77a56b7a447" class="bulleted-list"><li style="list-style-type:disc">The relational model was introduced in 1970</li></ul><ul id="de557e89-b8fd-4723-b10c-3884b5269159" class="bulleted-list"><li style="list-style-type:disc">Peter Chen first introduced the Entity Relationship Model (ERM and thus ERDs) in 1976</li></ul><ul id="b595ff55-74f9-47a3-ac7a-c912f593e705" class="bulleted-list"><li style="list-style-type:disc">Each row in a relational table is known as an entity instance or entity occurrence with a collection of entities known as an entity set</li></ul><ul id="26711b46-feee-4de9-adb0-2aa7e23aa1b9" class="bulleted-list"><li style="list-style-type:disc">The Object Orientated Model - OODM<ul id="48de8560-686a-467a-8da7-cf0d330a3ada" class="bulleted-list"><li style="list-style-type:circle">both data and its relationships are contained in a single structure, known as an object</li></ul><ul id="70dab4a1-0ac6-4eec-a68c-5d45e272f18d" class="bulleted-list"><li style="list-style-type:circle">Object Orientated Database Management System = OODBMS</li></ul><ul id="116a5dd7-21fb-4656-9b08-b8d125dc38d1" class="bulleted-list"><li style="list-style-type:circle">OODM is said to be a semantic data model</li></ul><ul id="490ef9a4-213b-4445-a232-4693c7d5c550" class="bulleted-list"><li style="list-style-type:circle">OODM objects contain both their attributes and also their functions / operations<ul id="7cd23714-eeb8-479d-ada9-31b021f6814e" class="bulleted-list"><li style="list-style-type:square">objects are therefore self-contained and re-usable</li></ul><ul id="3da8da2f-affd-4103-8e91-b9188e10b4d0" class="bulleted-list"><li style="list-style-type:square">objects are analogous to an ER model’s entities</li></ul><ul id="95ea8830-8581-48d6-a27d-92a42e185e1c" class="bulleted-list"><li style="list-style-type:square">Objects with similar characteristics are grouped in classes, which may have methods</li></ul><ul id="5adb038b-5ee8-4314-9eb6-cb9f28153081" class="bulleted-list"><li style="list-style-type:square">Classes are organised in a class hierarchy</li></ul><ul id="7b8b240c-18c2-4d59-bfbf-7af9a42b48b8" class="bulleted-list"><li style="list-style-type:square">Classes have inheritance</li></ul></li></ul><ul id="4bc50856-39d7-4f31-a21f-5d8c943ab18e" class="bulleted-list"><li style="list-style-type:circle">OODMs are typically depicted using Unified Modelling Language (UML) class diagrams</li></ul></li></ul><ul id="060c8bc5-e6e8-4a25-898f-974829184435" class="bulleted-list"><li style="list-style-type:disc">The Extended Relational Database Model - ERDM<ul id="9309142d-b9c2-4731-9c7b-2e3164439619" class="bulleted-list"><li style="list-style-type:circle">adds some features of the OODM within the inherently simpler RDM framework</li></ul><ul id="19a9735b-0962-443a-9051-ee164f86d3f2" class="bulleted-list"><li style="list-style-type:circle">includes objects, extensible data types based on class and inheritance</li></ul><ul id="7e226722-d852-4ae9-8f48-f2f76434203e" class="bulleted-list"><li style="list-style-type:circle">is often described as an Object / Relational Database Management System (O/R DBMS)</li></ul><ul id="8239876d-6aff-483d-836b-bad5bc2f5f6f" class="bulleted-list"><li style="list-style-type:circle">is more focused toward general deployment as opposed to OO’s specificity</li></ul><ul id="9540c769-01fc-45e6-86d3-fe10d0f967a6" class="bulleted-list"><li style="list-style-type:circle">is easily extended to accommodate new classes and capabilities such as XML </li></ul></li></ul><ul id="ce918621-28db-4f11-bb37-14fec90c5abf" class="bulleted-list"><li style="list-style-type:disc">Extensible Markup Language (XML) has emerged as the de facto standard within the industry, in order to be able to handle the growing quantity of unstructured data such as diagrams, media, webpages etc.</li></ul><ul id="3aabf546-3152-41bd-ad50-80a8c844ec65" class="bulleted-list"><li style="list-style-type:disc">Big data refers to the movement to find new and better ways to manage the large amounts of web and sensor generated data to derive business insights and is defined by the 3 Vs:<ul id="3e260c13-981f-4b7a-bd82-4b3f7f83421f" class="bulleted-list"><li style="list-style-type:circle">Volume</li></ul><ul id="4d35844e-337d-46c4-bb15-dffabf88f471" class="bulleted-list"><li style="list-style-type:circle">Velocity</li></ul><ul id="33c2687c-2d94-402e-a9ae-f5573d017988" class="bulleted-list"><li style="list-style-type:circle">Variety</li></ul></li></ul><ul id="4dbd3ca1-1bf0-427d-b66f-fd11d22a3100" class="bulleted-list"><li style="list-style-type:disc">Hadoop: java based, open source, high speed, distributed storage and computation. Supported by the Apache Software Foundation.<ul id="bc97beda-f9cc-434d-b368-7e19193ae6f0" class="bulleted-list"><li style="list-style-type:circle">Hadoop Distributed File System (HDFS): storage for big data at high speeds</li></ul><ul id="437a9ca6-b403-49bc-9468-7acf1aa5008a" class="bulleted-list"><li style="list-style-type:circle">MapReduce: open source API providing fast data analytic services by distributing data processing among thousands of parallel nodes<ul id="ab79205b-cff1-4ee9-9838-f903154421d6" class="bulleted-list"><li style="list-style-type:square">Map: takes a job and splits it into smaller units of work</li></ul><ul id="159f5733-4b6a-48b3-8032-73bf98905529" class="bulleted-list"><li style="list-style-type:square">Reduce: collects outputs and recombines into a whole</li></ul></li></ul></li></ul><ul id="ce36eee6-1f94-4a62-9700-fca17ea63f37" class="bulleted-list"><li style="list-style-type:disc">NoSQL: large-scale distributed database system that stores both structured and unstructured data<ul id="7c208387-b3dc-48fe-93f7-864454c0f941" class="bulleted-list"><li style="list-style-type:circle">Key-Value data model: ID, Key (attribute), Value (usually a string)</li></ul><ul id="7932c66c-7da7-4b09-bc23-490c43568036" class="bulleted-list"><li style="list-style-type:circle">very useful for large amounts of sparse data<ul id="b8f03a85-79a4-483f-bb0b-7239b1cdeb2a" class="bulleted-list"><li style="list-style-type:square">consider a clinic with many patients and many assessments - do not want a blank field for every test that a patient has NOT taken…</li></ul></li></ul><ul id="1badbdb8-e752-4a9a-a351-2d8ddd9945e2" class="bulleted-list"><li style="list-style-type:circle">highly scalable, available and fault tolerant</li></ul></li></ul><ul id="888eb28a-6308-41ad-b46e-35befa097c78" class="bulleted-list"><li style="list-style-type:disc">Data abstraction:<ul id="05755852-db08-405a-9f94-6027d7abd891" class="bulleted-list"><li style="list-style-type:circle">External Model:<ul id="b59d351a-d4e9-44cb-abce-23e29ced023a" class="bulleted-list"><li style="list-style-type:square">End User’s View of the data environment</li></ul><ul id="f5b2c352-a82e-45fc-a2f8-222bf56505cd" class="bulleted-list"><li style="list-style-type:square">External Model’s View / External Schema</li></ul></li></ul><ul id="7e2c4cfc-5e70-427a-9c56-c23dfe5b4426" class="bulleted-list"><li style="list-style-type:circle">Conceptual Model:<ul id="0ac43aba-b75b-4e53-be2e-3f827822a849" class="bulleted-list"><li style="list-style-type:square">Global view of the entire database by the entire organisation</li></ul><ul id="5ea4aaf5-9c99-4a75-8fa0-b12063ec623e" class="bulleted-list"><li style="list-style-type:square">Conceptual Schema</li></ul><ul id="bad7c441-4b3a-4780-b2b9-ee533404a4ce" class="bulleted-list"><li style="list-style-type:square">The most widely used being the ER model represented by the ERD</li></ul><ul id="476b1d5d-a3ec-482b-9152-27b7ee092f42" class="bulleted-list"><li style="list-style-type:square">independent from both software and hardware</li></ul><ul id="e4c9b982-7610-4b1e-a67c-b80a4ca343c8" class="bulleted-list"><li style="list-style-type:square">Logical Design: creating a conceptual model that could be implemented by any DBMS</li></ul></li></ul><ul id="383c12d3-2152-4596-bd11-f84a220b98b7" class="bulleted-list"><li style="list-style-type:circle">Internal Model:<ul id="e79938a9-ac18-49e4-8d20-80d0fb93e9b1" class="bulleted-list"><li style="list-style-type:square">Maps the conceptual model on the DBMS</li></ul><ul id="8345e09c-f0ff-435a-b5ac-6671841df2ad" class="bulleted-list"><li style="list-style-type:square">Internal schema</li></ul></li></ul><ul id="0a0f292c-9c5c-4096-b44d-733a5fcc6764" class="bulleted-list"><li style="list-style-type:circle">Physical Model:<ul id="2e07486c-8fee-4bfd-8a77-7d7e0c25646b" class="bulleted-list"><li style="list-style-type:square">Lowest level of abstraction, describes the way in which data is stored and accessed in the physical world</li></ul><ul id="970da173-efab-47bc-ac7c-dcc715779ee2" class="bulleted-list"><li style="list-style-type:square">software and hardware dependant</li></ul><ul id="bd7b002e-52b1-490e-af90-7b353e71554a" class="bulleted-list"><li style="list-style-type:square">When you can change the physical model without affecting the internal model you are said to have physical independence</li></ul><ul id="a3aed458-ea78-4632-ba85-b9dccb90c595" class="bulleted-list"><li style="list-style-type:square"></li></ul></li></ul></li></ul><p id="684cecd8-0913-4002-990f-661d3395ac68" class="">
+</p></div></article></body></html>
