@@ -1,0 +1,690 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Information Technology Fundamentals</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5e8159b5-4456-4c7d-8e6c-1f11f898f808" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808/Information_Technology_Fundamentals.jpg"/></div><h1 class="page-title">Information Technology Fundamentals</h1></header><div class="page-body"><p id="6ef21781-7e7c-47b5-b2b2-c3bd9679173b" class="">Hardware / Software / Data Storage / Coding &amp; Languages</p><figure id="501f565e-6956-41e3-af0b-923e53846f8e"><div class="source"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808/CSE1ITX_Subject_Learning_Guide_2022.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca337bc0-7fa9-4e91-b188-11d55d544a82/CSE1ITX_Subject_Learning_Guide_2022.pdf</a></div></figure><ul id="0a67b965-5241-497b-9966-20a1b4ca390e" class="bulleted-list"><li style="list-style-type:disc"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808.html">Week 1</a></li></ul><ul id="7dc3bef9-6800-46f8-bdda-ae9178743279" class="bulleted-list"><li style="list-style-type:disc"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808.html">Week 2</a></li></ul><ul id="ec62b049-2a35-4ee4-897a-8d6965e23c89" class="bulleted-list"><li style="list-style-type:disc"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808.html">Week 3</a></li></ul><ul id="ebdb2e0a-7250-4272-b814-b382247c2a75" class="bulleted-list"><li style="list-style-type:disc"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808.html">Week 4</a></li></ul><ul id="596b640b-2a3e-4a98-a2c3-aaa4b61f2e1a" class="bulleted-list"><li style="list-style-type:disc"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808.html">Week 5</a></li></ul><ul id="f3963138-89be-4669-8155-4ba927de563d" class="bulleted-list"><li style="list-style-type:disc"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808.html">Week 6</a></li></ul><ul id="024a7229-d836-49b9-bcdf-ad13df855a99" class="bulleted-list"><li style="list-style-type:disc"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808.html">Week 7</a></li></ul><ul id="b356d247-4b62-4368-b45c-561a71527c75" class="bulleted-list"><li style="list-style-type:disc"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808.html">Week 8</a></li></ul><ul id="a278d9fb-fb83-46d0-b6fe-b8db370ee0b7" class="bulleted-list"><li style="list-style-type:disc"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808.html">Week 9</a></li></ul><p id="a32130e7-3368-475c-abf4-010f37e13a10" class="">
+</p><p id="36371c4a-bb0a-4c48-be25-8c8b2e6c4c52" class="">
+</p><p id="1868ed4d-45d7-4794-a86e-ee450fe7e523" class="">
+</p><h2 id="063034cd-abfb-41df-b921-245959a37d27" class="">Week 1: Information Technology Landscape</h2><ul id="2b3dda19-50e8-45d3-85cd-316b6a81b920" class="bulleted-list"><li style="list-style-type:disc">Computing “fields” were traditionally divided into 3 areas: Hardware, Software and Application</li></ul><ul id="f911d6ae-9b5a-41ba-888c-3ad1e68a445f" class="bulleted-list"><li style="list-style-type:disc">Information Technology (applying advancement in computer tech to IS) Vs Information Systems (generation and use of information, with or without IT)</li></ul><ul id="e2867a60-7d99-4ae8-a763-2b29d87460cf" class="bulleted-list"><li style="list-style-type:disc">Ada Lovelace = numbers can represent entities other than quantity, widely regarded as the first programmer</li></ul><ul id="6e1f5f77-99d4-4a2a-bacf-7dbc22adfc02" class="bulleted-list"><li style="list-style-type:disc">Alan Turing formally theorised the idea of a generalisable computer known as a Turing machine</li></ul><ul id="a8b92dd7-3d67-452d-a139-ff8895725d0c" class="bulleted-list"><li style="list-style-type:disc">ARPNET originally connected several major universities in 1969 and formed the backbone of today’s internet<figure id="f4fb3bf4-9746-488d-b528-418e2fdfa1f4"><div class="source"><a href="Information%20Technology%20Fundamentals%205e8159b544564c7d8e6c1f11f898f808/ISOC-History-of-the-Internet_1997.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2fc2147e-d9e4-4a4e-8066-e34a7bd143b3/ISOC-History-of-the-Internet_1997.pdf</a></div></figure></li></ul><ul id="ea5be31d-7d87-47ee-8c0c-253e0df850e1" class="bulleted-list"><li style="list-style-type:disc">The first online library catalogues was started in 1971, transitioning from the card catalogue system to a database system</li></ul><ul id="c7ba2d2d-8de3-43fb-864e-79b05309c9c9" class="bulleted-list"><li style="list-style-type:disc">CAPTCHA = Completely Automated Public Turing Test to Tell Computers and Humans Apart</li></ul><ul id="ec225217-cd68-49fd-95bb-8946ffa65a42" class="bulleted-list"><li style="list-style-type:disc"></li></ul><h2 id="9aa80428-bc34-451d-9ccd-000015093aa6" class="">Week 2: Computer Hardware</h2><ul id="1d81ed2f-814a-43f9-b85c-0135179fee85" class="bulleted-list"><li style="list-style-type:disc">Transistors - Boolean Algebra - transistors forming logic gates - combining to form mathematical functions - Integrated Circuits</li></ul><ul id="138c25aa-c525-4f59-9af8-3d22c2961a03" class="bulleted-list"><li style="list-style-type:disc">RAID - Redundant Array of Inexpensive Disks<ul id="7b853d46-9645-422a-9a90-7c64b670ca50" class="bulleted-list"><li style="list-style-type:circle">RAID 0 - Striping<ul id="ef6c0b7d-eaad-440f-bafe-69b51c176dbb" class="bulleted-list"><li style="list-style-type:square">Data is striped across all disks improving I/O performance and utilising all capacity however failure of one drive = failure of all.</li></ul><ul id="f8334bba-e2f2-4658-a86f-3bd539a11b9c" class="bulleted-list"><li style="list-style-type:square">Minimum 2 drives</li></ul></li></ul><ul id="267c7503-d812-4fb2-91c4-9575779c6b7b" class="bulleted-list"><li style="list-style-type:circle">RAID 1 - Mirroring<ul id="45d55182-41a3-4ed4-8668-03efab69500e" class="bulleted-list"><li style="list-style-type:square">Mirrors Data across multiple drives making read slower but write faster.  Failure of one drive can be accomodated</li></ul><ul id="3391cfc8-67a9-4896-b001-64f54867125a" class="bulleted-list"><li style="list-style-type:square">Minimum 2 drives</li></ul></li></ul><ul id="5f9bdcce-9adc-4c6b-a0bd-b6bcdfb7c869" class="bulleted-list"><li style="list-style-type:circle">RAID 5 - Distributed<ul id="ee09ef86-8814-4408-8eeb-857372ccaecd" class="bulleted-list"><li style="list-style-type:square">Distributes data across all drives including parity information which can be used to reconstruct a drive if needed.</li></ul><ul id="2649c947-e334-4566-950d-8f9b7c5df706" class="bulleted-list"><li style="list-style-type:square">Minimum 3 drives, only 1 drive of capacity is lost.</li></ul></li></ul><ul id="00119db4-3db6-4220-b9fb-c116ef04ad8a" class="bulleted-list"><li style="list-style-type:circle">RAID 10 - Hybrid 1 &amp; 0<ul id="a078f89a-54a1-47e4-a934-45d47aefb761" class="bulleted-list"><li style="list-style-type:square">Combines performance of RAID 1 and reliability of RAID 0 but is the most expensive</li></ul><ul id="bb7cc5bc-a8d1-4969-a434-afa3702bcc26" class="bulleted-list"><li style="list-style-type:square">Minimum 4 drives</li></ul></li></ul></li></ul><ul id="9b9c3ea2-635f-48ff-a4d1-e3ac1c0c2890" class="bulleted-list"><li style="list-style-type:disc">Computer System:  Input —&gt; Processor / Memory —&gt; Output</li></ul><ul id="46c94700-8909-44a7-869d-8cf0d4cb3bf9" class="bulleted-list"><li style="list-style-type:disc">Virtualisation - Multiple Virtual Systems on one system</li></ul><ul id="3aea7c04-ee1f-414d-88bc-5dc7298dfafb" class="bulleted-list"><li style="list-style-type:disc">Motherboard Form Factor - Extended Vs Standard Vs Micro ATX</li></ul><ul id="09e32ced-5dbb-44d5-949d-ac69e09c9a93" class="bulleted-list"><li style="list-style-type:disc">Memory Requires continuous electric charge</li></ul><ul id="552cbcff-5d64-430f-bee5-f5b0b2e43914" class="bulleted-list"><li style="list-style-type:disc">Storage retains data without electricity</li></ul><ul id="84fd98c0-06b0-472e-ab5b-87cf4534fca2" class="bulleted-list"><li style="list-style-type:disc">Non Volatile Memory Express - NVMe</li></ul><p id="b13fcd3b-b63c-4079-a9e8-9202c6035751" class="">
+</p><h2 id="cab36d99-8377-42e5-9e03-947dcf6c34ba" class="">Week 3: Computer Software</h2><ul id="a8514dfe-1825-4c4a-95a0-42266cea1e84" class="bulleted-list"><li style="list-style-type:disc">While software is commonly used as synonymous for “computer program”. Technically, it is any non-tangible aspects of a Computer.</li></ul><ul id="2222b4c7-8245-465e-8977-22cde89f5ef0" class="bulleted-list"><li style="list-style-type:disc">System software:<ul id="72a8416f-664d-42bb-a036-279fe7db9646" class="bulleted-list"><li style="list-style-type:circle">Intermediary between software and Hardware<ul id="0d328efe-faf6-4d0e-8105-4a766fec856f" class="bulleted-list"><li style="list-style-type:square">Operating System / Device Drivers / Firmware / Utility Software</li></ul></li></ul></li></ul><ul id="2b3aa30d-81e6-4d70-ad9e-bbd10c2f177e" class="bulleted-list"><li style="list-style-type:disc">Firmware tells tells the hardware what to do whereas device drivers tell the Operating system how to interact with the Hardware</li></ul><ul id="497dc128-d1b5-4849-8ed5-f02fe2644be5" class="bulleted-list"><li style="list-style-type:disc">Hypervisors: provides an environment such as a virtual machine that is a software equvalent of a Physical Machine<ul id="ba045eb3-9da1-4352-a842-1b5cdcf5c73f" class="bulleted-list"><li style="list-style-type:circle">Type 1 manages system resources and allocates to Virtual Machines</li></ul><ul id="13222639-b72b-415d-9c65-592f5682ecdc" class="bulleted-list"><li style="list-style-type:circle">Type 2 - Virtual Machines are isolated from other Virtual Machines and have their own allocated resources</li></ul><p id="54389ae8-d3f0-4152-8a21-0146fb9af373" class="">
+</p></li></ul><h2 id="bf9a2d68-d0a3-4bd8-8c5e-82ac06306661" class="">Week 4: Web Basics</h2><ul id="d921bafd-4fb2-4a78-92d7-51046e3524e0" class="bulleted-list"><li style="list-style-type:disc">URL Breakdown: protocol://domain_name/path/file_name#anchor</li></ul><ul id="cc054785-3693-480e-bef5-4e9cf2514c1a" class="bulleted-list"><li style="list-style-type:disc">HTTP = Hypertext Transfer Protocol</li></ul><ul id="381f7404-e970-456d-820d-038cb7059cd3" class="bulleted-list"><li style="list-style-type:disc">HTML = Hypertext Markup Language</li></ul><ul id="5d42869d-7772-4853-8350-cf51f781078b" class="bulleted-list"><li style="list-style-type:disc">If the anchor / filename / path is missing the web client will default to domain_name/index.html</li></ul><ul id="2c193c83-cc48-4edb-85f4-1c05613ecd90" class="bulleted-list"><li style="list-style-type:disc">Absolute Vs relative URLs</li></ul><ul id="63823d4b-20a2-41bb-a029-40b7b66519c5" class="bulleted-list"><li style="list-style-type:disc">Concept of tags (opening, closing and self-closing) vs elements (including void elements)</li></ul><ul id="34e7b9da-199f-4592-8f96-b3e846113c62" class="bulleted-list"><li style="list-style-type:disc">Tags referenced:<ul id="b241a93e-d0da-464d-8626-9909b59ab062" class="bulleted-list"><li style="list-style-type:circle">&lt;html&gt;</li></ul><ul id="4fcc1188-977c-4302-b7c0-c50d7e9fade6" class="bulleted-list"><li style="list-style-type:circle">&lt;head&gt;</li></ul><ul id="73a91575-9846-4299-b408-74af10be0d37" class="bulleted-list"><li style="list-style-type:circle">&lt;title&gt;</li></ul><ul id="a76052f7-e60b-4860-8249-22122400c12c" class="bulleted-list"><li style="list-style-type:circle">&lt;body&gt;</li></ul><ul id="6f23bcc9-03f5-4bc7-9f7f-5e1da1cd53f7" class="bulleted-list"><li style="list-style-type:circle">&lt;ul [style=”list-style-type: circle;”]&gt;</li></ul><ul id="ef6511e6-8ece-469c-92c9-2c02fbd8e4f8" class="bulleted-list"><li style="list-style-type:circle">&lt;ol [type=”a”]&gt;</li></ul><ul id="cb13fbf4-1267-4d81-84a6-afb348c1bb21" class="bulleted-list"><li style="list-style-type:circle">&lt;li&gt;</li></ul><ul id="ff3ece17-27b3-4144-b944-b56b27fd775c" class="bulleted-list"><li style="list-style-type:circle">&lt;h1&gt;&lt;h2&gt;&lt;h3&gt;&lt;h4&gt;&lt;h5&gt;&lt;h6&gt;</li></ul><ul id="499e079a-5156-4ecd-a28d-557d5ff5b124" class="bulleted-list"><li style="list-style-type:circle">&lt;p&gt;</li></ul><ul id="e8d4e474-9ec2-408c-90fc-e2bac344b199" class="bulleted-list"><li style="list-style-type:circle">&lt;span&gt;</li></ul><ul id="2dfb210b-ecaf-42f7-b388-3ae8c9f3b015" class="bulleted-list"><li style="list-style-type:circle">&lt;br /&gt;</li></ul><ul id="bec472df-8fcb-409f-b7ab-e94015eda01a" class="bulleted-list"><li style="list-style-type:circle">&lt;hr /&gt;</li></ul><ul id="2b43a237-a3cc-4e47-ac51-717746d8181b" class="bulleted-list"><li style="list-style-type:circle">&lt;b&gt;</li></ul><ul id="d456bdf2-773f-4f0e-8789-cbc6512a75bf" class="bulleted-list"><li style="list-style-type:circle">&lt;i&gt;</li></ul><ul id="ac6c5695-4209-4243-ba75-ee284396b479" class="bulleted-list"><li style="list-style-type:circle">&lt;sup&gt;</li></ul><ul id="cfad98e2-4954-4586-b419-8d5212e1acae" class="bulleted-list"><li style="list-style-type:circle">&lt;sub&gt;</li></ul><ul id="05a08a6c-0e57-4da1-b719-13e0022dc4c6" class="bulleted-list"><li style="list-style-type:circle">&lt;a href=”https://www.xxxxxxxxx.com” target=”_blank”&gt;Link&lt;/a&gt;</li></ul><ul id="e19d99c6-efb9-401b-af84-9ba078eb2a54" class="bulleted-list"><li style="list-style-type:circle">&lt;a href=”#anchor_1”&gt;Source&lt;/a&gt;</li></ul><ul id="59e14158-3e7b-4a73-bd30-c5883b918d2f" class="bulleted-list"><li style="list-style-type:circle">&lt;h3 id=”anchor_1”&gt;Destination&lt;/h3&gt;</li></ul><ul id="565a7bbd-3690-4271-9355-2af76d58eab0" class="bulleted-list"><li style="list-style-type:circle">&lt;img src=”image.png” /&gt;</li></ul><ul id="4a9e2835-63d1-48e6-8dfa-c166e642d199" class="bulleted-list"><li style="list-style-type:circle">&lt;id&gt;</li></ul><ul id="6a78f77f-b41c-434a-b80f-577fdefc8a75" class="bulleted-list"><li style="list-style-type:circle">&lt;title&gt;</li></ul><ul id="7a2d0123-9e83-412a-94e7-043b67cc93b3" class="bulleted-list"><li style="list-style-type:circle">&lt;class&gt;</li></ul><ul id="d102a3bf-cf65-4385-bd69-a3fe356c086c" class="bulleted-list"><li style="list-style-type:circle">&lt;dir=”ltr/rtl”&gt;</li></ul><ul id="ad252375-a971-4ae1-a597-981567390f83" class="bulleted-list"><li style="list-style-type:circle">&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;&lt;/dd&gt;&lt;/dt&gt;&lt;/dl&gt;</li></ul><ul id="197d8612-cce6-4dd6-820b-f5fe4885c915" class="bulleted-list"><li style="list-style-type:circle">&lt;table [border=”1”]&gt;</li></ul><ul id="c2658833-60a5-45f4-a0c5-2193fa2aaee5" class="bulleted-list"><li style="list-style-type:circle">&lt;tr&gt;</li></ul><ul id="0dcf3283-3a00-49e5-a62f-6bc31abd4753" class="bulleted-list"><li style="list-style-type:circle">&lt;td&gt;</li></ul><ul id="32f7cf61-8588-430d-98ea-63d97b776e6a" class="bulleted-list"><li style="list-style-type:circle">&lt;th scope=”[col/row”]&gt;</li></ul><ul id="a6c3fbcf-596b-42b7-b53d-e3ec8fe2fbb4" class="bulleted-list"><li style="list-style-type:circle">col/rowspan=”x”</li></ul><ul id="750a996c-6bfa-47b2-8b1b-91297199ed1e" class="bulleted-list"><li style="list-style-type:circle">&lt;thead&gt;&lt;tbody&gt;&lt;tfoot&gt; to allow scrolling body</li></ul><ul id="55aab025-4053-44f9-976b-3e72185c6409" class="bulleted-list"><li style="list-style-type:circle">&lt;form&gt;(cannot be nested in itself)<ul id="7ad0c228-fe30-415c-b27b-22bb344038e8" class="bulleted-list"><li style="list-style-type:square">action=”action_page.php”</li></ul><ul id="e547699a-0f3c-4bd8-b646-2905dda9950e" class="bulleted-list"><li style="list-style-type:square">method=”post/get”</li></ul></li></ul><ul id="d6478607-edf3-4439-9445-fed76b2cb319" class="bulleted-list"><li style="list-style-type:circle">&lt;select [size=”x”] [multiple]&gt;&lt;option value=”x”&gt;&lt;/option&gt;&lt;/select&gt;</li></ul><ul id="22e620dd-3d76-4d0b-be47-3d6f5116a7c8" class="bulleted-list"><li style="list-style-type:circle">&lt;input type=”submit/image/reset/button/hidden”&gt;</li></ul><ul id="c78d1ce0-fff1-4fb2-acd4-b39abc3422e6" class="bulleted-list"><li style="list-style-type:circle">&lt;form action=”https://” method=”get”&gt; will attach the name/value pairs to the end of the address, after a “?”, separated by ampersands</li></ul></li></ul><ul id="64530d1e-bcef-489f-b9cd-6210a83452a8" class="bulleted-list"><li style="list-style-type:disc">Nested Elements</li></ul><ul id="0c4401e3-fd68-44dc-8371-803792dc5fdd" class="bulleted-list"><li style="list-style-type:disc">Forms send data to servers in name/value pairs</li></ul><ul id="139a524d-e18e-4c83-bafd-56c196a865aa" class="bulleted-list"><li style="list-style-type:disc">Form controls: text box (&lt;input&gt;, single line, password, multi line, file upload), checkbox, radio buttons, select boxes, buttons and hidden controls </li></ul><ul id="8d4fd457-6a3a-4f90-aa7f-7df3ae9ba417" class="bulleted-list"><li style="list-style-type:disc">Compared to the “get” medhod, the “post” method sends data in</li></ul><p id="8073a0fe-f866-4c67-a2b2-0e3cbf537430" class="">am now up to element 17</p><p id="e42aee20-ae71-481e-9240-8723c9008984" class="">
+</p><h2 id="6c7e31c3-c92e-49af-8ea3-5520aa7997d2" class="">Week 5: HTML5 Essentials</h2><ul id="85a67a60-95f5-4e85-98c6-1e54237a2a09" class="bulleted-list"><li style="list-style-type:disc">browser compatibility, improved elements (video does not need to be embedded), supports mobile, cleaner markup, offline caching, drag and drop, CSS3</li></ul><ul id="00fdc92c-abea-4bf8-a7c0-404c53ab67cf" class="bulleted-list"><li style="list-style-type:disc">&lt;!DOCTYPE html&gt;</li></ul><ul id="85fe4068-0985-46f0-b0de-6e6dbbcdbe0d" class="bulleted-list"><li style="list-style-type:disc">Semantic / Structural Elements:<ul id="95d20edd-376e-4b41-8293-627c89c04f8f" class="bulleted-list"><li style="list-style-type:circle">Header - Displayed Introductory Content such as title, logos, search forms, this is NOT the same as the &lt;head&gt; element which is not visible to the user</li></ul><ul id="a4384db6-08ec-4da0-8404-3aa16e8ca37d" class="bulleted-list"><li style="list-style-type:circle">Nav - Navigation Links - can be placed inside the header</li></ul><ul id="a7cd3d7d-f497-4d6f-99d4-ebee67d2c5f4" class="bulleted-list"><li style="list-style-type:circle">Section - defines a part of a document</li></ul><ul id="2bc1a4bd-51ee-4bf8-867b-d0b05e504d9c" class="bulleted-list"><li style="list-style-type:circle">Article</li></ul><ul id="1885045d-fbbe-4212-93ab-081555ddc6fb" class="bulleted-list"><li style="list-style-type:circle">Main - should be only one of these</li></ul><ul id="0683877e-36d5-429f-801a-be77ba1e5cda" class="bulleted-list"><li style="list-style-type:circle">Aside - not directly related to the main content of the page</li></ul><ul id="0f01167d-d8da-488c-bfc0-6785bf035ac2" class="bulleted-list"><li style="list-style-type:circle">Footer</li></ul><ul id="b9783673-4001-48d0-9c98-0d247b7c8d3d" class="bulleted-list"><li style="list-style-type:circle">Form Elements (2)<ul id="debbd5a6-c580-4697-bfba-c4c1999a48d7" class="bulleted-list"><li style="list-style-type:square">&lt;datalist&gt;<ul id="1560ee2a-41b5-49e8-b471-765f84ba4e3f" class="bulleted-list"><li style="list-style-type:disc">Listed drop down with the ability to type</li></ul><ul id="b53cd49b-6a0e-4b48-9472-a528fe86aa37" class="bulleted-list"><li style="list-style-type:disc">&lt;input list&gt;&lt;datalist&gt;&lt;option&gt;</li></ul><ul id="646d4560-67fe-4ac2-9bf9-e0af97c77b97" class="bulleted-list"><li style="list-style-type:disc">consider &lt;label&gt; element</li></ul></li></ul><ul id="e1120d77-505a-4f27-a2ec-97486db6ed3d" class="bulleted-list"><li style="list-style-type:square">&lt;output&gt;<ul id="5106a0e3-bec8-49a0-8631-2dd96054aec8" class="bulleted-list"><li style="list-style-type:disc">Presents results of a calculation or user action to the user</li></ul><ul id="c293d925-1791-4455-9f9c-acc2f5d2532b" class="bulleted-list"><li style="list-style-type:disc">&lt;output name=”x” form=”xxx” for=”a b”&gt;</li></ul></li></ul></li></ul><ul id="a09b37de-6085-4338-9c0c-f0786eddbb31" class="bulleted-list"><li style="list-style-type:circle">Input<ul id="8b4a3165-f527-422b-be95-5ca5cabe4d6b" class="bulleted-list"><li style="list-style-type:square">color</li></ul><ul id="feadf5f4-43eb-4222-a4f3-90bf23fcdfe9" class="bulleted-list"><li style="list-style-type:square">date</li></ul><ul id="1cf009c8-9cd6-485b-8792-26de301ffef8" class="bulleted-list"><li style="list-style-type:square">datetime-local</li></ul><ul id="c07e5e04-55ce-49d2-be46-2fc25759b719" class="bulleted-list"><li style="list-style-type:square">email</li></ul><ul id="ab6c7c76-cd97-4e36-aed4-4f6c9c08ba5d" class="bulleted-list"><li style="list-style-type:square">month</li></ul><ul id="cc927e46-de6f-4b35-b025-ee2b1d370caa" class="bulleted-list"><li style="list-style-type:square">number</li></ul><ul id="23088540-99ba-42db-bdec-02d392ca1c9e" class="bulleted-list"><li style="list-style-type:square">range</li></ul><ul id="7b1e2133-89f0-4048-8f1f-5e042003b5ba" class="bulleted-list"><li style="list-style-type:square">search</li></ul><ul id="72154094-9077-4ea3-b5e4-02306ed785e4" class="bulleted-list"><li style="list-style-type:square">tel</li></ul><ul id="74931aa6-861f-4abb-966b-deee4e5c2071" class="bulleted-list"><li style="list-style-type:square">time</li></ul><ul id="2d0c8d30-ef57-4e53-933e-2f8240583b59" class="bulleted-list"><li style="list-style-type:square">url</li></ul><ul id="1e222f7a-a3da-4abd-9a5a-834a888c775e" class="bulleted-list"><li style="list-style-type:square">week</li></ul></li></ul><ul id="5a0913d6-c225-45b7-872b-ef66d30e4ef5" class="bulleted-list"><li style="list-style-type:circle">form fill validation<ul id="df62d09b-084f-4827-a311-1df944aceafe" class="bulleted-list"><li style="list-style-type:square">Basic validation ensures all mandatory elements have been completed</li></ul><ul id="f6e4a4b7-dff9-448a-a47e-071b574744bc" class="bulleted-list"><li style="list-style-type:square">Data format validation ensures data is of the correct type and value</li></ul><ul id="46256d49-ef5f-444e-be56-04358a384a19" class="bulleted-list"><li style="list-style-type:square">Validation constraint attributes<ul id="7ed12fb0-6998-45c7-95e5-de378ee0d254" class="bulleted-list"><li style="list-style-type:disc">required=”required”</li></ul><ul id="76e79b11-d809-4bb1-8e8d-ec98f7603a20" class="bulleted-list"><li style="list-style-type:disc">min</li></ul><ul id="095d55db-5cdf-46aa-a380-bc153a96b4c4" class="bulleted-list"><li style="list-style-type:disc">max</li></ul><ul id="ec2e2b00-8d0e-4221-b4f8-7b097bfbed66" class="bulleted-list"><li style="list-style-type:disc">step</li></ul><ul id="46e72549-2d57-456f-b88c-470692a8e783" class="bulleted-list"><li style="list-style-type:disc">maxlength</li></ul></li></ul></li></ul><ul id="7e9c67c3-b96a-4c6c-bbbe-736cb42e2eb0" class="bulleted-list"><li style="list-style-type:circle">Graphics Elements<ul id="c93409a3-0eac-4b41-847e-77406a942c73" class="bulleted-list"><li style="list-style-type:square">Allows you to draw graphics in documents without using external images or third party tools</li></ul><ul id="4a675652-139a-4d67-87af-db0241f6743a" class="bulleted-list"><li style="list-style-type:square">&lt;canvas&gt; - uses JavaScript</li></ul><ul id="cb4d34b6-069b-425c-aefb-50a1527c12c2" class="bulleted-list"><li style="list-style-type:square">&lt;svg&gt; - Scalable Vector Graphics - XML 2D vector based graphics embedded directly without having to attach a separate file.<ul id="44ce2c60-fd80-48be-a5a7-44a32f296bdf" class="bulleted-list"><li style="list-style-type:disc">Gradients<ul id="cbee0f91-fd6b-4ede-aff2-79473fe5d81d" class="bulleted-list"><li style="list-style-type:circle">&lt;defs&gt;<ul id="5229015a-c857-42fe-bb98-5b60005be8ad" class="bulleted-list"><li style="list-style-type:square">&lt;lineargradient&gt;</li></ul><ul id="bc5c87ba-1cc5-4a4d-b4c5-24b51fe2f5f6" class="bulleted-list"><li style="list-style-type:square">&lt;radialgradient&gt;</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="f6887494-9315-489f-b054-64ce3efba52b" class="bulleted-list"><li style="list-style-type:circle">Multimedia Elements<ul id="c7e22e46-9313-4c72-98d3-79d7d84f9d83" class="bulleted-list"><li style="list-style-type:square">&lt;video&gt;<ul id="915dbb6f-bd85-4aa9-a609-e3743ab27def" class="bulleted-list"><li style="list-style-type:disc">Supports MP4, WebM, Ogg</li></ul><ul id="238493f7-be8e-426b-9723-6dcf1505bbfd" class="bulleted-list"><li style="list-style-type:disc">&lt;Video width=”600” height=”400” src=”video.mp4” controls&gt;&lt;/video&gt;</li></ul></li></ul><ul id="dcc5aa23-c49e-4dda-a45a-33654b3753ca" class="bulleted-list"><li style="list-style-type:square">&lt;audio&gt;</li></ul><ul id="9c0903e0-24a6-4d9d-9082-0642c8543019" class="bulleted-list"><li style="list-style-type:square">&lt;track&gt;</li></ul><ul id="5c703ad4-f40d-48af-90b9-ebf8dce686d1" class="bulleted-list"><li style="list-style-type:square">&lt;source&gt;</li></ul><ul id="dd193049-a672-451c-9251-e96f89e80359" class="bulleted-list"><li style="list-style-type:square">&lt;embed&gt;</li></ul></li></ul></li></ul><ul id="5e2fa511-7949-4110-809f-78b4b12e2daa" class="bulleted-list"><li style="list-style-type:disc">Lecture:<ul id="8718b0a5-faeb-468d-a3ca-ddfd30189ec8" class="bulleted-list"><li style="list-style-type:circle">recommends using w3schools as a resource</li></ul></li></ul><p id="611ce42b-2df1-4747-a1d0-292dcccecc45" class="">slide number 12</p><p id="5281080d-be5a-447a-9534-5fa6ead4e5f5" class="">
+</p><h2 id="6e0db030-072e-4ddf-a7d5-726a87c40eb7" class="">Week 6: CSS Essentials</h2><ul id="5643ed6e-960f-4561-b0e8-7452b2649d3c" class="bulleted-list"><li style="list-style-type:disc">HTML files define what you want to display whereas CSS files define how you will display it</li></ul><ul id="10b46a61-b5a0-438b-8d2c-031afb1e79b9" class="bulleted-list"><li style="list-style-type:disc">CSS current version is CSS3</li></ul><ul id="55121c74-00a3-485a-a0c3-aaba65cf6c8a" class="bulleted-list"><li style="list-style-type:disc">Selector (can be a comma-separated list) Vs Declaration</li></ul><ul id="ad5481e7-1464-4153-b6f2-a89d8a9c6a66" class="bulleted-list"><li style="list-style-type:disc">Grouping selectors (, ), universal selector (*), ID selector (#), class selector (.), combining selectors (no comma)</li></ul><ul id="fb7fdad2-70f2-434e-aab1-a34d09329e41" class="bulleted-list"><li style="list-style-type:disc">&lt;style&gt; tags</li></ul><ul id="67b8d445-0510-4ee9-a8a0-9bb2c2d3dfc6" class="bulleted-list"><li style="list-style-type:disc">External —&gt;  Embedded style sheets —&gt; Inline styling</li></ul><ul id="160b0997-33c9-4c01-b2c8-ad883f46afa3" class="bulleted-list"><li style="list-style-type:disc">Commonly used declarations:<ul id="723d9f7d-2382-41c1-8719-d94b38161991" class="bulleted-list"><li style="list-style-type:circle">background-color</li></ul><ul id="e10661d6-3e2e-4370-b16a-ccca67ba9fa3" class="bulleted-list"><li style="list-style-type:circle">border</li></ul><ul id="c8c80398-ab24-45a4-884d-960148305093" class="bulleted-list"><li style="list-style-type:circle">color</li></ul><ul id="b458c928-dcfd-44ca-a94c-1b205b64c6ed" class="bulleted-list"><li style="list-style-type:circle">font-family</li></ul><ul id="4fca964a-b307-434b-907c-0d3936b9bb05" class="bulleted-list"><li style="list-style-type:circle">font-size</li></ul><ul id="a557370f-4f1b-4234-8076-7a0ca31fc38b" class="bulleted-list"><li style="list-style-type:circle">font-style</li></ul><ul id="f2015dc9-35a9-4044-941b-99223ea35f61" class="bulleted-list"><li style="list-style-type:circle">font-weight</li></ul><ul id="9145b1a8-a201-46ee-8042-90dcfb96cb73" class="bulleted-list"><li style="list-style-type:circle">height</li></ul><ul id="95f9e46f-3097-4c9d-aaaa-c4666a52fecb" class="bulleted-list"><li style="list-style-type:circle">width</li></ul><ul id="8a5e0fed-4d45-4919-94e9-c4fd72b2de0a" class="bulleted-list"><li style="list-style-type:circle">margin</li></ul><ul id="4ba9ef74-38b6-4a20-ba06-d75b04b8ef31" class="bulleted-list"><li style="list-style-type:circle">padding</li></ul><ul id="df793489-9715-4971-b0bc-6db6857dc0a1" class="bulleted-list"><li style="list-style-type:circle">position:<ul id="d62699c9-e1e0-4c1c-bc5d-243f6d002c41" class="bulleted-list"><li style="list-style-type:square">static (default)</li></ul><ul id="9ca42597-c41a-4f54-9241-9f2ad97dee66" class="bulleted-list"><li style="list-style-type:square">relative</li></ul><ul id="66a88238-8f37-4551-bad0-b0391112a7c7" class="bulleted-list"><li style="list-style-type:square">absolute</li></ul><ul id="3444153d-c911-466a-9fa8-608ade3cd996" class="bulleted-list"><li style="list-style-type:square">fixed</li></ul><ul id="e5453dcb-f5b2-4aac-a08b-f40560ac79dc" class="bulleted-list"><li style="list-style-type:square">sticky (include -webkit-sticky for compatability with Safari browsers</li></ul></li></ul></li></ul><ul id="18df7602-68b0-48a1-9c1f-04f11b1d89dd" class="bulleted-list"><li style="list-style-type:disc">float</li></ul><ul id="47bfd33d-e427-4578-9bc5-7383ff6aaf8b" class="bulleted-list"><li style="list-style-type:disc">clear</li></ul><ul id="26eebdbc-10ee-4de1-9366-847953e2476e" class="bulleted-list"><li style="list-style-type:disc">meta</li></ul><p id="d7577c72-8a00-4309-858e-eea2999f2e6e" class="">
+</p><h2 id="22a13a2c-38db-4758-a03c-acb65e546f36" class="">Week 7: Computer Networks</h2><ul id="d527fd50-37be-41e6-9466-01f58de0c7a6" class="bulleted-list"><li style="list-style-type:disc">Decentralisation began in the 1960s in response to the threat of nuclear war that could easily destroy a centralised network</li></ul><ul id="9e665ebe-99e1-4b0b-ac4f-f4bac2ae8776" class="bulleted-list"><li style="list-style-type:disc">Network Delineation:<ul id="ece86b82-74e9-425e-b17b-ace02b50e28c" class="bulleted-list"><li style="list-style-type:circle">PAN - &lt; 10m</li></ul><ul id="5d059f6a-d0ce-450c-af22-4bf3aca0cf30" class="bulleted-list"><li style="list-style-type:circle">LAN</li></ul><ul id="735c223d-78aa-42f1-9602-340ecb76fdc1" class="bulleted-list"><li style="list-style-type:circle">MAN - Metropolitan - can span large cities such as a cable TV network</li></ul><ul id="f39a2365-6f86-4a5b-bc5b-a0be2429f6f6" class="bulleted-list"><li style="list-style-type:circle">WAN - Wide - comprised of multiple MANs, the biggest of which is the internet</li></ul></li></ul><ul id="05cc86cc-61d7-430b-810d-a6f1e38c3a1b" class="bulleted-list"><li style="list-style-type:disc">Intermediary and end devices<ul id="a1c7f852-245e-42cc-9c0a-d20ab254e078" class="bulleted-list"><li style="list-style-type:circle">Any hardware device that can send, receive and/or forward information on a network is a node.</li></ul><ul id="9305793f-0286-42f9-9c96-db9e6cf613ea" class="bulleted-list"><li style="list-style-type:circle">Any source node that transmits data or destination node that receives data is an end device</li></ul><ul id="b3542c6d-d9ec-4885-970e-943f19431b49" class="bulleted-list"><li style="list-style-type:circle">Connection between nodes is initiated by the source node</li></ul><ul id="0ef26a28-05ec-4500-947e-18a6f14f494a" class="bulleted-list"><li style="list-style-type:circle">Intermediary devices facilitate the flow of information but are not end devices</li></ul></li></ul><ul id="a07c75f1-d174-4520-9ccd-acb35fce6ec1" class="bulleted-list"><li style="list-style-type:disc">Network protocols<ul id="8a51d5fb-7209-44ad-96ae-83c2859bf721" class="bulleted-list"><li style="list-style-type:circle">TCP/IP - the dominant protocol suite used for internet communication</li></ul></li></ul><ul id="3c1e1cdb-cbd3-4e87-9d38-dbce3ff87e57" class="bulleted-list"><li style="list-style-type:disc">Network media<ul id="f29c1779-4c8e-4f1e-8411-3a76bbaad8c4" class="bulleted-list"><li style="list-style-type:circle">Defined as the connection technology between nodes along which data travels</li></ul><ul id="6c80ecd2-818d-40a5-a7e5-237418d57ad9" class="bulleted-list"><li style="list-style-type:circle">Ethernet is the technology standard for wired media<ul id="43b91fdb-940b-4414-9cbf-3f13937536b9" class="bulleted-list"><li style="list-style-type:square">Fibre optic - uses pulses of light so is not prone to electrical interference</li></ul><ul id="3163b7cf-5c11-436c-bf9d-e71b80b10c8d" class="bulleted-list"><li style="list-style-type:square">Twisted Pair Cables<ul id="5ccea5e9-d836-4a40-8d8e-8fabb1571b2b" class="bulleted-list"><li style="list-style-type:disc">UTP - unshielded</li></ul><ul id="373de2e7-e7a2-43ea-b887-eff64440bf67" class="bulleted-list"><li style="list-style-type:disc">STP - shielded</li></ul></li></ul></li></ul></li></ul><ul id="3df3dee8-fcc5-4995-a938-53f3d06a8723" class="bulleted-list"><li style="list-style-type:disc">Network Topology<ul id="8a7c628e-21bf-4ab9-b8b4-e7487ac6183a" class="bulleted-list"><li style="list-style-type:circle">Star</li></ul><ul id="e9529a0b-391e-45fb-9db5-c98b8fcd2280" class="bulleted-list"><li style="list-style-type:circle">Ring / Closed Loop</li></ul><ul id="e68f9dc3-4058-4411-bd88-353c28569fc8" class="bulleted-list"><li style="list-style-type:circle">Bus</li></ul><ul id="96ddedb1-e592-43e3-b3c2-f835727da383" class="bulleted-list"><li style="list-style-type:circle">Mesh - Full Vs Partially Connected (each must still have at least 2 nodes connected to multiple other nodes</li></ul><ul id="31404ec3-01ec-4091-9c44-8b1d4ff2679a" class="bulleted-list"><li style="list-style-type:circle">Tree</li></ul><ul id="82f55af6-27c2-48c9-87e6-6aa2c5156a1f" class="bulleted-list"><li style="list-style-type:circle">Hybrid</li></ul></li></ul><ul id="dbe5a95d-c416-4066-9e9d-a6dddd4f4464" class="bulleted-list"><li style="list-style-type:disc">Data access models:<ul id="05ce97b5-d735-4cc6-be87-6bdc41f5d412" class="bulleted-list"><li style="list-style-type:circle">Client-Server</li></ul><ul id="de495639-424d-4cbc-957d-81fed89fa5c6" class="bulleted-list"><li style="list-style-type:circle">Peer-to-Peer (P2P)</li></ul><ul id="18562f81-a659-4c46-a77c-d2d9de57e76d" class="bulleted-list"><li style="list-style-type:circle">Application Layer Protocols</li></ul></li></ul><ul id="2f8c8dc6-99bd-4be8-949f-43de3f444a5b" class="bulleted-list"><li style="list-style-type:disc">The Internet<ul id="cab894e0-121b-423b-bb06-da9e5af5403c" class="bulleted-list"><li style="list-style-type:circle">Derived from the term internetworking so is by definition a network of networks</li></ul><ul id="c1aa86ed-c1ea-44b1-9cbf-ed1c6bc36bd3" class="bulleted-list"><li style="list-style-type:circle">ARPANET in 1969 consisted of 4 computers, TCP/IP in 1970, Phone system connected to ARPANET in 1980s, First HTTP in 1990s, 2000s rise and fall of .com bubble, meteoric rise of google</li></ul><ul id="6fac00b8-1c0c-4ab7-92c5-455f611ac60d" class="bulleted-list"><li style="list-style-type:circle">ISPs</li></ul><ul id="8b3caa3c-4d12-43b3-a5d2-8e3b4501daa9" class="bulleted-list"><li style="list-style-type:circle">DNS: Domain Name Server - address book to translate http to IP address</li></ul><ul id="a48b8c51-7662-4e8b-8f93-54a8a4d44f9f" class="bulleted-list"><li style="list-style-type:circle">Server sending data in the form of packets</li></ul><ul id="b02fd1eb-afe5-45fa-8539-c6ea3b42232e" class="bulleted-list"><li style="list-style-type:circle">IP addresses assigned by ICANN - Internet Corporation for assigned names</li></ul><ul id="0002938e-8e81-4508-8d38-5fce8fd1acb7" class="bulleted-list"><li style="list-style-type:circle">URL - Universal Resource Locator<ul id="026111f6-b3ad-43e3-b265-ff3171c2f263" class="bulleted-list"><li style="list-style-type:square">Top level domain<ul id="78753fe0-2f59-4854-be3c-8fde9367d93f" class="bulleted-list"><li style="list-style-type:disc">generic, corporate, community, geographic</li></ul></li></ul><ul id="8b8c5e35-b572-471a-94c0-daa78a432cbd" class="bulleted-list"><li style="list-style-type:square">Root Domain</li></ul><ul id="e4b6f96d-6efe-4680-aff5-9f14cd8e8376" class="bulleted-list"><li style="list-style-type:square">Sub Domain</li></ul><ul id="242ee5bd-3e70-493f-ad35-71800f4f0711" class="bulleted-list"><li style="list-style-type:square">Protocol</li></ul></li></ul><ul id="ef9fca22-430c-482f-82d0-6f3f07f7d121" class="bulleted-list"><li style="list-style-type:circle">Connection<ul id="40b4e62a-0940-48f5-9036-129e92b49817" class="bulleted-list"><li style="list-style-type:square">Cable - coaxial - 20-1000 Mbps</li></ul><ul id="5768a64d-5082-4e6f-8313-29af35b445e3" class="bulleted-list"><li style="list-style-type:square">DSL - Digital Subscriber Line - 1 - 500 Mbps</li></ul><ul id="239d87ed-a5ff-4fb6-848c-d439c50d84f8" class="bulleted-list"><li style="list-style-type:square">Satellite - impacted by weather - 1 - 100 Mbps</li></ul><ul id="2bcaf158-378d-4d33-bcbd-cc7df44d41fa" class="bulleted-list"><li style="list-style-type:square">Fibre Optic - </li></ul></li></ul><ul id="78761ca7-2cab-40ec-8c47-e9330153d370" class="bulleted-list"><li style="list-style-type:circle">Uptake = 59% of global population</li></ul></li></ul><ul id="80ca9b8f-582a-4662-aed9-ecf87e664841" class="bulleted-list"><li style="list-style-type:disc">Intranet<ul id="b1fa14c8-100a-47ad-848f-9c8960618d1f" class="bulleted-list"><li style="list-style-type:circle">Mainly used by private organisations to provide access to private network such as corporate portals, internal websites etc</li></ul><ul id="cb59ddd2-6f20-4fbb-9c58-fa3b999c2ab4" class="bulleted-list"><li style="list-style-type:circle">Innovation, culture, operations, corporate memory, connected workforce</li></ul><ul id="0b8a1700-b0bc-4450-865f-101cfe3c42c5" class="bulleted-list"><li style="list-style-type:circle">Sharepoint - Web-Based collaborative portal utilising the organisations intranet</li></ul></li></ul><ul id="fe818e7d-fa08-4bca-83ce-71e1734c2db2" class="bulleted-list"><li style="list-style-type:disc">Extranet - private network for organisations that allows access to third parties such as suppliers and vendors.  Examples of this include tracking platforms from logistics providers</li></ul><ul id="599b1340-6e3f-420b-a58a-848f0738fed1" class="bulleted-list"><li style="list-style-type:disc">Pre-Internet —&gt; Internet of Content —&gt; Internet of Services —&gt; Internet of People —&gt; Internet of things —&gt; Internet of Everything</li></ul><p id="221bf5ac-deac-4a34-9051-3a83c58a2369" class="">
+</p><h2 id="d3d60e7e-2048-4904-885c-95e6e03dd4c6" class="">Week 8: Databases</h2><ul id="22870ee1-25bc-4827-8eb4-94fc1938f5dc" class="bulleted-list"><li style="list-style-type:disc">DBMS - Database Management Management Systems</li></ul><ul id="7f7fae28-ee7d-4077-98bd-021b9aa12fdf" class="bulleted-list"><li style="list-style-type:disc">Microsoft Access:<ul id="71b32289-7182-46ee-be26-c80a35620ee9" class="bulleted-list"><li style="list-style-type:circle">Data types:<ul id="9da261f9-ec8f-4f4e-bac1-71abd7b5bf05" class="bulleted-list"><li style="list-style-type:square">Short Text - 255 chars</li></ul><ul id="4dfb6615-efe9-49c9-bbca-c05d968cfdf2" class="bulleted-list"><li style="list-style-type:square">Long Text - 64k</li></ul><ul id="4f7c93ee-dd31-4c77-8514-a21aea1ef556" class="bulleted-list"><li style="list-style-type:square">Number:<ul id="111bbb9f-7875-4aa9-bf86-c343b08380e3" class="bulleted-list"><li style="list-style-type:disc">byte</li></ul><ul id="75bded11-37e2-442e-aa90-9f9d9eeba9a7" class="bulleted-list"><li style="list-style-type:disc">integer (2 bytes)</li></ul><ul id="18ab3904-c617-47bd-b5e6-6437fd3d82f1" class="bulleted-list"><li style="list-style-type:disc">long-integer (4 bytes)</li></ul><ul id="24653541-12a3-4fe1-9f2a-dc3ff70f2093" class="bulleted-list"><li style="list-style-type:disc">single (4 bytes)</li></ul><ul id="a047e0ab-7c72-4254-a269-5e079e509836" class="bulleted-list"><li style="list-style-type:disc">double (8 bytes)</li></ul><ul id="f9b1d5f2-c7d3-45e4-a352-c5cb12399922" class="bulleted-list"><li style="list-style-type:disc">decimal (8 bytes)</li></ul></li></ul><ul id="28a9b06b-44ad-422f-815b-797483ab63c2" class="bulleted-list"><li style="list-style-type:square">standard</li></ul><ul id="d4939e6a-679e-41c8-b60a-7b394364171e" class="bulleted-list"><li style="list-style-type:square">percent</li></ul><ul id="c76447dc-37ac-4a04-a967-ce0555e1ad7d" class="bulleted-list"><li style="list-style-type:square">scientific</li></ul><ul id="11bfd533-6e8b-47fc-8fcb-fe499eef7099" class="bulleted-list"><li style="list-style-type:square">custom format string</li></ul><ul id="1786a568-f52e-4618-a590-42aefa270a44" class="bulleted-list"><li style="list-style-type:square">currency</li></ul><ul id="0e2535ca-f2f8-4b60-ab00-b5d3553e4117" class="bulleted-list"><li style="list-style-type:square">autonumber</li></ul><ul id="5fc44b7c-6a77-4e85-85db-dd0725128c88" class="bulleted-list"><li style="list-style-type:square">date/time</li></ul><ul id="22fc6851-214b-41e6-b50d-b67785da570e" class="bulleted-list"><li style="list-style-type:square">yes/no</li></ul><ul id="7fe660b2-d31d-4789-8fea-57195f42aeb5" class="bulleted-list"><li style="list-style-type:square">OLE</li></ul><ul id="39bbe617-65b5-48f6-9af2-8b76c9d2f5ab" class="bulleted-list"><li style="list-style-type:square">hyperlink</li></ul><ul id="53ed9feb-09fa-4663-b9e5-33ff3ee08d7d" class="bulleted-list"><li style="list-style-type:square">attachment</li></ul><ul id="d02724e9-d487-4aa6-b07a-86341178f611" class="bulleted-list"><li style="list-style-type:square">calculated</li></ul><ul id="ad0891c2-c90f-4e76-ab0e-ad8fbeeb51e6" class="bulleted-list"><li style="list-style-type:square">lookup wizard</li></ul></li></ul><ul id="18aa4250-868f-4582-8f7d-5d810d8654a1" class="bulleted-list"><li style="list-style-type:circle">Useul Functions:<ul id="f16b8f63-c45c-46ef-ab70-c77ad474c865" class="bulleted-list"><li style="list-style-type:square">* usage in search</li></ul><ul id="1791c77e-f60e-4800-a6e3-6ba73916a933" class="bulleted-list"><li style="list-style-type:square">? wildcard in search</li></ul><ul id="136b6c60-f30c-44f0-b792-f6b620bb8937" class="bulleted-list"><li style="list-style-type:square">double-escape to restore entry</li></ul><ul id="b10853b2-b60f-406d-97df-62c2114b6e75" class="bulleted-list"><li style="list-style-type:square">Quick filter, filter by selection, filter by condition</li></ul><ul id="776a34fd-a2d1-4912-ad30-ef0bda93b54d" class="bulleted-list"><li style="list-style-type:square">Validation Rules</li></ul><ul id="26db4518-5479-4d79-a3ae-cf04ea94cbf4" class="bulleted-list"><li style="list-style-type:square">Default Values and =Now()</li></ul></li></ul><ul id="7b03297e-5952-45e8-b688-4b2688dc55cc" class="bulleted-list"><li style="list-style-type:circle">Data Vs Information (requires processing)</li></ul><ul id="d8d0e46d-7f3f-483d-ab87-9211e1f7cba9" class="bulleted-list"><li style="list-style-type:circle">Relational Data Modelling circa 1970s</li></ul><ul id="73557731-cca4-49ea-ba6a-15a8276568df" class="bulleted-list"><li style="list-style-type:circle">SQL - Structured Query Language</li></ul><ul id="57b377ed-1dc1-42ee-941c-db6e328dae50" class="bulleted-list"><li style="list-style-type:circle">Queries<ul id="de36d6db-3c20-41de-a8ba-2dd2df788100" class="bulleted-list"><li style="list-style-type:square">can be used to sort, filter, join tables, can query tables or other queries</li></ul><ul id="52369647-6e96-4540-9dbb-fc752d29443f" class="bulleted-list"><li style="list-style-type:square">Create —&gt; Query Design —&gt; drag to Query By Example (QBE)</li></ul><ul id="3697cee5-5026-4f02-8d6b-d8b95d149e28" class="bulleted-list"><li style="list-style-type:square">Enforce Referential Integrity</li></ul><ul id="fc1a866e-48d7-4b3c-9ea0-0e4b8c399e00" class="bulleted-list"><li style="list-style-type:square">Cascade Deletion and Update of references</li></ul><ul id="b5cf2831-d851-4094-8954-5234ceb5d14b" class="bulleted-list"><li style="list-style-type:square">INNER Join</li></ul></li></ul></li></ul><p id="23f845e9-2c9c-4621-b68e-cb1a7eadd5ab" class="">
+</p><h2 id="f8e1d36f-4fad-40a3-b142-aa56ea15a513" class="">Week 9: Computer Programming Basics</h2><ul id="f31b41cc-0b97-46e2-bad4-b31941711307" class="bulleted-list"><li style="list-style-type:disc">Compilers Vs Interpreters<ul id="4992b13f-86a5-4c49-82d1-57b1618de7c5" class="bulleted-list"><li style="list-style-type:circle">Compilers convert to machine code, saved as a file, prior to execution</li></ul><ul id="ff1f7aef-5778-4c45-89ae-a4b17de8f98f" class="bulleted-list"><li style="list-style-type:circle">Interpreters can translate as well as execute code and does not need to store the code as a file.  These are interpreted languages such as python and JavaScript</li></ul></li></ul><ul id="b334100f-8711-4210-a694-4e30e39b9980" class="bulleted-list"><li style="list-style-type:disc">Components of a computer program:<ul id="ff127883-81f6-41b9-be6c-f38e4082e369" class="bulleted-list"><li style="list-style-type:circle">Headers - statements placed at the top of a computer program that are accessible to the entire program</li></ul><ul id="5275aec4-e0ee-4aca-b9cd-793e64e14843" class="bulleted-list"><li style="list-style-type:circle">Program Beginning and Ending - {  }</li></ul><ul id="489640d1-bda7-466c-ae56-6323dc1f9e20" class="bulleted-list"><li style="list-style-type:circle">Variables</li></ul><ul id="49ff347a-de73-47ea-b5cc-02a72b7e78cc" class="bulleted-list"><li style="list-style-type:circle">Input</li></ul><ul id="e4f90154-b42f-41b6-87e4-f414e83ad1eb" class="bulleted-list"><li style="list-style-type:circle">Output</li></ul><ul id="cb472ec9-6d8d-4174-82c0-20dccf5b1100" class="bulleted-list"><li style="list-style-type:circle">Computational Operations</li></ul><ul id="350f3112-80e8-4d3c-b914-605e2a600147" class="bulleted-list"><li style="list-style-type:circle">Decision-making operations</li></ul><ul id="7c27fde3-8b29-4a59-be6d-d8fdf52cd9e1" class="bulleted-list"><li style="list-style-type:circle">Program Documentation</li></ul><ul id="f16dd0a6-1aed-429c-af3f-ade0ef50c95a" class="bulleted-list"><li style="list-style-type:circle">System Calls</li></ul></li></ul><ul id="9462dca4-5533-4ce9-8248-43a1a3718adc" class="bulleted-list"><li style="list-style-type:disc">Generations of Programming Languages:<ul id="3f3591eb-b451-44eb-94a5-7fc3c8946049" class="bulleted-list"><li style="list-style-type:circle">1GL - First Generation languages:<ul id="47969dcf-c9f1-4a13-b8b9-2a32e915578b" class="bulleted-list"><li style="list-style-type:square">Macine Language - does not use a compiler</li></ul><ul id="28a3ed83-a13c-4a7a-b1ee-fa728e7aef41" class="bulleted-list"><li style="list-style-type:square">Low-level languages with fast processing time</li></ul><ul id="92fe02d1-81a7-4cb5-a4d5-85ea221f6296" class="bulleted-list"><li style="list-style-type:square">Machine-dependant and difficult to read</li></ul></li></ul><ul id="e707a8ba-735f-4d94-a25d-74897f7cd362" class="bulleted-list"><li style="list-style-type:circle">2GL - Second Generation Languages:<ul id="eb2a20e3-6e06-465c-9ead-8f0adba5bf6d" class="bulleted-list"><li style="list-style-type:square">Written in assembly using mnemonic codes</li></ul><ul id="2edc8a14-9582-47ce-81c5-051c9ae23f52" class="bulleted-list"><li style="list-style-type:square">Low-level but easier to read and more cross-machine support</li></ul><ul id="f7ffc9c0-e0da-41e6-8f3b-eb5f5d65adec" class="bulleted-list"><li style="list-style-type:square">Still machine dependant</li></ul><ul id="9250edc8-c1ae-4e9d-9182-e7acd1eee7ef" class="bulleted-list"><li style="list-style-type:square">Requires an translator / assembler</li></ul></li></ul><ul id="3916068d-94ab-4dcc-9c02-4140a1f207e3" class="bulleted-list"><li style="list-style-type:circle">3GL - Third Generation Languages:<ul id="67125ca0-7daa-49dd-b9fa-92443ea01f38" class="bulleted-list"><li style="list-style-type:square">High-level languages using English words</li></ul><ul id="33f26bc0-5ea8-43d7-a302-3e4b2d2f5b20" class="bulleted-list"><li style="list-style-type:square">Require an Interpreter or Compiler</li></ul><ul id="1b6e3101-6134-453d-a535-7566340d88b2" class="bulleted-list"><li style="list-style-type:square">Increased portability and less machine dependant</li></ul><ul id="bec729a2-0769-4005-be79-66e1acd28657" class="bulleted-list"><li style="list-style-type:square">Programs are slower to run and compile due to heavy design and size</li></ul><ul id="84413c6f-5f5a-418e-bc38-787b917a89c6" class="bulleted-list"><li style="list-style-type:square">Java, C, Pascal</li></ul></li></ul><ul id="a26aa56c-598f-40e1-b2cd-a1c1dff17fd0" class="bulleted-list"><li style="list-style-type:circle">4GL - Fourth Generation Languages:<ul id="ae50cc9f-f934-4f88-9886-6ad9e2d2b9aa" class="bulleted-list"><li style="list-style-type:square">Very high-level languages designed to be fast to develop, easily readable and highly portable</li></ul><ul id="48f2244d-8fcc-4c69-a629-d83b4b36f9f7" class="bulleted-list"><li style="list-style-type:square">Non-procedural</li></ul><ul id="31ef83c7-0306-45c8-ae3a-0dd093abdb01" class="bulleted-list"><li style="list-style-type:square">More user-friendly, versatile and powerful</li></ul><ul id="9a61838a-5011-4b97-bfaa-8f9947e6aa51" class="bulleted-list"><li style="list-style-type:square">Less Flexible, slower and requires more memory</li></ul></li></ul><ul id="0131c2cf-c5fb-4a94-b305-ba147a8808b1" class="bulleted-list"><li style="list-style-type:circle">5GL - Fifth Generation Languages:<ul id="fe960631-1336-470c-ab23-05aefccef738" class="bulleted-list"><li style="list-style-type:square">Based on Artificial Intelligence concepts and neural networks</li></ul><ul id="ff2ba950-969f-4c89-9d3c-db39cbd798d5" class="bulleted-list"><li style="list-style-type:square">Fast, efficient and train the computer to make decisions</li></ul><ul id="7647bced-ff9f-481a-9ef5-a25335084b2f" class="bulleted-list"><li style="list-style-type:square">Complex cods, expensive and requires a lot of memory</li></ul></li></ul></li></ul><ul id="f22d8791-8074-4b40-865c-4d1ab2c80040" class="bulleted-list"><li style="list-style-type:disc">Programming Standards<ul id="042913a5-d860-4244-92fd-6de655ee299c" class="bulleted-list"><li style="list-style-type:circle">ISO/IEC - International Organisation for Standardisation / International Electrotechnical Commission</li></ul><ul id="671097f4-85dd-4187-a6e1-08f5c90bd58d" class="bulleted-list"><li style="list-style-type:circle">IEEE/EIA - Standard Industry Implementation of International Standard</li></ul></li></ul><ul id="0cb24f45-90e5-440b-9356-a044e31b129f" class="bulleted-list"><li style="list-style-type:disc">Commonly Used Programming Standards:<ul id="bddb38fa-2fd3-4d19-9c94-202ca01ae27e" class="bulleted-list"><li style="list-style-type:circle">Naming Conventions</li></ul><ul id="3feef0f7-359d-4cc3-8646-dbe89d6c8d53" class="bulleted-list"><li style="list-style-type:circle">Source Code Formatting</li></ul><ul id="49944003-be36-481a-817e-0a9d2a1f0803" class="bulleted-list"><li style="list-style-type:circle">Inline and out of code documentation</li></ul></li></ul><ul id="7631ac59-f363-4c10-ab62-996091dde22d" class="bulleted-list"><li style="list-style-type:disc">Programming Language Decision Factors:<ul id="07c7f8ad-6339-419a-a2e6-5ae768867faa" class="bulleted-list"><li style="list-style-type:circle">Type of application</li></ul><ul id="4ffe570d-cd8d-4363-b77d-ec1467e8e907" class="bulleted-list"><li style="list-style-type:circle">Client Requirements</li></ul><ul id="d9391c9c-9714-496f-8eb2-c4e4b06688bc" class="bulleted-list"><li style="list-style-type:circle">Complexity of software</li></ul><ul id="9fd7d0d8-0c79-4164-afe7-37c816f2894a" class="bulleted-list"><li style="list-style-type:circle">Platform</li></ul><ul id="c35d3a38-aac9-442f-acd2-17a30be3793c" class="bulleted-list"><li style="list-style-type:circle">Maintainability</li></ul><ul id="185eb85c-ca36-4a4d-b806-0761c1754330" class="bulleted-list"><li style="list-style-type:circle">Performance</li></ul><ul id="c3c15ca7-bc65-4329-9dcd-21d813ec7bbc" class="bulleted-list"><li style="list-style-type:circle">Security</li></ul><ul id="9faff880-c75a-4885-bdbf-0dec3bfcb967" class="bulleted-list"><li style="list-style-type:circle">Support</li></ul><ul id="94fc87a6-f638-4bee-afd4-c1b291fb879f" class="bulleted-list"><li style="list-style-type:circle">Development Time</li></ul><ul id="8823e39b-611f-469a-9aa6-59d6ca56080e" class="bulleted-list"><li style="list-style-type:circle">Languages worth further inspection:<ul id="0787d77b-e44b-473b-91d0-64e7fb4cab1e" class="bulleted-list"><li style="list-style-type:square">Python (#3)</li></ul><ul id="d0f71200-28fb-461a-8f6a-a3aa034cd560" class="bulleted-list"><li style="list-style-type:square">Kotlin (android)</li></ul><ul id="332ee2cd-3a0a-475e-ba2f-749858f40388" class="bulleted-list"><li style="list-style-type:square">Scala (combines functional and OOP)</li></ul><ul id="5c54d40d-ae68-45b1-b419-e47eec79c6c4" class="bulleted-list"><li style="list-style-type:square">JavaScript (#1)</li></ul><ul id="b18e076b-f608-4787-aa97-b4e3b5457839" class="bulleted-list"><li style="list-style-type:square">Swift (Apple)</li></ul><ul id="eebfeec6-6a1a-4513-b9ad-fe3805aca819" class="bulleted-list"><li style="list-style-type:square">Go</li></ul><ul id="8da04ca8-2136-4b37-a884-c02fd62e5ee1" class="bulleted-list"><li style="list-style-type:square">Java (#5 - OOP with good security)</li></ul><ul id="f79f0b5f-335c-4cf9-8ade-6cc4598f65c3" class="bulleted-list"><li style="list-style-type:square">Ruby - (dynamic, fast, simple web development)</li></ul><ul id="58dbbed6-4213-4ff2-978d-b6ed0f4c744a" class="bulleted-list"><li style="list-style-type:square">C++ (fast, good community support)</li></ul><ul id="856e437e-8252-4f33-8aca-fa5b6e388499" class="bulleted-list"><li style="list-style-type:square">C# (aids cross-platform development)</li></ul></li></ul></li></ul><ul id="b12decd3-2c4d-4a39-a8be-a7f029b14168" class="bulleted-list"><li style="list-style-type:disc">Frameworks being used to speed up development by providing a library for use by the programmer</li></ul><ul id="a2c36f97-aafc-4821-9c93-ae774883e62b" class="bulleted-list"><li style="list-style-type:disc">IDE - Integrated Development Environment</li></ul><ul id="febedb01-e2d7-4019-ac38-70c9dbf31b74" class="bulleted-list"><li style="list-style-type:disc">CLI - Command Line Interface</li></ul><ul id="2a5a510f-2d12-4a7b-9a00-b3d2fd57776a" class="bulleted-list"><li style="list-style-type:disc">VCS - Version Control System</li></ul><ul id="2f23b715-ae31-49fa-89c4-e83039fe36a5" class="bulleted-list"><li style="list-style-type:disc">Package Manager</li></ul><p id="d6394560-4fb5-4e8a-8029-4eb6e9863360" class="">
+</p><h2 id="f78653cc-5308-4b75-bd6f-fd7c465d6349" class="">Week 10: Data Structures and Algorithms</h2><ul id="e25dfeb2-bb6e-4631-948f-835cf7034873" class="bulleted-list"><li style="list-style-type:disc">A data structure is a way to store, organise and manage information in a way that allows you to access or modify their values</li></ul><ul id="49c1c84c-6b6d-4794-83db-1902a1b0bec2" class="bulleted-list"><li style="list-style-type:disc">Data Structures:<ul id="fdfa73f0-afbc-4d26-8b1c-fb621e776c1a" class="bulleted-list"><li style="list-style-type:circle">Linear: elements are stored and retrieved in a sequential manner. This includes stacks, queues, arrays, linked lists<ul id="1a4e3583-49fb-4ec4-b46e-f351b79b79d2" class="bulleted-list"><li style="list-style-type:square">Stacks: an ordered list where data insertion and deletion can only occur at one end, called the top. Consider the ‘last in, first out’ (LIFO) and ‘first in, last out’ (FILO) principles<ul id="797f787f-794b-49d1-95d7-2baed3033d78" class="bulleted-list"><li style="list-style-type:disc">Push: insertion operation on a stack is called a ‘push’</li></ul><ul id="86558394-e983-4793-bfc8-2757b9acbe11" class="bulleted-list"><li style="list-style-type:disc">Pop: deletion operation removing the top element</li></ul></li></ul><ul id="2ced4301-81a5-472c-a965-2addb6c0a04c" class="bulleted-list"><li style="list-style-type:square">Queue: another ordered list structure but in this structure insertion and deletion occurs at opposite ends of the list. Consider ‘first in, first out’ (FIFO) and ‘last in last out’ (LILO) principles<ul id="b1ff6b02-18a4-41ea-abad-748db0c90b14" class="bulleted-list"><li style="list-style-type:disc">Enqueue: insertion operation on a queue (rear)</li></ul><ul id="3b64132b-f3ba-4644-a468-167f2fffcd01" class="bulleted-list"><li style="list-style-type:disc">Dequeue: deletion operation on a queue (front)</li></ul></li></ul><ul id="e1275074-cdf6-4a9f-9904-7747a5c1e6d6" class="bulleted-list"><li style="list-style-type:square">Arrays: these data structures are used to store elements of the same type together in a sequential memory location where any element can be accessed directly via its index<ul id="42934dcd-9e62-48c8-adbb-54b004f3996f" class="bulleted-list"><li style="list-style-type:disc">Index from 0 - (n-1)</li></ul><ul id="c902a97d-8a1e-41ec-802e-53cc2057e326" class="bulleted-list"><li style="list-style-type:disc">Traversing an array: this refers to accessing each element in the array, one at a time, in sequential order. This can be used to update or output values, count elements or even perform operations on the elements</li></ul><ul id="fc0e60f2-bb50-441b-853e-a0e1e61a63a4" class="bulleted-list"><li style="list-style-type:disc">Inserting an array element: can be done at any index of an array, including the beginning or end. Inserting at index x will insert at that index and move all elements ≥ x to x+1</li></ul><ul id="0b87dc4f-7b49-463a-a575-a01fdcc24cd6" class="bulleted-list"><li style="list-style-type:disc">Deleting an array element can be done at any index and similarly to inserting, will change the index of all elements &gt; x to x-1</li></ul></li></ul><ul id="808192d2-8546-4052-99fa-b388495b953c" class="bulleted-list"><li style="list-style-type:square">Linked Lists: used to store elements of the same type together where one node containing list elements is linked to another node containing list elements via a memory pointer<ul id="4d33f86b-ce2d-4390-ad16-d5a444e8087b" class="bulleted-list"><li style="list-style-type:disc">A node is made up of two parts: the value of the element (data) and the pointer (link)</li></ul><ul id="58c31bab-d207-4b5b-a7a2-a9f80f9f1adb" class="bulleted-list"><li style="list-style-type:disc">The first node of the list is the head, and contains no value where the last node of the list points to NULL</li></ul><ul id="029bf67e-2ce6-4ca1-986e-2e10f7c32329" class="bulleted-list"><li style="list-style-type:disc">Traversing the list - similar to traversing an array, this can be used to count, search, perform operations and update elements. The current ‘index’ of the list is referred to as the “currentNode”</li></ul><ul id="93a514fa-4da5-4d6a-952e-82c3774563dd" class="bulleted-list"><li style="list-style-type:disc">Insertion in the list - similar to an array but no update to other nodes needed as there is no index. If insertion occurs at the beginning, the head will point to the new node</li></ul><ul id="b40d23d0-f0d6-4024-ad21-08460e1779ef" class="bulleted-list"><li style="list-style-type:disc">Deleting an element from the list - similar to an array but the nodes connected to the deleted element will need to be updated to ensure continuity of the string. Again, consider the head if the first element is deleted</li></ul></li></ul><ul id="6458b10b-051b-420e-9b9a-950f8d1a314c" class="bulleted-list"><li style="list-style-type:square">Linked lists Vs Arrays:<ul id="21312746-5722-4bb1-9427-d0661fa26ee7" class="bulleted-list"><li style="list-style-type:disc">Size: LL can grow and shrink, A must pre-allocate</li></ul><ul id="a14e7aaf-d441-4b30-9dff-80a477726ad5" class="bulleted-list"><li style="list-style-type:disc">Memory Allocation: LL &gt; A</li></ul><ul id="dcd13b86-8466-4a53-b9a6-02d43d907c7c" class="bulleted-list"><li style="list-style-type:disc">Operations: Updating an element much faster in an A, insertion and deletion much faster in LL as do not have to update other elements</li></ul></li></ul></li></ul><ul id="3136f1f3-3c74-4b32-95f2-74e2d62890d0" class="bulleted-list"><li style="list-style-type:circle">Non-Linear: data structures are arranged in a hierarchical manner where one element may be connected to one or more elements. These may be either graph or tree-based data structures. Examples include Binary &amp; Red-black tree structures<ul id="c53a99df-ecde-4100-891a-b6624f6e08e8" class="bulleted-list"><li style="list-style-type:square">Trees:<ul id="5ffa56e2-e9fc-4352-bcf1-a26a429874e9" class="bulleted-list"><li style="list-style-type:disc">Non-linear, hierarchical, nodes connected to one or more nodes</li></ul><ul id="5b7e5b2e-e2ae-4909-9e67-219ace377a39" class="bulleted-list"><li style="list-style-type:disc">Root: the starting point of a tree, has no parent</li></ul><ul id="47c768f5-b1d5-46cb-9861-0018b74931a0" class="bulleted-list"><li style="list-style-type:disc">Subtree: a part of the tree containing a node and its descdendants</li></ul><ul id="17c6ac40-275b-4443-90a6-0fc923a0b733" class="bulleted-list"><li style="list-style-type:disc">Parent node / child node</li></ul><ul id="a6efd02f-a69b-494c-bdfc-e114b79f96c0" class="bulleted-list"><li style="list-style-type:disc">Edge = branch = link from parent node to child node</li></ul><ul id="4d8c9575-23cd-440d-963c-c90079dd1d89" class="bulleted-list"><li style="list-style-type:disc">Leaf node: a child node with no children</li></ul><ul id="001d7266-11d6-491f-989a-0d7d0a1dc187" class="bulleted-list"><li style="list-style-type:disc">Depth of node = number of edges from child to root</li></ul><ul id="4df989a8-4929-48ee-b16d-3dca3e676c4e" class="bulleted-list"><li style="list-style-type:disc">Height of tree = maximum depth among all leaf nodes</li></ul><ul id="8315084b-389e-43f9-8641-8825161f2d1a" class="bulleted-list"><li style="list-style-type:disc">Binary trees: can have ≤ 2 branches and are the basic data structures of data science<ul id="5a40f52c-fc4d-418e-b6c1-be9dfdd3d978" class="bulleted-list"><li style="list-style-type:circle">Full binary trees: all nodes have 0 or 2 child nodes</li></ul><ul id="1612487f-1543-41e3-8648-3c335b9571d8" class="bulleted-list"><li style="list-style-type:circle">Complete binary trees: all nodes except last level have children</li></ul><ul id="ac9330c3-d124-44e2-b3c0-5ba27e696e99" class="bulleted-list"><li style="list-style-type:circle">Perfect binary trees: all nodes have 2 children and all leaf nodes are the same depth</li></ul></li></ul><ul id="915f6a3f-2b8e-4067-acb5-efae761ce034" class="bulleted-list"><li style="list-style-type:disc">Binary Search Tree: an ordered node binary tree data structure. Must have the following properties:<ul id="ec19e4e8-1396-4b75-bcbd-972ca1410aa8" class="bulleted-list"><li style="list-style-type:circle">Left subtree key values &lt; root key</li></ul><ul id="d2c13b10-c405-4a2f-ae25-765639a62610" class="bulleted-list"><li style="list-style-type:circle">Right subtree key values &gt; root key</li></ul><ul id="1cd1a27e-393d-4d0d-8d3b-ae8e7ec9a9ea" class="bulleted-list"><li style="list-style-type:circle">All subtrees are binary search trees</li></ul><ul id="c2979ff0-8068-4944-afe3-526472291971" class="bulleted-list"><li style="list-style-type:circle">Skewed tree = all nodes have one or no children</li></ul><ul id="a25af20f-c604-40b9-9e8b-ea788dff3aa2" class="bulleted-list"><li style="list-style-type:circle">Height Balancing takes a skewed node and balances so the height difference between left and right is either 0 or 1</li></ul></li></ul><ul id="26f7346c-dc11-4e1e-9f98-32d137452105" class="bulleted-list"><li style="list-style-type:disc">Red-black trees: one of the primary search structures for Java and C++, every node has a color, either red or black. This ensures the height of the binary tree is not skewed.<ul id="a615d3e5-425f-49f7-9b0c-f674e63faec0" class="bulleted-list"><li style="list-style-type:circle">The root node must be black and the children of red nodes must be black</li></ul></li></ul></li></ul></li></ul><ul id="deaaa9cb-440e-481e-bb89-fdbd1f65a963" class="bulleted-list"><li style="list-style-type:circle">Algorithm: from ‘algorism’ (computing using Arabic numbers) and ‘arithmos’ (a Persian mathematician). Programs implement algorithms to solve problems<ul id="3a81388f-8e08-41c3-89f8-4f1f50faabf2" class="bulleted-list"><li style="list-style-type:square">A set of well-defined, finite steps to solve a repeatable problem.</li></ul><ul id="2dd3794d-0231-4076-8100-0b78924468f2" class="bulleted-list"><li style="list-style-type:square">Types of algorithms:<ul id="74361419-e73f-457b-965a-ff8716df5913" class="bulleted-list"><li style="list-style-type:disc">Recursive: calls itself repeatedly until the problem is solved</li></ul><ul id="e5660d8d-1723-4343-ac11-5c65c618d2b2" class="bulleted-list"><li style="list-style-type:disc">Brute-force: tries all possibilities until one succeeds</li></ul><ul id="77930a3a-0da2-4373-b348-c5620eac27bf" class="bulleted-list"><li style="list-style-type:disc">Sorting: such as selection, sort, bubble sort, quick sort</li></ul><ul id="cb92fab2-3026-448d-8771-d18261260c1a" class="bulleted-list"><li style="list-style-type:disc">Divide and conquer: splits the problem into smaller sub-problems, the solutions to which are combined to produce a solution to the whole</li></ul></li></ul><ul id="03f79d5b-dcf5-4e16-b7f3-9a261973bede" class="bulleted-list"><li style="list-style-type:square">Comprise of:<ul id="27efc0e6-6c09-47bf-bbca-c86cc9db60a8" class="bulleted-list"><li style="list-style-type:disc">Input, output, computation, selection, iteration (looping)</li></ul></li></ul><ul id="7c4dc3e4-3363-410f-83fc-ca2fa969ebb5" class="bulleted-list"><li style="list-style-type:square">Expressed by:<ul id="7af24cab-6395-4284-a8d3-7b1e167d3f95" class="bulleted-list"><li style="list-style-type:disc">Natural language, flowcharts, pseudocode, programming language</li></ul></li></ul><ul id="6d751fee-ab7b-415f-98fa-8a52072c8863" class="bulleted-list"><li style="list-style-type:square">Analysing Algorithms:<ul id="9dbea60e-3421-43d6-83b0-57222d94a0b3" class="bulleted-list"><li style="list-style-type:disc">Efficiency - memory use &amp; processing power</li></ul><ul id="84d85fc7-9c3c-458b-9daa-d41932b61ccc" class="bulleted-list"><li style="list-style-type:disc">Growth of function = how much running time increases as the size of the problem increases</li></ul><ul id="631345d8-04bd-4a10-a993-c41bf1699edb" class="bulleted-list"><li style="list-style-type:disc">User-friendliness, security, maintenance, space</li></ul><ul id="0077f596-f953-446c-b157-08c9c0a33cd6" class="bulleted-list"><li style="list-style-type:disc">Asymptomatic Analysis<ul id="38035ebf-689f-42f9-af40-a4b30fd1d6de" class="bulleted-list"><li style="list-style-type:circle">Analyses an algorithm with various input sizes and measures performance in a worst case, best case and average case scenario</li></ul><ul id="aab5dc21-4a2d-44dd-88e4-69f657db6496" class="bulleted-list"><li style="list-style-type:circle">Big-O notation:<ul id="f8c168a8-9168-48cf-a49c-99bae74f3f61" class="bulleted-list"><li style="list-style-type:square"><a href="https://www.linkedin.com/pulse/big-o-notation-simple-explanation-examples-pamela-lovett/">https://www.linkedin.com/pulse/big-o-notation-simple-explanation-examples-pamela-lovett/</a></li></ul></li></ul></li></ul></li></ul><ul id="d5cef85f-0c6d-4eda-a029-3a5e15abf15d" class="bulleted-list"><li style="list-style-type:square">Designing Algorithms:<ul id="ab4b146b-6a1e-437b-ad58-180553fa99f9" class="bulleted-list"><li style="list-style-type:disc">Greedy method: work is performed in stages with each stage caring only about itself. Relies on the principle that local optimisation —&gt; global optimisation</li></ul><ul id="7ac0e177-df2f-416b-bedf-3510a4b4ddbe" class="bulleted-list"><li style="list-style-type:disc">Divide and conquer: divide into subproblems, solve them and then recombine</li></ul><ul id="f13ad616-6630-4a5a-b677-efb9552fbc4a" class="bulleted-list"><li style="list-style-type:disc">Dynamic programming: similar to D&amp;C but stores output of subproblems into data structures to be reused again.</li></ul><ul id="9cced47e-1096-4e27-9d7a-3dee5be6cb38" class="bulleted-list"><li style="list-style-type:disc">Reduction / Transform and conquer: turn a new problem into a previously known problem for which there is already an answer</li></ul></li></ul></li></ul><ul id="e7e7d57e-7cd5-4186-abf4-d2cea75c3281" class="bulleted-list"><li style="list-style-type:circle"></li></ul><p id="07e11637-ec77-4f91-a734-39afa95492e7" class="">
+</p></li></ul><h2 id="36ff2550-e641-4f28-9d53-9b3d0dc1ec7c" class="">Week 11: Cloud Computing</h2><ul id="52dcc2e6-c465-44c3-ad41-7e9bef74855c" class="bulleted-list"><li style="list-style-type:disc">AWS origin story - black Friday capacity —&gt; PAYG computing —&gt; Netflix</li></ul><ul id="b364b933-9954-45f1-9597-7b0ae2f0a0da" class="bulleted-list"><li style="list-style-type:disc">The branch of cloud computing dealing with software is called SaaS —&gt; Software as a Service</li></ul><ul id="2a78a917-ed25-4da7-a791-f88a9fe85464" class="bulleted-list"><li style="list-style-type:disc">Grid computing and the sharing of computational resources across organisations</li></ul><ul id="a9f4d313-f3cf-4f04-89b0-9de559dd827f" class="bulleted-list"><li style="list-style-type:disc">5 Characteristics of cloud computing:<ul id="c80978a8-cd34-43cb-bc13-34b1fa6a76fd" class="bulleted-list"><li style="list-style-type:circle">Ubiquitous</li></ul><ul id="799089c4-c2b5-4722-9681-d93d67fa381a" class="bulleted-list"><li style="list-style-type:circle">On-demand self-service</li></ul><ul id="c040dbd5-5e85-49dc-ac8c-9f97e8d44c93" class="bulleted-list"><li style="list-style-type:circle">Broad network access</li></ul><ul id="6e3184e3-600a-409d-9881-bda65c9be61d" class="bulleted-list"><li style="list-style-type:circle">Resource pooling (and smaller size provisioning)<ul id="8a9cf755-d699-4f84-9c58-008616988b9e" class="bulleted-list"><li style="list-style-type:square">Multi tenant pooling (selling more resources than what you have available)</li></ul></li></ul><ul id="c26302f2-8abe-4818-a215-2cea8fff79af" class="bulleted-list"><li style="list-style-type:circle">Rapid elasticity and measured service</li></ul></li></ul><ul id="8211f71b-af64-425e-b7f2-0763fefd2517" class="bulleted-list"><li style="list-style-type:disc">3 Cloud Service Models:<ul id="0be8de19-501c-47ce-94cd-99ebf776096c" class="bulleted-list"><li style="list-style-type:circle">Infrastructure:<ul id="993464d6-bf7c-497c-a606-b377caeeb7e0" class="bulleted-list"><li style="list-style-type:square">IaaS - Infrastructure as a Service</li></ul><ul id="b8bdab3c-dc2c-4766-a969-ddeaa4fb99d5" class="bulleted-list"><li style="list-style-type:square">Lowest level of service on offer by the cloud</li></ul><ul id="4edce977-ab72-460a-8828-eb1339023b2f" class="bulleted-list"><li style="list-style-type:square">Highest level of user control</li></ul><ul id="c1210d3b-a6bf-4d9c-aa7a-da8dd5880dcf" class="bulleted-list"><li style="list-style-type:square">Maintained by Vendor:  virtualisation, servers, storage, networking</li></ul><ul id="88f414a1-cb81-4a6e-b29f-1e7cdd8f6d1c" class="bulleted-list"><li style="list-style-type:square">Maintained by User: O/S, Middleware, Runtime, Data, Applications</li></ul><ul id="0aee3aa8-9ce5-4a09-8e3c-ab2659e99453" class="bulleted-list"><li style="list-style-type:square">Consider: compute resources, virtual network layer, load balancing, storage</li></ul></li></ul><ul id="a9b3e0b8-8761-4a6e-a65a-8e4cae325093" class="bulleted-list"><li style="list-style-type:circle">Platform:<ul id="dd36fce4-fdf1-4316-aba1-bb7e950cda17" class="bulleted-list"><li style="list-style-type:square">PaaS - Platform as a Service</li></ul><ul id="0960ee01-e436-4332-b8dd-000f9da33c57" class="bulleted-list"><li style="list-style-type:square">Offers the infrastructure of IaaS plus the platform level services</li></ul><ul id="d1d2f3ab-7bcf-4c9b-8b57-ed1ae2401e3c" class="bulleted-list"><li style="list-style-type:square">Example includes the Microsoft Azure service</li></ul></li></ul><ul id="9a23a684-bdf9-45b3-bc3d-d8a5e62d0aac" class="bulleted-list"><li style="list-style-type:circle">Software:<ul id="abc9abda-fe92-434c-bb38-7c4a5784b92d" class="bulleted-list"><li style="list-style-type:square">SaaS - Software as a Service</li></ul><ul id="99899cd5-bd81-4ddd-b24a-0899a898d6e8" class="bulleted-list"><li style="list-style-type:square">Highest level of service that can be provided</li></ul><ul id="0f0bb0ca-5a7d-4282-ab50-90e20bcfa7c0" class="bulleted-list"><li style="list-style-type:square">Cliniko, Google Docs, CRM - Customer Relationship Management</li></ul></li></ul></li></ul><ul id="0c21e127-b9e5-4cb4-9d79-a6b6c29eb2b7" class="bulleted-list"><li style="list-style-type:disc">4 Cloud Deployment Models:<ul id="c192d447-69a1-4768-bad8-1d6d3d5d23ab" class="bulleted-list"><li style="list-style-type:circle">Private Cloud:<ul id="b6c5e668-dbfd-4452-aae5-062e1eafe5fe" class="bulleted-list"><li style="list-style-type:square">Infrastructure is provisioned for exclusive use by a single organisation or cusromer.</li></ul><ul id="e5247707-bd8a-4a08-90b5-9a1575e850d5" class="bulleted-list"><li style="list-style-type:square">By far the most expensive model</li></ul></li></ul><ul id="33a4cd89-4df2-4490-9c91-d169468850c4" class="bulleted-list"><li style="list-style-type:circle">Community Cloud:<ul id="c5e95ec5-3a15-4c98-bf4b-e1e5079be431" class="bulleted-list"><li style="list-style-type:square">Resources are owned, operated and managed by the organisations in the community or a third party on their behalf.</li></ul><ul id="e03febb7-6ddd-4e15-9120-d6acd5b3a030" class="bulleted-list"><li style="list-style-type:square">Consider the shared compute resources across research labs in a Uni</li></ul></li></ul><ul id="ddcd50f6-1f8c-4780-a02d-8231a363e62f" class="bulleted-list"><li style="list-style-type:circle">Public Cloud:<ul id="c1be5edf-ce77-401d-a775-4a7c63e553ec" class="bulleted-list"><li style="list-style-type:square">Anyone from the general public can access these resources - by far the most popular model</li></ul><ul id="8849a590-4d03-4ac0-aa47-2f6916a4248c" class="bulleted-list"><li style="list-style-type:square">Resources exist on the premises of the cloud provider</li></ul></li></ul><ul id="f0f03a5c-14cf-4636-ba9d-02345ba2f1a7" class="bulleted-list"><li style="list-style-type:circle">Hybrid Cloud:<ul id="40e7cc09-4c82-49ed-953e-d89858d518c2" class="bulleted-list"><li style="list-style-type:square">Combines one or more of the above models</li></ul><ul id="59cf7df4-585e-4206-99d7-eb831c0c92da" class="bulleted-list"><li style="list-style-type:square">Often, this is done in an attempt to reduce the impact of ‘cloud bursting’, where there is a run on cloud resources as in this case, load balancing between cloud resources may take place</li></ul></li></ul></li></ul><ul id="2fd932c4-3e86-437e-aa19-be49de3f024c" class="bulleted-list"><li style="list-style-type:disc">3 Main Providers:<ul id="4db7e925-980d-4053-869a-05d712f8f740" class="bulleted-list"><li style="list-style-type:circle">Amazon Web Services (AWS)<ul id="ecd3f7be-6a0b-423c-b7c1-c90deb5bf680" class="bulleted-list"><li style="list-style-type:square">EC2 - Elastic Compute Cloud: virtual computing environment offering templated AMIs (Amazon Machine Images) that can be deployed in seconds. While there are hundreds of AMIs templated, users can also create their own</li></ul><ul id="ce65578f-07c9-480c-a806-f0aa5eb4a93e" class="bulleted-list"><li style="list-style-type:square">S3 - Simple Storage Service: can be independent or part of a machine, used for pure storage but not for databases. Often used for backup</li></ul><ul id="b9e51a99-755f-4bef-a75f-e783ae97d0cd" class="bulleted-list"><li style="list-style-type:square">ELB - Elastic Load Balancer: automatically creates and destroys VMs in a manner dictated by the user</li></ul><ul id="7b6e8a66-bcf6-4624-8985-c484250e2f15" class="bulleted-list"><li style="list-style-type:square">RDS - Relational Database Service: can host SQL servers, requires a VM</li></ul></li></ul><ul id="2803289a-bbf6-466b-b38e-4f813dd7e43f" class="bulleted-list"><li style="list-style-type:circle">Google Cloud Platform (GCP)</li></ul><ul id="1e7cd4fa-cf0f-4263-a0dd-6a6edb1b506b" class="bulleted-list"><li style="list-style-type:circle">Microsoft (Azure)</li></ul></li></ul><ul id="11f44393-e1da-4a73-9ebc-07f5aa9c7b18" class="bulleted-list"><li style="list-style-type:disc">Data Centres = collection of clusters = collection of servers</li></ul><p id="18f6cce6-7997-48d1-8ad4-aeceb6140b9e" class="">
+</p><h2 id="e1f33730-e9e8-46d2-b5de-5fd91f1215f0" class="">Week 12: Emerging Trends in IT</h2><ul id="fed7bd43-5be3-48f8-a5fb-ad1d66805840" class="bulleted-list"><li style="list-style-type:disc">Disruptive Technologies &amp; business intelligence systems</li></ul><ul id="fb7a5bbe-7858-478e-96e0-58e52e1bec15" class="bulleted-list"><li style="list-style-type:disc">Embracing change and innovation are considered vital in today’s IT world</li></ul><ul id="dc92039d-0489-446c-b69e-186882b96698" class="bulleted-list"><li style="list-style-type:disc">Innovation:<ul id="15505ef5-e99a-4b85-81c6-a4fc9a914b82" class="bulleted-list"><li style="list-style-type:circle">Radical: new product, service or process that transforms an industry</li></ul><ul id="10f3f7c0-73f0-4b42-981c-f90a4890df16" class="bulleted-list"><li style="list-style-type:circle">Sustaining: fine-tuning over time to increase value to the customer incrementally</li></ul><ul id="0e3c9b6b-4c1b-4b0b-b83f-0fcc51369530" class="bulleted-list"><li style="list-style-type:circle">Disruptive: challenges the status quo with new products or services</li></ul><ul id="9decf867-d070-4a00-a131-32977682c722" class="bulleted-list"><li style="list-style-type:circle">Incremental: also known as efficiency, doing more with less</li></ul></li></ul><ul id="45690d70-2290-45f5-9ca2-a25ccbfe5d68" class="bulleted-list"><li style="list-style-type:disc">Forces affecting businesses today:<ul id="74fbd65a-2ec5-4d90-8508-ac50ac80e8be" class="bulleted-list"><li style="list-style-type:circle">Globalisation</li></ul><ul id="2f5ddbad-2db5-4f23-b0ab-92aa6714975a" class="bulleted-list"><li style="list-style-type:circle">Instability and turbulence</li></ul><ul id="6702becd-49ed-4e44-aea1-c0aa59d2c147" class="bulleted-list"><li style="list-style-type:circle">Other drivers<ol type="1" id="9897235f-078a-431e-a4d9-0f4bf19bb045" class="numbered-list" start="1"><li>Technological innovation<ol type="a" id="0b539307-28a1-41c0-a7eb-d25aff66305c" class="numbered-list" start="1"><li>digitisation, disruptive technologies, big data, virtual and augmented realities, the IoT</li></ol></li></ol><ol type="1" id="ad9fcd00-9f85-45b9-8c7e-f7cf518de2c4" class="numbered-list" start="2"><li>Digitisation<ol type="a" id="901300dd-e248-4578-bfc2-57ebf944ebae" class="numbered-list" start="1"><li>increase in store efficiency, lower operating costs, </li></ol></li></ol><ol type="1" id="e49f2af9-38f4-4093-82fd-d937e3f80e03" class="numbered-list" start="3"><li>Disruptive technologies<ol type="a" id="4739067b-816d-477f-8373-2f0f4f7712bf" class="numbered-list" start="1"><li>compare this to disruptive innovations</li></ol></li></ol><ol type="1" id="c4921d9f-1489-4634-a300-fc1a51b5959c" class="numbered-list" start="4"><li>Big Data<ol type="a" id="bc0a86f8-1fb4-4db6-a8ba-509361d6cae5" class="numbered-list" start="1"><li>The widely accepted dimensions of big data:<ol type="i" id="82bfe6de-87e5-431f-bd49-edb20b9d3014" class="numbered-list" start="1"><li>Velocity</li></ol><ol type="i" id="1b42e348-b09a-4d72-a5a5-e8e50b3a95a8" class="numbered-list" start="2"><li>Volume</li></ol><ol type="i" id="dd732190-3e1e-4293-ac96-23be2b83731b" class="numbered-list" start="3"><li>Variety</li></ol><ol type="i" id="8217aac0-2aa6-45f0-9b70-d4c6969ba629" class="numbered-list" start="4"><li>Variability</li></ol><ol type="i" id="fb12db3f-6b20-43ec-925b-5a762a91c1d1" class="numbered-list" start="5"><li>Veracity</li></ol></li></ol><ol type="a" id="4ce23628-646e-43c2-a5d4-aa7342329585" class="numbered-list" start="2"><li>Consider:<ol type="i" id="8c909406-1b86-4a3b-9155-328849fbb255" class="numbered-list" start="1"><li>Retail and CMS</li></ol><ol type="i" id="cf918a95-d038-491b-9e6f-43b41cfd2315" class="numbered-list" start="2"><li>Education</li></ol><ol type="i" id="0dec9332-ad4a-437d-9498-c3bcd25fec84" class="numbered-list" start="3"><li>Finance</li></ol><ol type="i" id="727dd3c3-30d8-4f7f-bad9-5af11b858902" class="numbered-list" start="4"><li>Public sector &amp; resource allocation</li></ol><ol type="i" id="39524b0c-b933-4552-acf1-07c779780319" class="numbered-list" start="5"><li>Media</li></ol><ol type="i" id="585a67b9-7346-4b62-9628-1519006f2546" class="numbered-list" start="6"><li>Health &amp; documentation</li></ol><ol type="i" id="acaecb42-2b9e-4ccf-9df3-9d6cbbb99efa" class="numbered-list" start="7"><li>Collaborative economy<ol type="1" id="8fad36ed-1998-4736-8768-13bb1f81521d" class="numbered-list" start="1"><li>Technological drivers</li></ol><ol type="1" id="b1adf261-2ef8-45c9-bf8e-a869ae4325a9" class="numbered-list" start="2"><li>Economic drivers</li></ol><ol type="1" id="23c5faab-709f-48a1-b5ca-b64466fa319d" class="numbered-list" start="3"><li>Environmental drivers</li></ol><ol type="1" id="0e29f7cb-d3e3-46b3-80e4-49cab78ffec3" class="numbered-list" start="4"><li>Social drivers</li></ol><ol type="1" id="1acfaf7e-896b-4f6c-b7e0-33888ac5d35e" class="numbered-list" start="5"><li>Collaborative Companies<ol type="a" id="ab63ae18-73ee-4e64-a9a3-e6da68c9d57a" class="numbered-list" start="1"><li>Unlock idling capacity</li></ol><ol type="a" id="1c32cae2-7220-4fa7-9c4a-0d825c863a01" class="numbered-list" start="2"><li>Unlock demand</li></ol><ol type="a" id="4cf475f6-23d3-41ab-be97-01d6674844b9" class="numbered-list" start="3"><li>Unlock people power</li></ol><ol type="a" id="452c365b-ced7-43d2-9c40-e8438f65e624" class="numbered-list" start="4"><li>Unlock closer communities</li></ol><ol type="a" id="91ee56df-3029-408d-80e8-fb658a2b87c2" class="numbered-list" start="5"><li>Unlock global corporate citizenship</li></ol></li></ol></li></ol></li></ol></li></ol></li></ul></li></ul><ul id="5e78d976-b160-4122-9395-51007cec44c9" class="bulleted-list"><li style="list-style-type:disc">Disruptive Technology Trends<ul id="163e06ef-54fc-4e6f-ba77-464e7a5443d1" class="bulleted-list"><li style="list-style-type:circle">Crowdfunding and seed funding</li></ul></li></ul><p id="b1b84da3-c9f9-4070-8f29-c7764eb90eab" class="">
+</p><p id="189236bf-e552-4879-9133-95cd9ec9cd49" class="">
+</p><h2 id="46e2f35c-37a7-4c34-9908-f6f269320e28" class="">Assessment 1 - Hardware Report</h2><ul id="a39f94db-3a5d-4140-9490-2b738b8abb42" class="bulleted-list"><li style="list-style-type:disc">Scenario Based</li></ul><ul id="a443a823-9edb-4e2a-b8f2-3d7d1c9834cb" class="bulleted-list"><li style="list-style-type:disc">Not strict word limit</li></ul><ul id="19637fdc-c8d1-4af1-901f-0d5e78b4876b" class="bulleted-list"><li style="list-style-type:disc">Task 2 - first Paragraph - write 1 - 2 Paragraphs</li></ul><ul id="af4bd2b1-9662-4682-895a-b0ea62f3c8b6" class="bulleted-list"><li style="list-style-type:disc">all Headings required except for last point</li></ul><ul id="6c76915b-0316-436e-a304-83bf16038171" class="bulleted-list"><li style="list-style-type:disc">Look at Journals government reports etc</li></ul><ul id="e8102811-0c64-45fb-bc78-63f3d784ef70" class="bulleted-list"><li style="list-style-type:disc">Google Scholar</li></ul><ul id="62c92495-f486-4880-9e48-2e5f7aa3ca6c" class="bulleted-list"><li style="list-style-type:disc">Use Turnitin and consider a draft</li></ul><p id="4d01bae1-0354-4ea0-8e45-c825b0129904" class="">
+</p><h2 id="a0125c07-aebe-4ce6-8015-d2ec2d2fa465" class="">Assessment 2 - Website Development</h2><ul id="ed15c448-c8eb-46e0-8ce7-74721c2d10e9" class="bulleted-list"><li style="list-style-type:disc">1200 word equivalency</li></ul><ul id="65cfe3cc-71a7-4052-a9d2-d1b338261c98" class="bulleted-list"><li style="list-style-type:disc">30% of grade</li></ul><ul id="71d80147-8f1b-43b5-a841-933982ca13c1" class="bulleted-list"><li style="list-style-type:disc">Due week 8</li></ul><ul id="38ca115e-d6ac-43b8-aae7-b8ad0bf47165" class="bulleted-list"><li style="list-style-type:disc">Using content from weeks 6-8</li></ul><ul id="bd68d7af-df33-49de-8ee7-aef067e140e1" class="bulleted-list"><li style="list-style-type:disc">Consider supplementing with w3schools</li></ul><ul id="248c1735-c4e2-42c4-b467-d383d54e85f0" class="bulleted-list"><li style="list-style-type:disc">Wait until after live session before considering submission</li></ul><ul id="059caf7d-dbde-4e91-8c68-602029bfae5e" class="bulleted-list"><li style="list-style-type:disc">Choose a business scenario, develop a business website</li></ul><ul id="567a4aff-b3fa-4f89-905d-8bf010212f46" class="bulleted-list"><li style="list-style-type:disc">Create HTML web pages, style with CSS, use data input and validation</li></ul><ul id="c3a60f84-8fb0-40df-a4b6-6cf9f4ba525b" class="bulleted-list"><li style="list-style-type:disc">Contain:<ul id="60eb5e83-dcbe-40b7-91ec-b1257be5f5e4" class="bulleted-list"><li style="list-style-type:circle">Headings</li></ul><ul id="174901bf-1ad1-45b4-ae7b-b2215f629365" class="bulleted-list"><li style="list-style-type:circle">Paragraphs</li></ul><ul id="767e5050-88a8-4037-a656-d7d7b59d0b1e" class="bulleted-list"><li style="list-style-type:circle">Linking Webpages</li></ul><ul id="d8411a90-3d47-4190-a18b-7fb2fb9f72b7" class="bulleted-list"><li style="list-style-type:circle">Tables in HTML</li></ul><ul id="0d075c8f-3ad8-45fe-836d-8a85cba1e0c0" class="bulleted-list"><li style="list-style-type:circle">Linking Images</li></ul><ul id="565a127e-881c-4f53-9d27-8d350b685c85" class="bulleted-list"><li style="list-style-type:circle">Developing contact forms</li></ul></li></ul><ul id="6a7f625a-d1ba-48a5-8bf1-92f9b72157ea" class="bulleted-list"><li style="list-style-type:disc">CSS file<ul id="1e8bfd49-a8aa-455e-ab4f-2582283d3a50" class="bulleted-list"><li style="list-style-type:circle">stylesheet.css</li></ul><ul id="e792f564-eb7d-4b72-9dae-00da1f40ee85" class="bulleted-list"><li style="list-style-type:circle">start with body{ }</li></ul><ul id="f3e30e0a-8b51-45ed-ac23-1a05b2de9f5b" class="bulleted-list"><li style="list-style-type:circle">then consider<ul id="ab09fe7e-c78c-4934-9c52-4a50272230dc" class="bulleted-list"><li style="list-style-type:square">h1-h6</li></ul><ul id="0da58df1-b798-4073-83be-276ff6b380f0" class="bulleted-list"><li style="list-style-type:square">p</li></ul><ul id="2ec9cd27-01ed-4b5d-bcaa-684466cb112a" class="bulleted-list"><li style="list-style-type:square">special</li></ul><ul id="4dd4f7f4-22e4-4900-8828-b425447dcf9d" class="bulleted-list"><li style="list-style-type:square">classes</li></ul></li></ul></li></ul><ul id="56187589-d01f-46b8-934b-aa906a1b1ae2" class="bulleted-list"><li style="list-style-type:disc">HTML<ul id="55d57b67-7bf0-4095-add9-820dd1785c48" class="bulleted-list"><li style="list-style-type:circle">doctype</li></ul><ul id="94a6c348-3238-4a00-9d00-f095c06bf389" class="bulleted-list"><li style="list-style-type:circle">html lang</li></ul><ul id="cccf423d-9995-4956-9899-021d46c0231b" class="bulleted-list"><li style="list-style-type:circle">head<ul id="7fedb5d6-8ab6-4320-9d8e-4e434afe82ae" class="bulleted-list"><li style="list-style-type:square">title</li></ul></li></ul><ul id="d1d215de-e1c8-4679-8f40-174dc0269db3" class="bulleted-list"><li style="list-style-type:circle">&lt;link href=”stylesheet.css” rel=”stylesheet” type=”text/css”&gt;</li></ul><ul id="9ed815d4-8426-4529-b673-8f2fb3109b06" class="bulleted-list"><li style="list-style-type:circle">body</li></ul><ul id="0c3a2fb9-9350-4453-b9a9-bf0163c3cc38" class="bulleted-list"><li style="list-style-type:circle">table<ul id="bb034e3f-aabb-42db-bba2-06847a4f21c0" class="bulleted-list"><li style="list-style-type:square">&lt;tr&gt;</li></ul><ul id="9118d863-4c6e-40ab-afc4-a6a5e44bcede" class="bulleted-list"><li style="list-style-type:square">&lt;th&gt;</li></ul><ul id="e6a27a65-3ad1-4795-82d1-2e65af893ba5" class="bulleted-list"><li style="list-style-type:square">&lt;td&gt;</li></ul></li></ul><ul id="81e35d65-63f7-4d80-9971-0ba45a0492ff" class="bulleted-list"><li style="list-style-type:circle"></li></ul></li></ul><p id="5eea7fb7-8ee4-403c-ba5e-64813cab37f8" class="">
+</p><p id="417380d1-579f-48b0-9b2e-0f223908f1d5" class="">
+</p><h2 id="7f86411c-742a-4e15-9b76-59f80056d44c" class="">Assessment 4: </h2><p id="6cbec3e3-bc81-4ae3-abb0-f6296d8bd9b5" class="">
+</p><p id="98359135-110e-49b5-b5f7-76aa532c678a" class="">
+</p><p id="e2a0e02e-dce3-444c-8c5e-49a9e266036b" class="">the quick brown fox jumps over the lazy dog</p><p id="57fba265-ba12-4e5b-a07a-d13f03140abb" class="">the quick brown fox jumps over the lazy dog</p><p id="6937cf3f-9bc1-428d-b493-5df0778834c8" class="">
+</p></div></article></body></html>

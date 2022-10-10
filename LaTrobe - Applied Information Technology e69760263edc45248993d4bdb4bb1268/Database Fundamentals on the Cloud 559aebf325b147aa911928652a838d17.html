@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Database Fundamentals on the Cloud</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="559aebf3-25b1-47aa-9119-28652a838d17" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/DFotC.jpg"/></div><h1 class="page-title">Database Fundamentals on the Cloud</h1></header><div class="page-body"><p id="1d4b6347-ceae-47ae-a6b2-b36795e19f13" class="">
+</p><p id="0e6f2a45-4620-485a-a848-469390017804" class="">
+</p><h2 id="0727b905-d466-4e15-a361-4d1f21dcb741" class="">Week 1: Database Concepts</h2><ul id="30e08089-ad89-4bcf-bafa-a4f6fa008ec5" class="bulleted-list"><li style="list-style-type:disc">Data (raw facts) Vs Information (processed data)</li></ul><ul id="8236c5a0-cf42-43bb-b5c9-5b65ec5307cf" class="bulleted-list"><li style="list-style-type:disc">90% of the data in the world has been created in the last 2 years</li></ul><ul id="fa7d235a-07a8-42a4-8a37-b6ae82cb9830" class="bulleted-list"><li style="list-style-type:disc">Database (structured collection of raw facts Vs Database Management System (DBMS) - Software for managing a database including structure and access</li></ul><ul id="4d618780-5a0c-4b57-9ec1-5061cc703490" class="bulleted-list"><li style="list-style-type:disc">Database Vs file system<ul id="3d740e36-7e9d-4d9c-9529-1f02be983b7b" class="bulleted-list"><li style="list-style-type:circle">File systems may be redundant, not accessible, duplicated (maybe incorrectly), consider concepts of “Islands of information”</li></ul><ul id="a438c2b6-6d60-4181-9b8f-d648dec22757" class="bulleted-list"><li style="list-style-type:circle">Database advantages: security, sharing, consistency, productivity, decision making, metadata (data about data)</li></ul><ul id="880dbc17-c035-4e3d-bedf-227725026c60" class="bulleted-list"><li style="list-style-type:circle">Database disadvantages: complexity, costs, vendor dependence, upgrade/replacement cycles, maintaining currency</li></ul></li></ul><ul id="a04de45e-f9fe-411f-9dcc-686c1ae66476" class="bulleted-list"><li style="list-style-type:disc">Consider DBMS as the intermediary between the end user and the database</li></ul><ul id="51fb9e97-a638-4487-b0a3-db76eb982b99" class="bulleted-list"><li style="list-style-type:disc">Queries and ad hoc queries</li></ul><ul id="ce011e99-bedc-49d4-a5f4-e5c8bca78c5f" class="bulleted-list"><li style="list-style-type:disc">Single-user, desktop, multiuser, workgroup (&lt;50), enterprise, centralised, distributed, general-purpose and cloud databases</li></ul><ul id="f5492961-c117-437f-afcc-f1be13e61a2e" class="bulleted-list"><li style="list-style-type:disc">Operational / transactional / production / online transaction processing (OLTP) vs analytical databases (data warehouses and Online analytical processing - OLAP)</li></ul><ul id="6016a45d-94b2-45f5-9e71-36b0d3600c00" class="bulleted-list"><li style="list-style-type:disc">Concept of Business intelligence, supported in decision making by data warehousing and analytics</li></ul><ul id="30cd4a74-d80e-4095-81f4-bcb0ce7a31ae" class="bulleted-list"><li style="list-style-type:disc">Unstructured Vs Structured data and Semistructured data</li></ul><ul id="98a9129f-420f-4ef6-a6f9-826752cbd274" class="bulleted-list"><li style="list-style-type:disc">Extensible Markup Language (XML) databases to represent and manipulate data elements in a textural format</li></ul><ul id="3132f04d-802f-4569-822c-556e09a94bbb" class="bulleted-list"><li style="list-style-type:disc">NoSQL = Not only Structured Query Language</li></ul><ul id="d55aa078-7da1-4e29-aac3-8b5e512c3882" class="bulleted-list"><li style="list-style-type:disc">Database Design - the process that describes the database structure and determines database components</li></ul><ul id="13c890a6-8cbb-49ae-a69e-5f49bf8b2c3d" class="bulleted-list"><li style="list-style-type:disc">Data Processing specialists in the age of file formatting</li></ul><ul id="405687f6-c6a9-4870-b720-a7a3dea008f0" class="bulleted-list"><li style="list-style-type:disc">File System Data Processing Problems:<ul id="e33b663b-812e-453b-9633-e3bbc29da25d" class="bulleted-list"><li style="list-style-type:circle">Lengthy development times</li></ul><ul id="41a46b71-b8d7-4c4b-a671-3be478cb2a2d" class="bulleted-list"><li style="list-style-type:circle">Difficulty getting quick answers</li></ul><ul id="9179d850-fa8b-495b-b3f7-0c4ed894925e" class="bulleted-list"><li style="list-style-type:circle">Complex system administration</li></ul><ul id="eb3c13e4-eb51-4e3a-a5c7-a16e97ccfe26" class="bulleted-list"><li style="list-style-type:circle">Lack of security and limited data sharing</li></ul><ul id="5ba06ce5-fad0-4ef5-84ac-045eea62e8ab" class="bulleted-list"><li style="list-style-type:circle">Extensive programming required</li></ul><ul id="388b3a24-a420-4053-b7fe-fdbd63b14144" class="bulleted-list"><li style="list-style-type:circle">Structural and data dependence</li></ul><ul id="5ea6aaed-8563-4adc-bec7-f620a8018d60" class="bulleted-list"><li style="list-style-type:circle">Islands of information and data redundancy</li></ul></li></ul><ul id="6faa2c75-eb34-4f56-a1a0-f476be014277" class="bulleted-list"><li style="list-style-type:disc">Logical Vs physical data formats</li></ul><ul id="965d8c0a-f45c-4732-9a6d-4100b084e8b0" class="bulleted-list"><li style="list-style-type:disc">Uncontrolled data redundancy sets the stage for:<ul id="2bef1d34-2191-49b0-8107-c024eff0c03c" class="bulleted-list"><li style="list-style-type:circle">poor data security</li></ul><ul id="2750f1db-6d05-464c-8505-fc11ab2d1bad" class="bulleted-list"><li style="list-style-type:circle">data inconsistency</li></ul><ul id="19efb666-df35-4060-8223-1b7ec0a5c52b" class="bulleted-list"><li style="list-style-type:circle">data entry errors</li></ul><ul id="b0eebce0-dc66-4104-bbc8-df4f3c7e919d" class="bulleted-list"><li style="list-style-type:circle">data integrity problems</li></ul><ul id="08429ecb-92aa-4a79-8661-c444321a4c2c" class="bulleted-list"><li style="list-style-type:circle">data anomalies - when not all of the changes required to be made are flowed through to all redundant data repositories<ul id="862723ec-458b-4701-8553-b11106d622f4" class="bulleted-list"><li style="list-style-type:square">update anomalies</li></ul><ul id="ccae2c28-1a59-4c6a-9da0-15adf53249e4" class="bulleted-list"><li style="list-style-type:square">insertion anomalies</li></ul><ul id="824f6979-328d-48b4-bebd-183b970a5873" class="bulleted-list"><li style="list-style-type:square">deletion anomalies</li></ul></li></ul></li></ul><ul id="58da0f28-70f6-4831-9c6e-d0ff4b32ad76" class="bulleted-list"><li style="list-style-type:disc">The Database System Environment<ul id="1462373c-d2e4-47c6-8d9b-1f7001051234" class="bulleted-list"><li style="list-style-type:circle">comprising of hardware, software, people, procedures and data</li></ul><ul id="b69b0372-c6ae-4269-8282-c2b757eb8772" class="bulleted-list"><li style="list-style-type:circle">System administrators, database administrators, systems analysts and programmers and end users</li></ul></li></ul><ul id="dd7f50d8-e619-4382-8216-7cd38d1435b4" class="bulleted-list"><li style="list-style-type:disc">DBMS functions:<ul id="c0a523c2-58d5-405c-bf3e-92b166f9f692" class="bulleted-list"><li style="list-style-type:circle">data dictionary management<ul id="ba6931c9-d154-44c0-92d8-2a50b2a2ebd3" class="bulleted-list"><li style="list-style-type:square">abstraction to take care of data component rules and relationships, removing data dependence from the system</li></ul></li></ul><ul id="bd23984c-6922-4e2b-b583-8ee28b8c8adf" class="bulleted-list"><li style="list-style-type:circle">data storage management<ul id="49b822c4-bc9f-4054-b294-205b33855578" class="bulleted-list"><li style="list-style-type:square">including performance tuning</li></ul></li></ul><ul id="0ab7e245-c930-41eb-b25d-e88fa8299f22" class="bulleted-list"><li style="list-style-type:circle">data transformation &amp; presentation<ul id="955a78e9-42a8-4994-bb46-29b05926c0d5" class="bulleted-list"><li style="list-style-type:square">such as localised date transformations</li></ul></li></ul><ul id="a9abe36c-a58b-414b-ac65-cba908346608" class="bulleted-list"><li style="list-style-type:circle">security management<ul id="f7b4b3fe-af68-4c09-a6df-62aabad0ff47" class="bulleted-list"><li style="list-style-type:square">including access control</li></ul></li></ul><ul id="b1aa95c3-e800-4719-bb7b-ea230d309d71" class="bulleted-list"><li style="list-style-type:circle">multiuser access control</li></ul><ul id="d627a9eb-2edd-42b2-9335-5f488771b89e" class="bulleted-list"><li style="list-style-type:circle">backup and recovery management</li></ul><ul id="27ed689b-fe94-4659-b3f7-64396e437e53" class="bulleted-list"><li style="list-style-type:circle">data integrity management</li></ul><ul id="ef25d8e8-8c76-4dd6-b8ef-18cbdfd70d7b" class="bulleted-list"><li style="list-style-type:circle">database access languages<ul id="bc22ccdd-dcd2-4a4a-bb74-1501520edd7d" class="bulleted-list"><li style="list-style-type:square">A query language is non-procedural and allows a user to specify what is to be done without having to specify how it is to be done</li></ul></li></ul><ul id="3fd927b4-c869-47ab-b03f-140520931c6d" class="bulleted-list"><li style="list-style-type:circle">application programming interfaces</li></ul><ul id="c7001564-325d-4c75-ac8c-2ea8dfe7b725" class="bulleted-list"><li style="list-style-type:circle">database communication interfaces</li></ul></li></ul><ul id="8151e0a6-3256-489d-8019-129909003952" class="bulleted-list"><li style="list-style-type:disc">Managing the Database System:<ul id="a295f85e-fe7d-4439-be74-7c4e5c713854" class="bulleted-list"><li style="list-style-type:circle">Disadvantages of a database system:<ul id="ef53f23a-05d7-4cd7-b2f8-54fbdb329a5e" class="bulleted-list"><li style="list-style-type:square">Cost</li></ul><ul id="d0414011-ce2c-4035-89f1-0ef16e2ffec2" class="bulleted-list"><li style="list-style-type:square">Management complexity</li></ul><ul id="a0e24fbb-b633-4b7e-97db-814c9b405cf8" class="bulleted-list"><li style="list-style-type:square">Maintaining currency</li></ul><ul id="8a017d3e-ffe0-48de-a67d-26c31fd829bd" class="bulleted-list"><li style="list-style-type:square">Vendor dependency</li></ul><ul id="f78bc59f-4d37-4657-8e86-8bd509d9803f" class="bulleted-list"><li style="list-style-type:square">Frequent upgrade / replacement cycles</li></ul></li></ul></li></ul><ul id="fd9589f9-ecb7-4d35-ac19-1970cd1d6a83" class="bulleted-list"><li style="list-style-type:disc">Data Models:<ul id="38a3e210-7470-41ef-a74b-ce5cb1b60d9b" class="bulleted-list"><li style="list-style-type:circle">Entities<ul id="750c6dfb-a241-452b-b8f1-eeebfc6b7329" class="bulleted-list"><li style="list-style-type:square">Objects for storing data</li></ul><ul id="b651789c-37c2-4516-b5d4-31dd7cce5bec" class="bulleted-list"><li style="list-style-type:square">Data is stored in attributes</li></ul></li></ul><ul id="77ebd207-7f90-44e4-8174-587b0e7caa2f" class="bulleted-list"><li style="list-style-type:circle">Relationships<ul id="9ee72c7b-2af0-4910-b8a0-cd303731ff3f" class="bulleted-list"><li style="list-style-type:square">Associations between entities</li></ul><ul id="cecdb406-fb0b-4bdc-bcea-e04e9138f089" class="bulleted-list"><li style="list-style-type:square">Can be 1:1, 1:M, M:M</li></ul></li></ul><ul id="5623c5e9-9b74-40a0-9afb-f5d19ddb85ab" class="bulleted-list"><li style="list-style-type:circle">Constraints<ul id="bb9523c3-5056-4c60-a9d8-43b705d27d1f" class="bulleted-list"><li style="list-style-type:square">Rules to ensure data integrity</li></ul></li></ul><ul id="9f9d7535-83aa-4205-93e1-b29770a60682" class="bulleted-list"><li style="list-style-type:circle">Business Rules:<ul id="5045cede-84d2-4f41-b453-8b841f03da38" class="bulleted-list"><li style="list-style-type:square">Organisational policies, procedures or principles</li></ul><ul id="a5725706-719d-461e-b75f-44de8d1348b6" class="bulleted-list"><li style="list-style-type:square">Can help establish entities, relationships and constraints</li></ul></li></ul><ul id="b99cfdc8-f13d-46b6-8449-8efbbdaec4a5" class="bulleted-list"><li style="list-style-type:circle">Historical Structures:<ul id="cfcdf5d4-8c69-497b-88b3-90107a7da378" class="bulleted-list"><li style="list-style-type:square">File System</li></ul><ul id="74fa6391-1746-4721-8fff-acd3fde0014a" class="bulleted-list"><li style="list-style-type:square">Hierarchical Model</li></ul><ul id="8421ec92-2ea0-4d50-8809-45ca2c181383" class="bulleted-list"><li style="list-style-type:square">Network Model (multiple parents allowed)</li></ul><ul id="ddf3981b-11eb-4add-b261-ea1a45d30cb0" class="bulleted-list"><li style="list-style-type:square">Relational Model<ul id="e8d0df70-3d39-4a2f-a19c-d47060205833" class="bulleted-list"><li style="list-style-type:disc">can solve more advanced informational needs and can now be supported by current generation IT infrastructure</li></ul><ul id="cadd3c08-0ca2-4ac7-ac8d-31ee556e15ad" class="bulleted-list"><li style="list-style-type:disc">A relation is a two dimensional structure with intersecting rows and columns i.e. a table or file</li></ul><ul id="98d0a98a-bada-4869-9626-99267e655d11" class="bulleted-list"><li style="list-style-type:disc">An attribute is one column of a relation i.e. field or column</li></ul><ul id="5e7c7110-ccd8-494e-a801-d147defe3156" class="bulleted-list"><li style="list-style-type:disc">A tuple is one line of a relation i.e. a record or row</li></ul><ul id="203cd38d-5fc9-4cff-82a2-5890d1096038" class="bulleted-list"><li style="list-style-type:disc">A value is one piece of data in a field i.e. a cell</li></ul></li></ul><ul id="96a004c9-7009-409d-b39a-10e74ecd4248" class="bulleted-list"><li style="list-style-type:square">Entity relational model - a graphical representation of a relational model</li></ul><ul id="e43cb37d-a249-49e8-8ca0-0e33a919e39a" class="bulleted-list"><li style="list-style-type:square">Object-Orientated Model - often used together with OOP where classes replace entities and also includes the features of behaviour and inheritance</li></ul><ul id="5520af4c-9653-47c6-9586-9fc122739bdf" class="bulleted-list"><li style="list-style-type:square">Big Data Models<ul id="e2bf68ed-0554-47a2-8b60-ebcd35ea3c0e" class="bulleted-list"><li style="list-style-type:disc">data sets too large for other models</li></ul><ul id="3da9dfc2-be89-41ec-b10b-f583c09f845d" class="bulleted-list"><li style="list-style-type:disc">NoSQL</li></ul><ul id="8251d204-4b47-41d0-bb9a-14baa7ea5acb" class="bulleted-list"><li style="list-style-type:disc">Hadoop</li></ul><ul id="3d7e1a2a-6afa-4ee9-8d11-2645db46215f" class="bulleted-list"><li style="list-style-type:disc">MapReduce</li></ul></li></ul><ul id="99b847c6-279a-4d07-8e93-69ed74f23549" class="bulleted-list"><li style="list-style-type:square">At bare minimum, a data model should contain a description of the data structure that will store the end-user data, a set of enforceable rules to guarantee the integrity of the data and a data manipulation methodology to support real-world data transformations</li></ul></li></ul></li></ul><ul id="a652528d-6444-4d8b-b0ba-549cdb328900" class="bulleted-list"><li style="list-style-type:disc">Data Model Basic Building Blocks:<ul id="02679cae-bb37-4f82-a31a-955f04de2d07" class="bulleted-list"><li style="list-style-type:circle">Entities:<ul id="5d9fc7a4-c14e-4450-a1c9-bb2735acf027" class="bulleted-list"><li style="list-style-type:square">A real-world object - person, place or thing - about which data will be stored</li></ul><ul id="78aa6f00-6865-4884-93dc-cde2ff8c0c6d" class="bulleted-list"><li style="list-style-type:square">Rectangle in an ERD, also known as an entity box</li></ul><ul id="db6b7401-ba83-4449-a442-949cf6006d20" class="bulleted-list"><li style="list-style-type:square">Name will be singular and in all-caps</li></ul></li></ul><ul id="0ffd18e1-54d8-464d-a0be-b174a49562b7" class="bulleted-list"><li style="list-style-type:circle">Attributes:<ul id="fbc526b0-8c25-43dc-aeb7-382a8a4f65c0" class="bulleted-list"><li style="list-style-type:square">Characteristics about an entity</li></ul></li></ul><ul id="6a031003-ef54-4155-9843-159f7ef65f51" class="bulleted-list"><li style="list-style-type:circle">Relationships:<ul id="7b7ecca9-60ca-4781-adf7-13d874906927" class="bulleted-list"><li style="list-style-type:square">Associations between entities: 1:M, M:N, 1:1</li></ul><ul id="74302272-31e0-46b0-b592-5cedccc75e8f" class="bulleted-list"><li style="list-style-type:square">Relation is referred to as connectivity, in the form of an active or passive verb</li></ul></li></ul><ul id="5b380f45-abd9-4dd8-a250-1925159f41d4" class="bulleted-list"><li style="list-style-type:circle">Constraints:<ul id="0728467e-b90a-4b80-b0ac-a52f5c6ff5d3" class="bulleted-list"><li style="list-style-type:square">Restrictions placed on data to ensure data integrity in the form of rules</li></ul></li></ul><ul id="433473f7-0eae-4325-8c6a-1cf94b45fb4e" class="bulleted-list"><li style="list-style-type:circle">Business Rules:<ul id="57d46184-f2d2-40e1-b46c-666e3e2c4975" class="bulleted-list"><li style="list-style-type:square">Policies, procedures or principles that define the above building blocks</li></ul><ul id="71a12b7a-2f16-4e58-b7c7-e9664b04a8d7" class="bulleted-list"><li style="list-style-type:square">As a general rule, a noun in a business rule will translate to an entity in the model and a verb in a business rule will translate to a relationship among entities</li></ul></li></ul></li></ul><ul id="88bda41f-a4d0-49ac-83fe-6b9e760df6fa" class="bulleted-list"><li style="list-style-type:disc">Naming conventions:<ul id="ade301f7-cd8f-4d4b-b9c0-2e13b7efe798" class="bulleted-list"><li style="list-style-type:circle">Attributes are often in all-caps</li></ul><ul id="9c8954c6-d06e-4816-9979-3cf5aa6c6973" class="bulleted-list"><li style="list-style-type:circle">It is good practice to prefix the name of an attribute with the name or an abbreviation of the name of the entity in which is occurs for example a customer credit limit = CUS_CREDIT_LIMIT</li></ul></li></ul><ul id="db9fcfca-1a45-4323-b822-b04417b5b50e" class="bulleted-list"><li style="list-style-type:disc">Schema refers to the conceptual organisation of the entire database as viewed by the database administrator</li></ul><ul id="88ae07ef-a289-422e-911a-cf9d2d567dc7" class="bulleted-list"><li style="list-style-type:disc">Subschema refers to the portion of the database ‘seen’ by the application programs</li></ul><ul id="2fda0950-dea0-4637-8b35-f6df9b7213f8" class="bulleted-list"><li style="list-style-type:disc">Data manipulation languages (DMLs) and Data Definition Languages (DDLs)</li></ul><ul id="37e25046-bd5e-4d86-907a-c77a56b7a447" class="bulleted-list"><li style="list-style-type:disc">The relational model was introduced in 1970</li></ul><ul id="de557e89-b8fd-4723-b10c-3884b5269159" class="bulleted-list"><li style="list-style-type:disc">Peter Chen first introduced the Entity Relationship Model (ERM and thus ERDs) in 1976</li></ul><ul id="b595ff55-74f9-47a3-ac7a-c912f593e705" class="bulleted-list"><li style="list-style-type:disc">Each row in a relational table is known as an entity instance or entity occurrence with a collection of entities known as an entity set</li></ul><ul id="26711b46-feee-4de9-adb0-2aa7e23aa1b9" class="bulleted-list"><li style="list-style-type:disc">The Object Orientated Model - OODM<ul id="48de8560-686a-467a-8da7-cf0d330a3ada" class="bulleted-list"><li style="list-style-type:circle">both data and its relationships are contained in a single structure, known as an object</li></ul><ul id="70dab4a1-0ac6-4eec-a68c-5d45e272f18d" class="bulleted-list"><li style="list-style-type:circle">Object Orientated Database Management System = OODBMS</li></ul><ul id="116a5dd7-21fb-4656-9b08-b8d125dc38d1" class="bulleted-list"><li style="list-style-type:circle">OODM is said to be a semantic data model</li></ul><ul id="490ef9a4-213b-4445-a232-4693c7d5c550" class="bulleted-list"><li style="list-style-type:circle">OODM objects contain both their attributes and also their functions / operations<ul id="7cd23714-eeb8-479d-ada9-31b021f6814e" class="bulleted-list"><li style="list-style-type:square">objects are therefore self-contained and re-usable</li></ul><ul id="3da8da2f-affd-4103-8e91-b9188e10b4d0" class="bulleted-list"><li style="list-style-type:square">objects are analogous to an ER model’s entities</li></ul><ul id="95ea8830-8581-48d6-a27d-92a42e185e1c" class="bulleted-list"><li style="list-style-type:square">Objects with similar characteristics are grouped in classes, which may have methods</li></ul><ul id="5adb038b-5ee8-4314-9eb6-cb9f28153081" class="bulleted-list"><li style="list-style-type:square">Classes are organised in a class hierarchy</li></ul><ul id="7b8b240c-18c2-4d59-bfbf-7af9a42b48b8" class="bulleted-list"><li style="list-style-type:square">Classes have inheritance</li></ul></li></ul><ul id="4bc50856-39d7-4f31-a21f-5d8c943ab18e" class="bulleted-list"><li style="list-style-type:circle">OODMs are typically depicted using Unified Modelling Language (UML) class diagrams</li></ul></li></ul><ul id="060c8bc5-e6e8-4a25-898f-974829184435" class="bulleted-list"><li style="list-style-type:disc">The Extended Relational Database Model - ERDM<ul id="9309142d-b9c2-4731-9c7b-2e3164439619" class="bulleted-list"><li style="list-style-type:circle">adds some features of the OODM within the inherently simpler RDM framework</li></ul><ul id="19a9735b-0962-443a-9051-ee164f86d3f2" class="bulleted-list"><li style="list-style-type:circle">includes objects, extensible data types based on class and inheritance</li></ul><ul id="7e226722-d852-4ae9-8f48-f2f76434203e" class="bulleted-list"><li style="list-style-type:circle">is often described as an Object / Relational Database Management System (O/R DBMS)</li></ul><ul id="8239876d-6aff-483d-836b-bad5bc2f5f6f" class="bulleted-list"><li style="list-style-type:circle">is more focused toward general deployment as opposed to OO’s specificity</li></ul><ul id="9540c769-01fc-45e6-86d3-fe10d0f967a6" class="bulleted-list"><li style="list-style-type:circle">is easily extended to accommodate new classes and capabilities such as XML </li></ul></li></ul><ul id="ce918621-28db-4f11-bb37-14fec90c5abf" class="bulleted-list"><li style="list-style-type:disc">Extensible Markup Language (XML) has emerged as the de facto standard within the industry, in order to be able to handle the growing quantity of unstructured data such as diagrams, media, webpages etc.</li></ul><ul id="3aabf546-3152-41bd-ad50-80a8c844ec65" class="bulleted-list"><li style="list-style-type:disc">Big data refers to the movement to find new and better ways to manage the large amounts of web and sensor generated data to derive business insights and is defined by the 3 Vs:<ul id="3e260c13-981f-4b7a-bd82-4b3f7f83421f" class="bulleted-list"><li style="list-style-type:circle">Volume</li></ul><ul id="4d35844e-337d-46c4-bb15-dffabf88f471" class="bulleted-list"><li style="list-style-type:circle">Velocity</li></ul><ul id="33c2687c-2d94-402e-a9ae-f5573d017988" class="bulleted-list"><li style="list-style-type:circle">Variety</li></ul></li></ul><ul id="4dbd3ca1-1bf0-427d-b66f-fd11d22a3100" class="bulleted-list"><li style="list-style-type:disc">Hadoop: java based, open source, high speed, distributed storage and computation. Supported by the Apache Software Foundation.<ul id="bc97beda-f9cc-434d-b368-7e19193ae6f0" class="bulleted-list"><li style="list-style-type:circle">Hadoop Distributed File System (HDFS): storage for big data at high speeds</li></ul><ul id="437a9ca6-b403-49bc-9468-7acf1aa5008a" class="bulleted-list"><li style="list-style-type:circle">MapReduce: open source API providing fast data analytic services by distributing data processing among thousands of parallel nodes<ul id="ab79205b-cff1-4ee9-9838-f903154421d6" class="bulleted-list"><li style="list-style-type:square">Map: takes a job and splits it into smaller units of work</li></ul><ul id="159f5733-4b6a-48b3-8032-73bf98905529" class="bulleted-list"><li style="list-style-type:square">Reduce: collects outputs and recombines into a whole</li></ul></li></ul></li></ul><ul id="ce36eee6-1f94-4a62-9700-fca17ea63f37" class="bulleted-list"><li style="list-style-type:disc">NoSQL: large-scale distributed database system that stores both structured and unstructured data<ul id="7c208387-b3dc-48fe-93f7-864454c0f941" class="bulleted-list"><li style="list-style-type:circle">Key-Value data model: ID, Key (attribute), Value (usually a string)</li></ul><ul id="7932c66c-7da7-4b09-bc23-490c43568036" class="bulleted-list"><li style="list-style-type:circle">very useful for large amounts of sparse data<ul id="b8f03a85-79a4-483f-bb0b-7239b1cdeb2a" class="bulleted-list"><li style="list-style-type:square">consider a clinic with many patients and many assessments - do not want a blank field for every test that a patient has NOT taken…</li></ul></li></ul><ul id="1badbdb8-e752-4a9a-a351-2d8ddd9945e2" class="bulleted-list"><li style="list-style-type:circle">highly scalable, available and fault tolerant</li></ul></li></ul><ul id="888eb28a-6308-41ad-b46e-35befa097c78" class="bulleted-list"><li style="list-style-type:disc">Data abstraction:<ul id="05755852-db08-405a-9f94-6027d7abd891" class="bulleted-list"><li style="list-style-type:circle">External Model:<ul id="b59d351a-d4e9-44cb-abce-23e29ced023a" class="bulleted-list"><li style="list-style-type:square">End User’s View of the data environment</li></ul><ul id="f5b2c352-a82e-45fc-a2f8-222bf56505cd" class="bulleted-list"><li style="list-style-type:square">External Model’s View / External Schema</li></ul></li></ul><ul id="7e2c4cfc-5e70-427a-9c56-c23dfe5b4426" class="bulleted-list"><li style="list-style-type:circle">Conceptual Model:<ul id="0ac43aba-b75b-4e53-be2e-3f827822a849" class="bulleted-list"><li style="list-style-type:square">Global view of the entire database by the entire organisation</li></ul><ul id="5ea4aaf5-9c99-4a75-8fa0-b12063ec623e" class="bulleted-list"><li style="list-style-type:square">Conceptual Schema</li></ul><ul id="bad7c441-4b3a-4780-b2b9-ee533404a4ce" class="bulleted-list"><li style="list-style-type:square">The most widely used being the ER model represented by the ERD</li></ul><ul id="476b1d5d-a3ec-482b-9152-27b7ee092f42" class="bulleted-list"><li style="list-style-type:square">independent from both software and hardware</li></ul><ul id="e4c9b982-7610-4b1e-a67c-b80a4ca343c8" class="bulleted-list"><li style="list-style-type:square">Logical Design: creating a conceptual model that could be implemented by any DBMS</li></ul></li></ul><ul id="383c12d3-2152-4596-bd11-f84a220b98b7" class="bulleted-list"><li style="list-style-type:circle">Internal Model:<ul id="e79938a9-ac18-49e4-8d20-80d0fb93e9b1" class="bulleted-list"><li style="list-style-type:square">Maps the conceptual model on the DBMS</li></ul><ul id="8345e09c-f0ff-435a-b5ac-6671841df2ad" class="bulleted-list"><li style="list-style-type:square">Internal schema</li></ul></li></ul><ul id="0a0f292c-9c5c-4096-b44d-733a5fcc6764" class="bulleted-list"><li style="list-style-type:circle">Physical Model:<ul id="2e07486c-8fee-4bfd-8a77-7d7e0c25646b" class="bulleted-list"><li style="list-style-type:square">Lowest level of abstraction, describes the way in which data is stored and accessed in the physical world</li></ul><ul id="970da173-efab-47bc-ac7c-dcc715779ee2" class="bulleted-list"><li style="list-style-type:square">software and hardware dependant</li></ul><ul id="bd7b002e-52b1-490e-af90-7b353e71554a" class="bulleted-list"><li style="list-style-type:square">When you can change the physical model without affecting the internal model you are said to have physical independence</li></ul><p id="a3aed458-ea78-4632-ba85-b9dccb90c595" class="">
+</p></li></ul></li></ul><h2 id="93d0ce9e-422b-4965-911e-64acab524b26" class="">Week 2: Relational Model</h2><ul id="b9b8567b-e6fe-4f31-9504-69a97a212db4" class="bulleted-list"><li style="list-style-type:disc">The relational model has three well defined components:<ol type="1" id="eebcda56-3110-48fe-8d78-73ea4454b311" class="numbered-list" start="1"><li>A logical data structure represented by relations</li></ol><ol type="1" id="fcc46cc0-149f-488c-9f55-95ac571f87b8" class="numbered-list" start="2"><li>A set of integrity rules to enforce that data is consistent and remains so over time</li></ol><ol type="1" id="913948c2-bf3a-4de8-a47a-9f007f336212" class="numbered-list" start="3"><li>A set of operations that defines how data is manipulated</li></ol></li></ul><ul id="80557696-f84e-44b4-8957-70dbec07d40b" class="bulleted-list"><li style="list-style-type:disc">Table: a collection of entity occurrences representing an entity set<ul id="ca0ccd32-c520-40c8-afdb-0e1c65d14341" class="bulleted-list"><li style="list-style-type:circle">tuple, attribute, attribute domain, order of rows and columns is immaterial, each row must be unique</li></ul></li></ul><ul id="a3f253ab-5bb7-4782-9cbc-fd161c0ef673" class="bulleted-list"><li style="list-style-type:disc">Keys<ul id="429d2115-0268-40d8-88ce-a7ab3121f65c" class="bulleted-list"><li style="list-style-type:circle">Functional dependence where stating one value will reveal another - a key is the determinant and the information revealed is a dependant.  Full functional dependence is where there are no non-necessary determinants in the determinant - dependant relationship.</li></ul><ul id="2041b925-ffe4-4cca-b582-be33e4f35cb8" class="bulleted-list"><li style="list-style-type:circle">A key is an attribute that can determine the values of other attributes</li></ul><ul id="e2e2db7b-7c11-4a05-9908-00d09ba892f1" class="bulleted-list"><li style="list-style-type:circle">Primary Keys<ul id="d86b2590-a497-4098-adf8-9e32419ddb3a" class="bulleted-list"><li style="list-style-type:square">One or more attributes that UNIQUELY identifies any tuple</li></ul><ul id="537c242e-7aae-479d-9662-a6e280946607" class="bulleted-list"><li style="list-style-type:square">May use a created dedicated ID attribute</li></ul><ul id="2be81f7b-9644-48ef-949d-f312b6045df7" class="bulleted-list"><li style="list-style-type:square">Cannot be NULL, must be unique</li></ul><ul id="afa8121a-4186-485e-bb7e-f9520080f9e1" class="bulleted-list"><li style="list-style-type:square">In some cases, a flag / dummy code may be used as an ID eg student number -99 may represent a dummy or NULL student</li></ul></li></ul><ul id="8269e01c-d4de-4d0f-934d-cd8311ed6d04" class="bulleted-list"><li style="list-style-type:circle">Composite Keys<ul id="4fb0a942-50c8-441f-9757-d9ef1aa9fa3e" class="bulleted-list"><li style="list-style-type:square">A primary key that has more than one key attribute</li></ul></li></ul><ul id="2470eac4-ad6e-4411-bb2d-aa69394f278a" class="bulleted-list"><li style="list-style-type:circle">Foreign Keys<ul id="0afab4e4-b933-4353-aba3-65f7815b69f0" class="bulleted-list"><li style="list-style-type:square">A primary key copied in another relation for cross-referencing</li></ul><ul id="ef4e9e94-d092-45ae-a6b9-c812fa5cffd4" class="bulleted-list"><li style="list-style-type:square">A primary key from table A that is used in table B</li></ul></li></ul><ul id="292b842d-be2a-4f46-a90c-2d95a1f39bd7" class="bulleted-list"><li style="list-style-type:circle">Super Keys<ul id="5086e683-304f-454d-85e6-934e0fc562bc" class="bulleted-list"><li style="list-style-type:square">A key that can uniquely identify any row in the table</li></ul></li></ul><ul id="17785ed8-1ba8-40b7-9549-270f85e7fc92" class="bulleted-list"><li style="list-style-type:circle">Candidate Keys<ul id="2796b9e5-c9e2-4e32-9c6f-f201de9d377d" class="bulleted-list"><li style="list-style-type:square">A minimal superkey - a superkey without any unnecessary attributes</li></ul></li></ul><ul id="42d22186-33ca-44a0-826e-a8fd4d196e5f" class="bulleted-list"><li style="list-style-type:circle">Secondary Keys<ul id="f44cecab-aeba-4c0c-855c-adaabf2d25c5" class="bulleted-list"><li style="list-style-type:square">Used strictly for data retrieval purposes and is an alternative to the primary key. Imagine where you have forgotten your customer number and use your name and phone number instead. May not be unique in the way a primary key is.</li></ul></li></ul></li></ul><ul id="3de5f614-32c2-4106-8e79-db970bf3a6a2" class="bulleted-list"><li style="list-style-type:disc">Integrity Restraints<ul id="00714d4a-7939-44e5-a647-f37a34c9d681" class="bulleted-list"><li style="list-style-type:circle">Entity Integrity: the condition in which each entity instance is unique<ul id="192c1423-6a54-4540-9986-f5f914a987de" class="bulleted-list"><li style="list-style-type:square">Problems with an entity within a relation</li></ul></li></ul><ul id="3fb187cd-5292-4c54-979a-953872d2fa5c" class="bulleted-list"><li style="list-style-type:circle">Referential Integrity: the condition where every reference to an entity instance by another entity instance is valid<ul id="eac96d76-b1d4-4395-977e-89d2cd951d8a" class="bulleted-list"><li style="list-style-type:square">Problems with a reference between relations</li></ul></li></ul></li></ul><ul id="c5cb62a0-d373-435b-be5a-d612eb727ca8" class="bulleted-list"><li style="list-style-type:disc">Relational Algebra<ul id="11fa10e8-81d1-4340-8952-63e1304e2386" class="bulleted-list"><li style="list-style-type:circle">Select / restrict (tuples)<ul id="1e18dae7-eec1-48a8-8657-deb9e9a2dd7e" class="bulleted-list"><li style="list-style-type:square">σ</li></ul><ul id="3b40f2b6-d5f2-475f-bba6-0409511d754a" class="bulleted-list"><li style="list-style-type:square">σ year ≥ 2000</li></ul><ul id="ed173dca-2b20-455a-aeb7-3eb44daa7996" class="bulleted-list"><li style="list-style-type:square">unary operator - only one table as input, yields resulting tupules that fit the specifications without truncating attributes</li></ul></li></ul><ul id="9a6a38b5-31cb-4dd2-bbf2-fb0debe1bda8" class="bulleted-list"><li style="list-style-type:circle">Project (attributes)<ul id="90309efc-1136-4121-9961-272ea0cafa3f" class="bulleted-list"><li style="list-style-type:square">π</li></ul><ul id="76fe834a-3355-406c-b415-289ad0ec22dd" class="bulleted-list"><li style="list-style-type:square">π title = Hook</li></ul><ul id="8b958705-a010-45d4-8aa3-0b3ec5dd2f80" class="bulleted-list"><li style="list-style-type:square">like a cut and paste for attribute columns - use 2 or more to relate to keys</li></ul><ul id="5f5be5c5-5761-4f30-b048-dcb24bcb135c" class="bulleted-list"><li style="list-style-type:square">π cus_name, cus_number (customer)</li></ul></li></ul><ul id="0351b049-a967-4a26-8fb8-0542a03b21c7" class="bulleted-list"><li style="list-style-type:circle">Union<ul id="5411c164-879c-4a98-90e9-d9f4f0b2ee73" class="bulleted-list"><li style="list-style-type:square">∪</li></ul><ul id="fea8d171-fcea-429d-8103-6e4013e41d40" class="bulleted-list"><li style="list-style-type:square">combines all rows from two tables, excluding duplicates</li></ul><ul id="1df5c515-328c-44d0-b857-cbb7f643d279" class="bulleted-list"><li style="list-style-type:square">π supplier name (supplier) ∪ π vendor name (vendor)</li></ul></li></ul><ul id="f3569ed0-0384-4b6b-a030-e8d1b0e00cdc" class="bulleted-list"><li style="list-style-type:circle">Intersect<ul id="a45decec-af2c-441b-b090-8440bc902490" class="bulleted-list"><li style="list-style-type:square">∩</li></ul><ul id="e09a8de7-7b85-4b50-a868-e7bfe69bbb10" class="bulleted-list"><li style="list-style-type:square">yields only rows that appear in both tables</li></ul><ul id="b205a925-5d77-438e-9ad7-41a20f0e0f0c" class="bulleted-list"><li style="list-style-type:square">π supplier name (supplier) ∩ π vendor name (vendor)</li></ul></li></ul><ul id="3e6cf63d-f044-475a-9aeb-bd5c0209d8e5" class="bulleted-list"><li style="list-style-type:circle">Difference<ul id="96253971-3fea-48ca-b66c-c8e1fba24022" class="bulleted-list"><li style="list-style-type:square">-</li></ul><ul id="a94dfee1-0665-4536-8824-de817be63731" class="bulleted-list"><li style="list-style-type:square">yields the values in one table that do not appear in the other</li></ul><ul id="2efb744c-c1e1-450d-84ba-ee32a91effff" class="bulleted-list"><li style="list-style-type:square">NB: order is very important here</li></ul><ul id="4ebb328e-9e48-45a2-967e-fcc701bfd7f2" class="bulleted-list"><li style="list-style-type:square">π supplier name (supplier) - π vendor name (vendor)</li></ul></li></ul><ul id="0574a3cb-b3f0-4ca4-a991-e5db21763722" class="bulleted-list"><li style="list-style-type:circle">Product / Cartesian Product<ul id="1dfd4f5d-b151-4aa5-b598-de276ad6efaf" class="bulleted-list"><li style="list-style-type:square">x</li></ul><ul id="f68c2b4e-8260-4338-bb11-e0992f8084c8" class="bulleted-list"><li style="list-style-type:square">yields all possible combinations of two tables</li></ul></li></ul><ul id="386c526d-c381-4dc8-821e-d22f5c47d4bc" class="bulleted-list"><li style="list-style-type:circle">Join<ul id="10e7f77c-0ad3-41ea-b10c-0022bf7b6c69" class="bulleted-list"><li style="list-style-type:square">⨝</li></ul><ul id="5e64b968-fd38-4bfe-8eb8-3146fcff7e75" class="bulleted-list"><li style="list-style-type:square">allows information to be intelligently combined from 2 or more tables such as when one table contains a foreign key</li></ul><ul id="bded7663-cde4-4ca9-89e5-2d7affd2f70e" class="bulleted-list"><li style="list-style-type:square">Natural join process:<ol type="1" id="45e44a25-eae3-42d2-9041-6082125ebd9d" class="numbered-list" start="1"><li>product of tables</li></ol><ol type="1" id="fe01cde0-d2af-4bea-a880-84bd8e268cc7" class="numbered-list" start="2"><li>select the join columns</li></ol><ol type="1" id="42788960-2e1a-4dab-9b12-631e4481103b" class="numbered-list" start="3"><li>project to eliminate duplicate join columns</li></ol></li></ul><ul id="12f2ef2f-f996-4012-97c2-f591d63728a2" class="bulleted-list"><li style="list-style-type:square">customer ⨝ agent</li></ul><ul id="ae4899d8-7f04-46e8-85a0-b500190189a0" class="bulleted-list"><li style="list-style-type:square">equijoin<ul id="a593320c-e48b-4a79-8e24-630031a940db" class="bulleted-list"><li style="list-style-type:disc">=</li></ul><ul id="9ee786ab-6258-4ce2-95d7-f633a79ddd02" class="bulleted-list"><li style="list-style-type:disc">compares specific columns of each table, does not eliminate duplicate columns and the condition / joining criterion must be specified</li></ul></li></ul><ul id="a7d82e1d-c347-402b-8972-bdec1a8bac0c" class="bulleted-list"><li style="list-style-type:square">theta join<ul id="9b211b57-ad0b-4676-bbb8-3c5c935da37b" class="bulleted-list"><li style="list-style-type:disc">theta in subscript after ⨝</li></ul><ul id="d7b0fe6c-3e49-4eff-ae8a-85158f048cba" class="bulleted-list"><li style="list-style-type:disc">a type of outer join</li></ul><ul id="99f30dd0-2de9-4e23-80aa-f36ac8052462" class="bulleted-list"><li style="list-style-type:disc">all other joins omit unmatched values where a theta join returns all values, with unmatched pairs being NULL</li></ul><ul id="b5ba5fcb-2e59-4451-b826-231bae9249f2" class="bulleted-list"><li style="list-style-type:disc">Depending on the filled vs the null side, a theta join can be said to be a left theta join (left filled, right null) or a right theta join (right filled, left null)</li></ul></li></ul><ul id="97dc6af3-84da-42e6-bcdd-1e9b3f64c122" class="bulleted-list"><li style="list-style-type:square">Divide<ul id="4fd3d2e1-31f0-4589-a763-76d717991f8a" class="bulleted-list"><li style="list-style-type:disc">÷</li></ul><ul id="a77c0039-1425-4d4e-836d-b4efe661bcf2" class="bulleted-list"><li style="list-style-type:disc">Determines if one set of data is associated with all values of another set of data</li></ul><ul id="cb407546-b268-4130-95d7-9dbef89f7cd7" class="bulleted-list"><li style="list-style-type:disc">Operand is a 2 column table</li></ul><ul id="342cbafb-70ad-4e4a-9f18-7709e1ec4be4" class="bulleted-list"><li style="list-style-type:disc">Divisor is a 1 column table (column B)</li></ul><ul id="609d73f6-6b9e-40d8-b5a4-6a9cc99400a4" class="bulleted-list"><li style="list-style-type:disc">yields results from column A that have every instance of column B</li></ul></li></ul></li></ul></li></ul><p id="a9b9a4d0-f363-4b3c-9793-7a71f0c8f14c" class="">
+</p><ul id="06f71880-600d-487d-8b2d-959f6d9d8e38" class="bulleted-list"><li style="list-style-type:disc">Data dictionaries<ul id="f0afe37e-1638-4d89-afff-a3d35721fe59" class="bulleted-list"><li style="list-style-type:circle">“The database designer’s database”</li></ul><ul id="85e8e9ae-ee41-4423-8ea3-9a3911b8fc9a" class="bulleted-list"><li style="list-style-type:circle">Includes the system catalog, can sometimes be used interchangably</li></ul><ul id="1d415f1c-0fb3-46d7-9b65-0d1a38682d02" class="bulleted-list"><li style="list-style-type:circle">Contain metadata about all database characteristics</li></ul><ul id="c4606308-22c7-4771-9c1b-828326d8e5fe" class="bulleted-list"><li style="list-style-type:circle">A table describing the data types of each attribute, required or not, if it is a key or not</li></ul></li></ul><ul id="bc95d23b-bfac-49d5-a045-7c77a006cedb" class="bulleted-list"><li style="list-style-type:disc">Relationships<ul id="46cb15fd-34aa-43db-bad9-f7c7e73f8192" class="bulleted-list"><li style="list-style-type:circle">one-to-one</li></ul><ul id="f0250a8e-ccdf-4056-8882-40198f4aea0c" class="bulleted-list"><li style="list-style-type:circle">one-to-many<ul id="c72bb333-f725-4aab-aeaf-9d24106741b0" class="bulleted-list"><li style="list-style-type:square">most common</li></ul></li></ul><ul id="76d3a6f0-0043-4fc8-be3e-d11a87375cb5" class="bulleted-list"><li style="list-style-type:circle">many-to-many<ul id="4c9ebb64-8766-4ef8-a417-dc547869614e" class="bulleted-list"><li style="list-style-type:square">implemented as 2x one-to-many relationships</li></ul></li></ul></li></ul><ul id="b5dca590-cab2-4bd7-947c-d2d96bb91cc1" class="bulleted-list"><li style="list-style-type:disc">relvar - a relation variable ie. the variable that holds the data of the relation<ul id="bd7feabf-0922-4844-bbf9-96a2555df9bf" class="bulleted-list"><li style="list-style-type:circle">heading: contains the names of the attributes</li></ul><ul id="849bdd08-861a-46a7-a1cd-9000da17b8ca" class="bulleted-list"><li style="list-style-type:circle">body: contains the relation</li></ul><ul id="341604eb-5e7e-4d5c-84ad-c3713e362c4f" class="bulleted-list"><li style="list-style-type:circle">convention is that a relation is referred to with lowercase r and relvar with uppercase R</li></ul></li></ul><ul id="59a17a52-59a4-4438-a37d-87c6c903dd39" class="bulleted-list"><li style="list-style-type:disc">Many : Many (M:N) relationships<ul id="e2f0f233-dfb3-4410-8a13-e42145044535" class="bulleted-list"><li style="list-style-type:circle">In a database scenario, these should always be broken down into two 1:M relationships to avoid redundancy issues</li></ul></li></ul><ul id="6459ca0d-bc61-4d27-bf76-225528ff7e32" class="bulleted-list"><li style="list-style-type:disc">Composite / Bridge / Associative Entities:<ul id="a3bb5fc0-fbf1-4498-a51a-d6378d65103a" class="bulleted-list"><li style="list-style-type:circle">Contains, at the bare minimum, the two foreign primary keys of the associated entities<ul id="5a66cbda-ea30-41c3-b203-bc681b79f2c4" class="bulleted-list"><li style="list-style-type:square">these two foreign keys may combine to the primary key of the table</li></ul></li></ul><ul id="8cad0707-4704-4090-93a9-f7936751309e" class="bulleted-list"><li style="list-style-type:circle">May be referred to as a linking table </li></ul></li></ul><ul id="7adcd46f-d2e5-4c37-9e55-bce5fcde58e6" class="bulleted-list"><li style="list-style-type:disc">12 RELATIONAL DATABASE RULES:<figure id="19771074-0bfa-4d7e-99a7-02bf861b79c1" class="image"><a href="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/rdrs.jpg"><img style="width:1333px" src="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/rdrs.jpg"/></a></figure></li></ul><p id="53a7877d-2689-40fe-8ad7-5a3a521a94df" class="">
+</p><h2 id="34304400-df6e-4a73-b336-df32918d3951" class="">Week 3: Database design using ER/EER diagrams</h2><ul id="d93f3541-6a0b-49e3-8a24-c233aae214e1" class="bulleted-list"><li style="list-style-type:disc">One to one or many, many to one or many</li></ul><ul id="2b9c9905-3ef7-4ef3-a6cb-6a9603ee5abd" class="bulleted-list"><li style="list-style-type:disc">Cardinality = optionality</li></ul><ul id="cd435325-2d7b-47da-a95a-e0bf23d69689" class="bulleted-list"><li style="list-style-type:disc">Relationship strength:<ul id="019be665-6fad-4a89-a5ff-fd21340c998d" class="bulleted-list"><li style="list-style-type:circle">Strong / identifying relationships have shared attributes in the primary key and have a solid line in crow’s foot notation. These relationships are existent-dependent</li></ul><ul id="603f1fc7-793f-43cb-abae-05fe62ed9133" class="bulleted-list"><li style="list-style-type:circle">Weak / non-identifying relationships do not share attributes in their primary key and have a dotted line in crow’s foot notation. These relationships are existent-independent</li></ul></li></ul><ul id="40d07184-32a0-405a-bebd-615f596e3582" class="bulleted-list"><li style="list-style-type:disc">Required and optional attributes: required attributes are represented by bold font where optional are represented by standard font</li></ul><ul id="1788d3d0-9f4a-44c3-9fbb-c70760bb6f9d" class="bulleted-list"><li style="list-style-type:disc">Primary key identifiers are represented with an underline - this should ideally be one attribute but may be two or more in the case of a composite primary key</li></ul><ul id="3b3fcf3e-cecc-4ca2-a161-ed8abec197e5" class="bulleted-list"><li style="list-style-type:disc">Shorthand for crows foot notation is with the following syntax:<ul id="2a7f1400-4910-4ec1-b68b-2bd810621167" class="bulleted-list"><li style="list-style-type:circle">CLASS (<strong><span style="border-bottom:0.05em solid">CLS_PRIMARYKEY</span></strong>, CLS_OTHERATTRIBUTES)</li></ul></li></ul><ul id="dc82f73d-2298-42b0-9874-40288db3726e" class="bulleted-list"><li style="list-style-type:disc">Composite Vs Simple attributes (which cannot be further divided)</li></ul><ul id="ba9f3a27-a86c-4418-90d3-1a5bffa166c4" class="bulleted-list"><li style="list-style-type:disc">Single-Valued Attributes Vs Multi-Valued Attributes (may require a new entity composed of the original multivalued attribute’s components)</li></ul><ul id="dd2d11e2-167c-49fc-bdcf-ab8b544959fa" class="bulleted-list"><li style="list-style-type:disc">Derived attributes need not be stored within the database, but may be on some occasions where speed or processing power are limited</li></ul><ul id="4592ca66-a570-4fc6-a407-de9a49576908" class="bulleted-list"><li style="list-style-type:disc">Relationships - defined with an active or passive verb</li></ul><ul id="b2208291-de03-4f0c-b4b9-8aacaf7ccfe8" class="bulleted-list"><li style="list-style-type:disc">Connectivity and Cardinality:<ul id="d33572ac-7ef4-477a-b9ca-252698ff338b" class="bulleted-list"><li style="list-style-type:circle">connectivity in the crow’s foot notation</li></ul><ul id="9409f9cb-1b9a-437e-859e-883746a1d837" class="bulleted-list"><li style="list-style-type:circle">1:1 / 1:M / M:N is depicted by crow’s foot</li></ul><ul id="0e732f7b-2e04-4fd0-8a96-c7c42736cc6e" class="bulleted-list"><li style="list-style-type:circle">optional or required depicted by | or O</li></ul><ul id="558dfd4a-0b52-49ef-b567-13af62ee6070" class="bulleted-list"><li style="list-style-type:circle">minimum and maximum is represented by ([min], [max]) below the notation on both sides of the relationship</li></ul></li></ul><ul id="273657e8-cf7c-4c05-b626-b030dade2da5" class="bulleted-list"><li style="list-style-type:disc">Strong Vs Weak Entities:<ul id="0c51ba8a-6b88-4550-bdcb-be08854412b6" class="bulleted-list"><li style="list-style-type:circle">Weak Entities BOTH:<ul id="6455e4aa-7c33-4404-bfd7-f92db32ad206" class="bulleted-list"><li style="list-style-type:square">are existent dependent</li></ul><ul id="0b9cb2bf-4f40-4a06-aa8b-50bc0b1bceb5" class="bulleted-list"><li style="list-style-type:square">have a primary key partially or totally derived from the parent entity</li></ul></li></ul><ul id="f464ccf5-ee4e-4866-b7d7-46614aa6c48d" class="bulleted-list"><li style="list-style-type:circle">A strong identifying relationship indicates that the related entity is weak</li></ul></li></ul><ul id="639e70c6-406d-4d44-b823-42711b10547f" class="bulleted-list"><li style="list-style-type:disc">Relationship Participation:<ul id="defd5afb-abca-4c33-aff2-6ad4816bba54" class="bulleted-list"><li style="list-style-type:circle">Optional participation - one entity does not require the other, represented by O</li></ul><ul id="67fbf9db-5d28-447a-8277-d1fa483ba2ee" class="bulleted-list"><li style="list-style-type:circle">Mandatory participation - one entity requires the other, represented by |<figure id="9052e9f0-47c1-4e95-9665-1566382a002c" class="image"><a href="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/crows_foot_notation.png"><img style="width:1082px" src="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/crows_foot_notation.png"/></a></figure></li></ul></li></ul><ul id="baf5c476-1cd1-4800-ab89-4e46bea8ff5d" class="bulleted-list"><li style="list-style-type:disc">Relationship Degrees:<ul id="1b30c761-b9ef-451d-9e12-5f6766d0c04d" class="bulleted-list"><li style="list-style-type:circle">Unary / Recursive Relationships: a unit within a table has a relationship with another unit in the same table. Imagine an employee table where employees may both manage and be managed by, other employees<ul id="3cc96ac6-345e-445a-9686-c4b92510667d" class="bulleted-list"><li style="list-style-type:square">can be 1:1, 1:N or M:N</li></ul><ul id="bad2498f-4bf5-41c3-bf2a-a83b5b796aeb" class="bulleted-list"><li style="list-style-type:square">can be shown with crow’s foot notation above itself</li></ul></li></ul><ul id="a19f61c1-2176-4203-a072-20d568b47156" class="bulleted-list"><li style="list-style-type:circle">Binary Relationships: two entities are associated in a relationship - by far the most common type of relationship. Most higher-order relationships will be broken down into binary relationships whenever possible</li></ul><ul id="56a1b7a3-659e-4da9-9cff-6be5a4581b3b" class="bulleted-list"><li style="list-style-type:circle">Ternary and Higher-Order Relationships: implies a relationship among 3 or more entities - consider the doctor / patient / drug relationship</li></ul></li></ul><ul id="4414cfad-542c-432f-807f-8e358dac8824" class="bulleted-list"><li style="list-style-type:disc">Associative / Composite Entities: where a M:N relationship exists, this will need to be broken down into 2x 1:N relationships. The entity created in order to achieve this is known as an associative or composite or bridge entity, composed of at least the primary key attributes of each parent entity</li></ul><ul id="f202e04d-42f4-4a06-b22c-59b3d572ce5d" class="bulleted-list"><li style="list-style-type:disc">Compared to an ER diagram, an EER diagram also supports:<ul id="2d6a30cc-b7b2-4868-8a35-2a3e3b96db11" class="bulleted-list"><li style="list-style-type:circle">Entity Supertypes</li></ul><ul id="6a23df20-32c5-4641-bfda-94f8b91bed50" class="bulleted-list"><li style="list-style-type:circle">Entity Subtypes</li></ul><ul id="f49cad9c-8139-438e-ac55-a5f218f5c199" class="bulleted-list"><li style="list-style-type:circle">Entity Clustering</li></ul></li></ul><ul id="2d4526c2-34df-414a-b074-dee8d9d3b6a8" class="bulleted-list"><li style="list-style-type:disc">Only use subtypes when:<ul id="9c77d643-b5d5-4f4f-9342-ebf2c23705b9" class="bulleted-list"><li style="list-style-type:circle">there are different, identifiable kinds or types of environments</li></ul><ul id="ceb7a806-d4f8-4d72-ab72-a3f1426eb55e" class="bulleted-list"><li style="list-style-type:circle">different instances have one or more attributes that are unique to that instance</li></ul></li></ul><ul id="26a9f540-3b39-44d4-b6be-bf20a9f383e7" class="bulleted-list"><li style="list-style-type:disc">Specialisation Hierarchy<ul id="d073d52e-dfad-49fb-ac5a-c810bf0b7553" class="bulleted-list"><li style="list-style-type:circle">parent vs child subtypes with 1:1 relationships</li></ul><ul id="1cdf1a61-52e2-4065-843a-893aa0228e46" class="bulleted-list"><li style="list-style-type:circle">A subtype can only exist within the context of a supertype and every subtype can only have one supertype to which it is related</li></ul><ul id="22ca2c74-40c4-4ead-81c5-6a27eeb7274b" class="bulleted-list"><li style="list-style-type:circle">supports attribute inheritance<ul id="910f3d9b-8d29-45f2-9356-dd79142b6a75" class="bulleted-list"><li style="list-style-type:square">subtype inherits all attributes of supertype</li></ul><ul id="d3a30ae5-70f0-4728-95cb-ed4a506696e4" class="bulleted-list"><li style="list-style-type:square">all entity subtypes inherit their primary key attribute from their supertype</li></ul><ul id="04b913bc-1adb-4e06-8c22-ccb4383a95ad" class="bulleted-list"><li style="list-style-type:square">entity subtypes inherit all relationships in which the supertype participate (and any supertype above that supertype)</li></ul></li></ul><ul id="09fdf0bc-8f91-4c1e-b08a-8749d4e988dd" class="bulleted-list"><li style="list-style-type:circle">defines supertype attribute: subtype discriminator<ul id="5aacc23c-d603-4692-97e0-4b732e19be4d" class="bulleted-list"><li style="list-style-type:square">determines the supertype attribute to which the subtype is related</li></ul></li></ul><ul id="b49a3b38-a972-4549-a8e7-427a3adb185b" class="bulleted-list"><li style="list-style-type:circle">defines disjoint/overlapping constraints and complete/partial constraints<ul id="33291117-3466-4a7d-9ad9-93cc113e8473" class="bulleted-list"><li style="list-style-type:square">disjoint / nonoverlapping subtypes (d): an object cannot belong to more than one subtype at a time</li></ul><ul id="7bcf4445-8511-4085-93a0-b45290d58ecc" class="bulleted-list"><li style="list-style-type:square">overlapping subtypes (o): an object can participate in multiple subtypes simultaneously<ul id="1b2ef53f-a019-45ec-b4c0-86522d63e008" class="bulleted-list"><li style="list-style-type:disc">involves the use of a boolean subtype discriminator</li></ul></li></ul><ul id="157a0dd0-bebf-4888-9003-117e770a67df" class="bulleted-list"><li style="list-style-type:square">Completeness constraint defines weather or not membership in a subtype is mandatory or not:<ul id="268c947f-a270-4782-b5df-708a3a45c218" class="bulleted-list"><li style="list-style-type:disc">partial completeness: membership not required - single horizontal line</li></ul><ul id="9eeda1c6-039c-4f14-a1d4-946b77b1c4dc" class="bulleted-list"><li style="list-style-type:disc">total completeness: membership required (at least one) = double horizontal line</li></ul></li></ul><figure id="ede68702-05cf-4651-9806-451baf50bb04" class="image"><a href="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/specialisation_hierarchy.png"><img style="width:1084px" src="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/specialisation_hierarchy.png"/></a></figure></li></ul></li></ul><ul id="44dca4bd-467f-4dce-8a31-ec67a86d344b" class="bulleted-list"><li style="list-style-type:disc">Specialisation and Generalisation:<ul id="ddae2e18-79d9-4019-9b39-7b8ba358ae1a" class="bulleted-list"><li style="list-style-type:circle">both are ways in which subtypes and supertypes can be distinguised, defined in opposite methodologies</li></ul><ul id="12a67571-5653-4f22-8dd1-98c5e41a5449" class="bulleted-list"><li style="list-style-type:circle">Specialisation: top-down - identify specific subtypes from the higher-level supertype</li></ul><ul id="81669407-a9c4-44ab-b0ae-0e6c2b62945a" class="bulleted-list"><li style="list-style-type:circle">Generalisation: bottom-up - identified by grouping common attributes of subtypes into a supertype</li></ul></li></ul><ul id="754c18a0-2297-47d4-ae52-9a9689c2d429" class="bulleted-list"><li style="list-style-type:disc">Entity Clustering to minimise the number of entities shown in the ERD when things get too busy. This is a virtual entity type used to represent multiple entities for simplification and enhanced readability</li></ul><ul id="e1a6e938-9574-4f11-aa99-221a7db6793b" class="bulleted-list"><li style="list-style-type:disc">Primary Keys:<ul id="0251fdf4-cf2b-481e-878a-ef749a047b3b" class="bulleted-list"><li style="list-style-type:circle">arguably the most important aspect of good database design to guarantee entity integrity</li></ul><ul id="50c3b07c-a3be-414a-9a6f-e374f56a1560" class="bulleted-list"><li style="list-style-type:circle">Natural Keys: a real-world, generally accepted identifier of an object or instance such as a serial number or invoice number. If an object <em>has</em> a unique identifier this it most often its best primary key.</li></ul><ul id="33619343-3a32-4068-b8a6-850ea00f9ad3" class="bulleted-list"><li style="list-style-type:circle">The function of a primary key is to <em>identify</em> an entity uniquely, not to <em>describe</em> it.</li></ul><ul id="1b6ee0b2-5f5a-49c4-a20d-68fe7f458357" class="bulleted-list"><li style="list-style-type:circle">While primary keys are vital to good functioning of a database, they need not always be shown to a user. Always consider the end user point of view.</li></ul><ul id="74e81946-c559-4c36-be90-f2f14597da18" class="bulleted-list"><li style="list-style-type:circle">Composite Primary Keys:<ul id="02349323-c0b8-4555-8d9f-3fd875b9dcc3" class="bulleted-list"><li style="list-style-type:square">as identifiers of composite entities in which each primary key combination is allowed only once</li></ul><ul id="44ad75c1-74f0-495b-ac29-0b2aae0c1ed6" class="bulleted-list"><li style="list-style-type:square">as identifiers of weak entities in which the weak entity has a strong identifying relationship with the parent entity:<ul id="74cb3559-5951-46d8-b514-4611e066216b" class="bulleted-list"><li style="list-style-type:disc">a real-world object where existence is dependent on another real-world object</li></ul><ul id="bbb74c51-181e-4eba-91e1-9fce9dcbd3d4" class="bulleted-list"><li style="list-style-type:disc">a real-world object represented in the database as multiple separate entities</li></ul></li></ul></li></ul><ul id="1ed646ca-70fe-4668-a702-0a70f4187ed7" class="bulleted-list"><li style="list-style-type:circle">Surrogate Keys:<ul id="27be6b69-ec52-4dbe-84cf-9be9a06de8b7" class="bulleted-list"><li style="list-style-type:square">a primary key generated by the database designer to simplify identification of entity instances</li></ul><ul id="e1b2a2b7-aa32-4cb0-afdf-e3af99d5fc48" class="bulleted-list"><li style="list-style-type:square">has no meaning in the real-world / user’s environment</li></ul><ul id="01654d0b-278a-4b59-967d-6dbd5db90205" class="bulleted-list"><li style="list-style-type:square">can be generated by the DBMS to ensure values are always unique</li></ul></li></ul></li></ul><ul id="d758a133-44e4-457f-a220-d75f26987c18" class="bulleted-list"><li style="list-style-type:disc">Time-Variant Data:<ul id="bdc68099-b9aa-47ac-a9bf-cb316f96faa7" class="bulleted-list"><li style="list-style-type:circle">data whose values change over time yet a historical record is required - consider the price of an item or a current balance of account</li></ul><ul id="a151b3e4-9c33-4132-a6d6-be0bf104caad" class="bulleted-list"><li style="list-style-type:circle">May be stored in a different historical data set such as employee history which is different to current employment status</li></ul></li></ul><ul id="66a5fc46-7543-4f31-8bb0-37e97718f091" class="bulleted-list"><li style="list-style-type:disc">Design Traps:<ul id="77d95e25-875e-42d9-8439-808fb4c3e8d5" class="bulleted-list"><li style="list-style-type:circle">occur when a relationship is improperly understood or incompletely identified, leading to an inaccurate representation of the real world relationship</li></ul><ul id="f0d2b147-d7dd-417a-8599-c3e8e4da8b26" class="bulleted-list"><li style="list-style-type:circle">Fan Trap:<ul id="36f4c38c-4961-4060-a636-1dfd8b1583dc" class="bulleted-list"><li style="list-style-type:square">when one entity has two 1:M relationships and thus produces an association among other entities that is not present in the real world.  This can occur as a result of &gt; &lt; instead of &gt; &gt;</li></ul><ul id="4bac181d-5889-4844-a991-cc417824bd41" class="bulleted-list"><li style="list-style-type:square">It is important to understand the conduit entity by which the entities are linked, and made sure that this conduit entity is in the middle of the relationship</li></ul></li></ul></li></ul><ul id="5f40a243-9aa5-4b5d-9bd3-9136fb0fa31c" class="bulleted-list"><li style="list-style-type:disc">ELEMENTS OF AN EER DIAGRAM<ul id="00cff706-0ae3-4056-a933-ce47759215c4" class="bulleted-list"><li style="list-style-type:circle">Entities</li></ul><ul id="6d7e069c-86ab-42bc-8eac-49c858407d77" class="bulleted-list"><li style="list-style-type:circle">Attributes</li></ul><ul id="bed16226-9642-41d1-906e-5fd74a622c7c" class="bulleted-list"><li style="list-style-type:circle">Relationships</li></ul><ul id="6e627ad5-f8e2-4136-8f3e-b43c41a2bc81" class="bulleted-list"><li style="list-style-type:circle">Labels</li></ul><ul id="454d6da4-11c3-461a-9bd3-574af916fff6" class="bulleted-list"><li style="list-style-type:circle">Inheritance</li></ul><ul id="14aa3b20-4bda-40e3-8b0a-62016b1e9cb5" class="bulleted-list"><li style="list-style-type:circle">Keys</li></ul><ul id="f65cddae-013c-4594-8e87-01a32e375d36" class="bulleted-list"><li style="list-style-type:circle">Cardinality</li></ul><ul id="fa1a7fe4-2e2d-4e78-b0c7-f8086fc0a529" class="bulleted-list"><li style="list-style-type:circle">Relationships</li></ul><ul id="764ba093-4bcc-4667-b96b-2d313251511c" class="bulleted-list"><li style="list-style-type:circle">Strength</li></ul></li></ul><ul id="f56242a5-b0a0-4389-86cd-7f3d37c34ddc" class="bulleted-list"><li style="list-style-type:disc">Supertypes and Subtypes:<ul id="f1dca17d-3e20-4f6f-b2de-5eebf2fa3bbb" class="bulleted-list"><li style="list-style-type:circle">ordinary relationships = has a</li></ul><ul id="3547eeb9-64e1-489b-a983-c61331ec34f4" class="bulleted-list"><li style="list-style-type:circle">supertype / subtype relationships = is a</li></ul><ul id="4239fc86-a042-4528-adc2-7b9c380950b4" class="bulleted-list"><li style="list-style-type:circle"></li></ul></li></ul><ul id="ff3f1606-6cc3-4c43-8210-4348d83d0b4a" class="bulleted-list"><li style="list-style-type:disc">TO DO:<ul id="e3b2b93d-a4cc-42ba-95a0-33a6d02cc718" class="bulleted-list"><li style="list-style-type:circle">Read Chapter 5<ul id="4a89f9c3-8cc8-4f60-a3c7-2ba33ac5883b" class="bulleted-list"><li style="list-style-type:square"><a href="https://online.vitalsource.com/reader/books/9781305886841/pageid/194">https://online.vitalsource.com/reader/books/9781305886841/pageid/194</a></li></ul></li></ul></li></ul><p id="6b29bb95-b9b1-43e4-8275-b23ca3c6ae5d" class="">
+</p><h2 id="9daa3dc7-6a01-4b74-bfa9-f7838c3b3a14" class="">Week 4: Normalisation</h2><ul id="908aca5f-7e9f-445e-a3e4-995c8b76b632" class="bulleted-list"><li style="list-style-type:disc">The process of removing redundancy from relational databases<ul id="942fce09-f68a-4c27-afe4-ab847da44a51" class="bulleted-list"><li style="list-style-type:circle">Redundancy is problematic due to:<ul id="3642f036-a090-405f-8d4b-731d464bd01e" class="bulleted-list"><li style="list-style-type:square">insertion anomalies</li></ul><ul id="52dc2239-bf71-4e52-8aa8-19bd8a968da6" class="bulleted-list"><li style="list-style-type:square">update anomalies</li></ul><ul id="42dc3830-f72f-40d6-9788-e76e0389ddf5" class="bulleted-list"><li style="list-style-type:square">deletion anomalies</li></ul></li></ul></li></ul><ul id="ab18210c-9808-47a9-b0cb-7dd9795bfc87" class="bulleted-list"><li style="list-style-type:disc">7 Levels of normalisation:<ul id="680955c0-6f6a-416f-8d77-12f19f97b0bd" class="bulleted-list"><li style="list-style-type:circle">Higher forms are usually better but not always; sometimes redundancy is required as less relational join operations are required to respond to queries, resulting in a faster response</li></ul><ul id="a1252ca8-3904-4572-97e8-d456ae598559" class="bulleted-list"><li style="list-style-type:circle">Occasionally, denormalisation will be required to produce a lower normal form</li></ul><ul id="7d61e8ca-2010-4425-b44a-ca31d90ed31c" class="bulleted-list"><li style="list-style-type:circle">From the data modeler’s point of view, the objective of normalization is to ensure that all tables are at least in third normal form.</li></ul><ul id="56f4f515-d442-4c15-838b-cf1c4df77b12" class="bulleted-list"><li style="list-style-type:circle">Zeroth normal form (0NF)<ul id="e64ec60f-eaae-469b-8c6b-ea619bdb8aac" class="bulleted-list"><li style="list-style-type:square">Does not meet requirements of 1NF</li></ul></li></ul><ul id="5e3f4bda-826f-4db2-8bb0-4e0739aa27a3" class="bulleted-list"><li style="list-style-type:circle">First normal form - 1NF<ul id="77513906-f086-41e0-b333-459824e851cd" class="bulleted-list"><li style="list-style-type:square">No repeating groups</li></ul><ul id="9a1825ea-1ccf-4ebd-9aaa-4ebce0ba1319" class="bulleted-list"><li style="list-style-type:square">Relations in table format</li></ul><ul id="03e123c5-9868-4a65-9d99-332c886ed711" class="bulleted-list"><li style="list-style-type:square">PK identified</li></ul><ul id="a100316b-2567-4eb4-9636-2286882259a6" class="bulleted-list"><li style="list-style-type:square">Conversion to 1NF:<ol type="1" id="84d46aa7-a581-48a1-8723-eccae137f4fa" class="numbered-list" start="1"><li>Eliminate Repeating Groups<ol type="a" id="657011b9-0a85-48eb-8d23-7134c74280f6" class="numbered-list" start="1"><li>present the data in tabular format and ensure there are no nulls by making the repeating group attribute have a data value</li></ol></li></ol><ol type="1" id="2472c3ef-68a6-4754-81dd-20ca4a9c44f7" class="numbered-list" start="2"><li>Identify the Primary Key<ol type="a" id="34179e04-d154-4849-91d8-c3c26664140b" class="numbered-list" start="1"><li>may be a composite key</li></ol></li></ol><ol type="1" id="c1cd1dae-e869-4ff5-9ad4-27516e2147a9" class="numbered-list" start="3"><li>Identify all dependencies<ol type="a" id="0d03acfe-0d84-43af-9976-f7f0498f3fc2" class="numbered-list" start="1"><li>The primary key should identify all else</li></ol><ol type="a" id="1dbf72a9-7272-4b0d-94d5-2879697d56ae" class="numbered-list" start="2"><li>Determine partial dependencies</li></ol><ol type="a" id="f55c44a2-9060-413f-93f3-11dda4508079" class="numbered-list" start="3"><li>Determine transitive dependencies</li></ol><ol type="a" id="6706b6bb-19c2-4735-858f-ab06b8ac1d0e" class="numbered-list" start="4"><li>May be aided by a dependency diagrams</li></ol></li></ol></li></ul></li></ul><p id="e366bb78-d413-40ad-904a-9ff62d345ecf" class="">
+</p><figure id="ebdd3650-beeb-49b5-afbb-42deca5f96b1" class="image"><a href="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/dependency_diagram.png"><img style="width:1079px" src="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/dependency_diagram.png"/></a></figure><ul id="bdddc366-38ac-47f2-8410-95006f13db2d" class="bulleted-list"><li style="list-style-type:circle">Second Normal Form - 2NF<ul id="88a0256f-fd77-4e93-adbb-38772c672cd9" class="bulleted-list"><li style="list-style-type:square">meets all requirements of 1NF PLUS has a single attribute primary key</li></ul><ul id="8d4ee0f5-7e83-4490-8100-f18fcebed265" class="bulleted-list"><li style="list-style-type:square">If the 1NF does not have a composite key is is already 2NF</li></ul><ul id="ab81da89-5fd6-47df-819e-2a68a3f3d194" class="bulleted-list"><li style="list-style-type:square">Conversion to 2NF:<ol type="1" id="8f641ab5-e171-4784-8a8a-b4dfc51dae39" class="numbered-list" start="1"><li>Make New Tables to Eliminate Partial Dependencies<ol type="a" id="dd0e04f3-4cf7-4fbc-9959-783c774547a3" class="numbered-list" start="1"><li>Do this for each of the component keys that has dependants</li></ol><ol type="a" id="ac36a9ab-1473-4c82-8adf-afc5459005f6" class="numbered-list" start="2"><li>If A and B are a composite key:<ol type="i" id="58bf0a13-fa31-4fc7-b01d-e7eb2c94a2c7" class="numbered-list" start="1"><li>table A</li></ol><ol type="i" id="aec91101-924e-4131-b5cb-b3b4b0c05064" class="numbered-list" start="2"><li>table B</li></ol><ol type="i" id="06afeb4d-0872-4db7-8c0c-df970cc5e416" class="numbered-list" start="3"><li>table AB</li></ol></li></ol></li></ol><ol type="1" id="43763f7f-34fd-4017-b269-f591caa41413" class="numbered-list" start="2"><li>Reassign Correspinding Dependent Attributes<ol type="a" id="db297d57-5eae-4f87-9f62-67c5c2a5e2fd" class="numbered-list" start="1"><li>Take out of AB and put into A or B where possible</li></ol><ol type="a" id="099e1589-2088-4f57-8971-0e7b08ca55f7" class="numbered-list" start="2"><li>Remaining fields remain in AB</li></ol><ol type="a" id="5dbc52ce-d59d-418c-a746-064ccb7e4f90" class="numbered-list" start="3"><li>Rename all 3 tables where needed</li></ol></li></ol></li></ul><ul id="51aade74-d193-4f07-b2c7-99e3fcfd314e" class="bulleted-list"><li style="list-style-type:square">note that it is still possible to have transitive dependencies</li></ul></li></ul><ul id="8d0da3b7-5940-4692-91dc-353ecafb3294" class="bulleted-list"><li style="list-style-type:circle">Third Normal Form - 3NF<ul id="09c8e98a-3f33-4bcb-a461-379a1d218104" class="bulleted-list"><li style="list-style-type:square">meets all the requirements of 2NF PLUS has no transitive dependencies</li></ul><ul id="35917ba0-31fd-444b-adff-38d473131dbc" class="bulleted-list"><li style="list-style-type:square">Conversion to 3NF:<ol type="1" id="54267ac2-2435-4097-9517-af40d4058875" class="numbered-list" start="1"><li>Make New Tables to Eliminate Transitive Dependencies<ol type="a" id="f9d76dbb-aefe-4d00-93e4-d59f5d1b85a8" class="numbered-list" start="1"><li>every transitive determinant will be the primary key in a new table</li></ol></li></ol><ol type="1" id="6764f8d9-9dba-4a8f-9876-14a1e4a5dd24" class="numbered-list" start="2"><li>Reassign Corresponding Dependant Attributes<ol type="a" id="c7a4e38e-243c-41f5-9072-2a69f5ec6810" class="numbered-list" start="1"><li>each dependant attribute can now be removed from the original table</li></ol><ol type="a" id="a7f6f996-f455-4eea-851e-f8b67eea5043" class="numbered-list" start="2"><li>name this table appropriately</li></ol></li></ol></li></ul></li></ul></li></ul><ul id="7410cb1e-0c8f-43c4-af54-9af2b41e7195" class="bulleted-list"><li style="list-style-type:disc">Functional Dependence:<ul id="b40a208f-5afa-44d6-a4bf-87bf7fc62970" class="bulleted-list"><li style="list-style-type:circle">Attribute B is determined by attribute A</li></ul><ul id="f9b0b585-5f7d-45ac-9189-196179db1813" class="bulleted-list"><li style="list-style-type:circle">Partial Dependency :<ul id="a3e50102-b8d1-4e53-8062-a11155f2e594" class="bulleted-list"><li style="list-style-type:square">B is determined by A where (A, X) is the primary key</li></ul></li></ul><ul id="1cc7aa48-5452-48af-8d98-e1948e1d5648" class="bulleted-list"><li style="list-style-type:circle">Transitive Dependency:<ul id="707ffdb8-3bc4-4855-af50-a700a480e9e2" class="bulleted-list"><li style="list-style-type:square">B is determined by X which is determined by A(PK)</li></ul><ul id="cf4ab7e0-44d3-47e2-9bbb-f38ed71e7320" class="bulleted-list"><li style="list-style-type:square">The dependency of one nonprime (non-primary-key) attribute on another</li></ul></li></ul></li></ul><ul id="f66e2181-bbc1-414b-8b88-66adffff4089" class="bulleted-list"><li style="list-style-type:disc">Improving on database design :<ul id="b43ecc5f-4292-4f91-8a70-99b4ef932d96" class="bulleted-list"><li style="list-style-type:circle">Evaluate PK assignments;<ul id="8ac75233-27b7-4b34-9533-cef622b42916" class="bulleted-list"><li style="list-style-type:square">Where a title or name exists, have a code linked to that title to prevent misspellings or abbreviations:<ul id="92005522-347c-4dfd-a0a4-3bc12d0e3449" class="bulleted-list"><li style="list-style-type:disc">Such a primary key, developed by the database engineer, is a Surrogate Key</li></ul></li></ul></li></ul><ul id="7198ab04-d8bb-44db-9de5-9b7f12d949cb" class="bulleted-list"><li style="list-style-type:circle">Evaluate naming conventions:<ul id="f2a96659-9f6f-408b-9c63-f4ffd52c471f" class="bulleted-list"><li style="list-style-type:square">each attribute related to its table: TAB_ATTRIB</li></ul></li></ul><ul id="23af5dac-f9ef-4e74-bc38-1450d53afa60" class="bulleted-list"><li style="list-style-type:circle">Refine Attribute Atomicity:<ul id="ef3dfa97-f13b-4534-a37f-6524ee337fa5" class="bulleted-list"><li style="list-style-type:square">An Atomic Attribute is one that cannot be further subdivided, such as name = firstname + lastname + initial</li></ul></li></ul><ul id="d821481e-adbd-4d46-8b9d-d21b1f751840" class="bulleted-list"><li style="list-style-type:circle">Identify New Attributes<ul id="d4dd02f2-d7d7-4f81-bf28-08c2164de042" class="bulleted-list"><li style="list-style-type:square">such as would be beneficial to the organisation</li></ul></li></ul><ul id="5cf18a6b-9fc6-483d-b739-89719883cb0f" class="bulleted-list"><li style="list-style-type:circle">Identify New Relationships<ul id="1a9b9b8a-cc50-4125-9d47-9d4bf736569a" class="bulleted-list"><li style="list-style-type:square">add these in without disrupting data integrity or breaking any 3NF rules</li></ul></li></ul><ul id="023d1d84-28e7-4195-9025-d495c95c0cb7" class="bulleted-list"><li style="list-style-type:circle">Refine Primary Keys as Required for Data Granularity<ul id="87b5da45-08f9-42e8-8f0c-3eb9bce7b7aa" class="bulleted-list"><li style="list-style-type:square">data should be granular and clear - is hours worked a daily, weekly or monthly measure?</li></ul></li></ul><ul id="089ad3e9-832c-4485-9be0-2724b881ab73" class="bulleted-list"><li style="list-style-type:circle">Maintain Historical Accuracy<ul id="183f2d4a-5615-4476-83f3-6b768c4ca7dd" class="bulleted-list"><li style="list-style-type:square">pricing may need to be both current and historical</li></ul></li></ul><ul id="fe2ebecf-b4b5-431e-8627-08a3ee2ef2ae" class="bulleted-list"><li style="list-style-type:circle">Evaluate Using Derived Attributes<ul id="8480cd8b-bd74-4d5d-92a1-0394d6cc7b56" class="bulleted-list"><li style="list-style-type:square">only when needed, this may speed up data retrieval</li></ul></li></ul><ul id="64be1cd1-e8b8-4a6f-9a7b-db74fe3e139b" class="bulleted-list"><li style="list-style-type:circle">Consider Surrogate Keys<ul id="0b800808-bf1a-42d7-9950-2f7ae76787f5" class="bulleted-list"><li style="list-style-type:square">may be managed by DBMS<ul id="bdc20b57-b47f-48b1-a670-07d8fa77ae00" class="bulleted-list"><li style="list-style-type:disc">prevents duplicate entries</li></ul><ul id="8fb4c821-68ab-4db9-83b2-76552f3ab132" class="bulleted-list"><li style="list-style-type:disc">Must then ensure the original PK it unique</li></ul></li></ul></li></ul></li></ul><ul id="7d8ff551-2725-4a03-ba8b-45f8457c0470" class="bulleted-list"><li style="list-style-type:disc">The Boyce-Codd Normal Form:<ul id="6749b1df-4c2b-4cea-8b68-0389a658198f" class="bulleted-list"><li style="list-style-type:circle">Every determinant in the table is a candidate key<figure id="036e09c5-bd5e-4271-82fa-e70020e22691" class="image"><a href="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/bcnf.png"><img style="width:820px" src="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/bcnf.png"/></a></figure></li></ul></li></ul><p id="2d6a27a8-66f9-4ae0-bbee-3a45bf965c20" class="">r</p><p id="225d8042-b057-48e5-be50-1a11f3109a8a" class="">
+</p><h2 id="3e67d000-06ec-4c5f-ae8e-295bc919e12c" class="">Week 5: working with databases on the cloud</h2><ul id="e47b4eac-5cb9-4f5d-b35e-317d8d1f649c" class="bulleted-list"><li style="list-style-type:disc">XML = Extensible Markup Language</li></ul><ul id="fbf42093-4935-49f5-8336-41ba173b2acc" class="bulleted-list"><li style="list-style-type:disc">Modern DBMSs have the ability to store data in geographically distributed nodes</li></ul><ul id="ba15796a-a2c0-483d-b3b0-f11674a4fbf3" class="bulleted-list"><li style="list-style-type:disc">Data source and data repository Vs middle layer including database middleware Vs top layer</li></ul><ul id="c005a2e1-cb12-442c-9fa1-17e9250dfa5e" class="bulleted-list"><li style="list-style-type:disc">Most DBMS products support other connectivity standards other than their native, most commonly ODBC but also DAO and RDO</li></ul><ul id="619432bf-cc81-4385-9c74-cab89953c24f" class="bulleted-list"><li style="list-style-type:disc">Open Database Connectivity (ODBC) is Microsoft’s implementation of SQL CLI<ul id="7717f0fc-e73d-4463-927a-e5d1a90a11a2" class="bulleted-list"><li style="list-style-type:circle">Data Access Objects (DAO) is an object-orientated API used to access desktop-based databases</li></ul><ul id="1a4ee04f-0cf6-4238-b0b3-6f00e653af99" class="bulleted-list"><li style="list-style-type:circle">Remote Data Objects (RDO) is used to access remote database servers, is higher level OO and uses DAO and ODBC</li></ul></li></ul><ul id="3719bd0f-fb0b-455b-8af2-cdfcb27f7978" class="bulleted-list"><li style="list-style-type:disc">Object Linking and Embedding for Database (OLE_DB)<ul id="efbd2f3f-96b8-4f27-9b08-92a68f628575" class="bulleted-list"><li style="list-style-type:circle">database middleware that adds OO functionality for access to nonrelational data</li></ul><ul id="804cdb00-ed6c-4b6e-a649-6ff6cdc057bc" class="bulleted-list"><li style="list-style-type:circle">Consumers are objects that request data by invoking methods from provider objects</li></ul><ul id="2d25db9b-da13-4d27-8207-0eacd1d51f9f" class="bulleted-list"><li style="list-style-type:circle">Providers are objects that manage the connection with the data source and provide data to the consumer<ul id="e7246c6f-2127-4f63-8b93-df8d32009022" class="bulleted-list"><li style="list-style-type:square">Data providers</li></ul><ul id="0107d998-e1ec-45e4-8f7c-695d151bd63a" class="bulleted-list"><li style="list-style-type:square">Service providers (between the data provider and the consumer to add functionality)</li></ul></li></ul></li></ul><ul id="33bcc185-123b-4291-b453-a9a177c74e1c" class="bulleted-list"><li style="list-style-type:disc">ADO.NET introduced a simpler object model with Microsoft’s .NET framework support<ul id="946e643b-dc85-4747-a4a9-7f1f6a00dd74" class="bulleted-list"><li style="list-style-type:circle">consolidates all data access functionality into one integrated object model</li></ul><ul id="42ac7c3a-722c-4748-9aa3-d11046f5a651" class="bulleted-list"><li style="list-style-type:circle">is optimised to work in disconnected environments</li></ul></li></ul><ul id="407aa231-9403-431f-9b2b-10fd8a7296ce" class="bulleted-list"><li style="list-style-type:disc">Java Database Connectivity (JDBC)<ul id="aa2ac9ec-94a5-4ccb-acd7-e5ad1f688a57" class="bulleted-list"><li style="list-style-type:circle">an Application Programming Interface that allows a Java program to interact with a wide range of data sources including relational databases</li></ul><ul id="ff1f606f-9997-4ef1-b6dd-295c261cad7a" class="bulleted-list"><li style="list-style-type:circle">allows programmers to use SQL to manipulate data in a database</li></ul></li></ul><ul id="f3cc0385-465e-4f49-b30a-0a95939abb5d" class="bulleted-list"><li style="list-style-type:disc">Web-to-Database Middleware: Server-Side Extensions are programs that interact directly with the server to handle requests</li></ul><ul id="85523c04-f5d3-4a4e-b28b-3b4a9ba7d19b" class="bulleted-list"><li style="list-style-type:disc">Web Server Interfaces:<ul id="5aca87f9-70ee-4478-abc8-b34114d976a5" class="bulleted-list"><li style="list-style-type:circle">Common Gateway Interface (CGI)</li></ul><ul id="40fda499-3d44-46e6-9e25-3c62698176e8" class="bulleted-list"><li style="list-style-type:circle">Application Programming Interface (API)</li></ul></li></ul><ul id="6139b8bf-a0e9-4098-82b4-04a0308ac211" class="bulleted-list"><li style="list-style-type:disc">ActiveX is Microsoft’s alternative to Java for programs that run inside Internet Explorer</li></ul><ul id="ecb244e1-360b-49d1-8891-0c33ca7fcdc6" class="bulleted-list"><li style="list-style-type:disc">VBScript is similar</li></ul><ul id="2f4530b8-bfb1-4adf-99a3-c1e2af5cc836" class="bulleted-list"><li style="list-style-type:disc">Client-side data validation is vital to prevent excessive CPU processing on the server side</li></ul><ul id="ee79669c-a550-461a-b853-4c5882946bea" class="bulleted-list"><li style="list-style-type:disc">Web Application Servers are middleware that expand the functionality of web servers by linking them to databases, directories, search engines and the like</li></ul><ul id="c409d097-a75e-40a9-a7a3-4d87f4571189" class="bulleted-list"><li style="list-style-type:disc">Web Database Development deals with the process of interfacing databases with the web browser</li></ul><ul id="ed2e453b-9e70-4d38-bbc8-f315e663a1dd" class="bulleted-list"><li style="list-style-type:disc">XML:<ul id="c75e9918-438c-42ed-ac78-5a7f58c9a443" class="bulleted-list"><li style="list-style-type:circle">case sensitive</li></ul><ul id="e4ce96d3-d2ad-4878-82cb-359ac068c1ac" class="bulleted-list"><li style="list-style-type:circle">tags must be properly formatted</li></ul><ul id="2ef5667d-c329-4eaf-854c-1cf6808f9a02" class="bulleted-list"><li style="list-style-type:circle">must be properly nested</li></ul><ul id="19610753-c890-4a89-8699-502ab60f1b02" class="bulleted-list"><li style="list-style-type:circle">can use —&gt; and &lt;— to enter comments</li></ul><ul id="88e923e8-354d-4360-b9d0-e48e538aa5dd" class="bulleted-list"><li style="list-style-type:circle">is concerned with the description and representation of data, not the way in which it is displayed</li></ul><ul id="d0d0db39-f7df-4510-93c8-153ecacf4721" class="bulleted-list"><li style="list-style-type:circle">XHTML expands HTML to include XML features</li></ul></li></ul><ul id="f3d8116d-a685-4164-abbe-2ef111123fec" class="bulleted-list"><li style="list-style-type:disc">Document Type Definitions (DTD) and XML Schemas<ul id="ed05290d-32f0-47e7-b171-022edfb2115d" class="bulleted-list"><li style="list-style-type:circle">file with extension .dtd describes the XML elements</li></ul><ul id="22b1d9f0-40f3-474c-bcd8-02bbc12cede7" class="bulleted-list"><li style="list-style-type:circle">the .dtd file must be referenced within the XML</li></ul><ul id="65ec8cdf-f7af-4ef9-b906-5dc7f3315811" class="bulleted-list"><li style="list-style-type:circle">XML schemas define data types and validation rules</li></ul></li></ul><ul id="a2d57cc7-f34d-4778-a552-c6076cd2383e" class="bulleted-list"><li style="list-style-type:disc">XML presentation:<ul id="772bd0ba-89ac-4a5a-8856-8a5dff465058" class="bulleted-list"><li style="list-style-type:circle">Extensible Style Language Transformation XSLT describes how to extract and process data from XML. Using this you can extract data from an XML and convert it to a text file, HTML or webpage</li></ul></li></ul><ul id="efe124f0-49d9-4e84-a837-e78f7ef56a43" class="bulleted-list"><li style="list-style-type:disc">Cloud Computing: a computing model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computer resources that can be rapidly provisioned and released with minimal management effort or service provider interaction</li></ul><p id="b9d5dc51-adfa-4ffd-a29d-9b3ed56300da" class="">
+</p><h2 id="1b821b78-71ec-4141-8c87-abb28ff150f7" class="">Week 6: SQL</h2><p id="3ef0d527-6966-4cf4-9d7e-3c229a3e69df" class="">VOCABULARY:</p><figure id="fdf6b033-048e-44be-8d13-b03049623e59" class="image"><a href="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/Week_6_vocabulary.png"><img style="width:758px" src="Database%20Fundamentals%20on%20the%20Cloud%20559aebf325b147aa911928652a838d17/Week_6_vocabulary.png"/></a></figure><ul id="247100e6-cfe7-4f77-b1bd-c055820292eb" class="bulleted-list"><li style="list-style-type:disc">Operators:<ul id="c9c18cf3-d1ed-47a7-91fb-c293510d7816" class="bulleted-list"><li style="list-style-type:circle"><a href="https://learn.microsoft.com/en-us/sql/t-sql/language-elements/operators-transact-sql?view=sql-server-2017">https://learn.microsoft.com/en-us/sql/t-sql/language-elements/operators-transact-sql?view=sql-server-2017</a></li></ul></li></ul><ul id="2fa889b0-631f-4ad0-9b34-c9196a18a1cd" class="bulleted-list"><li style="list-style-type:disc">IS NULL:<ul id="680d8ecc-7e3e-4ae2-b753-7c83d6567813" class="bulleted-list"><li style="list-style-type:circle"><a href="https://learn.microsoft.com/en-us/sql/t-sql/queries/is-null-transact-sql?view=sql-server-2017">https://learn.microsoft.com/en-us/sql/t-sql/queries/is-null-transact-sql?view=sql-server-2017</a></li></ul></li></ul><ul id="44fe6528-fc33-4bed-8d3f-930d4ad01487" class="bulleted-list"><li style="list-style-type:disc">SQL is both a Data Definition Language (DDL) and a Data Manipulation Language (DML)</li></ul><ul id="014a20bb-8eb1-41fd-8498-49c8e984da0e" class="bulleted-list"><li style="list-style-type:disc">ANSI prescribes a standard SQL which is also recognised by the ISO</li></ul><ul id="4e4d25c0-d05e-4294-be85-200ad086bad6" class="bulleted-list"><li style="list-style-type:disc">queries are used not only to extract data from the DB but can also be used to perform operations on it</li></ul><ul id="57044732-6748-4bf3-bb8d-aaf678f24fe5" class="bulleted-list"><li style="list-style-type:disc">Schemas are groups of database objects, often belonging to a single user,  to group tables by functions</li></ul><ul id="99d97b44-96c6-45bc-90e2-0041f7c3e3bf" class="bulleted-list"><li style="list-style-type:disc">numbers such as postcodes that may begin with a trailing 0 should be defined as char to avoid truncation</li></ul><ul id="14435530-8055-4895-97f8-3e92f19f7709" class="bulleted-list"><li style="list-style-type:disc">use sysdate() or now() or getdate() to access date in julian format</li></ul><ul id="0da3336c-d536-4866-b4d8-6ee2349f6e29" class="bulleted-list"><li style="list-style-type:disc"><code>create table [name] (</code><ul id="40d0dbe5-f271-4ce8-9b55-5e5080fa73e8" class="bulleted-list"><li style="list-style-type:circle"><code>[column] [data type] [[constraint]],</code></li></ul><ul id="0bb5f2bb-e454-4f42-9669-20f9036a897b" class="bulleted-list"><li style="list-style-type:circle"><code>[column] [data type] [[constraint]]);</code></li></ul></li></ul><ul id="0a690cbd-d243-418f-b99f-5561966b6c0c" class="bulleted-list"><li style="list-style-type:disc">If working with a composite primary key, all of the primary key’s attributes are contained within the parentheses and separated with a comma. If working with a primary key consisting of two attributes, the order of there attributes is important as the indexing starts in order</li></ul><ul id="de10eeb5-cd76-4492-9d6a-2998e1da8ba7" class="bulleted-list"><li style="list-style-type:disc">ANSI standards allow for the following constraints:<ul id="416552f7-1a50-4231-83cc-675ccecc1107" class="bulleted-list"><li style="list-style-type:circle">not null</li></ul><ul id="29b70f83-5b9f-427b-9cb2-55fdc66160c5" class="bulleted-list"><li style="list-style-type:circle">unique</li></ul><ul id="dfd627fb-0993-4076-b40c-b9774e6e239a" class="bulleted-list"><li style="list-style-type:circle">default</li></ul><ul id="484fc4c8-aa74-4ad7-84bb-ba7e26789a79" class="bulleted-list"><li style="list-style-type:circle">check</li></ul></li></ul><ul id="ad36bf8a-df03-4583-baa2-29537c549c5b" class="bulleted-list"><li style="list-style-type:disc">Creating Indexes<ul id="775e0aec-c228-499c-8de3-a041f58058c4" class="bulleted-list"><li style="list-style-type:circle"><code>create [unique]index [indexname] on [tablename](column1, [column2]);</code></li></ul><ul id="31d7366c-b83c-44af-a5e3-1f9f6198bfa2" class="bulleted-list"><li style="list-style-type:circle">useful when you do not want a value to be unique but do want a combination of values to be unique for example, FNAME, LNAME, DOB</li></ul><ul id="315762bc-48bc-4619-b074-3986f23dfbff" class="bulleted-list"><li style="list-style-type:circle">you can also use this to sort values by type, if this is something that needs to be done regularly</li></ul><ul id="02021814-9f9d-42d4-8cd8-7aebc1f07072" class="bulleted-list"><li style="list-style-type:circle">to delete:<ul id="468d9521-4384-4a83-a539-f95910e51922" class="bulleted-list"><li style="list-style-type:square"><code>drop index [indexname]</code></li></ul></li></ul></li></ul><ul id="10ac2f51-c7e1-4b04-b90b-367478a4ab1b" class="bulleted-list"><li style="list-style-type:disc">Data Manipulation:<ul id="7bcc184d-9917-49d6-a06e-a4b2d4ffbfd9" class="bulleted-list"><li style="list-style-type:circle">INSERT:<ul id="1b4b26d1-47ee-4607-a264-c44f978d929d" class="bulleted-list"><li style="list-style-type:square"><code>insert into [tablename] values (v1, v2, v3, v4)</code></li></ul><ul id="bd6c208d-4375-41ce-9536-2bfaf69c027e" class="bulleted-list"><li style="list-style-type:square"><code>insert into [tablename](row1, row2, row3) values (v1, v2, v3)</code></li></ul><ul id="441c5aea-6e25-417e-b8b5-2dfab4027f7f" class="bulleted-list"><li style="list-style-type:square">To insert one table (or subset) into another<ul id="30835478-adbe-4d0c-a878-0c7a4c0895ee" class="bulleted-list"><li style="list-style-type:disc"><code>insert into [tablename] select [columnlist] from [tablename]</code></li></ul></li></ul></li></ul><ul id="e67c8ea0-28ac-47f5-9653-50db2b44267d" class="bulleted-list"><li style="list-style-type:circle">COMMIT:<ul id="186a7d01-0959-4650-90f4-7496f153860a" class="bulleted-list"><li style="list-style-type:square">saves up to the current point in a similar way to git commit</li></ul></li></ul><ul id="905a370a-5371-47eb-addf-6d19ce251654" class="bulleted-list"><li style="list-style-type:circle">SELECT:<ul id="207dc18e-2d62-488f-abd3-4dcf84256539" class="bulleted-list"><li style="list-style-type:square"><code>select [columnlist (or *)]</code></li></ul><ul id="4a1415e0-5555-4262-90a8-57f923b496b3" class="bulleted-list"><li style="list-style-type:square"><code>from [tablename]</code></li></ul><ul id="7f054e3f-0784-465e-9252-e94b8818b4f9" class="bulleted-list"><li style="list-style-type:square"><code>[where condition];</code></li></ul><ul id="a92eb3ad-364c-4281-972f-b7ac83662190" class="bulleted-list"><li style="list-style-type:square">when writing code for a program, it is often best practice to use select followed by all of the variables in comparison to using *. That way, if an table is changed, an error may be thrown and you will not have one value being propagated into the wrong table</li></ul></li></ul><ul id="6ce3df53-e9da-4e70-b9c7-92b81415bbf4" class="bulleted-list"><li style="list-style-type:circle">WILDCARDS:<ul id="e2347de5-2eae-4a13-b665-70f5eef4a7c9" class="bulleted-list"><li style="list-style-type:square">use * for all when used in an attribute or list in a select statement or</li></ul><ul id="7743f856-858d-4af8-81ca-db55cc3dbbf4" class="bulleted-list"><li style="list-style-type:square">use % for zero or more characters in a like clause</li></ul></li></ul><ul id="22a1dbd2-c701-43a9-8c4d-a4adb3251627" class="bulleted-list"><li style="list-style-type:circle">UPDATE:<ul id="74a4cca9-bb03-4c7c-96cd-5ab5b5226368" class="bulleted-list"><li style="list-style-type:square"><code>UPDATE tablename</code></li></ul><ul id="4985af53-11d1-4a5e-b94a-5d7f6363c60b" class="bulleted-list"><li style="list-style-type:square"><code>SET columnname = expression [, columnname = expression]</code></li></ul><ul id="9dd830c6-cc9f-4e47-ae8c-be5d98b2ef1f" class="bulleted-list"><li style="list-style-type:square"><code>[WHERE condition(such as line ID)];</code></li></ul><ul id="be6d7f89-124c-4fb7-9ad5-6b82919a1873" class="bulleted-list"><li style="list-style-type:square">set-orientated command</li></ul><ul id="30e57da4-cbf6-4ac3-882e-1d0a5ef7134c" class="bulleted-list"><li style="list-style-type:square">note that if you do not include the where definition, ALL rows will be altered</li></ul></li></ul><ul id="a1c8cbcc-c6ce-490d-b068-da465ae451fa" class="bulleted-list"><li style="list-style-type:circle">ROLLBACK:<ul id="8193be7f-0176-4b02-ac84-7f12b5e6ebc8" class="bulleted-list"><li style="list-style-type:square">similar to a git undo last commit</li></ul><ul id="6bc62c5a-5960-4e42-b2a9-d0bae0e125cc" class="bulleted-list"><li style="list-style-type:square">will NOT delete tables that were added since last commit<ul id="79e7ed91-0cf8-4ec9-962f-d52e2a656b3f" class="bulleted-list"><li style="list-style-type:disc">all data definition commands (create table) are automatically committed to the data dictionary and cannot be rolled back</li></ul></li></ul><ul id="9b0c9f8a-345f-4781-9d7e-a0089f73f0f5" class="bulleted-list"><li style="list-style-type:square">will only undo the result of the insert and update commands</li></ul></li></ul><ul id="ab0d47ae-9c7f-42ec-8b61-d6b4ee778319" class="bulleted-list"><li style="list-style-type:circle">DELETE:<ul id="d462100b-90ef-4c04-84b5-1d7231b91c7a" class="bulleted-list"><li style="list-style-type:square"><code>delete from [tablename]</code></li></ul><ul id="a426655d-8679-4e26-ad86-3910729185f6" class="bulleted-list"><li style="list-style-type:square"><code>[where contidion(such as line ID];</code></li></ul><ul id="fabe6ed4-29d6-4bee-82c8-28e5139423a3" class="bulleted-list"><li style="list-style-type:square">set-orientated command</li></ul></li></ul><ul id="59e81c44-c39c-4fea-80c6-28a10c8e63c5" class="bulleted-list"><li style="list-style-type:circle">OPERANDS:<ul id="94b01064-2c45-4614-98fd-fd56e7835d7c" class="bulleted-list"><li style="list-style-type:square">AND</li></ul><ul id="032ba890-1159-483b-930a-3b21a097bcb0" class="bulleted-list"><li style="list-style-type:square">OR</li></ul><ul id="09896f95-6461-400d-b01d-3d58d53e5e58" class="bulleted-list"><li style="list-style-type:square">NOT</li></ul></li></ul><ul id="bd966321-a754-47b9-8f31-9cbb1076720a" class="bulleted-list"><li style="list-style-type:circle">SPECIAL OPERATORS:<ul id="2940bfdf-baa6-48e8-bae6-a1d9469c226f" class="bulleted-list"><li style="list-style-type:square">BETWEEN<ul id="90ec4ae3-1455-43c2-810f-b5fcca9d1020" class="bulleted-list"><li style="list-style-type:disc">check an inclusive range</li></ul><ul id="4b275cad-59a6-49b9-bd48-8738d68dcb0f" class="bulleted-list"><li style="list-style-type:disc">value between x and y</li></ul></li></ul><ul id="8794d141-5c88-4cff-b412-e00ec1701aa0" class="bulleted-list"><li style="list-style-type:square">IS NULL<ul id="6dedf3c9-4c7f-417d-b781-4a94159b4cbb" class="bulleted-list"><li style="list-style-type:disc">must use is null for a null value, otherwise = null looks for a value of ‘null’</li></ul></li></ul><ul id="ac27e906-4e2e-473a-85d3-60a63f815df7" class="bulleted-list"><li style="list-style-type:square">LIKE<ul id="2fb3d484-e10d-406f-9af2-14ccbb8387b8" class="bulleted-list"><li style="list-style-type:disc">check if string matches a pattern</li></ul><ul id="90b31e59-0927-40dc-bbb3-be69e988456f" class="bulleted-list"><li style="list-style-type:disc">WILDCARDS:<ul id="ebe2abd0-c7e6-413e-8456-60cc214160e0" class="bulleted-list"><li style="list-style-type:circle">% - any and all following or preceding chars are eligible</li></ul><ul id="0a658e79-fe54-403a-83a0-00063fdcb0b1" class="bulleted-list"><li style="list-style-type:circle">_ - any ONE char may be substituted for the underscore</li></ul><ul id="c3ac20f4-2585-4c65-9866-6488259a418f" class="bulleted-list"><li style="list-style-type:circle">SOME RDBMSs also use ? and * in place of % and _</li></ul><ul id="168ebccf-68f3-45c8-b449-4e1e6fb507b2" class="bulleted-list"><li style="list-style-type:circle"></li></ul></li></ul></li></ul><ul id="7bb340d8-960d-4ad8-bd01-bfb86894a363" class="bulleted-list"><li style="list-style-type:square">IN<ul id="aa9a5dd4-2e72-47ed-a17a-80945f93e1fe" class="bulleted-list"><li style="list-style-type:disc">check if attribute matches a value in a list (a, b, c)<ul id="3e959503-00b1-4fca-bee8-f9dd4f72e785" class="bulleted-list"><li style="list-style-type:circle">the list used can be from another table with<ul id="b97d1c4c-e0fd-4dc1-92bd-fa3d5f0c81ee" class="bulleted-list"><li style="list-style-type:square">(select [element] from [table])</li></ul><ul id="dbe8880e-117a-4723-9cd5-f7c73702d348" class="bulleted-list"><li style="list-style-type:square"></li></ul></li></ul></li></ul></li></ul><ul id="a91ba9a5-d856-4f5d-9426-627d6d7f5e60" class="bulleted-list"><li style="list-style-type:square">EXISTS<ul id="01ba4f64-6dfe-45ef-b0d4-39624ab4d839" class="bulleted-list"><li style="list-style-type:disc">check if subquery matches any rows<ul id="1a5352fb-b125-4be5-bd18-bf021241589a" class="bulleted-list"><li style="list-style-type:circle">if it returns any rows the main query will be run otherwise, it will not</li></ul></li></ul></li></ul></li></ul><ul id="5f091d00-fd6d-4381-b811-39b4b3749119" class="bulleted-list"><li style="list-style-type:circle">ALTER TABLE:<ul id="f1414d0f-7241-43dc-bd30-b25d02fc559b" class="bulleted-list"><li style="list-style-type:square"><code>alter table tablename</code></li></ul><ul id="56c5747e-0b94-4db8-9e5e-d1a0075ef697" class="bulleted-list"><li style="list-style-type:square"><code>{add | alter/modify} (columnname datatype [{add | alter/modify}] columnname datatype]);</code></li></ul><ul id="1ec46e21-a144-4077-9896-e055b46fbf5f" class="bulleted-list"><li style="list-style-type:square">note that it is not possible to add a column with the not null requirement if the table is already populated as this would break its own rule set</li></ul><ul id="003dbac6-4103-4c00-b4f3-d0f84b778371" class="bulleted-list"><li style="list-style-type:square">Add constraint:<ul id="335c0b4b-0f93-493d-b468-cf8921f8afed" class="bulleted-list"><li style="list-style-type:disc"><code>alter table tablename</code></li></ul><ul id="0ae32e97-8bc9-4321-8512-173d4f6fb658" class="bulleted-list"><li style="list-style-type:disc"><code>add constraint [add constraint];</code></li></ul></li></ul><ul id="58a28a85-0ea3-453d-98f0-25613c7aaab9" class="bulleted-list"><li style="list-style-type:square">Remove Element:<ul id="431b9742-3b1f-40ad-94f7-0465757ac409" class="bulleted-list"><li style="list-style-type:disc"><code>alter table tablename</code></li></ul><ul id="68b31a59-5c6e-42a5-8a61-f331bb6e047e" class="bulleted-list"><li style="list-style-type:disc"><code>drop {primary key | column columnname | constraint constraintname};</code></li></ul></li></ul><ul id="32811005-2448-4e8f-bca6-367b15048e57" class="bulleted-list"><li style="list-style-type:square">Update<ul id="9462c1af-c85d-4650-a5ad-de4b209bbfb7" class="bulleted-list"><li style="list-style-type:disc"><code>Update table</code></li></ul><ul id="d1e84def-3e82-4d25-b041-ddce2cef16b3" class="bulleted-list"><li style="list-style-type:disc"><code>set column = x</code></li></ul><ul id="5e7afe78-b0eb-4b0d-839e-d3550a48fe2f" class="bulleted-list"><li style="list-style-type:disc"><code>where {another}column = y(or range);</code></li></ul></li></ul><ul id="9d669921-70f4-45aa-9918-0d515e530795" class="bulleted-list"><li style="list-style-type:square">Create Table from another table:<ul id="d1f8984f-34b5-41bd-b831-0b881c0edc1e" class="bulleted-list"><li style="list-style-type:disc"><code>select [column copy as column paste], [repeated]</code></li></ul><ul id="565c6a6c-de42-4e4a-8675-5d9928639700" class="bulleted-list"><li style="list-style-type:disc"><code>into [new table]</code></li></ul><ul id="ca24d839-e46c-4ba9-b759-d61fe2972cbb" class="bulleted-list"><li style="list-style-type:disc"><code>from [table to be copied]</code></li></ul><ul id="0159338b-1ada-4778-9dd0-6f11abf0ed7b" class="bulleted-list"><li style="list-style-type:disc">you would then declare a primary key<ul id="222a87b0-3a52-402b-97a9-9200bcc4a82c" class="bulleted-list"><li style="list-style-type:circle"><code>alter table [new table]</code></li></ul><ul id="932416ac-648f-40be-a04e-e3a05c5589db" class="bulleted-list"><li style="list-style-type:circle"><code>add primary key (column);</code></li></ul><ul id="12f4a142-d62c-4442-9a4a-92ef228905e1" class="bulleted-list"><li style="list-style-type:circle">and any foreign keys<ul id="0b36cf91-a70f-4b18-b696-e62a1f04aebf" class="bulleted-list"><li style="list-style-type:square"><code>alter table [new table]</code></li></ul><ul id="4d99c72e-9dbe-453f-b083-1c708632f3d3" class="bulleted-list"><li style="list-style-type:square"><code>add foreign key (column) references [reference];</code></li></ul></li></ul></li></ul></li></ul><ul id="435cf4da-ac92-45ef-a8b0-952078899286" class="bulleted-list"><li style="list-style-type:square">Deleting a table:<ul id="2a54bf55-0874-45dc-bf6f-c9c804a34f4a" class="bulleted-list"><li style="list-style-type:disc">Drop Table [table]<ul id="f999a43e-1e6f-49ce-b5d2-e9cec4ab8d21" class="bulleted-list"><li style="list-style-type:circle">can only be done with the one side of a one to many relationship</li></ul></li></ul></li></ul></li></ul><ul id="e70282c2-6716-43f2-82ee-b4c9357f9b95" class="bulleted-list"><li style="list-style-type:circle">Order by<ul id="bc342c68-94f6-4435-a5e9-bf6954465779" class="bulleted-list"><li style="list-style-type:square"><code>select column/s</code></li></ul><ul id="8ee856a5-e352-4fc0-bac0-ef60f8dcf98e" class="bulleted-list"><li style="list-style-type:square"><code>from table</code></li></ul><ul id="c9135f01-a69a-4c03-88b7-479d8dd93f41" class="bulleted-list"><li style="list-style-type:square"><code>where condition</code></li></ul><ul id="6b46bf95-fecc-4856-aa8a-640855a3c320" class="bulleted-list"><li style="list-style-type:square"><code>order by column [asc/desc];</code></li></ul><ul id="6164dfdc-999e-4ee3-8489-fdd533959a81" class="bulleted-list"><li style="list-style-type:square">cascading order sequence:<ul id="bb75139b-c9ab-4ea6-8a4b-592927b96ff9" class="bulleted-list"><li style="list-style-type:disc">separate with a comma ie LName, FName, MName;</li></ul></li></ul></li></ul><ul id="08f8d8f9-33f8-437a-8142-e8c67f2da697" class="bulleted-list"><li style="list-style-type:circle">Listing Unique Values<ul id="37bbef3c-dc18-4371-9811-bf6df0f86656" class="bulleted-list"><li style="list-style-type:square">to display only the different values of a column:</li></ul><ul id="157a40e4-390a-4305-a9bb-c1143be725e2" class="bulleted-list"><li style="list-style-type:square"><code>select distinct column</code></li></ul><ul id="4925c5ba-7e0a-4012-8043-5a9429a473fe" class="bulleted-list"><li style="list-style-type:square"><code>from table</code></li></ul></li></ul><ul id="a0ff8790-67a9-4a63-830e-7a53f908f449" class="bulleted-list"><li style="list-style-type:circle">Aggregate functions<ul id="cbf3da39-392c-4c54-b567-8620213e9938" class="bulleted-list"><li style="list-style-type:square">Count:<ul id="11aa1a58-2304-403a-82cc-2d8b18fc7077" class="bulleted-list"><li style="list-style-type:disc">will count the number of distinct non-null values</li></ul><ul id="4595dcd1-d31c-4d07-a63b-bb6a4da83e31" class="bulleted-list"><li style="list-style-type:disc"><code>select count(column/*)</code></li></ul><ul id="de76a80b-8a59-4bc3-b4b2-717678e843e6" class="bulleted-list"><li style="list-style-type:disc"><code>from table;</code></li></ul><ul id="a31d9f34-f3b1-402f-95d0-fffac0e9a471" class="bulleted-list"><li style="list-style-type:disc">using * will yield the number of total rows from the query, including the rows that contain nulls</li></ul></li></ul><ul id="3f734b07-bb92-4aca-945d-c6e34878e83c" class="bulleted-list"><li style="list-style-type:square">MAX and MIN:<ul id="267f77ed-4cb9-48e0-9122-42ebaceda6f1" class="bulleted-list"><li style="list-style-type:disc">yields only one value</li></ul><ul id="d00df11d-2582-4e6f-8004-eda26313afb1" class="bulleted-list"><li style="list-style-type:disc">If wanting to see the entry for this value:<ul id="fb1914f0-f066-48c9-bb00-2dfb04581167" class="bulleted-list"><li style="list-style-type:circle"><code>select val1, val2, val3</code></li></ul><ul id="24ae35c6-857c-4ade-ab6c-b74e7a92b27e" class="bulleted-list"><li style="list-style-type:circle"><code>from table</code></li></ul><ul id="aae1d218-2be4-41e9-afd7-8614c912a21d" class="bulleted-list"><li style="list-style-type:circle"><code>where val1 = (select max(val1) from table)</code></li></ul></li></ul></li></ul><ul id="87802b06-ebbb-41fd-9963-19e16104dc2b" class="bulleted-list"><li style="list-style-type:square">SUM:<ul id="bf774115-430e-473d-92a5-187e849965a1" class="bulleted-list"><li style="list-style-type:disc">cumulative sum of all rows</li></ul></li></ul><ul id="5ecf5ee2-a69f-4619-8253-c5ab04b3cafe" class="bulleted-list"><li style="list-style-type:square">AVG:<ul id="bbfbbf43-8f78-4766-bff0-65574a224ffd" class="bulleted-list"><li style="list-style-type:disc">average of all rows</li></ul></li></ul></li></ul><ul id="f4425a38-1032-4c57-b60f-89ef5808a788" class="bulleted-list"><li style="list-style-type:circle">Grouping Data:<ul id="9278cc74-499a-4daf-85e0-0b3c971c179f" class="bulleted-list"><li style="list-style-type:square">can only be used in conjunction with one of the other aggregate functions</li></ul><ul id="b3a4dccb-40fc-4845-aa2e-0898c3b37908" class="bulleted-list"><li style="list-style-type:square"><code>select column</code></li></ul><ul id="e2a2622e-d002-452a-9408-5d11c42c910e" class="bulleted-list"><li style="list-style-type:square"><code>from table</code></li></ul><ul id="f74451ef-4587-4f58-bfea-6252c4bbfe7d" class="bulleted-list"><li style="list-style-type:square"><code>where condition</code></li></ul><ul id="f1a58d09-5caf-4f59-a933-147488dcc083" class="bulleted-list"><li style="list-style-type:square"><code>group by column</code></li></ul><ul id="5cc1eb4f-9289-40ea-9194-ebb6505c9cb9" class="bulleted-list"><li style="list-style-type:square"><code>having condition</code></li></ul><ul id="d4f8e3e3-3adb-4c65-84ec-4a8db70c1a28" class="bulleted-list"><li style="list-style-type:square"><code>order by column [asc/desc]</code></li></ul><ul id="ead7affe-cf2a-43a5-a7bd-fd7ed56763df" class="bulleted-list"><li style="list-style-type:square">HAVING clause:<ul id="e1faecbe-d456-4051-83ee-a80549dd7f61" class="bulleted-list"><li style="list-style-type:disc">similar to a where clause in a select statement</li></ul><ul id="cdf4cffa-566a-4f96-aa9c-bd6426549995" class="bulleted-list"><li style="list-style-type:disc">is applied to the output of a group by statement</li></ul></li></ul></li></ul><ul id="280a3f01-979a-40bb-88e7-db186cb14765" class="bulleted-list"><li style="list-style-type:circle">Joining Tables<ul id="118d8784-e667-4d41-81c1-aef9526428fc" class="bulleted-list"><li style="list-style-type:square">To join tables, simply list them in the FROM clause of a select statement</li></ul><ul id="c2a6f615-9325-49ce-b895-a5f2b4d42698" class="bulleted-list"><li style="list-style-type:square">The WHERE clause becomes the pivot of the link used to match up each line to each other</li></ul><ul id="96472360-f5cd-41f8-aeba-2dd2ec607a78" class="bulleted-list"><li style="list-style-type:square"><code>select val1, val2, val3, val4</code></li></ul><ul id="e27d043d-aa19-4b1d-ada2-e36039fadab1" class="bulleted-list"><li style="list-style-type:square"><code>from table1, table2</code></li></ul><ul id="0d5c391a-50a4-42c7-820d-ae53de43ce2c" class="bulleted-list"><li style="list-style-type:square"><code>where table1.linkingkey = table2.linkingkey</code></li></ul><ul id="17115541-4754-49f8-91dc-00db070be89e" class="bulleted-list"><li style="list-style-type:square"><code>and condition</code></li></ul><ul id="2c311a52-1e85-4092-8ee4-347bd203f1e3" class="bulleted-list"><li style="list-style-type:square"><code>order by val2;</code></li></ul><ul id="65f39340-b394-4fa8-b469-cc26dcd0d139" class="bulleted-list"><li style="list-style-type:square">if you do not specify the where clause, the result will be a <span style="border-bottom:0.05em solid">cartesian product</span> of each table ie. 3 rows x 3 rows = 9 possibilities</li></ul><ul id="0e55c752-b792-4412-907f-f36565a827dc" class="bulleted-list"><li style="list-style-type:square">when joining 3 or more tables, you must specify n-1 join conditions in the from clause<ul id="2621d0f6-864b-46cf-872f-4bfb9788c562" class="bulleted-list"><li style="list-style-type:disc">from a, b, c, d</li></ul><ul id="8be0e22f-29da-46be-b252-7aa15a53948b" class="bulleted-list"><li style="list-style-type:disc">where a=b</li></ul><ul id="dd615a55-988f-4094-b207-c2cbbbda0fbb" class="bulleted-list"><li style="list-style-type:disc">and b=c</li></ul><ul id="c6c69165-a1fa-43ff-bf8c-6a7532744047" class="bulleted-list"><li style="list-style-type:disc">and c=d</li></ul></li></ul><ul id="c5a13c1d-31c1-437d-a8f8-7b52cb5c0c83" class="bulleted-list"><li style="list-style-type:square">DO NOT join D to A</li></ul><ul id="d294c140-1908-4a47-98d5-71f93cebac86" class="bulleted-list"><li style="list-style-type:square">Aliases:<ul id="a2efc78b-825f-4f7d-8034-186c8f5c3ca4" class="bulleted-list"><li style="list-style-type:disc">during the join, in the from clause:</li></ul><ul id="dfc10bb8-ff33-47e6-b119-a70b4bd70f6f" class="bulleted-list"><li style="list-style-type:disc"><code>select var1, var2</code></li></ul><ul id="7bc85992-929b-465a-979b-b896591e9c8d" class="bulleted-list"><li style="list-style-type:disc"><code>from table a, table b</code></li></ul><ul id="1d80a801-bcbb-497e-b1a9-4dace6723bf5" class="bulleted-list"><li style="list-style-type:disc"><code>where a.var1 = b.var1</code></li></ul></li></ul><ul id="e4f86936-f8ae-4a92-a80c-ccea6fcdf8ff" class="bulleted-list"><li style="list-style-type:square">Recursive Joins:<ul id="a6a0f811-5b3c-492c-bca2-341a38bd8a7c" class="bulleted-list"><li style="list-style-type:disc"><code>select var1, var2</code></li></ul><ul id="105ae818-b0fe-4bd1-99d4-d334b0a6508c" class="bulleted-list"><li style="list-style-type:disc"><code>from tablea a, tablea b</code></li></ul><ul id="9e51e40d-dcac-4552-ba51-3d9b487ce0d8" class="bulleted-list"><li style="list-style-type:disc"><code>where a.var3 = b.var4</code></li></ul><ul id="9f34bf31-a556-4288-b13b-b615485b2efe" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="1311a1d6-79bf-4d11-99aa-80df16280d8e" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="9e3f0765-b77f-4130-b509-cae6869d567a" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="b8407b90-232f-462e-8e02-2a414e440c63" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="7130ef02-152d-4dc8-a214-2695e6dfcd2b" class="bulleted-list"><li style="list-style-type:disc">h</li></ul></li></ul></li></ul></li></ul><p id="a5017e11-c793-4821-af30-0fd29b3d430c" class="">
+</p><p id="048a81be-61cf-4368-a829-990d4e89f0da" class="">
+</p><p id="b46cb484-4279-4b68-b5ed-5b171a0027dc" class="">
+</p><p id="25bbabd1-e884-4375-81f1-a8f73f32797e" class="">tsra</p><p id="1973b921-d6be-47a2-82fa-388f78f98b55" class="">tsra</p><p id="7b782d50-8fc9-41a7-ab38-996a8c3c2b9f" class="">
+</p><ul id="1f722ab9-cfb4-472a-8a52-9cfdbdc9d451" class="bulleted-list"><li style="list-style-type:disc">CREATE TABLE [TableName] (<ul id="ee7173be-6a22-4190-a326-4e27d88fbb8b" class="bulleted-list"><li style="list-style-type:circle">column 1     datatype     [constraint]</li></ul><ul id="ec428fa0-9521-470a-ac80-5d0381f7c62e" class="bulleted-list"><li style="list-style-type:circle">);</li></ul></li></ul><ul id="a8ce3d82-decd-4c6b-814a-45144aa501af" class="bulleted-list"><li style="list-style-type:disc">select [columns]</li></ul><ul id="35f1669c-dd68-403d-9009-c765a918cd76" class="bulleted-list"><li style="list-style-type:disc">from [tablename]</li></ul><ul id="7a190ec7-d1d2-43d0-b34e-2912c1e2a6bb" class="bulleted-list"><li style="list-style-type:disc">where [condition]</li></ul><ul id="ae25c4a9-8ae7-4452-8786-064f9d5dfa45" class="bulleted-list"><li style="list-style-type:disc">order by</li></ul><ul id="5f556582-0f14-4ebe-9987-f38f92e6579f" class="bulleted-list"><li style="list-style-type:disc">select distinct</li></ul><ul id="f02556a9-db5d-42ca-b520-1322cad5c408" class="bulleted-list"><li style="list-style-type:disc">SQL:</li></ul><ul id="b8b5cd2d-2740-42df-803b-d3824e45840c" class="bulleted-list"><li style="list-style-type:disc">is null</li></ul><ul id="5a816722-1df1-463f-9fde-fa3d336829e1" class="bulleted-list"><li style="list-style-type:disc">coalesce - replace null values</li></ul><ul id="9ab6be89-6407-43f9-9cc3-2d52a4108310" class="bulleted-list"><li style="list-style-type:disc">distinct - select column<ul id="b8586b76-70ba-49c0-ad1a-e8d3e739b866" class="bulleted-list"><li style="list-style-type:circle">select<ul id="d8ca8bb7-81f2-48fa-bb04-202c6d3d5e0e" class="bulleted-list"><li style="list-style-type:square">from</li></ul><ul id="f0f54c96-6df8-43e9-974a-58b0e6902ea5" class="bulleted-list"><li style="list-style-type:square">where<ul id="aa8aea62-1649-4d96-91fb-5ec406e5fde6" class="bulleted-list"><li style="list-style-type:disc">x between a and b (inclusive)</li></ul><ul id="ef8f37cc-c857-46d5-9399-aa4c18390c92" class="bulleted-list"><li style="list-style-type:disc">x in (a, b)</li></ul><ul id="313f486a-0f59-4702-8fed-bc2551ff2780" class="bulleted-list"><li style="list-style-type:disc">x like ‘%a%b%’</li></ul></li></ul></li></ul></li></ul><p id="6f126aa5-5818-4399-89b3-f1495b4980ea" class="">
+</p><p id="cb524832-c1db-4ac2-b574-a243f9b9a07d" class="">
+</p><p id="90f2aae6-33dd-4820-ab1d-1c01ca211c09" class="">
+</p><h2 id="e0fb76f2-dfc0-486a-a94c-3181e99eeccd" class="">Assignment 1:</h2><ul id="1c8b41e7-a454-4720-b29c-7d6224eb6f3b" class="bulleted-list"><li style="list-style-type:disc">Database must include:<ul id="d036e4b9-8364-414b-9ec7-2407560aa753" class="bulleted-list"><li style="list-style-type:circle">PERSON:<ul id="decb5fd9-61ad-4f07-89f3-801462b63700" class="bulleted-list"><li style="list-style-type:square">ID</li></ul><ul id="4ece7553-3e59-40af-8f8c-5d0479ddcf15" class="bulleted-list"><li style="list-style-type:square">First Name</li></ul><ul id="6dbf0925-c517-403e-9dad-a8cbbb1e522b" class="bulleted-list"><li style="list-style-type:square">Last Name</li></ul><ul id="5ade56cb-87d1-4250-a4a3-55820bd30057" class="bulleted-list"><li style="list-style-type:square">D.O.B.</li></ul><ul id="40db2038-77b2-4247-9b83-c241d7007c3c" class="bulleted-list"><li style="list-style-type:square">Phone</li></ul><ul id="54d89699-b02a-44fa-aa76-9a1bf0228e6d" class="bulleted-list"><li style="list-style-type:square">Address 1</li></ul><ul id="162ea516-86b8-4355-9bde-0b07e9ed03ed" class="bulleted-list"><li style="list-style-type:square">Address 2</li></ul><ul id="a76c9a47-d94a-4881-b074-f0bd72a2565d" class="bulleted-list"><li style="list-style-type:square">Suburb</li></ul><ul id="10b3aae0-c9b1-40b6-9a25-22369457be9b" class="bulleted-list"><li style="list-style-type:square">Postcode</li></ul><ul id="16630c55-e1a7-475f-92d5-a03af9da1a2b" class="bulleted-list"><li style="list-style-type:square">TYPE:<ul id="4e809781-4ad5-46e7-bb16-63f2c36880dc" class="bulleted-list"><li style="list-style-type:disc">ADMINISTRATOR:<ul id="18257267-7757-456e-accd-024631b6b3f4" class="bulleted-list"><li style="list-style-type:circle">role</li></ul><ul id="1e03f52b-1135-40d0-ac16-9b2c936f70ab" class="bulleted-list"><li style="list-style-type:circle">password</li></ul></li></ul><ul id="3d8d2d68-ba3b-4036-a176-2d7861b72cad" class="bulleted-list"><li style="list-style-type:disc">STUDENT<ul id="9ec0524f-3527-4863-85aa-d55834034d5e" class="bulleted-list"><li style="list-style-type:circle">qualification code</li></ul><ul id="eb0e147b-61da-433f-9fed-5361728d49c5" class="bulleted-list"><li style="list-style-type:circle">start date</li></ul></li></ul><ul id="d6db6804-a56e-4243-ab17-5ecee13f4f25" class="bulleted-list"><li style="list-style-type:disc">TEACHER<ul id="95fc2f06-fe12-4a6b-9d9f-225848f5e38e" class="bulleted-list"><li style="list-style-type:circle">registration number</li></ul><ul id="447f6c42-3669-40fa-b872-e5ea5399f22c" class="bulleted-list"><li style="list-style-type:circle">password</li></ul></li></ul></li></ul></li></ul><ul id="7f0d38ad-883c-441a-b73a-633769a7f27a" class="bulleted-list"><li style="list-style-type:circle">Qualification<ul id="5a014574-ed60-43f5-8bb6-c98d3991c732" class="bulleted-list"><li style="list-style-type:square">code</li></ul><ul id="7e7ab2df-211d-4312-9be4-f013c8a15198" class="bulleted-list"><li style="list-style-type:square">name</li></ul><ul id="43d62309-97e6-49f8-b042-36aacfdca27b" class="bulleted-list"><li style="list-style-type:square">duration</li></ul><ul id="5d30ebed-db38-43c3-bdd8-476715d00403" class="bulleted-list"><li style="list-style-type:square">COURSES<ul id="0d2f3d2e-d472-40d4-bda1-94ee1b379322" class="bulleted-list"><li style="list-style-type:disc">course ID</li></ul><ul id="413e887e-47bd-44fd-8cc3-4fc479969b5c" class="bulleted-list"><li style="list-style-type:disc">name</li></ul><ul id="3a6effed-7e45-4f0d-8042-ebc62cc8dd0d" class="bulleted-list"><li style="list-style-type:disc">year</li></ul><ul id="e3e52d85-57f3-44b2-b8cb-c32e25d7dd3a" class="bulleted-list"><li style="list-style-type:disc">semester</li></ul><ul id="67ac04b0-9c7c-4488-a0df-8353a75aab12" class="bulleted-list"><li style="list-style-type:disc">teacher</li></ul></li></ul></li></ul><ul id="702a9c9e-32da-4fe8-90fa-581120bf0aa5" class="bulleted-list"><li style="list-style-type:circle">Enrolment Record<ul id="b97e9651-5f25-4b62-9c34-f49e133fb4fc" class="bulleted-list"><li style="list-style-type:square">course mark per student</li></ul></li></ul></li></ul><p id="195f3e74-5b8c-4210-8a40-d7a3fe1c6c4c" class="">
+</p><p id="684cecd8-0913-4002-990f-661d3395ac68" class="">
+</p></div></article></body></html>
